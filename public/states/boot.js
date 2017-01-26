@@ -9,5 +9,3 @@ class Boot {
         this.game.state.start('preload');
     }
 }
-
-export default Boot;

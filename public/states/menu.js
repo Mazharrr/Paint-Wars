@@ -2,7 +2,9 @@
 
 class Menu {
     create() {
-      console.log('click to continue')
+      var style = { font: "bold 32px Arial", fill: "#fff", boundsAlignH: "center", boundsAlignV: "middle" };
+
+      this.entryMessage = game.add.text(w/2-100,h/2,"Click to continue", style)
         this.game.input.onDown.add(this.startGame, this);
     }
 
@@ -10,5 +12,3 @@ class Menu {
         this.game.state.start('game');
     }
 }
-
-export default Menu;

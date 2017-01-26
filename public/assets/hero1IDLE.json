@@ -1,0 +1,20 @@
+{"frames": [
+
+{
+	"filename": "hero1IDLE.png",
+	"frame": {"x":1,"y":1,"w":1314,"h":62},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":0,"w":1314,"h":62},
+	"sourceSize": {"w":1315,"h":62}
+}],
+"meta": {
+	"app": "http://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "hero1IDLE.png",
+	"format": "RGBA8888",
+	"size": {"w":1316,"h":64},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:cf3eebe56f0d65daa09cdcc5ed0d1efe:07f100d44e5bd23f019afeb54f292c96:fed753a7cd79408c7a14f34edc935b40$"
+}
+}
