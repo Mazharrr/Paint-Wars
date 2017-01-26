@@ -8,14 +8,15 @@ class Hero{
       this.addSprite()
       this.bombs = []
       this.limit = 1
-      this.direction = left
+      this.direction = 'left'
     }
     addSprite(){
       this.sprite = this.game.add.sprite(this.game.world.randomX, this.game.world.ramndomY, 'hero1')
+      this.sprite.scale.setTo(2,2)
       this.game.physics.p2.enable(this.sprite);
       this.game.camera.follow(this.sprite)
       this.sprite.animations.add('walk')
-      this.sprite.animations.play('walk', 10, true)
+      this.sprite.animations.play('walk', 15, true)
       this.sprite.body.fixedRotation= true;
     }
     update(game){

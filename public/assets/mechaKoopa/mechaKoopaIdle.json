@@ -1,0 +1,308 @@
+{"frames": [
+
+{
+	"filename": "mechaKoopa_03.png",
+	"frame": {"x":1,"y":231,"w":29,"h":31},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":29,"h":31},
+	"sourceSize": {"w":29,"h":31}
+},
+{
+	"filename": "mechaKoopa_04.png",
+	"frame": {"x":1,"y":396,"w":28,"h":32},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":28,"h":32},
+	"sourceSize": {"w":28,"h":32}
+},
+{
+	"filename": "mechaKoopa_05.png",
+	"frame": {"x":32,"y":231,"w":28,"h":31},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":28,"h":31},
+	"sourceSize": {"w":28,"h":31}
+},
+{
+	"filename": "mechaKoopa_06.png",
+	"frame": {"x":34,"y":135,"w":27,"h":30},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":27,"h":30},
+	"sourceSize": {"w":27,"h":30}
+},
+{
+	"filename": "mechaKoopa_07.png",
+	"frame": {"x":34,"y":73,"w":28,"h":29},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":28,"h":29},
+	"sourceSize": {"w":28,"h":29}
+},
+{
+	"filename": "mechaKoopa_08.png",
+	"frame": {"x":34,"y":104,"w":28,"h":29},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":28,"h":29},
+	"sourceSize": {"w":28,"h":29}
+},
+{
+	"filename": "mechaKoopa_09.png",
+	"frame": {"x":34,"y":167,"w":29,"h":30},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":29,"h":30},
+	"sourceSize": {"w":29,"h":30}
+},
+{
+	"filename": "mechaKoopa_10.png",
+	"frame": {"x":1,"y":264,"w":28,"h":31},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":28,"h":31},
+	"sourceSize": {"w":28,"h":31}
+},
+{
+	"filename": "mechaKoopa_11.png",
+	"frame": {"x":31,"y":396,"w":28,"h":32},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":28,"h":32},
+	"sourceSize": {"w":28,"h":32}
+},
+{
+	"filename": "mechaKoopa_12.png",
+	"frame": {"x":31,"y":264,"w":27,"h":31},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":27,"h":31},
+	"sourceSize": {"w":27,"h":31}
+},
+{
+	"filename": "mechaKoopa_13.png",
+	"frame": {"x":1,"y":297,"w":28,"h":31},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":28,"h":31},
+	"sourceSize": {"w":28,"h":31}
+},
+{
+	"filename": "mechaKoopa_14.png",
+	"frame": {"x":31,"y":297,"w":28,"h":31},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":28,"h":31},
+	"sourceSize": {"w":28,"h":31}
+},
+{
+	"filename": "mechaKoopa_15.png",
+	"frame": {"x":1,"y":201,"w":30,"h":28},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":30,"h":28},
+	"sourceSize": {"w":30,"h":28}
+},
+{
+	"filename": "mechaKoopa_16.png",
+	"frame": {"x":1,"y":330,"w":29,"h":31},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":29,"h":31},
+	"sourceSize": {"w":29,"h":31}
+},
+{
+	"filename": "mechaKoopa_17.png",
+	"frame": {"x":1,"y":201,"w":30,"h":28},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":30,"h":28},
+	"sourceSize": {"w":30,"h":28}
+},
+{
+	"filename": "mechaKoopa_18.png",
+	"frame": {"x":1,"y":147,"w":31,"h":25},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":31,"h":25},
+	"sourceSize": {"w":31,"h":25}
+},
+{
+	"filename": "mechaKoopa_19.png",
+	"frame": {"x":1,"y":97,"w":31,"h":23},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":31,"h":23},
+	"sourceSize": {"w":31,"h":23}
+},
+{
+	"filename": "mechaKoopa_20.png",
+	"frame": {"x":1,"y":1,"w":31,"h":22},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":31,"h":22},
+	"sourceSize": {"w":31,"h":22}
+},
+{
+	"filename": "mechaKoopa_21.png",
+	"frame": {"x":1,"y":1,"w":31,"h":22},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":31,"h":22},
+	"sourceSize": {"w":31,"h":22}
+},
+{
+	"filename": "mechaKoopa_22.png",
+	"frame": {"x":1,"y":25,"w":30,"h":22},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":30,"h":22},
+	"sourceSize": {"w":30,"h":22}
+},
+{
+	"filename": "mechaKoopa_23.png",
+	"frame": {"x":33,"y":25,"w":30,"h":22},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":30,"h":22},
+	"sourceSize": {"w":30,"h":22}
+},
+{
+	"filename": "mechaKoopa_24.png",
+	"frame": {"x":34,"y":1,"w":29,"h":22},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":29,"h":22},
+	"sourceSize": {"w":29,"h":22}
+},
+{
+	"filename": "mechaKoopa_25.png",
+	"frame": {"x":1,"y":49,"w":30,"h":22},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":30,"h":22},
+	"sourceSize": {"w":30,"h":22}
+},
+{
+	"filename": "mechaKoopa_26.png",
+	"frame": {"x":33,"y":49,"w":30,"h":22},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":30,"h":22},
+	"sourceSize": {"w":30,"h":22}
+},
+{
+	"filename": "mechaKoopa_27.png",
+	"frame": {"x":1,"y":73,"w":31,"h":22},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":31,"h":22},
+	"sourceSize": {"w":31,"h":22}
+},
+{
+	"filename": "mechaKoopa_28.png",
+	"frame": {"x":1,"y":122,"w":31,"h":23},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":31,"h":23},
+	"sourceSize": {"w":31,"h":23}
+},
+{
+	"filename": "mechaKoopa_29.png",
+	"frame": {"x":1,"y":174,"w":31,"h":25},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":31,"h":25},
+	"sourceSize": {"w":31,"h":25}
+},
+{
+	"filename": "mechaKoopa_30.png",
+	"frame": {"x":33,"y":201,"w":30,"h":28},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":30,"h":28},
+	"sourceSize": {"w":30,"h":28}
+},
+{
+	"filename": "mechaKoopa_31.png",
+	"frame": {"x":32,"y":330,"w":29,"h":31},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":29,"h":31},
+	"sourceSize": {"w":29,"h":31}
+},
+{
+	"filename": "mechaKoopa_32.png",
+	"frame": {"x":1,"y":430,"w":29,"h":32},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":29,"h":32},
+	"sourceSize": {"w":29,"h":32}
+},
+{
+	"filename": "mechaKoopa_33.png",
+	"frame": {"x":32,"y":430,"w":28,"h":32},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":28,"h":32},
+	"sourceSize": {"w":28,"h":32}
+},
+{
+	"filename": "mechaKoopa_34.png",
+	"frame": {"x":1,"y":363,"w":27,"h":31},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":27,"h":31},
+	"sourceSize": {"w":27,"h":31}
+},
+{
+	"filename": "mechaKoopa_35.png",
+	"frame": {"x":1,"y":464,"w":28,"h":32},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":28,"h":32},
+	"sourceSize": {"w":28,"h":32}
+},
+{
+	"filename": "mechaKoopa_36.png",
+	"frame": {"x":31,"y":464,"w":29,"h":32},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":29,"h":32},
+	"sourceSize": {"w":29,"h":32}
+},
+{
+	"filename": "mechaKoopa_37.png",
+	"frame": {"x":1,"y":498,"w":28,"h":32},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":28,"h":32},
+	"sourceSize": {"w":28,"h":32}
+},
+{
+	"filename": "mechaKoopa_38.png",
+	"frame": {"x":30,"y":363,"w":27,"h":31},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":27,"h":31},
+	"sourceSize": {"w":27,"h":31}
+},
+{
+	"filename": "mechaKoopa_39.png",
+	"frame": {"x":31,"y":498,"w":28,"h":32},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":28,"h":32},
+	"sourceSize": {"w":28,"h":32}
+}],
+"meta": {
+	"app": "http://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "mechaKoopaIdle.png",
+	"format": "RGBA8888",
+	"size": {"w":64,"h":531},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:9a5cb64986d972318ef74150199396fb:fd219706c0a78a2412cb5aa1bc979843:ab1deba5023c4bee9defed40b5254b36$"
+}
+}
