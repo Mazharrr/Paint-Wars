@@ -8,7 +8,7 @@ class Hero{
       this.addSprite()
       this.bombs = []
       this.limit = 1
-      this.direction = left
+      this.direction = 'left';
     }
     addSprite(){
       this.sprite = this.game.add.sprite(this.game.world.randomX, this.game.world.ramndomY, 'hero1')
