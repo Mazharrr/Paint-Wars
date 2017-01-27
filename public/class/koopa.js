@@ -17,13 +17,13 @@ class Koopa {
     this.koopa.body.setCollisionGroup(koopaCollisionGroup)
     this.koopa.body.collides([koopaCollisionGroup, playerCollisionGroup])
 
-    var N = 15; 
+    var N = 15;
     var seq = Array.apply(null, {length: N}).map(Number.call, Number);
 
     this.koopa.animations.add('right', seq, 15, false);
   }
 
-  
+
   update(game){
     this.x = this.koopa.body.x;
     this.y = this.koopa.body.y;
@@ -37,7 +37,7 @@ class Koopa {
          this.koopa.body.moveLeft(1000);
          // while(this.x > this.x + )
          // this.rolling = false;
-         
+
 
       }
 
@@ -51,28 +51,30 @@ class Koopa {
          game.physics.arcade.moveToXY(this.koopa, this.x, player.y, 100);
 
       }
+
       game.physics.arcade.collide(this.koopa, player.sprite, () => {console.log("hit")});
-  
-  
 
 
-      
 
-    
+
+
+
+
+
         //console.log(player);
         // this.koopa.body.moveLeft(200);
         // this.koopa.animations.play('right');
 
-   
+
         // this.koopa.body.moveRight(200);
-        
-    
+
+
         // this.koopa.body.moveUp(200);
-    
-   
+
+
         // this.koopa.body.moveDown(200);
-    
-    
-    
+
+
+
   }
 }

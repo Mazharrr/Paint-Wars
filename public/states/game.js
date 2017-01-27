@@ -28,7 +28,7 @@ class Game{
     koopas.physicsBodyType = Phaser.Physics.P2JS
   	let koopasTotal = 2;
   	let koopasAlive = 2;
-  
+
     for (var i = 0; i < koopasTotal; i++)
     {
         koopasArr.push(new Koopa(game));
