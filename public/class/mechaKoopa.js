@@ -24,8 +24,10 @@ class MechaKoopa {
   addSprite(){
     this.sprite = this.game.add.sprite(this.game.world.randomX, this.game.world.ramndomY, 'mechaKoopa')
     this.sprite.scale.setTo(2,2)
-    this.game.physics.p2.enable(this.sprite);
-    this.game.camera.follow(this.sprite)
+    this.game.physics.arcade.enable(this.sprite);
+    this.sprite.physicsBodyType= Phaser.Physics.ARCADE;
+    this.sprite.body.collideWorldBounds = true;
+    this.sprite.enableBody = true;
     this.sprite.animations.add('walkLeft', arrayMaker(13,24), 15, true)
     this.sprite.animations.add('walkRight', arrayMaker(155,191), 15, true)
     this.sprite.animations.add('explodeLeft', arrayMaker(39,49).concat(arrayMaker(56, 63)).concat(explosion), 15, false)
@@ -39,13 +41,13 @@ class MechaKoopa {
   }
 
   explode() {
-    if (!this.blownUp) {
-      var timer = game.time.events.add(Phaser.Timer.SECOND * 2.5, () => {
-        console.log('hello');
-        this.sprite.kill();
-      })
-      this.blownUp = true;
-    }
+    // if (!this.blownUp) {
+    //   var timer = game.time.events.add(Phaser.Timer.SECOND * 2.5, () => {
+    //     console.log('hello');
+    //     this.sprite.kill();
+    //   })
+    //   this.blownUp = true;
+    // }
   }
 
   update(game){

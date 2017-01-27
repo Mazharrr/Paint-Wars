@@ -5,10 +5,13 @@ class Preload {
         game.time.advancedTiming = true;
         this.onLoadComplete()
         game.load.image('grass', '../assets/grass.jpg')
-        game.load.atlas('hero1', '../assets/heroIDLE.png', '../assets/heroIDLE.json')
+
         game.load.atlas('mechaKoopa', '../assets/mechaKoopa/mechaKoopaTP.png', '../assets/mechaKoopa/mechaKoopaTP.json')
 
+        game.load.atlas('hero1', '../assets/spinHero1.png', '../assets/spinHero1.json')
 
+        game.load.atlas('koopa', '../assets/koopaRoll.png', '../assets/koopaRoll.json');
+        game.load.atlas('spinHero', '../assets/spinHero1.png', '../assets/spinHero1.json');
 
 
     }
