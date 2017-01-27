@@ -17,7 +17,7 @@ class Game{
     koopas = [];
   	let koopasTotal = 2;
   	let koopasAlive = 2;
-  
+
     for (var i = 0; i < koopasTotal; i++)
     {
         koopas.push(new Koopa(game));
