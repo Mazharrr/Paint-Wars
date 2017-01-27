@@ -1,5 +1,6 @@
 class Hero{
   constructor(game){
+      this.healthBar = new HealthBar(game, {x: 200, y: 200, width: 120, isFixedToCamera: false, height: 15 });
       this.game = game
       this.x;
       this.y;
@@ -14,7 +15,9 @@ class Hero{
     addSprite(){
       this.sprite = this.game.add.sprite(this.game.world.randomX, this.game.world.ramndomY, 'hero1')
       this.sprite.scale.setTo(2,2)
-      this.game.physics.p2.enable(this.sprite);
+      this.game.physics.p2.enable(this.sprite, false);
+      this.sprite.body.setRectangle(40,40)
+      this.sprite.body.setCollisionGroup(playerCollisionGroup)
       this.game.camera.follow(this.sprite)
       this.sprite.animations.add('walk')
       this.sprite.animations.play('walk', 15, true)
@@ -53,5 +56,7 @@ class Hero{
         if(this.limit > this.bombs.length)
         this.bombs.push(new Bomb(game, this))
       }
+      this.healthBar.setPercent(this.health);
+      this.healthBar.setPosition(this.sprite.x+10 , this.sprite.y-80  )
     }
 }

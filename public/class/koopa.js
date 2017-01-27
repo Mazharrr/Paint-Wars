@@ -12,7 +12,10 @@ class Koopa {
   addkoopa(){
     this.koopa = this.game.add.sprite(this.game.world.randomX, this.game.world.ramndomY, 'koopa')
     this.game.physics.p2.enable(this.koopa);
+   this.koopa.body.setRectangle(40,40)
     this.koopa.body.fixedRotation= true;
+    this.koopa.body.setCollisionGroup(koopaCollisionGroup)
+    this.koopa.body.collides([koopaCollisionGroup, playerCollisionGroup])
 
     var N = 15; 
     var seq = Array.apply(null, {length: N}).map(Number.call, Number);
@@ -48,6 +51,7 @@ class Koopa {
          game.physics.arcade.moveToXY(this.koopa, this.x, player.y, 100);
 
       }
+      game.physics.arcade.collide(this.koopa, player.sprite, () => {console.log("hit")});
   
   
 
