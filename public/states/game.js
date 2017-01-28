@@ -6,7 +6,13 @@ var koopasArr= [];
 class Game{
   create(game){
     game.world.setBounds(0,0,1000 ,600)
-    let background = game.add.tileSprite(0,0,1000,600, 'grass')
+    let map = this.game.add.tilemap('jamesMap');
+    map.addTilesetImage('tiles', 'gameTiles');
+    let backgroundLayer = map.createLayer('Tile Layer 1')
+    // objectsLayer = map.createLayer('objectsLayer')
+    backgroundLayer.resizeWorld();
+
+
     game.physics.startSystem(Phaser.Physics.ARCADE);
     this.mechaKoopa = new MechaKoopa(game);
     this.hero = new Hero(game);

@@ -1,7 +1,7 @@
 // var w = window.innerWidth * window.devicePixelRatio,
 //   h = window.innerHeight * window.devicePixelRatio;
 
-var w = 1000, h = 600;
+var w = 240, h = 240;
 
 var game = new Phaser.Game(w, h, Phaser.AUTO, 'gameContainer');
 
