@@ -5,6 +5,8 @@ class Preload {
         game.time.advancedTiming = true;
         this.onLoadComplete()
         game.load.image('grass', '../assets/grass.jpg')
+        game.load.tilemap('jamesMap', '../assets/tutorialTilemap.json', null, Phaser.Tilemap.TILED_JSON)
+        game.load.image('gameTiles', '../assets/tiles.png')
 
         game.load.atlas('mechaKoopa', '../assets/mechaKoopa/mechaKoopaTP.png', '../assets/mechaKoopa/mechaKoopaTP.json')
 
