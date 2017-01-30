@@ -5,11 +5,11 @@ var koopasArr= [];
 
 class Game{
   create(game){
-    game.world.setBounds(0,0,1000 ,600)
+    game.world.setBounds(0,0,480 ,480)
     let map = this.game.add.tilemap('jamesMap');
-    map.addTilesetImage('tiles', 'gameTiles');
+    map.addTilesetImage('hjk', 'gameTiles');
     let backgroundLayer = map.createLayer('Tile Layer 1')
-    // objectsLayer = map.createLayer('objectsLayer')
+    let objectsLayer = map.createLayer('Tile Layer 2')
     backgroundLayer.resizeWorld();
 
 
