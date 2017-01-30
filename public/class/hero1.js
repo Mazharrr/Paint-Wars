@@ -15,7 +15,7 @@ class Hero{
     addSprite(){
       this.sprite = this.game.add.sprite(this.game.world.randomX, this.game.world.ramndomY, 'hero1')
 
-      this.sprite.scale.setTo(0.75,0.75)
+      this.sprite.scale.setTo(0.4,0.4)
       game.physics.arcade.enable(this.sprite)
       this.sprite.enableBody = true;
       this.sprite.physicsBodyType = Phaser.Physics.ARCADE;

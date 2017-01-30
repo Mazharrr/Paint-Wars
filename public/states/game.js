@@ -11,8 +11,31 @@ class Game{
     this.backgroundLayer = this.map.createLayer('Tile Layer 1')
     this.blockedLayer = this.map.createLayer('Tile Layer 2')
     this.map.setCollisionBetween(1, 100000, true, 'Tile Layer 2');
+    game.physics.enable(this.blockedLayer, Phaser.Physics.ARCADE);
     this.backgroundLayer.resizeWorld();
 
+    this.crate = game.add.group();
+    this.crate.enableBody = true;
+    this.crate.physicsBodyType = Phaser.Physics.ARCADE;
+
+
+
+    let crate;
+    let width = 15;
+    let height = 15;
+
+    for(let h = 0; h< height; h++){
+    	for (let w = 0; w < width; w++){
+    		//console.log(h,w)
+
+    		if(h!==0 && w!==0 && h!==height-1 && w!==width-1 && (h%2==1 || w%2==1) && !(h===1 && w===1) && !(h===height-2 && w===width-2 ) && !(h===1 && w== width-2)&& !(h===height-2 && w===1) && !(h===2 && w===1) && !(h===1 && w===2)){
+    		    		crate = this.crate.create(h*32, w*32, 'key');
+    		   			crate.frame = 'crate'
+    		   			crate.body.immovable= true};
+
+    	}
+
+    }
 
     game.physics.startSystem(Phaser.Physics.ARCADE);
     // this.mechaKoopa = new MechaKoopa(game);
@@ -31,6 +54,8 @@ class Game{
 
   }
   update(){
+
+  	game.physics.arcade.collide(this.hero.sprite, this.blockedLayer);
     if(this.hero)this.hero.update(game)
     	//  koopasArr[0].update(game);
     	//  koopasArr[1].update(game);
