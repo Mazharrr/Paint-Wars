@@ -42,6 +42,7 @@ class Game{
     // this.mechaKoopa = new MechaKoopa(game);
     this.hero = new Hero(game);
     player = this.hero;
+    // player.sprite.anchor.set(0.5, 1);
 
 
   	// let koopasTotal = 1;

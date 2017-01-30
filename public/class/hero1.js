@@ -58,9 +58,26 @@ class Hero{
           this.sprite.body.velocity.y= 200;
       }
       if (this.space.isDown){
-        this.sprite.animations.play('spin')
 
+      this.sprite.animations.play('spin')
+      if(this.bombs.length < this.limit){
 
+        let blockCoords = Utils.mapCoordsToBlock(this.x, this.y )
+       
+       this.bomb = new MechaKoopa(game, blockCoords.x, blockCoords.y);
+       this.bomb.sprite.animations.play('explodeLeft');
+       this.bombs.push(this.bomb);
+
+     if (!this.bomb.blownUp) {
+
+      var timer = game.time.events.add(Phaser.Timer.SECOND * 2.5, () => {
+        console.log('hello');
+        this.bomb.sprite.kill();
+        this.bombs.pop();
+      });
+      this.bomb.blownUp = true;
+    }
+  }
       }
       if(!this.space.isDown){
         this.sprite.animations.play('walk')
