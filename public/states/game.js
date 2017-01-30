@@ -28,9 +28,10 @@ class Game{
     	for (let w = 0; w < width; w++){
     		//console.log(h,w)
 
-    		if(h!==0 && w!==0 && h!==height-1 && w!==width-1 && (h%2==1 || w%2==1) && !(h===1 && w===1) && !(h===height-2 && w===width-2 ) && !(h===1 && w== width-2)&& !(h===height-2 && w===1) && !(h===2 && w===1) && !(h===1 && w===2)){
-    		    		crate = this.crate.create(h*32, w*32, 'key');
-    		   			crate.frame = 'crate'
+    		if(h!==0 && w!==0 && h!==height-1 && w!==width-1 && (h%2==1 || w%2==1) && !(h===1 && w===1) && !(h===height-2 && w===width-2 ) && !(h===1 && w== width-2)&& !(h===height-2 && w===1) && !(h===2 && w===1) && !(h===1 && w===2) && !(h==height-2 && w=== width-3) && !(h===height-3 && w=== width-2) && !(h===height-2 &&w===2) && !(h===height-3 && w==1) && ! (w===width-3 && h===1) && !(w===width-2 && h===2)){
+    		    		crate = this.crate.create(h*32, w*32, 'crate');
+                // e.frame = 'crate'
+                crate.scale.setTo(0.062,0.062)
     		   			crate.body.immovable= true};
 
     	}
@@ -56,6 +57,7 @@ class Game{
   update(){
 
   	game.physics.arcade.collide(this.hero.sprite, this.blockedLayer);
+    game.physics.arcade.collide(this.hero.sprite, this.crate)
     if(this.hero)this.hero.update(game)
     	//  koopasArr[0].update(game);
     	//  koopasArr[1].update(game);
