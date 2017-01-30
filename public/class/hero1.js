@@ -1,6 +1,6 @@
 class Hero{
   constructor(game){
-      this.healthBar = new HealthBar(game, {x: 200, y: 200, width: 120, isFixedToCamera: false, height: 15 });
+      // this.healthBar = new HealthBar(game, {x: 200, y: 200, width: 120, isFixedToCamera: false, height: 15 });
       this.game = game
       this.x;
       this.y;
@@ -15,7 +15,7 @@ class Hero{
     addSprite(){
       this.sprite = this.game.add.sprite(this.game.world.randomX, this.game.world.ramndomY, 'hero1')
 
-      this.sprite.scale.setTo(2,2)
+      this.sprite.scale.setTo(0.75,0.75)
       game.physics.arcade.enable(this.sprite)
       this.sprite.enableBody = true;
       this.sprite.physicsBodyType = Phaser.Physics.ARCADE;
@@ -65,8 +65,8 @@ class Hero{
       if(!this.space.isDown){
         this.sprite.animations.play('walk')
       }
-      this.healthBar.setPercent(this.health);
-      this.healthBar.setPosition(this.sprite.x+30 , this.sprite.y-20  )
+      // this.healthBar.setPercent(this.health);
+      // this.healthBar.setPosition(this.sprite.x+30 , this.sprite.y-20  )
       if(this.health <=0){
         this.sprite.kill();
         this.x = game.world.randomX;
