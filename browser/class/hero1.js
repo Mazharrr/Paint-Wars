@@ -1,8 +1,11 @@
 import {Utils} from './utils'
 import MechaKoopa from './mechakoopa'
+import Game1 from '../states/game'
+
+
 
 export default class Hero{
-  constructor(game){
+  constructor(game, fire){
       // this.healthBar = new HealthBar(game, {x: 200, y: 200, width: 120, isFixedToCamera: false, height: 15 });
       this.game = game
       this.x;
@@ -13,6 +16,8 @@ export default class Hero{
       this.bombs = []
       this.limit = 1
       this.direction = 'left';
+      this.range = 1
+      this.fire = fire
 
     }
     addSprite(){
@@ -74,9 +79,12 @@ export default class Hero{
      if (!this.bomb.blownUp) {
 
       var timer = game.time.events.add(Phaser.Timer.SECOND * 2.5, () => {
-        console.log('hello');
         this.bomb.sprite.kill();
         this.bombs.pop();
+        Utils.explode(blockCoords.x, blockCoords.y, this.range, this.fire)
+
+
+
       });
       this.bomb.blownUp = true;
     }
