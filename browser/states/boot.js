@@ -1,9 +1,9 @@
 'use strict';
 
-class Boot {
+export default class Boot {
     preload() {
         // this.load.image('preloader', 'assets/preloader.gif');
-        
+
     }
 
     create() {
