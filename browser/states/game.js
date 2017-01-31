@@ -5,6 +5,7 @@ var player;
 var koopasArr= [];
 
 
+
 export default class Game{
   create(game){
     game.world.setBounds(0,0,480 ,480)
@@ -13,6 +14,7 @@ export default class Game{
     this.backgroundLayer = this.map.createLayer('Tile Layer 1')
     this.blockedLayer = this.map.createLayer('Tile Layer 2')
     this.map.setCollisionBetween(1, 100000, true, 'Tile Layer 2');
+
     game.physics.enable(this.blockedLayer, Phaser.Physics.ARCADE);
     this.backgroundLayer.resizeWorld();
 
@@ -20,6 +22,11 @@ export default class Game{
     this.crate.enableBody = true;
     this.crate.physicsBodyType = Phaser.Physics.ARCADE;
 
+
+    this.fire = game.add.group();
+    this.fire.enableBody = true;
+    this.fire.physicsBodyType = Phaser.Physics.ARCADE;
+      game.physics.arcade.overlap(this.fire, this.blockedLayer)
 
 
     let crate;
@@ -42,8 +49,9 @@ export default class Game{
 
     game.physics.startSystem(Phaser.Physics.ARCADE);
     // this.mechaKoopa = new MechaKoopa(game);
-    this.hero = new Hero(game);
+    this.hero = new Hero(game, this.fire);
     player = this.hero;
+
 
 
   	// let koopasTotal = 1;
@@ -57,9 +65,9 @@ export default class Game{
 
   }
   update(){
-
-  	game.physics.arcade.collide(this.hero.sprite, this.blockedLayer);
+    game.physics.arcade.collide(this.hero.sprite, this.blockedLayer);
     game.physics.arcade.collide(this.hero.sprite, this.crate)
+    game.physics.arcade.overlap(this.fire, this.blockedLayer, ()=>{console.log('overlap')})
     if(this.hero)this.hero.update(game)
     	//  koopasArr[0].update(game);
     	//  koopasArr[1].update(game);

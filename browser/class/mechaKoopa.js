@@ -17,6 +17,7 @@ export default class MechaKoopa {
       this.power = Math.random() * 30;
       this.exploded = false
       this.limit = 1
+      this.range = 1
       this.addSprite()
       this.blownUp = false
     }
@@ -47,8 +48,8 @@ export default class MechaKoopa {
     if (!this.blownUp) {
 
       var timer = game.time.events.add(Phaser.Timer.SECOND * 2.5, () => {
-        console.log('hello');
         this.sprite.kill();
+        
       })
       this.blownUp = true;
     }
