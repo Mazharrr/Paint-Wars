@@ -1,11 +1,13 @@
 import {Utils} from './utils'
 import MechaKoopa from './mechakoopa'
 import Game1 from '../states/game'
+import store from '../store';
+import {removeCrate, addPaint} from '../reducers/Classes'
 
 
 
 export default class Hero{
-  constructor(game, fire){
+  constructor(game, fire, paint){
       // this.healthBar = new HealthBar(game, {x: 200, y: 200, width: 120, isFixedToCamera: false, height: 15 });
       this.game = game
       this.x;
@@ -16,8 +18,9 @@ export default class Hero{
       this.bombs = []
       this.limit = 1
       this.direction = 'left';
-      this.range = 1
+      this.range = 2
       this.fire = fire
+      this.paint = paint
 
     }
     addSprite(){
@@ -81,7 +84,41 @@ export default class Hero{
       var timer = game.time.events.add(Phaser.Timer.SECOND * 2.5, () => {
         this.bomb.sprite.kill();
         this.bombs.pop();
-        Utils.explode(blockCoords.x, blockCoords.y, this.range, this.fire)
+        let allCrates = store.getState().Classes.crates;
+        let cratesToKill = Utils.adjacentCrates(blockCoords.x, blockCoords.y, this.range, allCrates)
+        let flameArr = []
+        cratesToKill.forEach(crate => {
+          console.log(allCrates[crate.x][crate.y])
+          if (allCrates[crate.x] && allCrates[crate.x][crate.y] === undefined) {
+            let flameXY = Utils.indexToXY(crate.x, crate.y)
+            console.log('flameXY', flameXY)
+            console.log('cratexy', crate.x, crate.y)
+            let flame = this.fire.create(flameXY.x, flameXY.y, 'fire');
+            flame.scale.setTo(0.5,0.5)
+            flame.anchor.setTo(0.5,0.5)
+            flameArr.push(flame)
+
+
+          }
+          if (allCrates[crate.x] && allCrates[crate.x][crate.y]) {
+            allCrates[crate.x][crate.y].kill()
+            store.dispatch(removeCrate(crate.x, crate.y))
+          };
+        })
+        flameArr.forEach(flame => {
+            let timer = game.time.events.add(Phaser.Timer.SECOND * .2, () => {
+              let paintX= flame.x
+              let paintY= flame.y
+              let paintGrid = Utils.mapCoordsToGrid(paintX, paintY)
+              flame.kill()
+              let myPaint = this.paint.create(paintX, paintY, 'bluePaint')
+              myPaint.scale.setTo(0.08,0.08)
+              myPaint.anchor.setTo(0.5,0.5)
+              store.dispatch(addPaint(paintGrid.x, paintGrid.y, myPaint))
+              console.log(store.getState().Classes.crates)
+            });
+
+          })
 
 
 

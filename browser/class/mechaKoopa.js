@@ -20,6 +20,7 @@ export default class MechaKoopa {
       this.range = 1
       this.addSprite()
       this.blownUp = false
+
     }
 
   addSprite(){
@@ -49,7 +50,7 @@ export default class MechaKoopa {
 
       var timer = game.time.events.add(Phaser.Timer.SECOND * 2.5, () => {
         this.sprite.kill();
-        
+
       })
       this.blownUp = true;
     }

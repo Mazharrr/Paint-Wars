@@ -1,8 +1,11 @@
-import game from './stateManager'
-import Hero from '../class/hero1'
+import game from './stateManager';
+import Hero from '../class/hero1';
+import store from '../store';
+import {loadCrates} from '../reducers/Classes';
 
 var player;
 var koopasArr= [];
+var crateTable;
 
 
 
@@ -26,30 +29,50 @@ export default class Game{
     this.fire = game.add.group();
     this.fire.enableBody = true;
     this.fire.physicsBodyType = Phaser.Physics.ARCADE;
-      game.physics.arcade.overlap(this.fire, this.blockedLayer)
+
+    this.paint = game.add.group()
+    this.paint.enableBody = true;
+    this.paint.physicsBodyType = Phaser.Physics.ARCADE;
 
 
+
+
+    let crateTable = []
     let crate;
     let width = 15;
     let height = 15;
 
     for(let h = 0; h< height; h++){
+      let crateRow = []
     	for (let w = 0; w < width; w++){
     		//console.log(h,w)
+        crate = 'obstacle'
+    		if(h!==0 && w!==0 && h!==height-1 && w!==width-1 && (h%2==1 || w%2==1) ){
+          crate = undefined
+          if(!(h===1 && w===1) && !(h===height-2 && w===width-2 ) && !(h===1 && w== width-2)
+          && !(h===height-2 && w===1) && !(h===2 && w===1) && !(h===1 && w===2) && !(h==height-2
+            && w=== width-3) && !(h===height-3 && w=== width-2) && !(h===height-2 &&w===2) && !(h===height-3 && w==1)
+            && ! (w===width-3 && h===1) && !(w===width-2 && h===2)){
 
-    		if(h!==0 && w!==0 && h!==height-1 && w!==width-1 && (h%2==1 || w%2==1) && !(h===1 && w===1) && !(h===height-2 && w===width-2 ) && !(h===1 && w== width-2)&& !(h===height-2 && w===1) && !(h===2 && w===1) && !(h===1 && w===2) && !(h==height-2 && w=== width-3) && !(h===height-3 && w=== width-2) && !(h===height-2 &&w===2) && !(h===height-3 && w==1) && ! (w===width-3 && h===1) && !(w===width-2 && h===2)){
-    		    		crate = this.crate.create(h*32, w*32, 'crate');
+                crate = this.crate.create(h*32, w*32, 'crate');
                 // e.frame = 'crate'
                 crate.scale.setTo(0.067,0.067)
-    		   			crate.body.immovable= true};
+    		   			crate.body.immovable= true
+              }
+        };
+                crateRow.push(crate)
 
     	}
 
+      crateTable.push(crateRow)
+
     }
+    store.dispatch(loadCrates(crateTable));
+    console.log('store', store.getState());
 
     game.physics.startSystem(Phaser.Physics.ARCADE);
     // this.mechaKoopa = new MechaKoopa(game);
-    this.hero = new Hero(game, this.fire);
+    this.hero = new Hero(game, this.fire, this.paint);
     player = this.hero;
 
 
@@ -67,7 +90,8 @@ export default class Game{
   update(){
     game.physics.arcade.collide(this.hero.sprite, this.blockedLayer);
     game.physics.arcade.collide(this.hero.sprite, this.crate)
-    game.physics.arcade.overlap(this.fire, this.blockedLayer, ()=>{console.log('overlap')})
+    game.physics.arcade.overlap(this.fire, this.blockedLayer, () =>{console.log('overlap')})
+
     if(this.hero)this.hero.update(game)
     	//  koopasArr[0].update(game);
     	//  koopasArr[1].update(game);
