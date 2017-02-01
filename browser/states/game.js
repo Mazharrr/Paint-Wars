@@ -1,7 +1,7 @@
 import game from './stateManager';
 import Hero from '../class/hero1';
 import store from '../store';
-import {loadCrates} from '../reducers/Classes';
+import {loadCrates, addPlayer} from '../reducers/Classes';
 
 var player;
 var koopasArr= [];
@@ -78,6 +78,7 @@ export default class Game{
     // this.mechaKoopa = new MechaKoopa(game);
     this.hero = new Hero(game, this.fire, this.paint, this.bombGroup);
     player = this.hero;
+    store.dispatch(addPlayer(player))
 
 
 

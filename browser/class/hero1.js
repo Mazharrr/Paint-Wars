@@ -39,6 +39,10 @@ export default class Hero{
       this.sprite.animations.play('walk')
       this.sprite.body.fixedRotation= true;
     }
+    dead(){
+      // store.dispatch(removePaint(this.color))
+
+    }
     update(game){
       game.world.bringToTop(this.fire)
       game.world.bringToTop(this.sprite)
@@ -109,10 +113,12 @@ export default class Hero{
 
 
           }
+
           let paintGrid = Utils.indexToXY(crate.x, crate.y);
           let myPaint = this.paint.create(paintGrid.x, paintGrid.y, this.color)
               myPaint.scale.setTo(0.08,0.08)
               myPaint.anchor.setTo(0.5,0.5)
+              console.log('Creating paint');
               store.dispatch(addPaint(crate.x, crate.y,  myPaint))
          
 
