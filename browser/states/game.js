@@ -97,9 +97,6 @@ export default class Game{
     	//  koopasArr[0].update(game);
     	//  koopasArr[1].update(game);
     	 if(this.mechaKoopa) this.mechaKoopa.update(game)
-       if(store.getState().Classes.crateCount <119) {store.dispatch(loadCrates())
-       player.sprite.x = 48
-       player.sprite.y= 48}
 
 
   }
