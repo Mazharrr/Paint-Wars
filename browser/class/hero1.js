@@ -2,7 +2,7 @@ import {Utils} from './utils'
 import MechaKoopa from './mechakoopa'
 import Game1 from '../states/game'
 import store from '../store';
-import {removeCrate, addPaint} from '../reducers/Classes'
+import {removeCrate, addPaint, loadCrates} from '../reducers/Classes'
 
 
 
@@ -24,7 +24,7 @@ export default class Hero{
 
     }
     addSprite(){
-      this.sprite = this.game.add.sprite(this.game.world.randomX, this.game.world.ramndomY, 'hero1')
+      this.sprite = this.game.add.sprite(32, 32, 'hero1')
 
       this.sprite.scale.setTo(0.4,0.4)
       this.game.physics.arcade.enable(this.sprite)
@@ -86,10 +86,11 @@ export default class Hero{
         this.bombs.pop();
         let allCrates = store.getState().Classes.crates;
         let cratesToKill = Utils.adjacentCrates(blockCoords.x, blockCoords.y, this.range, allCrates)
+        console.log(cratesToKill)
         let flameArr = []
         cratesToKill.forEach(crate => {
           console.log(allCrates[crate.x][crate.y])
-          if (allCrates[crate.x] && allCrates[crate.x][crate.y] === undefined) {
+          if (allCrates[crate.x] && allCrates[crate.x][crate.y].crate === false) {
             let flameXY = Utils.indexToXY(crate.x, crate.y)
             console.log('flameXY', flameXY)
             console.log('cratexy', crate.x, crate.y)
@@ -100,8 +101,9 @@ export default class Hero{
 
 
           }
-          if (allCrates[crate.x] && allCrates[crate.x][crate.y]&& allCrates[crate.x][crate.y].key==='crate') {
-            allCrates[crate.x][crate.y].kill()
+          if (allCrates[crate.x] && allCrates[crate.x][crate.y]&& allCrates[crate.x][crate.y].crate !== false) {
+            console.log(allCrates[crate.x][crate.y])
+            allCrates[crate.x][crate.y].crate.kill()
             store.dispatch(removeCrate(crate.x, crate.y))
           };
         })
@@ -114,7 +116,7 @@ export default class Hero{
               let myPaint = this.paint.create(paintX, paintY, 'bluePaint')
               myPaint.scale.setTo(0.08,0.08)
               myPaint.anchor.setTo(0.5,0.5)
-              store.dispatch(addPaint(paintGrid.x, paintGrid.y, myPaint))
+              store.dispatch(addPaint(paintGrid.x, paintGrid.y,  myPaint))
               console.log(store.getState().Classes.crates)
             });
 
@@ -140,7 +142,13 @@ export default class Hero{
               this.health= 100;
               this.addSprite();
       }
+
+
+      // if(store.getState().Classes.crateCount <119) {store.dispatch(loadCrates())
+      // this.sprite.x = 48
+      // this.sprite.y= 48}
     }
+
 }
 
 function onHitHero(){

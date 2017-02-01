@@ -77,29 +77,30 @@ export const Utils = {
 
       for (let i = 1; i <= range; i++) {
         console.log('all crates', allCrates)
-        if(allCrates[bombSquare.x-i] && allCrates[bombSquare.x-i][bombSquare.y]==='obstacle') break;
+        console.log(bombSquare)
+        if(allCrates[bombSquare.x-i] && allCrates[bombSquare.x-i][bombSquare.y]&& allCrates[bombSquare.x-i][bombSquare.y].obstacle) break;
         adjacentCrates.push({x: bombSquare.x-i, y: bombSquare.y})
-        if(allCrates[bombSquare.x-i] && allCrates[bombSquare.x-i][bombSquare.y] && allCrates[bombSquare.x-i][bombSquare.y].key==="crate" ) break;
+        if(allCrates[bombSquare.x-i] && allCrates[bombSquare.x-i][bombSquare.y]  && allCrates[bombSquare.x-i][bombSquare.y].crate ) break;
 
 
       }
       for (let i = 1; i <= range; i++) {
-      if(allCrates[bombSquare.x] && allCrates[bombSquare.x][bombSquare.y+i]==='obstacle') break;
+      if(allCrates[bombSquare.x] && allCrates[bombSquare.x][bombSquare.y+i]&& allCrates[bombSquare.x][bombSquare.y+i].obstacle) break;
        adjacentCrates.push({x: bombSquare.x, y: bombSquare.y+i})
-       if(allCrates[bombSquare.x] && allCrates[bombSquare.x][bombSquare.y+i] && allCrates[bombSquare.x][bombSquare.y+i].key==="crate" ) break;
+       if(allCrates[bombSquare.x] && allCrates[bombSquare.x][bombSquare.y+i] && allCrates[bombSquare.x][bombSquare.y+i].crate ) break;
 
       }
       for (let i = 1; i <= range; i++) {
-        if(allCrates[bombSquare.x+i] && allCrates[bombSquare.x+i][bombSquare.y]==='obstacle') break;
+        if(allCrates[bombSquare.x+i] && allCrates[bombSquare.x+i][bombSquare.y]&& allCrates[bombSquare.x+i][bombSquare.y].obstacle) break;
          adjacentCrates.push({x: bombSquare.x+i, y: bombSquare.y})
-         if(allCrates[bombSquare.x+i] && allCrates[bombSquare.x+i][bombSquare.y] && allCrates[bombSquare.x+i][bombSquare.y].key==="crate" ) break;
+         if(allCrates[bombSquare.x+i] && allCrates[bombSquare.x+i][bombSquare.y] && allCrates[bombSquare.x+i][bombSquare.y].crate ) break;
 
 
       }
       for (let i = 1; i <= range; i++) {
-        if(allCrates[bombSquare.x] && allCrates[bombSquare.x][bombSquare.y-i]==='obstacle') break;
+        if(allCrates[bombSquare.x] && allCrates[bombSquare.x][bombSquare.y-i]&& allCrates[bombSquare.x][bombSquare.y-i].obstacle) break;
        adjacentCrates.push({x: bombSquare.x, y: bombSquare.y-i})
-       if(allCrates[bombSquare.x] && allCrates[bombSquare.x][bombSquare.y-i] && allCrates[bombSquare.x][bombSquare.y-i].key==="crate" ) break;
+       if(allCrates[bombSquare.x] && allCrates[bombSquare.x][bombSquare.y-i] && allCrates[bombSquare.x][bombSquare.y-i].crate ) break;
 
       }
       console.log('adjacentCrates:', adjacentCrates);
