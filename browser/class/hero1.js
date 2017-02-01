@@ -100,7 +100,7 @@ export default class Hero{
 
 
           }
-          if (allCrates[crate.x] && allCrates[crate.x][crate.y]) {
+          if (allCrates[crate.x] && allCrates[crate.x][crate.y]&& allCrates[crate.x][crate.y].key==='crate') {
             allCrates[crate.x][crate.y].kill()
             store.dispatch(removeCrate(crate.x, crate.y))
           };
