@@ -9,7 +9,7 @@ export const Utils = {
 
       blockCoords.y =
       (Math.floor(y/32))*32+16;
-      console.log(blockCoords);
+      
       return blockCoords;
 
     },
@@ -21,7 +21,7 @@ export const Utils = {
 
       blockCoords.y =
       Math.floor(y)*32+16;
-      console.log(blockCoords);
+     
       return blockCoords;
 
     },

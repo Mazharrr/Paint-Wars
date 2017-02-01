@@ -11,12 +11,12 @@ export default class Preload {
         game.load.image('gameTiles', '../assets/tiled.png')
         game.load.image('crate', '../assets/RTS_Crate.png');
         
-        game.load.image('bluePaint', '../assets/bluePaint.png');
+        game.load.image('fire', '../assets/fire.png')
+        game.load.image('blue', '../assets/bluePaint.png');
 
 
         game.load.atlas('mechaKoopa', '../assets/mechaKoopa/mechaKoopaTP.png', '../assets/mechaKoopa/mechaKoopaTP.json')
 
-        game.load.image('fire', '../assets/fire.png')
 
         game.load.atlas('hero1', '../assets/spinHero1.png', '../assets/spinHero1.json')
 

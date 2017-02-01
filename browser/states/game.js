@@ -21,6 +21,10 @@ export default class Game{
     game.physics.enable(this.blockedLayer, Phaser.Physics.ARCADE);
     this.backgroundLayer.resizeWorld();
 
+    // this.bombGroup = game.add.group();
+    // this.bombGroup.enableBody = true;
+    // this.bombGroup.physicsBodyType = Phaser.Physics.ARCADE;
+
     this.crate = game.add.group();
     this.crate.enableBody = true;
     this.crate.physicsBodyType = Phaser.Physics.ARCADE;
@@ -72,7 +76,7 @@ export default class Game{
 
     game.physics.startSystem(Phaser.Physics.ARCADE);
     // this.mechaKoopa = new MechaKoopa(game);
-    this.hero = new Hero(game, this.fire, this.paint);
+    this.hero = new Hero(game, this.fire, this.paint, this.bombGroup);
     player = this.hero;
 
 
@@ -89,7 +93,9 @@ export default class Game{
   }
   update(){
     game.physics.arcade.collide(this.hero.sprite, this.blockedLayer);
-    game.physics.arcade.collide(this.hero.sprite, this.crate)
+    game.physics.arcade.collide(this.hero.sprite, this.crate);
+    //game.physics.arcade.collide(this.hero.sprite, this.bombGroup);
+    //game.physics.arcade.collide(this.hero.sprite, yellowPadlocks);
 
     // game.physics.arcade.overlap(this.fire, this.blockedLayer, () =>{console.log('overlap')})
 

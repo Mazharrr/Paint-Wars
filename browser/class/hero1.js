@@ -2,7 +2,7 @@ import {Utils} from './utils'
 import MechaKoopa from './mechakoopa'
 import Game1 from '../states/game'
 import store from '../store';
-import {removeCrate, addPaint, loadCrates} from '../reducers/Classes'
+import {removeCrate, addPaint, loadCrates, removePaint, addFlames} from '../reducers/Classes'
 
 
 
@@ -21,6 +21,7 @@ export default class Hero{
       this.range = 2
       this.fire = fire
       this.paint = paint
+      this.color = 'blue';
 
     }
     addSprite(){
@@ -39,6 +40,8 @@ export default class Hero{
       this.sprite.body.fixedRotation= true;
     }
     update(game){
+      game.world.bringToTop(this.fire)
+      game.world.bringToTop(this.sprite)
       let cursors = game.input.keyboard.createCursorKeys();
       let wasd = {
         up: game.input.keyboard.addKey(Phaser.Keyboard.W),
@@ -50,7 +53,9 @@ export default class Hero{
       this.x = this.sprite.body.x;
       this.y = this.sprite.body.y;
       // this.sprite.animations.play('walk')
-
+      if(this.bomb) {
+        console.log('theres a bomb')
+        game.physics.arcade.collide(this.sprite, this.bomb.sprite)};
       this.sprite.body.velocity.setTo(0,0)
       if (cursors.left.isDown || wasd.left.isDown)
       {
@@ -77,50 +82,62 @@ export default class Hero{
 
        this.bomb = new MechaKoopa(game, blockCoords.x, blockCoords.y);
        this.bomb.sprite.animations.play('explodeLeft');
+       
+    
        this.bombs.push(this.bomb);
-
+       console.log(this.bomb instanceof MechaKoopa);
      if (!this.bomb.blownUp) {
 
       var timer = game.time.events.add(Phaser.Timer.SECOND * 2.5, () => {
         this.bomb.sprite.kill();
         this.bombs.pop();
         let allCrates = store.getState().Classes.crates;
-        let cratesToKill = Utils.adjacentCrates(blockCoords.x, blockCoords.y, this.range, allCrates)
-        console.log(cratesToKill)
-        let flameArr = []
+        let cratesToKill = Utils.adjacentCrates(blockCoords.x, blockCoords.y, this.range, allCrates);
+        console.log(cratesToKill);
+        let flameArr = [];
+        let paintArr= cratesToKill.slice();
         cratesToKill.forEach(crate => {
-          console.log(allCrates[crate.x][crate.y])
-          if (allCrates[crate.x] && allCrates[crate.x][crate.y].crate === false) {
+          // console.log(crate);
+            if (allCrates[crate.x] && allCrates[crate.x][crate.y].crate === false) {
             let flameXY = Utils.indexToXY(crate.x, crate.y)
-            console.log('flameXY', flameXY)
-            console.log('cratexy', crate.x, crate.y)
             let flame = this.fire.create(flameXY.x, flameXY.y, 'fire');
+            
             flame.scale.setTo(0.5,0.5)
             flame.anchor.setTo(0.5,0.5)
-            flameArr.push(flame)
+            store.dispatch(addFlames(crate.x, crate.y, flame))
+            //flameArr.push(flame)
 
 
           }
+          let paintGrid = Utils.indexToXY(crate.x, crate.y);
+          let myPaint = this.paint.create(paintGrid.x, paintGrid.y, this.color)
+              myPaint.scale.setTo(0.08,0.08)
+              myPaint.anchor.setTo(0.5,0.5)
+              store.dispatch(addPaint(crate.x, crate.y,  myPaint))
+         
+
           if (allCrates[crate.x] && allCrates[crate.x][crate.y]&& allCrates[crate.x][crate.y].crate !== false) {
             console.log(allCrates[crate.x][crate.y])
             allCrates[crate.x][crate.y].crate.kill()
             store.dispatch(removeCrate(crate.x, crate.y))
           };
         })
-        flameArr.forEach(flame => {
-            let timer = game.time.events.add(Phaser.Timer.SECOND * .2, () => {
-              let paintX= flame.x
-              let paintY= flame.y
-              let paintGrid = Utils.mapCoordsToGrid(paintX, paintY)
-              flame.kill()
-              let myPaint = this.paint.create(paintX, paintY, 'bluePaint')
-              myPaint.scale.setTo(0.08,0.08)
-              myPaint.anchor.setTo(0.5,0.5)
-              store.dispatch(addPaint(paintGrid.x, paintGrid.y,  myPaint))
-              console.log(store.getState().Classes.crates)
-            });
 
-          })
+        // flameArr.forEach(flame => {
+        //     let timer = game.time.events.add(Phaser.Timer.SECOND * .2, () => {
+        //       // let paintX= flame.x
+        //       console.log('hero')
+        //       // let paintY= flame.y
+        //      // let paintGrid = Utils.mapCoordsToGrid(paintX, paintY)
+        //       flame.kill()
+        //       //let myPaint = this.paint.create(paintX, paintY, 'bluePaint')
+        //       // myPaint.scale.setTo(0.08,0.08)
+        //       // myPaint.anchor.setTo(0.5,0.5)
+        //       // store.dispatch(addPaint(paintGrid.x, paintGrid.y,  myPaint))
+        //       console.log(store.getState().Classes.crates)
+        //     });
+
+        //   })
 
 
 
