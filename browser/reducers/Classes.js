@@ -1,6 +1,5 @@
 const initialState = {
-  crates: [],
-  crateCount : 121
+  crates: []
 };
 
 const RECIEVE_LAYER= 'RECIEVE_LAYER';
@@ -43,8 +42,6 @@ const reducer = (state = initialState , action)=>{
     case REMOVE_CRATE:
       //newState.crates = [[]]
       newState.crates[action.payload.x][action.payload.y].crate = false;
-      newState.crateCount--;
-      console.log(newState.crateCount)
       break
     case ADD_PAINT:
       // if(newState.crates[action.payload.x][action.payload.y] === false)
