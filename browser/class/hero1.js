@@ -2,13 +2,12 @@ import {Utils} from './utils'
 import MechaKoopa from './mechakoopa'
 import Game1 from '../states/game'
 import store from '../store';
-import {removeCrate, addPaint, loadCrates, removePaint, addFlames} from '../reducers/Classes'
+import {removeCrate, addPaint, loadCrates, removePaint, addFlames, addPowerUp} from '../reducers/Classes'
 
 
 
 export default class Hero{
-  constructor(game, fire, paint){
-      // this.healthBar = new HealthBar(game, {x: 200, y: 200, width: 120, isFixedToCamera: false, height: 15 });
+  constructor(game, fire, paint, powerGroup){
       this.game = game
       this.x;
       this.y;
@@ -22,7 +21,23 @@ export default class Hero{
       this.fire = fire
       this.paint = paint
       this.color = 'blue';
+      this.immuneTime = 0;
+      this.speed = 100
+      this.powerGroup = powerGroup
+      console.log(this.powerGroup)
 
+    }
+
+    reset(){
+      this.limit = 1;
+      this.range = 1;
+      this.speed = 100;
+      let speedDrops = (this.speed-100)/100
+      // createSpeedPowerUp(speedDrops)
+      let rangeDrops = this.range-1
+      // createRangePowerUp(rangeDrops)
+      let limitDrops = this.limit-1
+     // createLimitPowerUp(limitDrops)
     }
     addSprite(){
       this.sprite = this.game.add.sprite(32, 32, 'hero1')
@@ -39,12 +54,11 @@ export default class Hero{
       this.sprite.animations.play('walk')
       this.sprite.body.fixedRotation= true;
     }
-    dead(){
-      // store.dispatch(removePaint(this.color))
 
-    }
     update(game){
+      game.world.bringToTop(this.powerGroup)
       game.world.bringToTop(this.fire)
+      if(this.bomb) game.world.bringToTop(this.bomb.sprite)
       game.world.bringToTop(this.sprite)
       let cursors = game.input.keyboard.createCursorKeys();
       let wasd = {
@@ -56,124 +70,120 @@ export default class Hero{
       this.space = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR)
       this.x = this.sprite.body.x;
       this.y = this.sprite.body.y;
-      // this.sprite.animations.play('walk')
-      if(this.bomb) {
-        console.log('theres a bomb')
-        game.physics.arcade.collide(this.sprite, this.bomb.sprite)};
       this.sprite.body.velocity.setTo(0,0)
-      if (cursors.left.isDown || wasd.left.isDown)
-      {
-          this.sprite.body.velocity.x= -200;
-      }
-      if (cursors.right.isDown || wasd.right.isDown)
-      {
-          this.sprite.body.velocity.x = 200;
-      }
-      if (cursors.up.isDown || wasd.up.isDown)
-      {
-          this.sprite.body.velocity.y = -200;
-      }
-      if (cursors.down.isDown || wasd.down.isDown)
-      {
-          this.sprite.body.velocity.y= 200;
-      }
-      if (this.space.isDown){
 
-      this.sprite.animations.play('spin')
-      if(this.bombs.length < this.limit){
-
-        let blockCoords = Utils.mapCoordsToBlock(this.x, this.y )
-
-       this.bomb = new MechaKoopa(game, blockCoords.x, blockCoords.y);
-       this.bomb.sprite.animations.play('explodeLeft');
-       
-    
-       this.bombs.push(this.bomb);
-       console.log(this.bomb instanceof MechaKoopa);
-     if (!this.bomb.blownUp) {
-
-      var timer = game.time.events.add(Phaser.Timer.SECOND * 2.5, () => {
-        this.bomb.sprite.kill();
-        this.bombs.pop();
-        let allCrates = store.getState().Classes.crates;
-        let cratesToKill = Utils.adjacentCrates(blockCoords.x, blockCoords.y, this.range, allCrates);
-        console.log(cratesToKill);
-        let flameArr = [];
-        let paintArr= cratesToKill.slice();
-        cratesToKill.forEach(crate => {
-          // console.log(crate);
-            if (allCrates[crate.x] && allCrates[crate.x][crate.y].crate === false) {
-            let flameXY = Utils.indexToXY(crate.x, crate.y)
-            let flame = this.fire.create(flameXY.x, flameXY.y, 'fire');
+      this.game.physics.arcade.overlap(this.sprite, this.powerGroup, ()=>{
+                  // store.dispatch()
+                  console.log('colliding')
+                })
+      if(this.immuneTime > game.time.now){
+        this.sprite.body.velocity.setTo(0,0)
+      } else {
+            if(this.bomb) {
+              game.physics.arcade.collide(this.sprite, this.bomb.sprite)
+            }
             
-            flame.scale.setTo(0.5,0.5)
-            flame.anchor.setTo(0.5,0.5)
-            store.dispatch(addFlames(crate.x, crate.y, flame))
-            //flameArr.push(flame)
-
-
+            if (cursors.left.isDown || wasd.left.isDown)
+            {
+                this.sprite.body.velocity.x= -this.speed;
+            }
+            if (cursors.right.isDown || wasd.right.isDown)
+            {
+                this.sprite.body.velocity.x = this.speed;
+            }
+            if (cursors.up.isDown || wasd.up.isDown)
+            {
+                this.sprite.body.velocity.y = -this.speed;
+            }
+            if (cursors.down.isDown || wasd.down.isDown)
+            {
+                this.sprite.body.velocity.y= this.speed;
+            }
           }
 
-          let paintGrid = Utils.indexToXY(crate.x, crate.y);
-          let myPaint = this.paint.create(paintGrid.x, paintGrid.y, this.color)
-              myPaint.scale.setTo(0.08,0.08)
-              myPaint.anchor.setTo(0.5,0.5)
-              console.log('Creating paint');
-              store.dispatch(addPaint(crate.x, crate.y,  myPaint))
-         
+      if (this.space.isDown){
 
-          if (allCrates[crate.x] && allCrates[crate.x][crate.y]&& allCrates[crate.x][crate.y].crate !== false) {
-            console.log(allCrates[crate.x][crate.y])
-            allCrates[crate.x][crate.y].crate.kill()
-            store.dispatch(removeCrate(crate.x, crate.y))
-          };
-        })
+        this.sprite.animations.play('spin')
+        if(this.bombs.length < this.limit){
 
-        // flameArr.forEach(flame => {
-        //     let timer = game.time.events.add(Phaser.Timer.SECOND * .2, () => {
-        //       // let paintX= flame.x
-        //       console.log('hero')
-        //       // let paintY= flame.y
-        //      // let paintGrid = Utils.mapCoordsToGrid(paintX, paintY)
-        //       flame.kill()
-        //       //let myPaint = this.paint.create(paintX, paintY, 'bluePaint')
-        //       // myPaint.scale.setTo(0.08,0.08)
-        //       // myPaint.anchor.setTo(0.5,0.5)
-        //       // store.dispatch(addPaint(paintGrid.x, paintGrid.y,  myPaint))
-        //       console.log(store.getState().Classes.crates)
-        //     });
+          let blockCoords = Utils.mapCoordsToBlock(this.x, this.y )
 
-        //   })
+          this.bomb = new MechaKoopa(game, blockCoords.x, blockCoords.y);
+          this.bomb.sprite.animations.play('explodeLeft');
+          
+               
+    
+          this.bombs.push(this.bomb);
+          
+           if (!this.bomb.blownUp) {
 
+            var timer = game.time.events.add(Phaser.Timer.SECOND * 2.5, () => {
+              this.bomb.sprite.kill();
+              this.bombs.pop();
+              let allCrates = store.getState().Classes.crates;
+              let cratesToKill = Utils.adjacentCrates(blockCoords.x, blockCoords.y, this.range, allCrates);
+              let flameArr = [];
+              let paintArr= cratesToKill.slice();
+              
+              cratesToKill.forEach(crate => {
+                  if (allCrates[crate.x] && allCrates[crate.x][crate.y].crate === false) {
+                    let flameXY = Utils.indexToXY(crate.x, crate.y)
+                    let flame = this.fire.create(flameXY.x, flameXY.y, 'fire');
+                    
+                    flame.scale.setTo(0.5,0.5)
+                    flame.anchor.setTo(0.5,0.5)
+                    store.dispatch(addFlames(crate.x, crate.y, flame))
+                  }
 
+                let paintGrid = Utils.indexToXY(crate.x, crate.y);
+                  if(allCrates[crate.x][crate.y].paint.key!==this.color){
+                    let myPaint = this.paint.create(paintGrid.x, paintGrid.y, this.color)
+                    myPaint.scale.setTo(0.08,0.08)
+                    myPaint.anchor.setTo(0.5,0.5)
+                    store.dispatch(addPaint(crate.x, crate.y,  myPaint))
+                  }
+                  if (allCrates[crate.x] && allCrates[crate.x][crate.y]&& allCrates[crate.x][crate.y].crate !== false) {
+                    allCrates[crate.x][crate.y].crate.kill()
+                    store.dispatch(removeCrate(crate.x, crate.y))
+                    let powerUpChance = Math.floor(Math.random()*2)+1
+                    let powerXY = Utils.indexToXY(crate.x, crate.y)
+                    if(powerUpChance ===1){
+                      
+                    let power = this.powerGroup.create(powerXY.x, powerXY.y, 'bombPowerUp')
+                    console.log('POWER UP Appeared', powerXY.x, powerXY.y, power)
+                    power.scale.setTo(0.5,0.5)
+                    power.anchor.setTo(0.5,0.5)
+                    // this.limit ++;
+                    store.dispatch(addPowerUp(crate.x, crate.y, power))
+                    }
+                    // if(powerUpChange ===2){
+                    // this.powerGroup.create(powerXY.x, powerXY.y, 'rangePowerUp')
+                    // }
+                    // if(powerUpChange ===3){
+                    // this.powerGroup.create(powerXY.x, powerXY.y, 'speedPowerUp')
+                    // }
 
-      });
-      this.bomb.blownUp = true;
-    }
-  }
+                  };
+
+                })
+                // this.game.physics.arcade.overlap(this.sprite, this.powerGroup)
+               
+                this.game.physics.arcade.collide(this.sprite, this.fire, () => {
+                    if(this.immuneTime < game.time.now){
+                      this.immuneTime = game.time.now + 1000; 
+                      //animation goes here
+                    }
+                    store.dispatch(removePaint(this.color))
+                })
+            });
+            this.bomb.blownUp = true;
+          }
+        }
       }
       if(!this.space.isDown){
         this.sprite.animations.play('walk')
       }
-      // this.healthBar.setPercent(this.health);
-      // this.healthBar.setPosition(this.sprite.x+30 , this.sprite.y-20  )
-      if(this.health <=0){
-        this.sprite.kill();
-        this.x = game.world.randomX;
-        this.y = game.world.randomY;
-              this.exp = 0;
-              this.health= 100;
-              this.addSprite();
-      }
-
-
-      // if(store.getState().Classes.crateCount <119) {store.dispatch(loadCrates())
-      // this.sprite.x = 48
-      // this.sprite.y= 48}
     }
 
 }
 
-function onHitHero(){
-  // console.log('hero is attacking')
-}

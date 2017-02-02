@@ -13,6 +13,19 @@ const LOAD_CRATES= 'LOAD_CRATES';
 const REMOVE_CRATE= 'REMOVE_CRATE';
 const ADD_PAINT= 'ADD_PAINT';
 const ADD_PLAYER = "ADD_PLAYER"
+const ADD_POWERUP = "ADD_POWERUP"
+const REMOVE_POWERUP = "REMOVE_POWERUP"
+
+export const addPowerUp = (x, y, powerUp) =>({
+  type: ADD_POWERUP,
+  powerXY: {x, y},
+  powerUp
+})
+export const removePowerUp = () =>({
+  type: ADD_POWERUP,
+  payload: {x, y},
+  powerUp
+})
 
 export const addPlayer = player =>({
   type: ADD_PLAYER,
@@ -69,66 +82,33 @@ const reducer = (state = initialState , action)=>{
       }
      break; 
     case LOAD_CRATES:
-      newState.crateCount
       newState.crates = action.crates
       break;
     case REMOVE_CRATE:
-      //newState.crates = [[]]
       newState.crates[action.payload.x][action.payload.y].crate = false;
       break;
     case ADD_PAINT:
-      // if(newState.crates[action.payload.x][action.payload.y] === false)
-      // newState.crates[action.payload.x][action.payload.y]= Object.assign({}, {crate: false} , {paint: action.paint});
-      // else {
-        newState.crates[action.payload.x][action.payload.y]= Object.assign({}, newState.crates[action.payload.x][action.payload.y] , {paint: action.paint});
-        // newState.crates[action.payload.x][action.payload.y]= Object.assign({}, newState.crates[action.payload.x][action.payload.y])  {paint: action.paint});
-      // }
+      if(!(action.paint.key === newState.crates[action.payload.x][action.payload.y].paint.key )){
+          newState.crates[action.payload.x][action.payload.y]= Object.assign({}, newState.crates[action.payload.x][action.payload.y] , {paint: action.paint});
+      }
       break;
     case ADD_PLAYER:
       newState.players.push(action.player)
       break;
     case ADD_FLAMES:
-
-      // if(newState.crates[action.payload.x][action.payload.y] === false)
-      // newState.crates[action.payload.x][action.payload.y]= Object.assign({}, {crate: false} , {paint: action.paint});
-      // else {
+    if (typeof newState.crates[action.payload.x][action.payload.y].flame ==='object') newState.crates[action.payload.x][action.payload.y].flame.kill()
         newState.crates[action.payload.x][action.payload.y]= Object.assign({}, newState.crates[action.payload.x][action.payload.y] , {flame: action.flame});
-
-        newState.players.forEach(player=>{
-          game.physics.arcade.collide(player.sprite, action.flame, ()=>{
-            console.log(player.x, player.y)
-            console.log(action.flame.x, action.flame.y)
-            player.dead()
-            console.log("PLAYER IS NOW DEAD")
-        for(let i  = 0; i < newState.crates.length; i++){
-          for(let j  = 0; j < newState.crates[i].length; j++){
-            console.log('MY PAINT', newState.crates[i][j].paint)
-            if(newState.crates[i][j].paint  && newState.crates[i][j].paint.key === player.color){
-              console.log("REMOVING A PAINT", 'i', i, 'j' , j)
-              debugger;
-              console.log('playercolor', player.color)
-              newState.crates[i][j].paint.destroy();
-              console.log('After destroy', newState.crates[i][j].paint)
-              //newState.crates[i][j].paint = false;
-              // console.log(newState.crates[i][j].paint)
-            }
-          }
-      }
-
-          })
-        })
-
         setTimeout(function(){
-          newState.crates[action.payload.x][action.payload.y].flame.kill();
+          if(newState.crates[action.payload.x][action.payload.y].flame) newState.crates[action.payload.x][action.payload.y].flame.kill();
           newState.crates[action.payload.x][action.payload.y].flame = false;
-          console.log('In timeout')
         }, 200)
-        console.log(newState)
-      // }
       break;  
+    case ADD_POWERUP:
+        newState.crates[action.powerXY.x][action.powerXY.y].powerUp = action.powerUp
     default:
       return state;
     }
+    console.log(newState)
   return newState;
 }
 
