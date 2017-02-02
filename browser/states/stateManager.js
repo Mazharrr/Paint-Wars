@@ -4,7 +4,7 @@ import Menu from './menu';
 import Game from './game';
 import Phaser from 'phaser'
 
-var w = 480, h = 480;
+var w = 720, h = 720;
 
 var game = new Phaser.Game(w, h, Phaser.AUTO, 'gameContainer');
 
