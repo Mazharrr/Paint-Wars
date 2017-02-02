@@ -35,6 +35,7 @@ module.exports = {
           presets: [ 'es2015']
         }
       },
+      {test: /phaser\.js$/, include: path.join(__dirname, 'lib'), loader: 'imports?PIXI=pixi'},
       { test: /pixi\.js/, loader: 'expose?PIXI' },
       { test: /phaser-split\.js$/, loader: 'expose?Phaser' },
       { test: /p2\.js/, loader: 'expose?p2' },

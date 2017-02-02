@@ -2,7 +2,7 @@ import Boot from './boot';
 import Preload from './preload';
 import Menu from './menu';
 import Game from './game';
-import Phaser from 'phaser'
+import Phaser from 'phaser';
 
 var w = 720, h = 720;
 
