@@ -11,12 +11,22 @@ var crateTable;
 
 export default class Game{
   create(game){
-    game.world.setBounds(0,0,480 ,480)
-    this.map = this.game.add.tilemap('jamesMap');
-    this.map.addTilesetImage('hjk', 'gameTiles');
-    this.backgroundLayer = this.map.createLayer('Tile Layer 1')
-    this.blockedLayer = this.map.createLayer('Tile Layer 2')
-    this.map.setCollisionBetween(1, 100000, true, 'Tile Layer 2');
+    game.world.setBounds(0,0,720 ,720)
+    this.map = this.game.add.tilemap('finalMap');
+    this.map.addTilesetImage('tileset-biome', 'gameTiles');
+
+    this.blockedLayer = this.map.createLayer('10 collide')
+    this.backgroundLayer = this.map.createLayer('0 floor')
+    this.backgroundLayer1 = this.map.createLayer('1 trees')
+    this.backgroundLayer2 = this.map.createLayer('2 trees')
+    this.backgroundLayer3 = this.map.createLayer('3 cactus')
+    this.backgroundLayer4 = this.map.createLayer('4 stumps')
+    this.backgroundLayer5 = this.map.createLayer('5 shrubs')
+    this.backgroundLayer6 = this.map.createLayer('6 rocks')
+    this.backgroundLayer7 = this.map.createLayer('7 logs')
+    this.backgroundLayer8 = this.map.createLayer('8 mushrooms')
+    this.backgroundLayer9 = this.map.createLayer('9 pillars')
+    this.map.setCollisionBetween(1, 100000, true, '10 collide');
 
     game.physics.enable(this.blockedLayer, Phaser.Physics.ARCADE);
     this.backgroundLayer.resizeWorld();
@@ -54,9 +64,9 @@ export default class Game{
             && w=== width-3) && !(h===height-3 && w=== width-2) && !(h===height-2 &&w===2) && !(h===height-3 && w==1)
             && ! (w===width-3 && h===1) && !(w===width-2 && h===2)){
 
-                tile = {crate: this.crate.create(h*32, w*32, 'crate')};
+                tile = {crate: this.crate.create(h*48, w*48, 'crate')};
                 // e.frame = 'crate'
-                tile.crate.scale.setTo(0.067,0.067)
+                tile.crate.scale.setTo(0.095,0.095)
     		   			tile.crate.body.immovable= true
               }
         };

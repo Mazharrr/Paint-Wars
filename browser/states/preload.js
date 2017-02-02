@@ -7,10 +7,10 @@ export default class Preload {
         game.time.advancedTiming = true;
         this.onLoadComplete()
         game.load.image('grass', '../assets/grass.jpg')
-        game.load.tilemap('jamesMap', '../assets/tutorialTilemap.json', null, Phaser.Tilemap.TILED_JSON)
-        game.load.image('gameTiles', '../assets/tiled.png')
+        game.load.tilemap('finalMap', '../assets/finalMap.json', null, Phaser.Tilemap.TILED_JSON)
+        game.load.image('gameTiles', '../assets/tileset-biome.png')
         game.load.image('crate', '../assets/RTS_Crate.png');
-        
+
         game.load.image('bluePaint', '../assets/bluePaint.png');
 
 

@@ -26,7 +26,7 @@ export default class Hero{
     addSprite(){
       this.sprite = this.game.add.sprite(32, 32, 'hero1')
 
-      this.sprite.scale.setTo(0.4,0.4)
+      this.sprite.scale.setTo(0.8,0.8)
       this.game.physics.arcade.enable(this.sprite)
       this.sprite.enableBody = true;
       this.sprite.physicsBodyType = Phaser.Physics.ARCADE;
