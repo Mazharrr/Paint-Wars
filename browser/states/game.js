@@ -61,16 +61,16 @@ export default class Game{
       let crateRow = []
     	for (let w = 0; w < width; w++){
     		//console.log(h,w)
-        let tile = {obstacle: true, crate: false, paint: false}
+        let tile = {obstacle: true, crate: false, paint: false, powerUp: false}
     		if(h!==0 && w!==0 && h!==height-1 && w!==width-1 && (h%2==1 || w%2==1) ){
-          tile = {crate: false, paint: false}
+          tile = {crate: false, paint: false, obstacle: false, powerUp: false}
           if(!(h===1 && w===1) && !(h===height-2 && w===width-2 ) && !(h===1 && w== width-2)
           && !(h===height-2 && w===1) && !(h===2 && w===1) && !(h===1 && w===2) && !(h==height-2
             && w=== width-3) && !(h===height-3 && w=== width-2) && !(h===height-2 &&w===2) && !(h===height-3 && w==1)
             && ! (w===width-3 && h===1) && !(w===width-2 && h===2)){
 
 
-                tile = {crate: this.crate.create(h*48, w*48, 'crate'), paint: false};
+                tile = {crate: this.crate.create(h*48, w*48, 'crate'), paint: false, obstacle: false, powerUp: false};
 
                 // e.frame = 'crate'
                 tile.crate.scale.setTo(0.095,0.095)
