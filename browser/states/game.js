@@ -11,6 +11,7 @@ var crateTable;
 
 export default class Game{
   create(game){
+    game.stage.disableVisibilityChange = true;
     game.world.setBounds(0,0,720 ,720)
     this.map = this.game.add.tilemap('finalMap');
     this.map.addTilesetImage('tileset-biome', 'gameTiles');
