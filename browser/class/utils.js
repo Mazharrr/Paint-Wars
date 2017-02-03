@@ -5,10 +5,10 @@ export const Utils = {
 
       var blockCoords = {};
       blockCoords.x =
-      (Math.floor(x/32))*32+16;
+      (Math.floor(x/48))*48+24;
 
       blockCoords.y =
-      (Math.floor(y/32))*32+16;
+      (Math.floor(y/48))*48+24;
       
       return blockCoords;
 
@@ -17,10 +17,10 @@ export const Utils = {
 
       var blockCoords = {};
       blockCoords.x =
-      Math.floor(x)*32+16;
+      Math.floor(x)*48+24;
 
       blockCoords.y =
-      Math.floor(y)*32+16;
+      Math.floor(y)*48+24;
      
       return blockCoords;
 
@@ -29,10 +29,10 @@ export const Utils = {
 
       var blockCoords = {};
       blockCoords.x =
-      (Math.floor(x/32));
+      (Math.floor(x/48));
 
       blockCoords.y =
-      (Math.floor(y/32));
+      (Math.floor(y/48));
       return blockCoords;
 
     },

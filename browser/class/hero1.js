@@ -2,7 +2,7 @@ import {Utils} from './utils'
 import MechaKoopa from './mechakoopa'
 import Game1 from '../states/game'
 import store from '../store';
-import {removeCrate, addPaint, loadCrates, removePaint, addFlames, addPowerUp} from '../reducers/Classes'
+import {removeCrate, addPaint, loadCrates, removePaint, addFlames, addPowerUp, removePowerUp, addBomb, removeBomb} from '../reducers/Classes'
 
 
 
@@ -24,7 +24,7 @@ export default class Hero{
       this.immuneTime = 0;
       this.speed = 100
       this.powerGroup = powerGroup
-      console.log(this.powerGroup)
+      this.bomb
 
     }
 
@@ -40,7 +40,7 @@ export default class Hero{
      // createLimitPowerUp(limitDrops)
     }
     addSprite(){
-      this.sprite = this.game.add.sprite(32, 32, 'hero1')
+      this.sprite = this.game.add.sprite(72, 72, 'hero1')
 
       this.sprite.scale.setTo(0.7,0.7)
       this.game.physics.arcade.enable(this.sprite)
@@ -56,6 +56,7 @@ export default class Hero{
     }
 
     update(game){
+      // if(this.bomb)console.log(this.bomb.timer)
       game.world.bringToTop(this.powerGroup)
       game.world.bringToTop(this.fire)
       if(this.bomb) game.world.bringToTop(this.bomb.sprite)
@@ -71,11 +72,20 @@ export default class Hero{
       this.x = this.sprite.body.x;
       this.y = this.sprite.body.y;
       this.sprite.body.velocity.setTo(0,0)
-
-      this.game.physics.arcade.overlap(this.sprite, this.powerGroup, ()=>{
-                  // store.dispatch()
-                  console.log('colliding')
-                })
+      this.powerGroup.children.forEach((power)=>{
+        this.game.physics.arcade.overlap(this.sprite, power,()=>{
+          
+          store.dispatch(removePowerUp(power.gridCords.x , power.gridCords.y))
+          if(power.key === 'bombPowerUp') this.limit++
+          if(power.key === 'speedPowerUp') this.speed++
+          if(power.key === 'rangePowerUp') this.range++
+          console.log('colliding with ', power.gridCords)
+        })
+      })
+      // this.game.physics.arcade.overlap(this.sprite, this.powerGroup, ()=>{
+                  
+      //             console.log('colliding')
+      //           })
       if(this.immuneTime > game.time.now){
         this.sprite.body.velocity.setTo(0,0)
       } else {
@@ -103,22 +113,36 @@ export default class Hero{
 
       if (this.space.isDown){
 
-        this.sprite.animations.play('spin')
-        if(this.bombs.length < this.limit){
-
+        // this.sprite.animations.play('spin')
+        if(this.bombs.length < this.limit ){
           let blockCoords = Utils.mapCoordsToBlock(this.x, this.y )
+          let gridCoords = Utils.mapCoordsToGrid(blockCoords.x,blockCoords.y)
+             if(!(this.immuneTime > game.time.now)){
+                    
+                if(!store.getState().Classes.crates[gridCoords.x][gridCoords.y].bomb)
+                {
+                this.bomb = new MechaKoopa(game, blockCoords.x, blockCoords.y);
+                this.bomb.sprite.animations.play('explodeLeft');
+                this.bombs.push(this.bomb);
+                store.dispatch(addBomb(gridCoords.x, gridCoords.y, this.bomb))
+                  }
+             }
 
-          this.bomb = new MechaKoopa(game, blockCoords.x, blockCoords.y);
-          this.bomb.sprite.animations.play('explodeLeft');
-          
-               
-    
-          this.bombs.push(this.bomb);
           
            if (!this.bomb.blownUp) {
+              this.explosion(gridCoords, blockCoords, this.bomb, 2.5)
 
-            var timer = game.time.events.add(Phaser.Timer.SECOND * 2.5, () => {
-              this.bomb.sprite.kill();
+          }
+        }
+      }
+      if(!this.space.isDown){
+        this.sprite.animations.play('walk')
+      }
+    }
+    explosion(gridCoords, blockCoords, myBomb, time){
+              myBomb.timer = this.game.time.events.add(Phaser.Timer.SECOND * time, () => {
+
+              store.dispatch(removeBomb(gridCoords.x, gridCoords.y))
               this.bombs.pop();
               let allCrates = store.getState().Classes.crates;
               let cratesToKill = Utils.adjacentCrates(blockCoords.x, blockCoords.y, this.range, allCrates);
@@ -130,15 +154,22 @@ export default class Hero{
                     let flameXY = Utils.indexToXY(crate.x, crate.y)
                     let flame = this.fire.create(flameXY.x, flameXY.y, 'fire');
                     
-                    flame.scale.setTo(0.5,0.5)
+                    flame.scale.setTo(1.2,1.2)
                     flame.anchor.setTo(0.5,0.5)
                     store.dispatch(addFlames(crate.x, crate.y, flame))
+                    if(allCrates[crate.x][crate.y].bomb){
+                      console.log('before', allCrates[crate.x][crate.y].bomb.timer.timer.nextTick)
+                      //setEx(explosionallCrates[crate.x][crate.y].bomb, 0)
+                      console.log('after', allCrates[crate.x][crate.y].bomb.timer.timer.nextTick)
+                      console.log("THERE IS A FIRE ON A BOMB", allCrates[crate.x][crate.y].bomb.timer)
+                    }
+
                   }
 
                 let paintGrid = Utils.indexToXY(crate.x, crate.y);
                   if(allCrates[crate.x][crate.y].paint.key!==this.color){
                     let myPaint = this.paint.create(paintGrid.x, paintGrid.y, this.color)
-                    myPaint.scale.setTo(0.08,0.08)
+                    myPaint.scale.setTo(0.15,0.15)
                     myPaint.anchor.setTo(0.5,0.5)
                     store.dispatch(addPaint(crate.x, crate.y,  myPaint))
                   }
@@ -150,40 +181,34 @@ export default class Hero{
                     if(powerUpChance ===1){
                       
                     let power = this.powerGroup.create(powerXY.x, powerXY.y, 'bombPowerUp')
+                    power.gridCords= {x: crate.x, y: crate.y}
                     console.log('POWER UP Appeared', powerXY.x, powerXY.y, power)
-                    power.scale.setTo(0.5,0.5)
+                    power.scale.setTo(0.8,0.8)
                     power.anchor.setTo(0.5,0.5)
                     // this.limit ++;
                     store.dispatch(addPowerUp(crate.x, crate.y, power))
                     }
-                    // if(powerUpChange ===2){
-                    // this.powerGroup.create(powerXY.x, powerXY.y, 'rangePowerUp')
-                    // }
-                    // if(powerUpChange ===3){
-                    // this.powerGroup.create(powerXY.x, powerXY.y, 'speedPowerUp')
-                    // }
+
 
                   };
 
                 })
-                // this.game.physics.arcade.overlap(this.sprite, this.powerGroup)
-               
+           
                 this.game.physics.arcade.collide(this.sprite, this.fire, () => {
-                    if(this.immuneTime < game.time.now){
-                      this.immuneTime = game.time.now + 1000; 
+                    if(this.immuneTime < this.game.time.now){
+                      this.immuneTime = this.game.time.now + 1000; 
                       //animation goes here
                     }
                     store.dispatch(removePaint(this.color))
                 })
             });
             this.bomb.blownUp = true;
-          }
-        }
-      }
-      if(!this.space.isDown){
-        this.sprite.animations.play('walk')
-      }
     }
 
+    // setEx(bomb, time){
+
+    // }
+
 }
+
 

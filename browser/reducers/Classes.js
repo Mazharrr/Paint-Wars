@@ -15,16 +15,28 @@ const ADD_PAINT= 'ADD_PAINT';
 const ADD_PLAYER = "ADD_PLAYER"
 const ADD_POWERUP = "ADD_POWERUP"
 const REMOVE_POWERUP = "REMOVE_POWERUP"
+const ADD_BOMB= "ADD_BOMB"
+const REMOVE_BOMB = "REMOVE_BOMB"
+
+export const addBomb = (x, y, bomb) =>({
+  type: ADD_BOMB,
+  payload: {x, y},
+  bomb
+})
+export const removeBomb = (x, y) =>({
+  type: REMOVE_BOMB,
+  payload: {x, y}
+})
+
 
 export const addPowerUp = (x, y, powerUp) =>({
   type: ADD_POWERUP,
   powerXY: {x, y},
   powerUp
 })
-export const removePowerUp = () =>({
-  type: ADD_POWERUP,
-  payload: {x, y},
-  powerUp
+export const removePowerUp = (x, y) =>({
+  type: REMOVE_POWERUP,
+  payload: {x, y}
 })
 
 export const addPlayer = player =>({
@@ -105,6 +117,21 @@ const reducer = (state = initialState , action)=>{
       break;  
     case ADD_POWERUP:
         newState.crates[action.powerXY.x][action.powerXY.y].powerUp = action.powerUp
+
+        break;
+    case REMOVE_POWERUP:
+        newState.crates[action.payload.x][action.payload.y].powerUp.kill()
+        newState.crates[action.payload.x][action.payload.y].powerUp=false;
+
+        break;
+    case ADD_BOMB:
+    if(!newState.crates[action.payload.x][action.payload.y].bomb) newState.crates[action.payload.x][action.payload.y].bomb = action.bomb
+    break;
+    case REMOVE_BOMB:
+    console.log(newState.crates[action.payload.x][action.payload.y].bomb)
+       newState.crates[action.payload.x][action.payload.y].bomb.sprite.kill()
+      newState.crates[action.payload.x][action.payload.y].bomb= false
+    break;
     default:
       return state;
     }

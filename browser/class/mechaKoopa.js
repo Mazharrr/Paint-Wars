@@ -26,7 +26,7 @@ export default class MechaKoopa {
   addSprite(){
     this.sprite = this.game.add.sprite(this.x, this.y, 'mechaKoopa', 2)
     this.sprite.anchor.set(.4,.4);
-    this.sprite.scale.setTo(0.5,0.5);
+    // this.sprite.scale.setTo(0.5,0.5);
     this.game.physics.arcade.enable(this.sprite);
     this.sprite.body.immovable = true;
     this.sprite.body.moves = false;
@@ -60,30 +60,7 @@ export default class MechaKoopa {
   }
 
   update(game){
-    // // //this.sprite.animations.play('walkLeft')
-    // // this.x = this.sprite.body.x;
-    // // this.y = this.sprite.body.y;
 
-    // // if (this.x > player.x) {
-    // //   if (Math.abs(this.x - player.x ) < 150) {
-    // //     this.sprite.animations.play('explodeLeft');
-    // //     this.explode();
-
-    // //   } else {
-    // //     this.sprite.animations.play('walkLeft');
-    // //   }
-    // // }
-    // // else if (this.x < player.x) {
-    // //   if (Math.abs(this.x - player.x ) < 150) {
-    // //     this.sprite.animations.play('explodeRight');
-    // //     this.explode();
-    // //   } else {
-    // //     this.sprite.animations.play('walkRight');
-    // //   }
-    // // }
-
-
-    //   game.physics.arcade.moveToXY(this.sprite, player.x, player.y, 100)
 
   }
 }
