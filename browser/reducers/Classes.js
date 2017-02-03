@@ -92,7 +92,7 @@ const reducer = (state = initialState , action)=>{
           }
         }
       }
-     break; 
+     break;
     case LOAD_CRATES:
       newState.crates = action.crates
       break;
@@ -114,7 +114,7 @@ const reducer = (state = initialState , action)=>{
           if(newState.crates[action.payload.x][action.payload.y].flame) newState.crates[action.payload.x][action.payload.y].flame.kill();
           newState.crates[action.payload.x][action.payload.y].flame = false;
         }, 200)
-      break;  
+      break;
     case ADD_POWERUP:
         newState.crates[action.powerXY.x][action.powerXY.y].powerUp = action.powerUp
 
@@ -135,7 +135,7 @@ const reducer = (state = initialState , action)=>{
     default:
       return state;
     }
-    console.log(newState)
+    // console.log(newState)
   return newState;
 }
 
