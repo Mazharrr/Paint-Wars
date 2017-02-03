@@ -1,41 +1,48 @@
 export const Utils = {
 
+  arrayMaker: function(start, end) {
+    var result = []
+    for (var i = start; i <= end; i++) {
+      result.push(i)
+    }
+    return result;
+  },
 
-    mapCoordsToBlock: function(x, y) {
+  mapCoordsToBlock: function(x, y) {
 
-      var blockCoords = {};
-      blockCoords.x =
-      (Math.floor(x/32))*32+16;
+    var blockCoords = {};
+    blockCoords.x =
+    (Math.floor(x/32))*32+16;
 
-      blockCoords.y =
-      (Math.floor(y/32))*32+16;
-      
-      return blockCoords;
+    blockCoords.y =
+    (Math.floor(y/32))*32+16;
 
-    },
-    indexToXY: function(x, y) {
+    return blockCoords;
 
-      var blockCoords = {};
-      blockCoords.x =
-      Math.floor(x)*32+16;
+  },
+  indexToXY: function(x, y) {
 
-      blockCoords.y =
-      Math.floor(y)*32+16;
-     
-      return blockCoords;
+    var blockCoords = {};
+    blockCoords.x =
+    Math.floor(x)*32+16;
 
-    },
-    mapCoordsToGrid: function(x,y) {
+    blockCoords.y =
+    Math.floor(y)*32+16;
 
-      var blockCoords = {};
-      blockCoords.x =
-      (Math.floor(x/32));
+    return blockCoords;
 
-      blockCoords.y =
-      (Math.floor(y/32));
-      return blockCoords;
+  },
+  mapCoordsToGrid: function(x,y) {
 
-    },
+    var blockCoords = {};
+    blockCoords.x =
+    (Math.floor(x/32));
+
+    blockCoords.y =
+    (Math.floor(y/32));
+    return blockCoords;
+
+  },
 
     // explode: function(x,y,range, group, game){
     //   console.log('test')

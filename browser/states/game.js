@@ -2,11 +2,45 @@ import game from './stateManager';
 import Hero from '../class/hero1';
 import store from '../store';
 import {loadCrates, addPlayer} from '../reducers/Classes';
+import {arrayMaker} from '../class/utils';
 
 var player;
 var koopasArr= [];
 var crateTable;
 
+//james' changes for using the same Hero constructor but just using different animations
+
+let blueKoopa;
+let bowserJunior = {
+  left: arrayMaker(18, 25),
+  right: arrayMaker(26, 33),
+  up: arrayMaker(47, 51),
+  down: arrayMaker(42, 46),
+  idle: arrayMaker(0,15),
+  attack: arrayMaker(34, 41),
+  dead: arrayMaker(16,17)
+};
+let lemmyKoopa = {
+  left: arrayMaker(),
+  right: arrayMaker(),
+  up: arrayMaker(),
+  down: arrayMaker(),
+  idle: arrayMaker(),
+  attack: arrayMaker(),
+  dead: arrayMaker()
+};
+let larryKoopa = {
+  left: arrayMaker(62, 81),
+  right: arrayMaker(90, 98),
+  up: arrayMaker(99, 107),
+  down: arrayMaker(82,89),
+  idle: arrayMaker(0, 33),
+  attack: arrayMaker(36, 61),
+  dead: arrayMaker(34,35)
+};
+let characterAnimations = [];
+
+//end of james' changes texture atlas
 
 
 export default class Game{

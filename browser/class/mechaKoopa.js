@@ -1,10 +1,5 @@
-function arrayMaker(start, end) {
-  var result = []
-  for (var i = start; i <= end; i++) {
-    result.push(i)
-  }
-  return result;
-}
+import {arrayMaker} from './utils';
+
 
 var explosion = arrayMaker(70, 75).concat(arrayMaker(226, 230));
 
