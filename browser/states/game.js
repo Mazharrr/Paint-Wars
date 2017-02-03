@@ -94,6 +94,8 @@ export default class Game{
     store.dispatch(addPlayer())
 
 
+    // socket.emit('client_data_transfer', player)
+
 
   	// let koopasTotal = 1;
   	// let koopasAlive = 1;
