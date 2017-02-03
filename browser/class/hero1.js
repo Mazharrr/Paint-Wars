@@ -74,7 +74,7 @@ export default class Hero{
       this.sprite.body.velocity.setTo(0,0)
       this.powerGroup.children.forEach((power)=>{
         this.game.physics.arcade.overlap(this.sprite, power,()=>{
-          
+
           store.dispatch(removePowerUp(power.gridCords.x , power.gridCords.y))
           if(power.key === 'bombPowerUp') this.limit++
           if(power.key === 'speedPowerUp') this.speed++
@@ -83,7 +83,7 @@ export default class Hero{
         })
       })
       // this.game.physics.arcade.overlap(this.sprite, this.powerGroup, ()=>{
-                  
+
       //             console.log('colliding')
       //           })
       if(this.immuneTime > game.time.now){
@@ -92,7 +92,7 @@ export default class Hero{
             if(this.bomb) {
               game.physics.arcade.collide(this.sprite, this.bomb.sprite)
             }
-            
+
             if (cursors.left.isDown || wasd.left.isDown)
             {
                 this.sprite.body.velocity.x= -this.speed;
@@ -118,7 +118,7 @@ export default class Hero{
           let blockCoords = Utils.mapCoordsToBlock(this.x, this.y )
           let gridCoords = Utils.mapCoordsToGrid(blockCoords.x,blockCoords.y)
              if(!(this.immuneTime > game.time.now)){
-                    
+
                 if(!store.getState().Classes.crates[gridCoords.x][gridCoords.y].bomb)
                 {
                 this.bomb = new MechaKoopa(game, blockCoords.x, blockCoords.y);
@@ -128,9 +128,9 @@ export default class Hero{
                   }
              }
 
-          
+
            if (!this.bomb.blownUp) {
-              this.explosion(gridCoords, blockCoords, this.bomb, 2.5)
+              this.explosion(gridCoords, blockCoords, this.bomb, 4)
 
           }
         }
@@ -140,28 +140,29 @@ export default class Hero{
       }
     }
     explosion(gridCoords, blockCoords, myBomb, time){
+      console.log("EXPLOSION TIMER RAN", time)
               myBomb.timer = this.game.time.events.add(Phaser.Timer.SECOND * time, () => {
-
+                console.log('ACTUAL EXPLOSION RUNNING', myBomb.timer)
+                console.log(gridCoords.x, gridCoords.y)
               store.dispatch(removeBomb(gridCoords.x, gridCoords.y))
               this.bombs.pop();
               let allCrates = store.getState().Classes.crates;
               let cratesToKill = Utils.adjacentCrates(blockCoords.x, blockCoords.y, this.range, allCrates);
               let flameArr = [];
               let paintArr= cratesToKill.slice();
-              
+
               cratesToKill.forEach(crate => {
                   if (allCrates[crate.x] && allCrates[crate.x][crate.y].crate === false) {
                     let flameXY = Utils.indexToXY(crate.x, crate.y)
                     let flame = this.fire.create(flameXY.x, flameXY.y, 'fire');
-                    
+
                     flame.scale.setTo(1.2,1.2)
                     flame.anchor.setTo(0.5,0.5)
                     store.dispatch(addFlames(crate.x, crate.y, flame))
-                    if(allCrates[crate.x][crate.y].bomb){
-                      console.log('before', allCrates[crate.x][crate.y].bomb.timer.timer.nextTick)
-                      //setEx(explosionallCrates[crate.x][crate.y].bomb, 0)
-                      console.log('after', allCrates[crate.x][crate.y].bomb.timer.timer.nextTick)
-                      console.log("THERE IS A FIRE ON A BOMB", allCrates[crate.x][crate.y].bomb.timer)
+                    if(allCrates[crate.x][crate.y].bomb && allCrates[crate.x][crate.y].bomb !== myBomb){
+                      console.log('crate xy', crate.x, crate.y)
+                      this.game.time.events.remove(allCrates[crate.x][crate.y].bomb.timer)
+                      this.explosion({x: crate.x, y: crate.y}, {x: crate.x*48+24, y: crate.y*48+24}, allCrates[crate.x][crate.y].bomb, 0)
                     }
 
                   }
@@ -179,7 +180,7 @@ export default class Hero{
                     let powerUpChance = Math.floor(Math.random()*2)+1
                     let powerXY = Utils.indexToXY(crate.x, crate.y)
                     if(powerUpChance ===1){
-                      
+
                     let power = this.powerGroup.create(powerXY.x, powerXY.y, 'bombPowerUp')
                     power.gridCords= {x: crate.x, y: crate.y}
                     console.log('POWER UP Appeared', powerXY.x, powerXY.y, power)
@@ -193,10 +194,10 @@ export default class Hero{
                   };
 
                 })
-           
+
                 this.game.physics.arcade.collide(this.sprite, this.fire, () => {
                     if(this.immuneTime < this.game.time.now){
-                      this.immuneTime = this.game.time.now + 1000; 
+                      this.immuneTime = this.game.time.now + 1000;
                       //animation goes here
                     }
                     store.dispatch(removePaint(this.color))
@@ -210,5 +211,3 @@ export default class Hero{
     // }
 
 }
-
-
