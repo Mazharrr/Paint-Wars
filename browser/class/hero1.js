@@ -25,6 +25,7 @@ export default class Hero{
       this.speed = 100
       this.powerGroup = powerGroup
       this.bomb
+      this.onePress
 
     }
 
@@ -41,7 +42,6 @@ export default class Hero{
     }
     addSprite(){
       this.sprite = this.game.add.sprite(72, 72, 'hero1')
-
       this.sprite.scale.setTo(0.7,0.7)
       this.game.physics.arcade.enable(this.sprite)
       this.sprite.enableBody = true;
@@ -53,10 +53,10 @@ export default class Hero{
       this.sprite.animations.add('spin',[165,166,167,168,169,170,171,172], 10)
       this.sprite.animations.play('walk')
       this.sprite.body.fixedRotation= true;
+      this.sprite.body.setSize(40,40,0,20)
     }
 
     update(game){
-      // if(this.bomb)console.log(this.bomb.timer)
       game.world.bringToTop(this.powerGroup)
       game.world.bringToTop(this.fire)
       if(this.bomb) game.world.bringToTop(this.bomb.sprite)
@@ -90,7 +90,10 @@ export default class Hero{
         this.sprite.body.velocity.setTo(0,0)
       } else {
             if(this.bomb) {
-              game.physics.arcade.collide(this.sprite, this.bomb.sprite)
+              this.bombs.forEach((bomb)=>{
+
+                game.physics.arcade.collide(this.sprite, bomb.sprite)
+              })
             }
 
             if (cursors.left.isDown || wasd.left.isDown)
@@ -112,10 +115,10 @@ export default class Hero{
           }
 
       if (this.space.isDown){
-
+          if(!this.onePress){
         // this.sprite.animations.play('spin')
         if(this.bombs.length < this.limit ){
-          let blockCoords = Utils.mapCoordsToBlock(this.x, this.y )
+          let blockCoords = Utils.mapCoordsToBlock(this.x+10, this.y+20 )
           let gridCoords = Utils.mapCoordsToGrid(blockCoords.x,blockCoords.y)
              if(!(this.immuneTime > game.time.now)){
 
@@ -134,16 +137,15 @@ export default class Hero{
 
           }
         }
+        this.onePress = true
       }
-      if(!this.space.isDown){
+
+    }
+      if(this.space.isUp) this.onePress= false;
         this.sprite.animations.play('walk')
-      }
     }
     explosion(gridCoords, blockCoords, myBomb, time){
-      console.log("EXPLOSION TIMER RAN", time)
               myBomb.timer = this.game.time.events.add(Phaser.Timer.SECOND * time, () => {
-                console.log('ACTUAL EXPLOSION RUNNING', myBomb.timer)
-                console.log(gridCoords.x, gridCoords.y)
               store.dispatch(removeBomb(gridCoords.x, gridCoords.y))
               this.bombs.pop();
               let allCrates = store.getState().Classes.crates;
@@ -160,7 +162,6 @@ export default class Hero{
                     flame.anchor.setTo(0.5,0.5)
                     store.dispatch(addFlames(crate.x, crate.y, flame))
                     if(allCrates[crate.x][crate.y].bomb && allCrates[crate.x][crate.y].bomb !== myBomb){
-                      console.log('crate xy', crate.x, crate.y)
                       this.game.time.events.remove(allCrates[crate.x][crate.y].bomb.timer)
                       this.explosion({x: crate.x, y: crate.y}, {x: crate.x*48+24, y: crate.y*48+24}, allCrates[crate.x][crate.y].bomb, 0)
                     }
@@ -183,7 +184,6 @@ export default class Hero{
 
                     let power = this.powerGroup.create(powerXY.x, powerXY.y, 'bombPowerUp')
                     power.gridCords= {x: crate.x, y: crate.y}
-                    console.log('POWER UP Appeared', powerXY.x, powerXY.y, power)
                     power.scale.setTo(0.8,0.8)
                     power.anchor.setTo(0.5,0.5)
                     // this.limit ++;
