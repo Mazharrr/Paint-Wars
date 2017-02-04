@@ -1,7 +1,7 @@
 import game from './stateManager';
 import Hero from '../class/hero1';
 import store from '../store';
-import {loadCrates, addPlayer} from '../reducers/Classes';
+import {loadCrates, addPlayer} from '../reducers/Tiles';
 
 var player;
 var koopasArr= [];

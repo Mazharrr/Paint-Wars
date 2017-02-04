@@ -2,7 +2,7 @@ import {Utils} from './utils'
 import MechaKoopa from './mechakoopa'
 import Game1 from '../states/game'
 import store from '../store';
-import {removeCrate, addPaint, loadCrates, removePaint, addFlames, addPowerUp, removePowerUp, addBomb, removeBomb} from '../reducers/Classes'
+import {removeCrate, addPaint, loadCrates, removePaint, addFlames, addPowerUp, removePowerUp, addBomb, removeBomb} from '../reducers/Tiles'
 
 
 
@@ -38,7 +38,7 @@ export default class Hero{
      // createLimitPowerUp(limitDrops)
       let totalDrops = speedDrops.concat(rangeDrops).concat(limitDrops);
       let availableTiles =[]
-      store.getState().Classes.crates.forEach((row, indexX) => {
+      store.getState().Tiles.crates.forEach((row, indexX) => {
          row.forEach((tile, indexY) =>{
            if(tile.crate === false && tile.obstacle===false && tile.powerUp===false)
            availableTiles.push({x: indexX, y: indexY})
@@ -149,7 +149,7 @@ export default class Hero{
           let gridCoords = Utils.mapCoordsToGrid(blockCoords.x,blockCoords.y)
              if(!(this.immuneTime > game.time.now)){
 
-                if(!store.getState().Classes.crates[gridCoords.x][gridCoords.y].bomb)
+                if(!store.getState().Tiles.crates[gridCoords.x][gridCoords.y].bomb)
                 {
                 this.bomb = new MechaKoopa(game, blockCoords.x, blockCoords.y, this.range);
                 this.bomb.sprite.animations.play('explodeLeft');
@@ -175,7 +175,7 @@ export default class Hero{
               myBomb.timer = this.game.time.events.add(Phaser.Timer.SECOND * time, () => {
               store.dispatch(removeBomb(gridCoords.x, gridCoords.y))
               this.bombs.pop();
-              let allCrates = store.getState().Classes.crates;
+              let allCrates = store.getState().Tiles.crates;
               let cratesToKill = Utils.adjacentCrates(blockCoords.x, blockCoords.y, myBomb.range, allCrates);
               let flameArr = [];
               let paintArr= cratesToKill.slice();
