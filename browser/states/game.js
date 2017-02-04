@@ -16,7 +16,7 @@ export default class Game{
     this.map = this.game.add.tilemap('finalMap');
     this.map.addTilesetImage('tileset-biome', 'gameTiles');
 
-    this.blockedLayer = this.map.createLayer('10 collide')
+    this.blockedLayer = this.map.createLayer('10 obstacles')
     this.backgroundLayer = this.map.createLayer('0 floor')
     this.backgroundLayer1 = this.map.createLayer('1 trees')
     this.backgroundLayer2 = this.map.createLayer('2 trees')
@@ -27,7 +27,7 @@ export default class Game{
     this.backgroundLayer7 = this.map.createLayer('7 logs')
     this.backgroundLayer8 = this.map.createLayer('8 mushrooms')
     this.backgroundLayer9 = this.map.createLayer('9 pillars')
-    this.map.setCollisionBetween(1, 100000, true, '10 collide');
+    this.map.setCollisionBetween(1, 100000, true, '10 obstacles');
 
     game.physics.enable(this.blockedLayer, Phaser.Physics.ARCADE);
     this.backgroundLayer.resizeWorld();
