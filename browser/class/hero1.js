@@ -4,11 +4,12 @@ import Game1 from '../states/game'
 import store from '../store';
 import socket from '../socket.js'
 import {removeCrate, addPaint, loadCrates, removePaint, addFlames, addPowerUp, removePowerUp, addBomb, removeBomb} from '../reducers/Classes'
+import {powerGroup, crate, fire, paint} from '../states/game'
 
 
 
 export default class Hero{
-  constructor(game, fire, paint, powerGroup){
+  constructor(game, id){
       this.game = game
       this.x;
       this.y;
@@ -24,9 +25,11 @@ export default class Hero{
       this.color = 'blue';
       this.immuneTime = 0;
       this.speed = 100
+      console.log(powerGroup)
       this.powerGroup = powerGroup
       this.bomb
       this.onePress
+      this.id = id
 
     }
 
@@ -58,6 +61,9 @@ export default class Hero{
     }
 
     update(game){
+
+      this.updateSocket()
+
       game.world.bringToTop(this.powerGroup)
       game.world.bringToTop(this.fire)
       if(this.bomb) game.world.bringToTop(this.bomb.sprite)
@@ -207,8 +213,8 @@ export default class Hero{
             this.bomb.blownUp = true;
     }
 
-    // setEx(bomb, time){
-
-    // }
+  updateSocket(){
+        socket.emit('client_data_transfer', {position: this.sprite.position})
+  }
 
 }

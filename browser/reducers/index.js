@@ -1,8 +1,8 @@
 import {combineReducers} from 'redux'
 import Classes from './Classes'
-import Player from './Player'
+import Players from './Players'
 
 export default combineReducers({
   Classes: Classes,
-  Player: Player
+  Players: Players
 })

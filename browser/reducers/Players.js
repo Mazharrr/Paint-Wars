@@ -3,18 +3,20 @@ const initialState = {}
 
 const GET_PLAYER = 'GET PLAYER'
 
-export const getPlayer = player => ({
+export const getPlayers = players => ({
   type: GET_PLAYER,
-  player
+  players
 })
 
 export default (state = initialState, action) =>{
   let newState = Object.assign({}, state)
   switch(action.type){
     case GET_PLAYER:
-      newState.player = action.player
+
+      newState.players = action.players
       break;
       default: return state
     }
+    // console.log('playerData', action.players)
   return newState
 }

@@ -6,7 +6,9 @@
 import 'pixi';
 import 'p2';
 import 'phaser';
-
+import {initializeSocket} from './socket'
 
 import game from './states/stateManager'
 import store from './store'
+
+initializeSocket();
