@@ -60,7 +60,7 @@ const reducer = (state = initialState, action) => {
         newState.limit++
       }
       else if (action.powerUp === 'speedPowerUp') {
-        newState.speed++
+        newState.speed+=25
       }
       else if (action.powerUp === 'rangePowerUp'){
         newState.range++

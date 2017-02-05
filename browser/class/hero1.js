@@ -8,7 +8,7 @@ import {addPlayerName, addAvatar, increaseScore, addToPlayerPowerUp, killPlayer}
 //dummy data for name and avatar
 let dummy = {
   name: "James",
-  avatar: "https://www.mariowiki.com/images/thumb/7/71/NSMBU_LarryKoopa.png/400px-NSMBU_LarryKoopa.png"
+  avatar: "https://pbs.twimg.com/profile_images/490094309757038594/WvFG7LDV_reasonably_small.png"
 }
 
 
@@ -21,14 +21,14 @@ export default class Hero{
       this.exp = 0;
       this.addSprite()
       this.bombs = []
-      this.limit = store.getState().Player.limit
       this.direction = 'left';
+      this.limit = store.getState().Player.limit
       this.range = store.getState().Player.range
+      this.speed = store.getState().Player.speed
       this.fire = fire
       this.paint = paint
       this.color = 'blue';
       this.immuneTime = 0;
-      this.speed = store.getState().Player.speed
       this.powerGroup = powerGroup
       this.bomb
       this.onePress
@@ -69,8 +69,6 @@ export default class Hero{
         availableTiles.splice(randNum, 1);
 
       })
-
-     store.dispatch(killPlayer);
     }
     addSprite(){
       this.sprite = this.game.add.sprite(72, 72, 'hero1')
@@ -89,6 +87,10 @@ export default class Hero{
     }
 
     update(game){
+      this.limit = store.getState().Player.limit
+      this.range = store.getState().Player.range
+      this.speed = store.getState().Player.speed
+
       game.world.bringToTop(this.powerGroup)
       game.world.bringToTop(this.fire)
       if(this.bomb) game.world.bringToTop(this.bomb.sprite)
@@ -110,7 +112,7 @@ export default class Hero{
           store.dispatch(removePowerUp(power.gridCords.x , power.gridCords.y))
           store.dispatch(addToPlayerPowerUp(power.key))
           console.log('player info', store.getState().Player)
-          
+
 
           if(power.key === 'bombPowerUp') this.limit++
           if(power.key === 'speedPowerUp') this.speed+=25
@@ -239,6 +241,7 @@ export default class Hero{
                     }
                     store.dispatch(removePaint(this.color))
                     this.reset();
+                    store.dispatch(killPlayer());
                 })
             });
             this.bomb.blownUp = true;

@@ -1,30 +1,55 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
-import ReactDOM from 'react-dom';
-import Game  from '../startGame.js'
+import GameStart from '../startGame';
 //import socket
 
 
-export default class Canvas extends Component {
-  constructor(props){
-    super(props);
-    this.state = {
-      scoreBoard: []
-    }
-  }
-  componentDidMount(){
+const scoreBoard = (props) => {
+  let player = props.player;
+  return (
+    <div className="row">
+      <div className="col-xs-8">
 
-  }
-  render(){
-  	return(
-  		   <div>
-  		   	{
-  		   		
-  		   	}
-  		   </div>
-  	)
-  }
+      </div>
+      <div className="col-xs-4">
+        <div>
+          {
+            player.name &&
+            <h1>
+              {player.name}
+            </h1>
+          }
+          <div>
+            <img src={player.avatar}></img>
 
+          </div>
+          <h1>
+            Score: {player.score}
+          </h1>
+          <h1>
+            Speed: {player.speed}
+          </h1>
+          <h1>
+            Bomb Quantity: {player.limit}
+          </h1>
+          <h1>
+            Power: {player.range}
+          </h1>
+
+        </div>
+      </div>
+
+    </div>
+  )
 
 
 }
+
+const mapStateToProps = (state) => ({
+  player: state.Player
+})
+
+const mapDispatchToProps = (dispatch) => ({
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(scoreBoard);
