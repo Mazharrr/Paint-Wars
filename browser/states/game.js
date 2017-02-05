@@ -10,17 +10,19 @@ export let powerGroup
 export let crate
 export let fire
 export let paint
+export let blockedLayer
 
 
 
 export default class Game{
   create(game){
+    socket.emit('game_started',{})
     game.stage.disableVisibilityChange = true;
     game.world.setBounds(0,0,720 ,720)
     this.map = this.game.add.tilemap('finalMap');
     this.map.addTilesetImage('tileset-biome', 'gameTiles');
 
-    this.blockedLayer = this.map.createLayer('10 obstacles')
+    blockedLayer = this.map.createLayer('10 obstacles')
     this.backgroundLayer = this.map.createLayer('0 floor')
     this.backgroundLayer1 = this.map.createLayer('1 trees')
     this.backgroundLayer2 = this.map.createLayer('2 trees')
@@ -33,16 +35,16 @@ export default class Game{
     this.backgroundLayer9 = this.map.createLayer('9 pillars')
     this.map.setCollisionBetween(1, 100000, true, '10 obstacles');
 
-    game.physics.enable(this.blockedLayer, Phaser.Physics.ARCADE);
+    game.physics.enable(blockedLayer, Phaser.Physics.ARCADE);
     this.backgroundLayer.resizeWorld();
 
     powerGroup = game.add.group();
     powerGroup.enableBody = true;
     powerGroup.physicsBodyType = Phaser.Physics.ARCADE;
 
-    this.crate = game.add.group();
-    this.crate.enableBody = true;
-    this.crate.physicsBodyType = Phaser.Physics.ARCADE;
+    crate = game.add.group();
+    crate.enableBody = true;
+    crate.physicsBodyType = Phaser.Physics.ARCADE;
 
 
     fire = game.add.group();
@@ -57,7 +59,6 @@ export default class Game{
 
 
     let crateTable = []
-    let crate;
     let width = 15;
     let height = 15;
 
@@ -74,7 +75,7 @@ export default class Game{
             && ! (w===width-3 && h===1) && !(w===width-2 && h===2)){
 
 
-                tile = {crate: this.crate.create(h*48, w*48, 'crate'), paint: false, obstacle: false, powerUp: false};
+                tile = {crate: crate.create(h*48, w*48, 'crate'), paint: false, obstacle: false, powerUp: false};
 
                 // e.frame = 'crate'
                 tile.crate.scale.setTo(0.095,0.095)
@@ -92,10 +93,10 @@ export default class Game{
 
     game.physics.startSystem(Phaser.Physics.ARCADE);
     // this.mechaKoopa = new MechaKoopa(game);
-    console.log(socket.id)
-    this.hero = new Hero(game, socket.id);
-    player = this.hero;
-    store.dispatch(addPlayer())
+
+    // this.hero = new Hero(game, socket.id, 'blue');
+    // player = this.hero;
+    // store.dispatch(addPlayer())
 
 
 
@@ -113,15 +114,12 @@ export default class Game{
   }
   update(){
 
-    game.physics.arcade.collide(this.hero.sprite, this.blockedLayer);
-    game.physics.arcade.collide(this.hero.sprite, this.crate);
-    //game.physics.arcade.collide(this.hero.sprite, this.bombGroup);
-    //game.physics.arcade.collide(this.hero.sprite, yellowPadlocks);
 
-    // game.physics.arcade.overlap(this.fire, this.blockedLayer, () =>{console.log('overlap')})
+    // game.physics.arcade.collide(this.hero.sprite, this.blockedLayer);
+    // game.physics.arcade.collide(this.hero.sprite, this.crate);
 
-    if(this.hero)this.hero.update(game)
-    	 if(this.mechaKoopa) this.mechaKoopa.update(game)
+
+
        enemyUpdate()
 
 

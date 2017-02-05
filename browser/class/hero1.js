@@ -10,26 +10,26 @@ import {powerGroup, crate, fire, paint} from '../states/game'
 
 
 export default class Hero{
-  constructor(game, id){
+  constructor(game, id, color ){
       this.game = game
       this.x;
       this.y;
       this.health = 100;
       this.exp = 0;
-      this.addSprite()
       this.bombs = []
       this.limit = 1
       this.direction = 'left';
       this.range = 1
       this.fire = fire
       this.paint = paint
-      this.color = 'blue';
+      this.color = color
       this.immuneTime = 0;
       this.speed = 100
       this.powerGroup = powerGroup
       this.bomb
       this.onePress
       this.id = id
+      this.addSprite()
 
     }
 
@@ -72,7 +72,23 @@ export default class Hero{
      this.speed = 100;
     }
     addSprite(){
-      this.sprite = this.game.add.sprite(72, 72, 'hero1')
+      switch(this.color){
+        case 'blue':
+        this.sprite = this.game.add.sprite(72, 72, 'hero1')
+        break;
+        case 'purple':
+        this.sprite = this.game.add.sprite(648, 648, 'hero1')
+        break;
+        case 'green':
+        this.sprite = this.game.add.sprite(648, 72, 'hero1')
+        break;
+        case 'red':
+        this.sprite = this.game.add.sprite(72, 648, 'hero1')
+        break;
+        default:
+        console.log(this.color,' failed')
+        break
+      }
       this.sprite.scale.setTo(0.7,0.7)
       this.game.physics.arcade.enable(this.sprite)
       this.sprite.enableBody = true;
@@ -226,8 +242,9 @@ export default class Hero{
                 let paintGrid = Utils.indexToXY(crate.x, crate.y);
                   if(allCrates[crate.x][crate.y].paint.key!==this.color){
                   socket.emit('client_make_paint', {
-                      x: paintGrid.x, y: paintGrid.y, gridX: crate.x, gridY: crate.y, socket: socket.id
+                      x: paintGrid.x, y: paintGrid.y, gridX: crate.x, gridY: crate.y, color: this.color, socket: socket.id
                     })
+
                     let myPaint = this.paint.create(paintGrid.x, paintGrid.y, this.color)
                     myPaint.scale.setTo(0.15,0.15)
                     myPaint.anchor.setTo(0.5,0.5)
@@ -256,7 +273,7 @@ export default class Hero{
                     }
 
 
-                  };
+                  }
 
                 })
 
@@ -268,7 +285,7 @@ export default class Hero{
     }
 
   updateSocket(){
-        socket.emit('client_data_transfer', {position: this.sprite.position})
+        socket.emit('client_data_transfer', {position: this.sprite.position, color: this.color})
   }
 
 }

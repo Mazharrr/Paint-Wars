@@ -1,6 +1,6 @@
 import store from './store'
 import MechaKoopa from './class/mechaKoopa'
-import {getPlayers} from './reducers/players'
+import {getPlayers, getClient} from './reducers/players'
 import {removeBomb, addBomb, addFlames, removeCrate, addPaint, addPowerUp, removePaint, removePowerUp} from './reducers/Tiles'
 import game from './states/stateManager'
 import socket from './socket'
@@ -11,6 +11,7 @@ let me = socket.id
   socket.on('gameState', data=>{
 
     store.dispatch(getPlayers(data.Players.players))
+    store.dispatch(getClient(data.Players.sockets))
   })
   socket.on('server_send_bomb', data =>{
     if(me!=data.socket){
@@ -40,7 +41,7 @@ let me = socket.id
   })
   socket.on('server_make_paint', data=>{
     if(me!==data.socket){
-      let newPaint = paint.create(data.x, data.y, 'blue')
+      let newPaint = paint.create(data.x, data.y, data.color)
       newPaint.scale.setTo(0.15,0.15)
       newPaint.anchor.setTo(0.5,0.5)
       store.dispatch(addPaint(data.gridX, data.gridY, newPaint))
