@@ -2,7 +2,7 @@ import game from './stateManager';
 import Hero from '../class/hero1';
 import store from '../store';
 import socket from '../socket'
-import {loadCrates, addPlayer} from '../reducers/Classes';
+import {loadCrates, addPlayer} from '../reducers/Tiles';
 import enemyUpdate from '../enemyUpdate'
 
 export let player
@@ -20,7 +20,7 @@ export default class Game{
     this.map = this.game.add.tilemap('finalMap');
     this.map.addTilesetImage('tileset-biome', 'gameTiles');
 
-    this.blockedLayer = this.map.createLayer('10 collide')
+    this.blockedLayer = this.map.createLayer('10 obstacles')
     this.backgroundLayer = this.map.createLayer('0 floor')
     this.backgroundLayer1 = this.map.createLayer('1 trees')
     this.backgroundLayer2 = this.map.createLayer('2 trees')
@@ -31,7 +31,7 @@ export default class Game{
     this.backgroundLayer7 = this.map.createLayer('7 logs')
     this.backgroundLayer8 = this.map.createLayer('8 mushrooms')
     this.backgroundLayer9 = this.map.createLayer('9 pillars')
-    this.map.setCollisionBetween(1, 100000, true, '10 collide');
+    this.map.setCollisionBetween(1, 100000, true, '10 obstacles');
 
     game.physics.enable(this.blockedLayer, Phaser.Physics.ARCADE);
     this.backgroundLayer.resizeWorld();
@@ -65,16 +65,16 @@ export default class Game{
       let crateRow = []
     	for (let w = 0; w < width; w++){
     		//console.log(h,w)
-        let tile = {obstacle: true, crate: false, paint: false}
+        let tile = {obstacle: true, crate: false, paint: false, powerUp: false}
     		if(h!==0 && w!==0 && h!==height-1 && w!==width-1 && (h%2==1 || w%2==1) ){
-          tile = {crate: false, paint: false}
+          tile = {crate: false, paint: false, obstacle: false, powerUp: false}
           if(!(h===1 && w===1) && !(h===height-2 && w===width-2 ) && !(h===1 && w== width-2)
           && !(h===height-2 && w===1) && !(h===2 && w===1) && !(h===1 && w===2) && !(h==height-2
             && w=== width-3) && !(h===height-3 && w=== width-2) && !(h===height-2 &&w===2) && !(h===height-3 && w==1)
             && ! (w===width-3 && h===1) && !(w===width-2 && h===2)){
 
 
-                tile = {crate: this.crate.create(h*48, w*48, 'crate'), paint: false};
+                tile = {crate: this.crate.create(h*48, w*48, 'crate'), paint: false, obstacle: false, powerUp: false};
 
                 // e.frame = 'crate'
                 tile.crate.scale.setTo(0.095,0.095)
@@ -89,7 +89,6 @@ export default class Game{
 
     }
     store.dispatch(loadCrates(crateTable));
-    console.log('store', store.getState());
 
     game.physics.startSystem(Phaser.Physics.ARCADE);
     // this.mechaKoopa = new MechaKoopa(game);

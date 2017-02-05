@@ -9,7 +9,7 @@ function arrayMaker(start, end) {
 var explosion = arrayMaker(70, 75).concat(arrayMaker(226, 230));
 
 export default class MechaKoopa {
-  constructor(game, x, y){
+  constructor(game, x, y, range){
       this.game = game;
       this.x =x;
       this.y = y;
@@ -17,7 +17,7 @@ export default class MechaKoopa {
       this.power = Math.random() * 30;
       this.exploded = false
       this.limit = 1
-      this.range = 1
+      this.range = range
       this.addSprite()
       this.blownUp = false
 

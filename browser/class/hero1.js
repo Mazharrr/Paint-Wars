@@ -3,8 +3,9 @@ import MechaKoopa from './mechakoopa'
 import Game1 from '../states/game'
 import store from '../store';
 import socket from '../socket.js'
-import {removeCrate, addPaint, loadCrates, removePaint, addFlames, addPowerUp, removePowerUp, addBomb, removeBomb} from '../reducers/Classes'
+import {removeCrate, addPaint, loadCrates, removePaint, addFlames, addPowerUp, removePowerUp, addBomb, removeBomb} from '../reducers/Tiles'
 import {powerGroup, crate, fire, paint} from '../states/game'
+
 
 
 
@@ -19,13 +20,12 @@ export default class Hero{
       this.bombs = []
       this.limit = 1
       this.direction = 'left';
-      this.range = 2
+      this.range = 1
       this.fire = fire
       this.paint = paint
       this.color = 'blue';
       this.immuneTime = 0;
       this.speed = 100
-      console.log(powerGroup)
       this.powerGroup = powerGroup
       this.bomb
       this.onePress
@@ -34,15 +34,39 @@ export default class Hero{
     }
 
     reset(){
-      this.limit = 1;
-      this.range = 1;
-      this.speed = 100;
-      let speedDrops = (this.speed-100)/100
+      let speedDrops = Array((this.speed-100)/25).fill('speedPowerUp')
       // createSpeedPowerUp(speedDrops)
-      let rangeDrops = this.range-1
+      let rangeDrops = Array(this.range-1).fill('rangePowerUp')
       // createRangePowerUp(rangeDrops)
-      let limitDrops = this.limit-1
+      let limitDrops = Array(this.limit-1).fill('bombPowerUp')
      // createLimitPowerUp(limitDrops)
+      let totalDrops = speedDrops.concat(rangeDrops).concat(limitDrops);
+      let availableTiles =[]
+      store.getState().Tiles.crates.forEach((row, indexX) => {
+         row.forEach((tile, indexY) =>{
+           if(tile.crate === false && tile.obstacle===false && tile.powerUp===false)
+           availableTiles.push({x: indexX, y: indexY})
+           })
+      })
+
+
+
+      totalDrops.forEach(powerUp =>{
+        let randNum = Math.floor(Math.random()*availableTiles.length)
+        let randTile = availableTiles[randNum]
+        let powerXY = Utils.indexToXY(randTile.x, randTile.y)
+        let power = this.powerGroup.create(powerXY.x, powerXY.y, powerUp)
+        power.gridCords= {x: randTile.x, y: randTile.y}
+        power.scale.setTo(1.3,1.3)
+        power.anchor.setTo(0.5,0.5)
+        store.dispatch(addPowerUp( randTile.x, randTile.y , power))
+        availableTiles.splice(randNum, 1);
+
+      })
+
+     this.limit = 1;
+     this.range = 1;
+     this.speed = 100;
     }
     addSprite(){
       this.sprite = this.game.add.sprite(72, 72, 'hero1')
@@ -57,7 +81,7 @@ export default class Hero{
       this.sprite.animations.add('spin',[165,166,167,168,169,170,171,172], 10)
       this.sprite.animations.play('walk')
       this.sprite.body.fixedRotation= true;
-      this.sprite.body.setSize(40,40,0,20)
+      this.sprite.body.setSize(35,35,10,20)
     }
 
     update(game){
@@ -84,9 +108,8 @@ export default class Hero{
 
           store.dispatch(removePowerUp(power.gridCords.x , power.gridCords.y))
           if(power.key === 'bombPowerUp') this.limit++
-          if(power.key === 'speedPowerUp') this.speed++
+          if(power.key === 'speedPowerUp') this.speed+=25
           if(power.key === 'rangePowerUp') this.range++
-          console.log('colliding with ', power.gridCords)
         })
       })
       // this.game.physics.arcade.overlap(this.sprite, this.powerGroup, ()=>{
@@ -129,9 +152,9 @@ export default class Hero{
           let gridCoords = Utils.mapCoordsToGrid(blockCoords.x,blockCoords.y)
              if(!(this.immuneTime > game.time.now)){
 
-                if(!store.getState().Classes.crates[gridCoords.x][gridCoords.y].bomb)
+                if(!store.getState().Tiles.crates[gridCoords.x][gridCoords.y].bomb)
                 {
-                this.bomb = new MechaKoopa(game, blockCoords.x, blockCoords.y);
+                this.bomb = new MechaKoopa(game, blockCoords.x, blockCoords.y, this.range);
                 this.bomb.sprite.animations.play('explodeLeft');
                 this.bombs.push(this.bomb);
                 store.dispatch(addBomb(gridCoords.x, gridCoords.y, this.bomb))
@@ -155,8 +178,8 @@ export default class Hero{
               myBomb.timer = this.game.time.events.add(Phaser.Timer.SECOND * time, () => {
               store.dispatch(removeBomb(gridCoords.x, gridCoords.y))
               this.bombs.pop();
-              let allCrates = store.getState().Classes.crates;
-              let cratesToKill = Utils.adjacentCrates(blockCoords.x, blockCoords.y, this.range, allCrates);
+              let allCrates = store.getState().Tiles.crates;
+              let cratesToKill = Utils.adjacentCrates(blockCoords.x, blockCoords.y, myBomb.range, allCrates);
               let flameArr = [];
               let paintArr= cratesToKill.slice();
 
@@ -189,12 +212,17 @@ export default class Hero{
                     let powerXY = Utils.indexToXY(crate.x, crate.y)
                     if(powerUpChance ===1){
 
-                    let power = this.powerGroup.create(powerXY.x, powerXY.y, 'bombPowerUp')
-                    power.gridCords= {x: crate.x, y: crate.y}
-                    power.scale.setTo(0.8,0.8)
-                    power.anchor.setTo(0.5,0.5)
-                    // this.limit ++;
-                    store.dispatch(addPowerUp(crate.x, crate.y, power))
+                      //pick one of the 3 available powers up
+                      const randomPowerUpArray = ['bombPowerUp', 'speedPowerUp', 'rangePowerUp']
+                      let randomPowerUp = randomPowerUpArray[Math.floor(Math.random()*randomPowerUpArray.length)];
+
+
+                      let power = this.powerGroup.create(powerXY.x, powerXY.y, randomPowerUp)
+                      power.gridCords= {x: crate.x, y: crate.y}
+                      power.scale.setTo(1.3,1.3)
+                      power.anchor.setTo(0.5,0.5)
+                      // this.limit ++;
+                      store.dispatch(addPowerUp(crate.x, crate.y, power))
                     }
 
 
@@ -208,6 +236,7 @@ export default class Hero{
                       //animation goes here
                     }
                     store.dispatch(removePaint(this.color))
+                    this.reset();
                 })
             });
             this.bomb.blownUp = true;

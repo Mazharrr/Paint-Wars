@@ -6,7 +6,9 @@ import Phaser from 'phaser';
 
 var w = 720, h = 720;
 
-var game = new Phaser.Game(w, h, Phaser.AUTO, 'gameContainer');
+
+
+var game = new Phaser.Game(w, h, Phaser.CANVAS, 'gameContainer');
 
 game.state.add('boot', Boot);
 game.state.add('preload', Preload);

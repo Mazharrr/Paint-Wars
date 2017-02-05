@@ -9,7 +9,7 @@ export const Utils = {
 
       blockCoords.y =
       (Math.floor(y/48))*48+24;
-      
+
       return blockCoords;
 
     },
@@ -21,7 +21,7 @@ export const Utils = {
 
       blockCoords.y =
       Math.floor(y)*48+24;
-     
+
       return blockCoords;
 
     },
@@ -76,8 +76,7 @@ export const Utils = {
       let adjacentCrates = [bombSquare];
 
       for (let i = 1; i <= range; i++) {
-        console.log('all crates', allCrates)
-        console.log(bombSquare)
+
         if(allCrates[bombSquare.x-i] && allCrates[bombSquare.x-i][bombSquare.y]&& allCrates[bombSquare.x-i][bombSquare.y].obstacle) break;
         adjacentCrates.push({x: bombSquare.x-i, y: bombSquare.y})
         if(allCrates[bombSquare.x-i] && allCrates[bombSquare.x-i][bombSquare.y]  && allCrates[bombSquare.x-i][bombSquare.y].crate ) break;
@@ -103,7 +102,6 @@ export const Utils = {
        if(allCrates[bombSquare.x] && allCrates[bombSquare.x][bombSquare.y-i] && allCrates[bombSquare.x][bombSquare.y-i].crate ) break;
 
       }
-      console.log('adjacentCrates:', adjacentCrates);
       return adjacentCrates;
     }
 

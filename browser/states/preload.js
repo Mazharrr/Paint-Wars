@@ -15,7 +15,9 @@ export default class Preload {
         game.load.image('fire', '../assets/fire.png')
         game.load.image('blue', '../assets/bluePaint.png');
 
-        game.load.image('bombPowerUp', '../assets/bomb.png')
+        game.load.image('bombPowerUp', '../assets/quantityPowerUp.png')
+        game.load.image('rangePowerUp', '../assets/rangePowerUp.png')
+        game.load.image('speedPowerUp', '../assets/speedPowerUp.png')
 
 
         game.load.atlas('mechaKoopa', '../assets/mechaKoopa/mechaKoopaTP.png', '../assets/mechaKoopa/mechaKoopaTP.json')
