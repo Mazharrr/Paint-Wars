@@ -1,7 +1,8 @@
 //import game from '../states/stateManager'
 
 const initialState = {
-  crates: []
+  crates: [],
+  bombs: []
 };
 
 const RECIEVE_LAYER= 'RECIEVE_LAYER';
@@ -121,9 +122,12 @@ const reducer = (state = initialState , action)=>{
 
         break;
     case ADD_BOMB:
-    if(!newState.crates[action.payload.x][action.payload.y].bomb) newState.crates[action.payload.x][action.payload.y].bomb = action.bomb
+    if(!newState.crates[action.payload.x][action.payload.y].bomb){ newState.crates[action.payload.x][action.payload.y].bomb = action.bomb
+    newState.bombs.push(action.bomb)
+    }
     break;
     case REMOVE_BOMB:
+      newState.bombs = newState.bombs.filter(bomb=> bomb!==newState.crates[action.payload.x][action.payload.y].bomb)
        newState.crates[action.payload.x][action.payload.y].bomb.sprite.kill()
       newState.crates[action.payload.x][action.payload.y].bomb= false
     break;

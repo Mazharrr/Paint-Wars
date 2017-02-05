@@ -18,8 +18,8 @@ export default class MechaKoopa {
       this.exploded = false
       this.limit = 1
       this.range = range
-      this.addSprite()
       this.blownUp = false
+      this.addSprite()
 
     }
 
@@ -36,7 +36,7 @@ export default class MechaKoopa {
     // this.sprite.animations.add('walkLeft', arrayMaker(13,24), 15, true)
     // this.sprite.animations.add('walkRight', arrayMaker(155,191), 15, true)
      this.sprite.animations.add('explodeLeft', arrayMaker(39,49).concat(arrayMaker(56, 62)).concat(arrayMaker(39,49).concat(arrayMaker(56, 62))).concat(arrayMaker(39,49).concat(arrayMaker(56, 62))), 15)
-
+     this.sprite.body.setSize(48,48)
     // this.sprite.animations.add('explodeRight', arrayMaker(195,206).concat(arrayMaker(214, 222)).concat(explosion), 15, false)
     // this.sprite.animations.add('pauseLeft', arrayMaker(18,26), 3)
     // this.sprite.animations.add('pauseRight', arrayMaker(166,175), 3)
