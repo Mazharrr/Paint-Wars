@@ -2,8 +2,14 @@ import {Utils} from './utils'
 import MechaKoopa from './mechakoopa'
 import Game1 from '../states/game'
 import store from '../store';
-import {removeCrate, addPaint, loadCrates, removePaint, addFlames, addPowerUp, removePowerUp, addBomb, removeBomb} from '../reducers/Tiles'
+import {removeCrate, addPaint, loadCrates, removePaint, addFlames, addPowerUp, removePowerUp, addBomb, removeBomb} from '../reducers/Tiles';
+import {addPlayerName, addAvatar, increaseScore, addToPlayerPowerUp, killPlayer} from '../reducers/Player';
 
+//dummy data for name and avatar
+let dummy = {
+  name: "James",
+  avatar: "https://www.mariowiki.com/images/thumb/7/71/NSMBU_LarryKoopa.png/400px-NSMBU_LarryKoopa.png"
+}
 
 
 export default class Hero{
@@ -15,17 +21,20 @@ export default class Hero{
       this.exp = 0;
       this.addSprite()
       this.bombs = []
-      this.limit = 1
+      this.limit = store.getState().Player.limit
       this.direction = 'left';
-      this.range = 1
+      this.range = store.getState().Player.range
       this.fire = fire
       this.paint = paint
       this.color = 'blue';
       this.immuneTime = 0;
-      this.speed = 100
+      this.speed = store.getState().Player.speed
       this.powerGroup = powerGroup
       this.bomb
       this.onePress
+      this.name = store.dispatch(addPlayerName(dummy.name))
+      this.avatar = store.dispatch(addAvatar(dummy.avatar))
+      this.score = store.getState().Player.score
 
     }
 
@@ -57,15 +66,11 @@ export default class Hero{
         power.scale.setTo(1.3,1.3)
         power.anchor.setTo(0.5,0.5)
         store.dispatch(addPowerUp( randTile.x, randTile.y , power))
-        console.log('availableTiles BEFORE', availableTiles);
         availableTiles.splice(randNum, 1);
-        console.log('availableTiles AFTER', availableTiles);
 
       })
 
-     this.limit = 1;
-     this.range = 1;
-     this.speed = 100;
+     store.dispatch(killPlayer);
     }
     addSprite(){
       this.sprite = this.game.add.sprite(72, 72, 'hero1')
@@ -103,16 +108,16 @@ export default class Hero{
         this.game.physics.arcade.overlap(this.sprite, power,()=>{
 
           store.dispatch(removePowerUp(power.gridCords.x , power.gridCords.y))
+          store.dispatch(addToPlayerPowerUp(power.key))
+          console.log('player info', store.getState().Player)
+          
+
           if(power.key === 'bombPowerUp') this.limit++
           if(power.key === 'speedPowerUp') this.speed+=25
           if(power.key === 'rangePowerUp') this.range++
-          console.log('colliding with ', power.gridCords)
         })
       })
-      // this.game.physics.arcade.overlap(this.sprite, this.powerGroup, ()=>{
 
-      //             console.log('colliding')
-      //           })
       if(this.immuneTime > game.time.now){
         this.sprite.body.velocity.setTo(0,0)
       } else {
@@ -143,7 +148,6 @@ export default class Hero{
 
       if (this.space.isDown){
           if(!this.onePress){
-        // this.sprite.animations.play('spin')
         if(this.bombs.length < this.limit ){
           let blockCoords = Utils.mapCoordsToBlock(this.x+10, this.y+20 )
           let gridCoords = Utils.mapCoordsToGrid(blockCoords.x,blockCoords.y)
@@ -201,6 +205,7 @@ export default class Hero{
                     myPaint.scale.setTo(0.15,0.15)
                     myPaint.anchor.setTo(0.5,0.5)
                     store.dispatch(addPaint(crate.x, crate.y,  myPaint))
+                    store.dispatch(increaseScore())
                   }
                   if (allCrates[crate.x] && allCrates[crate.x][crate.y]&& allCrates[crate.x][crate.y].crate !== false) {
                     allCrates[crate.x][crate.y].crate.kill()
@@ -239,8 +244,6 @@ export default class Hero{
             this.bomb.blownUp = true;
     }
 
-    // setEx(bomb, time){
 
-    // }
 
 }
