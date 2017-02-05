@@ -1,11 +1,15 @@
 import game from './stateManager';
 import Hero from '../class/hero1';
 import store from '../store';
+import socket from '../socket'
 import {loadCrates, addPlayer} from '../reducers/Tiles';
+import enemyUpdate from '../enemyUpdate'
 
-var player;
-var koopasArr= [];
-var crateTable;
+export let player
+export let powerGroup
+export let crate
+export let fire
+export let paint
 
 
 
@@ -32,22 +36,22 @@ export default class Game{
     game.physics.enable(this.blockedLayer, Phaser.Physics.ARCADE);
     this.backgroundLayer.resizeWorld();
 
-    this.powerGroup = game.add.group();
-    this.powerGroup.enableBody = true;
-    this.powerGroup.physicsBodyType = Phaser.Physics.ARCADE;
+    powerGroup = game.add.group();
+    powerGroup.enableBody = true;
+    powerGroup.physicsBodyType = Phaser.Physics.ARCADE;
 
     this.crate = game.add.group();
     this.crate.enableBody = true;
     this.crate.physicsBodyType = Phaser.Physics.ARCADE;
 
 
-    this.fire = game.add.group();
-    this.fire.enableBody = true;
-    this.fire.physicsBodyType = Phaser.Physics.ARCADE;
+    fire = game.add.group();
+    fire.enableBody = true;
+    fire.physicsBodyType = Phaser.Physics.ARCADE;
 
-    this.paint = game.add.group()
-    this.paint.enableBody = true;
-    this.paint.physicsBodyType = Phaser.Physics.ARCADE;
+    paint = game.add.group()
+    paint.enableBody = true;
+    paint.physicsBodyType = Phaser.Physics.ARCADE;
 
 
 
@@ -85,13 +89,15 @@ export default class Game{
 
     }
     store.dispatch(loadCrates(crateTable));
-    console.log('store', store.getState());
 
     game.physics.startSystem(Phaser.Physics.ARCADE);
     // this.mechaKoopa = new MechaKoopa(game);
-    this.hero = new Hero(game, this.fire, this.paint, this.powerGroup);
+    console.log(socket.id)
+    this.hero = new Hero(game, socket.id);
     player = this.hero;
     store.dispatch(addPlayer())
+
+
 
 
 
@@ -106,6 +112,7 @@ export default class Game{
 
   }
   update(){
+
     game.physics.arcade.collide(this.hero.sprite, this.blockedLayer);
     game.physics.arcade.collide(this.hero.sprite, this.crate);
     //game.physics.arcade.collide(this.hero.sprite, this.bombGroup);
@@ -114,9 +121,8 @@ export default class Game{
     // game.physics.arcade.overlap(this.fire, this.blockedLayer, () =>{console.log('overlap')})
 
     if(this.hero)this.hero.update(game)
-    	//  koopasArr[0].update(game);
-    	//  koopasArr[1].update(game);
     	 if(this.mechaKoopa) this.mechaKoopa.update(game)
+       enemyUpdate()
 
 
   }

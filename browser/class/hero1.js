@@ -2,12 +2,15 @@ import {Utils} from './utils'
 import MechaKoopa from './mechakoopa'
 import Game1 from '../states/game'
 import store from '../store';
+import socket from '../socket.js'
 import {removeCrate, addPaint, loadCrates, removePaint, addFlames, addPowerUp, removePowerUp, addBomb, removeBomb} from '../reducers/Tiles'
+import {powerGroup, crate, fire, paint} from '../states/game'
+
 
 
 
 export default class Hero{
-  constructor(game, fire, paint, powerGroup){
+  constructor(game, id){
       this.game = game
       this.x;
       this.y;
@@ -26,6 +29,7 @@ export default class Hero{
       this.powerGroup = powerGroup
       this.bomb
       this.onePress
+      this.id = id
 
     }
 
@@ -45,8 +49,7 @@ export default class Hero{
            })
       })
 
-      console.log('store state', store.getState());
-      console.log('totalDrops', totalDrops);
+
 
       totalDrops.forEach(powerUp =>{
         let randNum = Math.floor(Math.random()*availableTiles.length)
@@ -57,9 +60,7 @@ export default class Hero{
         power.scale.setTo(1.3,1.3)
         power.anchor.setTo(0.5,0.5)
         store.dispatch(addPowerUp( randTile.x, randTile.y , power))
-        console.log('availableTiles BEFORE', availableTiles);
         availableTiles.splice(randNum, 1);
-        console.log('availableTiles AFTER', availableTiles);
 
       })
 
@@ -84,6 +85,9 @@ export default class Hero{
     }
 
     update(game){
+
+      this.updateSocket()
+
       game.world.bringToTop(this.powerGroup)
       game.world.bringToTop(this.fire)
       if(this.bomb) game.world.bringToTop(this.bomb.sprite)
@@ -106,7 +110,6 @@ export default class Hero{
           if(power.key === 'bombPowerUp') this.limit++
           if(power.key === 'speedPowerUp') this.speed+=25
           if(power.key === 'rangePowerUp') this.range++
-          console.log('colliding with ', power.gridCords)
         })
       })
       // this.game.physics.arcade.overlap(this.sprite, this.powerGroup, ()=>{
@@ -239,8 +242,8 @@ export default class Hero{
             this.bomb.blownUp = true;
     }
 
-    // setEx(bomb, time){
-
-    // }
+  updateSocket(){
+        socket.emit('client_data_transfer', {position: this.sprite.position})
+  }
 
 }
