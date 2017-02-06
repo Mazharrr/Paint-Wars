@@ -4,6 +4,7 @@ import Game1 from '../states/game'
 import store from '../store';
 import {removeCrate, addPaint, loadCrates, removePaint, addFlames, addPowerUp, removePowerUp, addBomb, removeBomb} from '../reducers/Tiles';
 import {addPlayerName, addAvatar, increaseScore, addToPlayerPowerUp, killPlayer} from '../reducers/Player';
+import {addMultiplayerAvatar, incrementMuliplayerScore, resetMultiplayerScore, restartMultiplayerScoreboard} from '../reducers/Scoreboard';
 import socket from '../socket.js'
 import {powerGroup, crate, fire, paint} from '../states/game'
 
@@ -36,6 +37,8 @@ export default class Hero{
       this.onePress
       this.name = store.dispatch(addPlayerName(dummy.name))
       this.avatar = store.dispatch(addAvatar(dummy.avatar))
+      store.dispatch(addMultiplayerAvatar(this.color, dummy.avatar))
+      store.dispatch(restartMultiplayerScoreboard);
       this.score = store.getState().Player.score
       this.id = id
       this.addSprite()
@@ -105,7 +108,6 @@ export default class Hero{
         // this.sprite = this.game.add.sprite(72, 72, 'hero1')
         // break;
         default:
-        console.log(this.color,' failed')
         break
       }
       this.sprite.scale.setTo(0.7,0.7)
@@ -125,6 +127,8 @@ export default class Hero{
       this.limit = store.getState().Player.limit
       this.range = store.getState().Player.range
       this.speed = store.getState().Player.speed
+      this.score = store.getState().Player.score
+
 
       this.updateSocket()
 
@@ -152,6 +156,7 @@ export default class Hero{
           store.dispatch(removePaint(this.color))
           this.reset();
             store.dispatch(killPlayer());
+            store.dispatch(resetMultiplayerScore(this.color));
       })
 
 
@@ -168,7 +173,6 @@ export default class Hero{
 
           store.dispatch(removePowerUp(power.gridCords.x , power.gridCords.y))
           store.dispatch(addToPlayerPowerUp(power.key))
-          console.log('player info', store.getState().Player)
 
 
           if(power.key === 'bombPowerUp') this.limit++
@@ -273,6 +277,8 @@ export default class Hero{
                     myPaint.anchor.setTo(0.5,0.5)
                     store.dispatch(addPaint(crate.x, crate.y,  myPaint))
                     store.dispatch(increaseScore())
+
+                    store.dispatch(incrementMuliplayerScore(this.color));
                   }
                   if (allCrates[crate.x] && allCrates[crate.x][crate.y]&& allCrates[crate.x][crate.y].crate !== false) {
                     socket.emit('client_remove_crate',{x: crate.x, y: crate.y, socket: socket.id})
@@ -308,7 +314,7 @@ export default class Hero{
 
 
   updateSocket(){
-        socket.emit('client_data_transfer', {position: this.sprite.position, color: this.color})
+        socket.emit('client_data_transfer', {position: this.sprite.position, color: this.color, score: this.score})
   }
 
 }

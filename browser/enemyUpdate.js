@@ -3,6 +3,7 @@ import Hero from './class/hero1'
 import socket from './socket'
 import game from './states/stateManager'
 import {crate, blockedLayer} from './states/game'
+import {setMuliplayerScore} from './reducers/Scoreboard'
 
 
 let enemies = {}
@@ -12,8 +13,6 @@ let me = {}
 const updateEnemy = () =>{
 let recievedEnemies = store.getState().Players.players
 let currentClients = store.getState().Players.sockets
-// console.log(currentClients)
-// console.log(socket.id)
 
   Object.keys(enemies).forEach((key)=>{
     if(!recievedEnemies[key]){
@@ -31,10 +30,10 @@ let currentClients = store.getState().Players.sockets
       enemies[key].sprite.x = recievedEnemies[key].position.x
       enemies[key].sprite.y = recievedEnemies[key].position.y
       enemies[key].sprite.animations.play('walk')
+      store.dispatch(setMuliplayerScore(recievedEnemies[key].color, recievedEnemies[key].score))
     }
 
     if(!enemyExistBool){
-      console.log('enemy rendered')
 enemies[key]=  new Hero(game, key, recievedEnemies[key].color)
   }
 }
