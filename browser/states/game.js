@@ -3,6 +3,8 @@ import Hero from '../class/hero1';
 import store from '../store';
 import socket from '../socket'
 import {loadCrates, addPlayer} from '../reducers/Tiles';
+import {loadTimer} from '../reducers/Lobby';
+
 import enemyUpdate from '../enemyUpdate'
 
 export let player
@@ -136,8 +138,12 @@ export default class Game{
 
      render() {
         // If our timer is running, show the time in a nicely formatted way, else show 'Done!'
+
         if (timer.running) {
             this.game.debug.text(this.formatTime(Math.round((timerEvent.delay - timer.ms) / 1000)), 2, 14, "#ff0");
+            
+            store.dispatch(loadTimer(Math.round((timerEvent.delay - timer.ms) / 1000)))
+
         }
         else {
             this.game.debug.text("Done!", 2, 14, "#0f0");

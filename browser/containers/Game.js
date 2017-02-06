@@ -6,6 +6,7 @@ import GameStart from '../startGame';
 
 const scoreBoard = (props) => {
   let player = props.player;
+  let lobby = props.lobby;
   console.log("props:", props);
   let {green, blue, purple, red} = props.scoreboard;
   return (
@@ -29,6 +30,9 @@ const scoreBoard = (props) => {
             </div>
             <h1>
               Score: {player.score}
+            </h1>
+            <h1>
+              Time: {lobby.timer}
             </h1>
             <h1>
               Speed: {player.speed}
@@ -82,7 +86,8 @@ const scoreBoard = (props) => {
 
 const mapStateToProps = (state) => ({
   player: state.Player,
-  scoreboard: state.Scoreboard
+  scoreboard: state.Scoreboard,
+  lobby: state.Lobby
 })
 
 const mapDispatchToProps = (dispatch) => ({

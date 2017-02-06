@@ -4,13 +4,20 @@ import {hashHistory} from 'react-router';
 
 const initialState = {
 lobby : [],
+timer: ''
 }
 
 const LOAD_LOBBY = 'LOAD_LOBBY'
+const LOAD_TIMER = 'LOAD_TIMER'
 
 const loadLobby=  (lobby)=>({
   type: LOAD_LOBBY,
   lobby
+})
+
+export const loadTimer=  (timer)=>({
+  type: LOAD_TIMER,
+  timer
 })
 
 
@@ -36,6 +43,9 @@ const reducer =  (state = initialState, action) => {
   switch (action.type) {
     case LOAD_LOBBY:
     newState.lobby = action.lobby
+    break;
+    case LOAD_TIMER:
+    newState.timer = action.timer
     break;
     default:
       return state;
