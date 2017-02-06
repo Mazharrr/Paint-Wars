@@ -2,11 +2,17 @@ import {Utils} from './utils'
 import MechaKoopa from './mechakoopa'
 import Game1 from '../states/game'
 import store from '../store';
+import {removeCrate, addPaint, loadCrates, removePaint, addFlames, addPowerUp, removePowerUp, addBomb, removeBomb} from '../reducers/Tiles';
+import {addPlayerName, addAvatar, increaseScore, addToPlayerPowerUp, killPlayer} from '../reducers/Player';
 import socket from '../socket.js'
-import {removeCrate, addPaint, loadCrates, removePaint, addFlames, addPowerUp, removePowerUp, addBomb, removeBomb} from '../reducers/Tiles'
 import {powerGroup, crate, fire, paint} from '../states/game'
 
 
+//dummy data for name and avatar
+let dummy = {
+  name: "James",
+  avatar: "https://pbs.twimg.com/profile_images/490094309757038594/WvFG7LDV_reasonably_small.png"
+}
 
 
 export default class Hero{
@@ -17,22 +23,27 @@ export default class Hero{
       this.health = 100;
       this.exp = 0;
       this.bombs = []
-      this.limit = 1
       this.direction = 'left';
-      this.range = 1
+      this.limit = store.getState().Player.limit
+      this.range = store.getState().Player.range
+      this.speed = store.getState().Player.speed
       this.fire = fire
       this.paint = paint
       this.color = color
       this.immuneTime = 0;
-      this.speed = 100
       this.powerGroup = powerGroup
       this.bomb
       this.onePress
+      this.name = store.dispatch(addPlayerName(dummy.name))
+      this.avatar = store.dispatch(addAvatar(dummy.avatar))
+      this.score = store.getState().Player.score
       this.id = id
       this.addSprite()
 
     }
 
+
+    //after redux for score board, new bug at line 63..."cannot read property x of undefined..."
     reset(){
       let speedDrops = Array((this.speed-100)/25).fill('speedPowerUp')
       // createSpeedPowerUp(speedDrops)
@@ -66,10 +77,6 @@ export default class Hero{
         availableTiles.splice(randNum, 1);
 
       })
-
-     this.limit = 1;
-     this.range = 1;
-     this.speed = 100;
     }
     addSprite(){
       switch(this.color){
@@ -103,6 +110,9 @@ export default class Hero{
     }
 
     update(game){
+      this.limit = store.getState().Player.limit
+      this.range = store.getState().Player.range
+      this.speed = store.getState().Player.speed
 
       this.updateSocket()
 
@@ -129,6 +139,7 @@ export default class Hero{
 
           store.dispatch(removePaint(this.color))
           this.reset();
+            store.dispatch(killPlayer());
       })
 
 
@@ -144,15 +155,16 @@ export default class Hero{
           socket.emit('client_get_power', {x: power.gridCords.x, y: power.gridCords.y, range: this.range, socket: socket.id})
 
           store.dispatch(removePowerUp(power.gridCords.x , power.gridCords.y))
+          store.dispatch(addToPlayerPowerUp(power.key))
+          console.log('player info', store.getState().Player)
+
+
           if(power.key === 'bombPowerUp') this.limit++
           if(power.key === 'speedPowerUp') this.speed+=25
           if(power.key === 'rangePowerUp') this.range++
         })
       })
-      // this.game.physics.arcade.overlap(this.sprite, this.powerGroup, ()=>{
 
-      //             console.log('colliding')
-      //           })
       if(this.immuneTime > game.time.now){
         this.sprite.body.velocity.setTo(0,0)
       } else {
@@ -182,7 +194,6 @@ export default class Hero{
 
       if (this.space.isDown){
           if(!this.onePress){
-        // this.sprite.animations.play('spin')
         if(this.bombs.length < this.limit ){
           let blockCoords = Utils.mapCoordsToBlock(this.x+10, this.y+20 )
           let gridCoords = Utils.mapCoordsToGrid(blockCoords.x,blockCoords.y)
@@ -249,6 +260,7 @@ export default class Hero{
                     myPaint.scale.setTo(0.15,0.15)
                     myPaint.anchor.setTo(0.5,0.5)
                     store.dispatch(addPaint(crate.x, crate.y,  myPaint))
+                    store.dispatch(increaseScore())
                   }
                   if (allCrates[crate.x] && allCrates[crate.x][crate.y]&& allCrates[crate.x][crate.y].crate !== false) {
                     socket.emit('client_remove_crate',{x: crate.x, y: crate.y, socket: socket.id})
@@ -278,11 +290,10 @@ export default class Hero{
                 })
 
 
-
-
             });
             this.bomb.blownUp = true;
     }
+
 
   updateSocket(){
         socket.emit('client_data_transfer', {position: this.sprite.position, color: this.color})
