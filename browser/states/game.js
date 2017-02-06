@@ -146,6 +146,7 @@ export default class Game{
 
         }
         else {
+            store.dispatch(loadTimer("Done!"))
             this.game.debug.text("Done!", 2, 14, "#0f0");
         }
     }

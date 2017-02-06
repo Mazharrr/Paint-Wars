@@ -7,7 +7,7 @@ import GameStart from '../startGame';
 const scoreBoard = (props) => {
   let player = props.player;
   let lobby = props.lobby;
-  console.log("props:", props);
+ 
   let {green, blue, purple, red} = props.scoreboard;
   return (
     <div>
