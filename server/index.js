@@ -7,9 +7,15 @@ const app = express()
 const fs = require('fs')
 const socketio = require('socket.io');
 const server = require('http').createServer(app)
-
-
 const io = socketio(server);
+const listeners =  require('./listeners')
+const {sendGameState} = require('./game/gameState')
+
+// server.on('request', app)
+
+io.on('connection', socket =>{listeners(io,socket)})
+sendGameState(io)
+
 
 
 

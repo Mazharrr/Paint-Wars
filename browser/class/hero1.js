@@ -2,8 +2,15 @@ import {Utils} from './utils'
 import MechaKoopa from './mechakoopa'
 import Game1 from '../states/game'
 import store from '../store';
+<<<<<<< HEAD
 import {removeCrate, addPaint, loadCrates, removePaint, addFlames, addPowerUp, removePowerUp, addBomb, removeBomb} from '../reducers/Tiles';
 import {addPlayerName, addAvatar, increaseScore, addToPlayerPowerUp, killPlayer} from '../reducers/Player';
+=======
+import socket from '../socket.js'
+import {removeCrate, addPaint, loadCrates, removePaint, addFlames, addPowerUp, removePowerUp, addBomb, removeBomb} from '../reducers/Tiles'
+import {powerGroup, crate, fire, paint} from '../states/game'
+
+>>>>>>> master
 
 //dummy data for name and avatar
 let dummy = {
@@ -13,13 +20,12 @@ let dummy = {
 
 
 export default class Hero{
-  constructor(game, fire, paint, powerGroup){
+  constructor(game, id, color ){
       this.game = game
       this.x;
       this.y;
       this.health = 100;
       this.exp = 0;
-      this.addSprite()
       this.bombs = []
       this.direction = 'left';
       this.limit = store.getState().Player.limit
@@ -27,7 +33,7 @@ export default class Hero{
       this.speed = store.getState().Player.speed
       this.fire = fire
       this.paint = paint
-      this.color = 'blue';
+      this.color = color
       this.immuneTime = 0;
       this.powerGroup = powerGroup
       this.bomb
@@ -35,10 +41,12 @@ export default class Hero{
       this.name = store.dispatch(addPlayerName(dummy.name))
       this.avatar = store.dispatch(addAvatar(dummy.avatar))
       this.score = store.getState().Player.score
+      this.id = id
+      this.addSprite()
 
     }
 
-    
+
     //after redux for score board, new bug at line 63..."cannot read property x of undefined..."
     reset(){
       let speedDrops = Array((this.speed-100)/25).fill('speedPowerUp')
@@ -56,13 +64,15 @@ export default class Hero{
            })
       })
 
-      console.log('store state', store.getState());
-      console.log('totalDrops', totalDrops);
+
 
       totalDrops.forEach(powerUp =>{
         let randNum = Math.floor(Math.random()*availableTiles.length)
         let randTile = availableTiles[randNum]
         let powerXY = Utils.indexToXY(randTile.x, randTile.y)
+        socket.emit('client_make_power', {
+            x: powerXY.x, y: powerXY.y, gridX: randTile.x, gridY: randTile.y, power: powerUp, socket: socket.id
+          })
         let power = this.powerGroup.create(powerXY.x, powerXY.y, powerUp)
         power.gridCords= {x: randTile.x, y: randTile.y}
         power.scale.setTo(1.3,1.3)
@@ -73,14 +83,29 @@ export default class Hero{
       })
     }
     addSprite(){
-      this.sprite = this.game.add.sprite(72, 72, 'hero1')
+      switch(this.color){
+        case 'blue':
+        this.sprite = this.game.add.sprite(72, 72, 'hero1')
+        break;
+        case 'purple':
+        this.sprite = this.game.add.sprite(648, 648, 'hero1')
+        break;
+        case 'green':
+        this.sprite = this.game.add.sprite(648, 72, 'hero1')
+        break;
+        case 'red':
+        this.sprite = this.game.add.sprite(72, 648, 'hero1')
+        break;
+        default:
+        console.log(this.color,' failed')
+        break
+      }
       this.sprite.scale.setTo(0.7,0.7)
       this.game.physics.arcade.enable(this.sprite)
       this.sprite.enableBody = true;
       this.sprite.physicsBodyType = Phaser.Physics.ARCADE;
       this.sprite.body.collideWorldBounds = true;
       this.game.camera.follow(this.sprite)
-      this.sprite.body.setSize(40,60)
       this.sprite.animations.add('walk',[55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,84,85,85,86,87], 15)
       this.sprite.animations.add('spin',[165,166,167,168,169,170,171,172], 10)
       this.sprite.animations.play('walk')
@@ -92,6 +117,8 @@ export default class Hero{
       this.limit = store.getState().Player.limit
       this.range = store.getState().Player.range
       this.speed = store.getState().Player.speed
+
+      this.updateSocket()
 
       game.world.bringToTop(this.powerGroup)
       game.world.bringToTop(this.fire)
@@ -105,11 +132,31 @@ export default class Hero{
         right: game.input.keyboard.addKey(Phaser.Keyboard.D),
       };
       this.space = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR)
+
+
+      this.game.physics.arcade.collide(this.sprite, this.fire, () => {
+          if(this.immuneTime < this.game.time.now){
+            this.immuneTime = this.game.time.now + 1000;
+            //animation goes here
+          }
+          socket.emit('client_remove_paint',{color: this.color, socket: socket.id})
+
+          store.dispatch(removePaint(this.color))
+          this.reset();
+            store.dispatch(killPlayer());
+      })
+
+
+
+
+
+
       this.x = this.sprite.body.x;
       this.y = this.sprite.body.y;
       this.sprite.body.velocity.setTo(0,0)
       this.powerGroup.children.forEach((power)=>{
         this.game.physics.arcade.overlap(this.sprite, power,()=>{
+          socket.emit('client_get_power', {x: power.gridCords.x, y: power.gridCords.y, range: this.range, socket: socket.id})
 
           store.dispatch(removePowerUp(power.gridCords.x , power.gridCords.y))
           store.dispatch(addToPlayerPowerUp(power.key))
@@ -125,12 +172,11 @@ export default class Hero{
       if(this.immuneTime > game.time.now){
         this.sprite.body.velocity.setTo(0,0)
       } else {
-            if(this.bomb) {
-              this.bombs.forEach((bomb)=>{
+              store.getState().Tiles.bombs.forEach((bomb)=>{
 
                 game.physics.arcade.collide(this.sprite, bomb.sprite)
               })
-            }
+
 
             if (cursors.left.isDown || wasd.left.isDown)
             {
@@ -159,6 +205,7 @@ export default class Hero{
 
                 if(!store.getState().Tiles.crates[gridCoords.x][gridCoords.y].bomb)
                 {
+                socket.emit('client_place_bomb', {x: blockCoords.x, y: blockCoords.y, range: this.range, socket: socket.id, gridX: gridCoords.x, gridY: gridCoords.y})
                 this.bomb = new MechaKoopa(game, blockCoords.x, blockCoords.y, this.range);
                 this.bomb.sprite.animations.play('explodeLeft');
                 this.bombs.push(this.bomb);
@@ -181,6 +228,7 @@ export default class Hero{
     }
     explosion(gridCoords, blockCoords, myBomb, time){
               myBomb.timer = this.game.time.events.add(Phaser.Timer.SECOND * time, () => {
+                socket.emit('client_bomb_explode', {x: gridCoords.x, y: gridCoords.y, socket: socket.id})
               store.dispatch(removeBomb(gridCoords.x, gridCoords.y))
               this.bombs.pop();
               let allCrates = store.getState().Tiles.crates;
@@ -191,6 +239,9 @@ export default class Hero{
               cratesToKill.forEach(crate => {
                   if (allCrates[crate.x] && allCrates[crate.x][crate.y].crate === false) {
                     let flameXY = Utils.indexToXY(crate.x, crate.y)
+                    socket.emit('client_make_fire', {
+                      x: flameXY.x, y: flameXY.y, gridX: crate.x, gridY: crate.y, socket: socket.id
+                    })
                     let flame = this.fire.create(flameXY.x, flameXY.y, 'fire');
 
                     flame.scale.setTo(1.2,1.2)
@@ -205,6 +256,10 @@ export default class Hero{
 
                 let paintGrid = Utils.indexToXY(crate.x, crate.y);
                   if(allCrates[crate.x][crate.y].paint.key!==this.color){
+                  socket.emit('client_make_paint', {
+                      x: paintGrid.x, y: paintGrid.y, gridX: crate.x, gridY: crate.y, color: this.color, socket: socket.id
+                    })
+
                     let myPaint = this.paint.create(paintGrid.x, paintGrid.y, this.color)
                     myPaint.scale.setTo(0.15,0.15)
                     myPaint.anchor.setTo(0.5,0.5)
@@ -212,6 +267,7 @@ export default class Hero{
                     store.dispatch(increaseScore())
                   }
                   if (allCrates[crate.x] && allCrates[crate.x][crate.y]&& allCrates[crate.x][crate.y].crate !== false) {
+                    socket.emit('client_remove_crate',{x: crate.x, y: crate.y, socket: socket.id})
                     allCrates[crate.x][crate.y].crate.kill()
                     store.dispatch(removeCrate(crate.x, crate.y))
                     let powerUpChance = Math.floor(Math.random()*2)+1
@@ -222,33 +278,29 @@ export default class Hero{
                       const randomPowerUpArray = ['bombPowerUp', 'speedPowerUp', 'rangePowerUp']
                       let randomPowerUp = randomPowerUpArray[Math.floor(Math.random()*randomPowerUpArray.length)];
 
-
+                      socket.emit('client_make_power', {
+                          x: powerXY.x, y: powerXY.y, gridX: crate.x, gridY: crate.y, power: randomPowerUp, socket: socket.id
+                        })
                       let power = this.powerGroup.create(powerXY.x, powerXY.y, randomPowerUp)
                       power.gridCords= {x: crate.x, y: crate.y}
                       power.scale.setTo(1.3,1.3)
                       power.anchor.setTo(0.5,0.5)
-                      // this.limit ++;
                       store.dispatch(addPowerUp(crate.x, crate.y, power))
                     }
 
 
-                  };
+                  }
 
                 })
 
-                this.game.physics.arcade.collide(this.sprite, this.fire, () => {
-                    if(this.immuneTime < this.game.time.now){
-                      this.immuneTime = this.game.time.now + 1000;
-                      //animation goes here
-                    }
-                    store.dispatch(removePaint(this.color))
-                    this.reset();
-                    store.dispatch(killPlayer());
-                })
+
             });
             this.bomb.blownUp = true;
     }
 
 
+  updateSocket(){
+        socket.emit('client_data_transfer', {position: this.sprite.position, color: this.color})
+  }
 
 }
