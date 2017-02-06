@@ -2,15 +2,11 @@ import {Utils} from './utils'
 import MechaKoopa from './mechakoopa'
 import Game1 from '../states/game'
 import store from '../store';
-<<<<<<< HEAD
 import {removeCrate, addPaint, loadCrates, removePaint, addFlames, addPowerUp, removePowerUp, addBomb, removeBomb} from '../reducers/Tiles';
 import {addPlayerName, addAvatar, increaseScore, addToPlayerPowerUp, killPlayer} from '../reducers/Player';
-=======
 import socket from '../socket.js'
-import {removeCrate, addPaint, loadCrates, removePaint, addFlames, addPowerUp, removePowerUp, addBomb, removeBomb} from '../reducers/Tiles'
 import {powerGroup, crate, fire, paint} from '../states/game'
 
->>>>>>> master
 
 //dummy data for name and avatar
 let dummy = {
