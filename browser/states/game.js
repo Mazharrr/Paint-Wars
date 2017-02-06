@@ -11,6 +11,7 @@ export let crate
 export let fire
 export let paint
 export let blockedLayer
+export let timer, timerEvent, text;
 
 
 
@@ -20,6 +21,15 @@ export default class Game{
     game.world.setBounds(0,0,720 ,720)
     this.map = this.game.add.tilemap('finalMap');
     this.map.addTilesetImage('tileset-biome', 'gameTiles');
+
+     // Create a custom timer
+        timer = this.game.time.create();
+        
+        // Create a delayed event 1m and 30s from now
+        timerEvent = timer.add(Phaser.Timer.MINUTE * 1 + Phaser.Timer.SECOND * 30, this.endTimer, this);
+        
+        // Start the timer
+        timer.start();
 
     blockedLayer = this.map.createLayer('10 obstacles')
     this.backgroundLayer = this.map.createLayer('0 floor')
@@ -124,4 +134,25 @@ export default class Game{
 
   }
 
+     render() {
+        // If our timer is running, show the time in a nicely formatted way, else show 'Done!'
+        if (timer.running) {
+            this.game.debug.text(this.formatTime(Math.round((timerEvent.delay - timer.ms) / 1000)), 2, 14, "#ff0");
+        }
+        else {
+            this.game.debug.text("Done!", 2, 14, "#0f0");
+        }
+    }
+    endTimer() {
+        // Stop the timer when the delayed event triggers
+        timer.stop();
+    }
+    formatTime(s) {
+        // Convert seconds (s) to a nicely formatted and padded time string
+        var minutes = "0" + Math.floor(s / 60);
+        var seconds = "0" + (s - minutes * 60);
+        return minutes.substr(-2) + ":" + seconds.substr(-2);   
+    }
+
+  
 }
