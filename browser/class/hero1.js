@@ -38,6 +38,8 @@ export default class Hero{
 
     }
 
+    
+    //after redux for score board, new bug at line 63..."cannot read property x of undefined..."
     reset(){
       let speedDrops = Array((this.speed-100)/25).fill('speedPowerUp')
       // createSpeedPowerUp(speedDrops)
