@@ -1,10 +1,8 @@
 import React from 'react';
-import { Link } from 'react-router';
-import axios from 'axios'
+import {Link} from 'react-router'
+import { connect } from 'react-redux';
 
-export default function (props) {
-  
-  // console.log(props)
+const Header = function (props) {
 
   return (
     <header>
@@ -15,21 +13,30 @@ export default function (props) {
         <div className="col-xs-4">
           <Link to='/lobby'>
             <h1>Lobby</h1>
-          </Link> 
+          </Link>
         </div>
         <div className="col-xs-4">
           <Link to='/lobby'>
             <h1>Github</h1>
-          </Link> 
+          </Link>
         </div>
-        { props.player && 
+        { props.Player &&
           <div className="col-xs-4">
-              <h1>{props.player.name}</h1>
+              <h1>Name: {props.Player.name}</h1>
           </div>
         }
-        
+
       </div>
       <div className="clear"></div>
     </header>
   );
 }
+
+const mapStateToProps = (state) => ({
+Player: state.Player})
+
+const mapDispatchToProps = (dispatch) => ({
+})
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(Header);

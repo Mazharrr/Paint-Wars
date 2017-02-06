@@ -26,6 +26,7 @@ sendGameState(io)
   .use(bodyParser.json())
     .use(express.static(resolve(__dirname, '..', 'public')))
     .use(express.static(resolve(__dirname, '..', 'node_modules/phaser/build/')))
+    .use('/api', require('./api'))
     .get('/', (_, res) => res.sendFile(resolve(__dirname, '..', 'public', 'index.html')))
   .use((err, req,res,next )=>{
     console.error(err)
