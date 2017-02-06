@@ -5,7 +5,6 @@ export default class Enemy {
     this.y = y
     this.addSprite()
     this.id = id
-    console.log(id)
   }
   addSprite(){
     this.sprite = this.game.add.sprite(this.x, this.y, 'hero1');
