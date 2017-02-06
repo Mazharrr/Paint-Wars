@@ -128,9 +128,11 @@ const reducer = (state = initialState , action)=>{
     }
     break;
     case REMOVE_BOMB:
-      newState.bombs = newState.bombs.filter(bomb=> bomb!==newState.crates[action.payload.x][action.payload.y].bomb)
+      newState.bombs = newState.bombs.filter(bomb=>  (bomb!==newState.crates[action.payload.x][action.payload.y].bomb) )
+      if(newState.crates[action.payload.x][action.payload.y].bomb){
        newState.crates[action.payload.x][action.payload.y].bomb.sprite.kill()
       newState.crates[action.payload.x][action.payload.y].bomb= false
+    }
     break;
     default:
       return state;

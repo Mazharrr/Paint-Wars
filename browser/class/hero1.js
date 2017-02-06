@@ -92,6 +92,18 @@ export default class Hero{
         case 'red':
         this.sprite = this.game.add.sprite(72, 648, 'hero1')
         break;
+        // case 'blue':
+        // this.sprite = this.game.add.sprite(72, 72, 'hero1')
+        // break;
+        // case 'purple':
+        // this.sprite = this.game.add.sprite(72, 72, 'hero1')
+        // break;
+        // case 'green':
+        // this.sprite = this.game.add.sprite(72, 72, 'hero1')
+        // break;
+        // case 'red':
+        // this.sprite = this.game.add.sprite(72, 72, 'hero1')
+        // break;
         default:
         console.log(this.color,' failed')
         break
