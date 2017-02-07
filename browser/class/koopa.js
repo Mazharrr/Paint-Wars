@@ -72,10 +72,6 @@ export default class Koopa {
   onHit(){
     if(this.hitTime < game.time.now && game.time.now< this.rollingTime){
       this.hitTime = game.time.now+5000
-      // console.log('hit time',this.hitTime)
-      // console.log('roll time', this.rollingTime)
-      // console.log('game time', game.time.now)
-      // console.log('stun time', this.stunTime)
       player.health -=10
       this.sprite.loadTexture('koopa')
     }
