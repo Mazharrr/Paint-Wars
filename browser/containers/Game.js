@@ -7,44 +7,18 @@ import GameStart from '../startGame';
 const scoreBoard = (props) => {
   let player = props.player;
   let lobby = props.lobby;
- 
+
   let {green, blue, purple, red} = props.scoreboard;
   return (
-    <div>
+    <div className="container-fluid">
+
 
       <div className="row">
-        <div className="col-xs-8">
+        <div className="col-md-8">
 
         </div>
-        <div className="col-xs-4">
-          <div>
-            {
-              player.name &&
-              <h1>
-                {player.name}
-              </h1>
-            }
-            <div>
-              <img src={player.avatar}></img>
+        <div className="col-md-4">
 
-            </div>
-            <h1>
-              Score: {player.score}
-            </h1>
-            <h1>
-              Time: {lobby.timer}
-            </h1>
-            <h1>
-              Speed: {player.speed}
-            </h1>
-            <h1>
-              Bomb Quantity: {player.limit}
-            </h1>
-            <h1>
-              Power: {player.range}
-            </h1>
-
-          </div>
         </div>
 
       </div>
@@ -72,10 +46,36 @@ const scoreBoard = (props) => {
 
         </div>
         <div className="col-xs-4">
+
         </div>
-
-
-
+      </div>
+      <div className="row">
+        <div className="col-xs-8"></div>
+        <div className="rpgui-content col-xs-4">
+          <div className="rpgui-container framed">
+              {
+                player.name &&
+                <h1>
+                  {player.name}
+                </h1>
+              }
+              <h1>
+                Score: {player.score}
+              </h1>
+              <h1>
+                Time: {lobby.timer}
+              </h1>
+              <h1>
+                Speed: {player.speed}
+              </h1>
+              <h1>
+                Bomb Quantity: {player.limit}
+              </h1>
+              <h1>
+                Power: {player.range}
+              </h1>
+          </div>
+        </div>
       </div>
 
     </div>

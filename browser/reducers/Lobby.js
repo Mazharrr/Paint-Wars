@@ -49,8 +49,13 @@ export const joinRoom = (roomId, name)=>{
 
 export const leaveRoom = (roomId, name)=>{
   return function(dispatch,getState){
-    console.log(`api/lobby/${roomId}/${name}`)
     axios.delete(`api/lobby/${roomId}/${name}`)
+  }
+}
+
+export const startRoom = (roomId)=>{
+  return function(dispatch, getState){
+      axios.post(`/api/lobby/${roomId}`, {start: true})
   }
 }
 

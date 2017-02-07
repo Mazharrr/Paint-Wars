@@ -6,28 +6,9 @@ const Header = function (props) {
 
   return (
     <header>
-      <h1 className="logo">Blatoon</h1>
 
-      <div className="row">
-        {/* <span style={{marginRight: 7}}>{user.toUpperCase()}</span> */}
-        <div className="col-xs-4">
-          <Link to='/lobby'>
-            <h1>Lobby</h1>
-          </Link>
-        </div>
-        <div className="col-xs-4">
-          <Link to='/lobby'>
-            <h1>Github</h1>
-          </Link>
-        </div>
-        { props.Player &&
-          <div className="col-xs-4">
-              <h1>Name: {props.Player.name}</h1>
-          </div>
-        }
+      <img src="/assets/paintWarsLogo.png" id="gameLogo"></img>
 
-      </div>
-      <div className="clear"></div>
     </header>
   );
 }

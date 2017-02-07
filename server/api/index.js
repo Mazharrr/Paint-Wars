@@ -26,14 +26,20 @@ router.post('/lobby' ,(req,res,next)=>{
     multiple = true
   })
   if(!multiple)
-  {Lobby.push({id: roomId, players: [req.body.name]})
+  {Lobby.push({id: roomId, players: [req.body.name], start: false})
   roomId++;
   }
   res.json(Lobby)
 })
 router.post('/lobby/:roomId',(req,res,next)=>{
-  let currentRoom = Lobby.filter((room)=>room.id=== +req.params.roomId)
-  currentRoom[0].players.push(req.body.name)
+  console.log(req.body)
+  if(req.body === {start: true}){
+    currentRoom[0].start = true
+  }
+  else{
+    let currentRoom = Lobby.filter((room)=>room.id=== +req.params.roomId)
+    currentRoom[0].players.push(req.body.name)
+  }
   res.json(Lobby)
 })
 router.get('/lobby/:roomId', (req,res,next)=>{
@@ -42,7 +48,6 @@ router.get('/lobby/:roomId', (req,res,next)=>{
 })
 router.delete('/lobby/:roomId/:playerName', (req,res,next)=>{
 let currentRoom;
-currentRoom;
 Lobby.forEach((val, index)=>{
   if(val.id=== +req.params.roomId)
   currentRoom = index
