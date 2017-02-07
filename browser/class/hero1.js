@@ -26,28 +26,28 @@ let bowserJunior = {
 };
 let lemmyKoopa = {
  left: Utils.arrayMaker(0,13),
- right: Utils.arrayMaker(26, 39),
+ right: Utils.arrayMaker(26, 39), //fix
  up: Utils.arrayMaker(45, 49),
- down: Utils.arrayMaker(40, 44),
+ down: Utils.arrayMaker(40, 44), //fix
  idle: Utils.arrayMaker(14, 25),
  attack: Utils.arrayMaker(50, 55),
  dead: Utils.arrayMaker(56, 60)
 };
 let larryKoopa = {
- left: Utils.arrayMaker(62, 81),
- right: Utils.arrayMaker(90, 96),
+ left: Utils.arrayMaker(60, 79),
+ right: Utils.arrayMaker(89, 95),
  up: Utils.arrayMaker(99, 107),
- down: Utils.arrayMaker(82,89),
+ down: Utils.arrayMaker(80,86),
  idle: Utils.arrayMaker(0, 33),
- attack: Utils.arrayMaker(36, 61),
+ attack: Utils.arrayMaker(45, 52),
  dead: Utils.arrayMaker(34,35)
 };
 let yoshi = {
  left: Utils.arrayMaker(41, 45),
  right: Utils.arrayMaker(23,26),
  up: Utils.arrayMaker(36, 40),
- down: Utils.arrayMaker(18, 27),
- idle: Utils.arrayMaker(8, 16),
+ down: Utils.arrayMaker(18, 27), //fix
+ idle: Utils.arrayMaker(8, 16), //fix
  attack: Utils.arrayMaker(0, 7),
  dead: Utils.arrayMaker(33, 35)
 };
@@ -79,6 +79,7 @@ export default class Hero{
       store.dispatch(restartMultiplayerScoreboard);
       this.score = store.getState().Player.score
       this.id = id
+      this.animation
       this.addSprite()
 
     }
@@ -128,17 +129,38 @@ export default class Hero{
         this.sprite.animations.add('up', larryKoopa.up, 12, true)
         this.sprite.animations.add('down', larryKoopa.down, 12, true)
         this.sprite.animations.add('idle', larryKoopa.idle, 12, true)
-        this.sprite.animations.add('attack', larryKoopa.attack, 12, true)
+        this.sprite.animations.add('attack', larryKoopa.attack, 30, true)
         this.sprite.animations.add('dead', larryKoopa.dead, 12, true)
         break;
         case 'purple':
         this.sprite = this.game.add.sprite(648, 648, 'lemmyKoopa')
+        this.sprite.animations.add('left', lemmyKoopa.left, 12, true)
+        this.sprite.animations.add('right', lemmyKoopa.right, 12, true)
+        this.sprite.animations.add('up', lemmyKoopa.up, 12, true)
+        this.sprite.animations.add('down', lemmyKoopa.down, 12, true)
+        this.sprite.animations.add('idle', lemmyKoopa.idle, 8, true)
+        this.sprite.animations.add('attack', lemmyKoopa.attack, 12, true)
+        this.sprite.animations.add('dead', lemmyKoopa.dead, 12, true)
         break;
         case 'green':
         this.sprite = this.game.add.sprite(648, 72, 'yoshi')
+        this.sprite.animations.add('left', yoshi.left, 12, true)
+        this.sprite.animations.add('right', yoshi.right, 12, true)
+        this.sprite.animations.add('up', yoshi.up, 12, true)
+        this.sprite.animations.add('down', yoshi.down, 12, true)
+        this.sprite.animations.add('idle', yoshi.idle, 12, true)
+        this.sprite.animations.add('attack', yoshi.attack, 12, true)
+        this.sprite.animations.add('dead', yoshi.dead, 12, true)
         break;
         case 'red':
         this.sprite = this.game.add.sprite(72, 648, 'bowserJunior')
+        this.sprite.animations.add('left', bowserJunior.left, 12, true)
+        this.sprite.animations.add('right', bowserJunior.right, 12, true)
+        this.sprite.animations.add('up', bowserJunior.up, 8, true)
+        this.sprite.animations.add('down', bowserJunior.down, 8, true)
+        this.sprite.animations.add('idle', bowserJunior.idle, 12, true)
+        this.sprite.animations.add('attack', bowserJunior.attack, 5, true)
+        this.sprite.animations.add('dead', bowserJunior.dead, 8, true)
         break;
         default:
         break
@@ -192,7 +214,7 @@ export default class Hero{
 
 
 
-      this.sprite.animations.play('idle')
+      // this.sprite.animations.play('idle')
 
 
       this.x = this.sprite.body.x;
@@ -213,44 +235,77 @@ export default class Hero{
       })
 
       if(this.immuneTime > game.time.now){
+        if(this.animation !='dead')
         this.sprite.animations.play('dead')
+        this.animation ='dead'
         this.sprite.body.velocity.setTo(0,0)
       } else {
               store.getState().Tiles.bombs.forEach((bomb)=>{
 
                 game.physics.arcade.collide(this.sprite, bomb.sprite)
               })
-
-
-            if (cursors.left.isDown || wasd.left.isDown)
-            {
-              this.sprite.animations.play('left')
-
-                this.sprite.body.velocity.x= -this.speed;
+          this.leftDown
+          if (cursors.left.isDown || wasd.left.isDown)
+          {
+            if(!this.leftDown){
+            this.sprite.animations.play('left')
+            this.animation='left'
             }
+            this.leftDown=true
+              this.sprite.body.velocity.x= -this.speed;
+          }
+          if(cursors.left.isUp && wasd.left.isUp){
+            this.leftDown = false
+
+          }
+          this.rightDown
             if (cursors.right.isDown || wasd.right.isDown)
             {
+              if(!this.rightDown){
               this.sprite.animations.play('right')
+              this.animation='right'
+            }
+            this.rightDown = true
 
                 this.sprite.body.velocity.x = this.speed;
             }
+            if(cursors.right.isUp && wasd.right.isUp){
+              this.rightDown = false
+            }
+          this.upDown
             if (cursors.up.isDown || wasd.up.isDown)
             {
+              if(!this.upDown){
               this.sprite.animations.play('up')
-
+              this.animation='up'
+            }
+            this.upDown = true
                 this.sprite.body.velocity.y = -this.speed;
             }
+            if(cursors.up.isUp && wasd.up.isUp){
+              this.upDown = false
+            }
+            this.downDown
             if (cursors.down.isDown || wasd.down.isDown)
             {
+              if(!this.downDown){
               this.sprite.animations.play('down')
-
+              this.animation='down'
+            }
                 this.sprite.body.velocity.y= this.speed;
             }
+            if(cursors.down.isUp && wasd.down.isUp){
+              this.downDown = false
+            }
+
+          if(cursors.down.isUp && cursors.up.isUp && cursors.left.isUp && cursors.right.isUp && wasd.down.isUp && wasd.up.isUp && wasd.left.isUp && wasd.right.isUp){
+            if(this.animation !='idle' && this.animation !='attack' )
+            this.sprite.animations.play('idle')
+            this.animation='idle'
           }
 
       if (this.space.isDown){
           if(!this.onePress){
-            this.sprite.animations.play('attack')
         if(this.bombs.length < this.limit ){
           let blockCoords = Utils.mapCoordsToBlock(this.x+10, this.y+20 )
           let gridCoords = Utils.mapCoordsToGrid(blockCoords.x,blockCoords.y)
@@ -260,6 +315,9 @@ export default class Hero{
                 {
                 socket.emit('client_place_bomb', {x: blockCoords.x, y: blockCoords.y, range: this.range, socket: socket.id, gridX: gridCoords.x, gridY: gridCoords.y})
                 this.bomb = new MechaKoopa(game, blockCoords.x, blockCoords.y, this.range);
+                if(this.animation !='attack')
+                this.sprite.animations.play('attack')
+                this.animation='attack'
                 this.bomb.sprite.animations.play('explodeLeft');
                 this.bombs.push(this.bomb);
                 store.dispatch(addBomb(gridCoords.x, gridCoords.y, this.bomb))
@@ -278,6 +336,7 @@ export default class Hero{
     }
       if(this.space.isUp) this.onePress= false;
         // this.sprite.animations.play('walk')
+      }
     }
     explosion(gridCoords, blockCoords, myBomb, time){
               myBomb.timer = this.game.time.events.add(Phaser.Timer.SECOND * time, () => {
