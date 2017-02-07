@@ -10,7 +10,7 @@ timer: ''
 const LOAD_LOBBY = 'LOAD_LOBBY'
 const LOAD_TIMER = 'LOAD_TIMER'
 
-const loadLobby=  (lobby)=>({
+export const loadLobby=  (lobby)=>({
   type: LOAD_LOBBY,
   lobby
 })
@@ -21,20 +21,36 @@ export const loadTimer=  (timer)=>({
 })
 
 
+
 export const getLobby = ()=>{
   return function(dispatch,getState){
     axios.get('/api/lobby')
-      .then(res=>res.data)
-      .then(lobby => {dispatch(loadLobby(lobby))})
-      .catch(err=>console.error(err))
+      // .then(res=>res.data)
+      // .then(lobby => {dispatch(loadLobby(lobby))})
+      // .catch(err=>console.error(err))
   }
 }
 
-export const makeRoom = ()=>{
+export const makeRoom = (name)=>{
   return function(dispatch, getState){
-    axios.post('/api/lobby')
-    .then(res=>res.data)
-    .then(lobby => {dispatch(loadLobby(lobby))})
+    axios.post('/api/lobby', {name: name})
+    // .then(res=>res.data)
+    // .then(lobby => {dispatch(loadLobby(lobby))})
+  }
+}
+
+export const joinRoom = (roomId, name)=>{
+  return function(dispatch, getState){
+    axios.post(`/api/lobby/${roomId}`, {name: name})
+    // .then(res=>res.data)
+    // .then(lobby => {dispatch(loadLobby(lobby))})
+  }
+}
+
+export const leaveRoom = (roomId, name)=>{
+  return function(dispatch,getState){
+    console.log(`api/lobby/${roomId}/${name}`)
+    axios.delete(`api/lobby/${roomId}/${name}`)
   }
 }
 

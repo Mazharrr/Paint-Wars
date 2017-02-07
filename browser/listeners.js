@@ -1,6 +1,7 @@
 import store from './store'
 import MechaKoopa from './class/mechaKoopa'
 import {getPlayers, getClient} from './reducers/players'
+import {loadLobby} from './reducers/lobby'
 import {removeBomb, addBomb, addFlames, removeCrate, addPaint, addPowerUp, removePaint, removePowerUp} from './reducers/Tiles'
 import game from './states/stateManager'
 import socket from './socket'
@@ -12,6 +13,7 @@ let me = socket.id
 
     store.dispatch(getPlayers(data.Players.players))
     store.dispatch(getClient(data.Players.sockets))
+    store.dispatch(loadLobby(data.Lobby.lobby))
   })
   socket.on('server_send_bomb', data =>{
     if(me!=data.socket){
