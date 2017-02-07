@@ -14,33 +14,39 @@ const Lobby = (props)=>{
 
 
   return(
-    <div>
+    <div className="container">
+      <div className="row">
+        <div className="rpgui-content">
+          <form className="rpgui-container framed customForm">
+            <button onClick={()=>props.makeRoom(props.Player.name)} disabled={multiple}>Make a room </button>
+            <h1>Room count: {props.Lobby.lobby && props.Lobby.lobby.length}</h1>
 
-      <button onClick={()=>props.makeRoom(props.Player.name)} disabled={multiple}>Make a room </button>
-      <h1>Room count: {props.Lobby.lobby && props.Lobby.lobby.length}</h1>
+            <h3>Rooms</h3>
+            {
+              props.Lobby.lobby && props.Lobby.lobby.map(room => (
+                <div key= { room.id}>
+                  <Link to={`/lobby/${room.id}`}>Room {room.id}</Link>
+                  {
+                    room.players.map((player, index )=>
 
-    <h3>Rooms</h3>
-      {
-        props.Lobby.lobby && props.Lobby.lobby.map(room => (
-          <div key= { room.id}>
-            <Link to={`/lobby/${room.id}`}>Room {room.id}</Link>
-             {
-               room.players.map((player, index )=>
+                    <div key = {index}>
+                      <h3>
+                        Player {index+1} - {player}
+                      </h3>
 
-                 <div key = {index}>
-                   <h3>
-                      Player {index+1} - {player}
-                   </h3>
+                    </div>
+                  )
+                }
+                <button  disabled = {multiple} onClick ={()=>props.joinRoom(room.id, props.Player.name)}>Join Room</button>
+                <button onClick={()=>props.leaveRoom(room.id, props.Player.name)}>Leave Room</button>
+                <hr></hr>
+              </div>
+            ))
+          }
+          </form>
+        </div>
+      </div>
 
-                 </div>
-               )
-             }
-             <button  disabled = {multiple} onClick ={()=>props.joinRoom(room.id, props.Player.name)}>Join Room</button>
-             <button onClick={()=>props.leaveRoom(room.id, props.Player.name)}>Leave Room</button>
-             <hr></hr>
-          </div>
-        ))
-      }
     </div>
 
 
