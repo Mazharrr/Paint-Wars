@@ -10,7 +10,7 @@ inside your html file.
 */
 /* to get pixelated images (nearest-neighbor filter) on all  browsers */
 body {
-  background-size: cover;
+  background-size: 100%;
   background-repeat: no-repeat;
 }
 
