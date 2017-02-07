@@ -15,6 +15,44 @@ let dummy = {
   avatar: "https://pbs.twimg.com/profile_images/490094309757038594/WvFG7LDV_reasonably_small.png"
 }
 
+let bowserJunior = {
+ left: Utils.arrayMaker(18, 25),
+ right: Utils.arrayMaker(26, 33),
+ up: Utils.arrayMaker(47, 51),
+ down: Utils.arrayMaker(42, 46),
+ idle: Utils.arrayMaker(0,15),
+ attack: Utils.arrayMaker(34, 41),
+ dead: Utils.arrayMaker(16,17)
+};
+let lemmyKoopa = {
+ left: Utils.arrayMaker(0,13),
+ right: Utils.arrayMaker(26, 39),
+ up: Utils.arrayMaker(45, 49),
+ down: Utils.arrayMaker(40, 44),
+ idle: Utils.arrayMaker(14, 25),
+ attack: Utils.arrayMaker(50, 55),
+ dead: Utils.arrayMaker(56, 60)
+};
+let larryKoopa = {
+ left: Utils.arrayMaker(62, 81),
+ right: Utils.arrayMaker(90, 96),
+ up: Utils.arrayMaker(99, 107),
+ down: Utils.arrayMaker(82,89),
+ idle: Utils.arrayMaker(0, 33),
+ attack: Utils.arrayMaker(36, 61),
+ dead: Utils.arrayMaker(34,35)
+};
+let yoshi = {
+ left: Utils.arrayMaker(41, 45),
+ right: Utils.arrayMaker(23,26),
+ up: Utils.arrayMaker(36, 40),
+ down: Utils.arrayMaker(18, 27),
+ idle: Utils.arrayMaker(8, 16),
+ attack: Utils.arrayMaker(0, 7),
+ dead: Utils.arrayMaker(33, 35)
+};
+let characterAnimations = [];
+
 
 export default class Hero{
   constructor(game, id, color ){
@@ -84,43 +122,36 @@ export default class Hero{
     addSprite(){
       switch(this.color){
         case 'blue':
-        this.sprite = this.game.add.sprite(72, 72, 'hero1')
+        this.sprite = this.game.add.sprite(72, 72, 'larryKoopa', 2)
+        this.sprite.animations.add('left', larryKoopa.left, 12, true)
+        this.sprite.animations.add('right', larryKoopa.right, 12, true)
+        this.sprite.animations.add('up', larryKoopa.up, 12, true)
+        this.sprite.animations.add('down', larryKoopa.down, 12, true)
+        this.sprite.animations.add('idle', larryKoopa.idle, 12, true)
+        this.sprite.animations.add('attack', larryKoopa.attack, 12, true)
+        this.sprite.animations.add('dead', larryKoopa.dead, 12, true)
         break;
         case 'purple':
-        this.sprite = this.game.add.sprite(648, 648, 'hero1')
+        this.sprite = this.game.add.sprite(648, 648, 'lemmyKoopa')
         break;
         case 'green':
-        this.sprite = this.game.add.sprite(648, 72, 'hero1')
+        this.sprite = this.game.add.sprite(648, 72, 'yoshi')
         break;
         case 'red':
-        this.sprite = this.game.add.sprite(72, 648, 'hero1')
+        this.sprite = this.game.add.sprite(72, 648, 'bowserJunior')
         break;
-        // case 'blue':
-        // this.sprite = this.game.add.sprite(72, 72, 'hero1')
-        // break;
-        // case 'purple':
-        // this.sprite = this.game.add.sprite(72, 72, 'hero1')
-        // break;
-        // case 'green':
-        // this.sprite = this.game.add.sprite(72, 72, 'hero1')
-        // break;
-        // case 'red':
-        // this.sprite = this.game.add.sprite(72, 72, 'hero1')
-        // break;
         default:
         break
       }
-      this.sprite.scale.setTo(0.7,0.7)
+      this.sprite.anchor.setTo(0.5,0.5)
       this.game.physics.arcade.enable(this.sprite)
       this.sprite.enableBody = true;
       this.sprite.physicsBodyType = Phaser.Physics.ARCADE;
       this.sprite.body.collideWorldBounds = true;
       this.game.camera.follow(this.sprite)
-      this.sprite.animations.add('walk',[55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,84,85,85,86,87], 15)
-      this.sprite.animations.add('spin',[165,166,167,168,169,170,171,172], 10)
-      this.sprite.animations.play('walk')
+      this.sprite.animations.play('idle')
       this.sprite.body.fixedRotation= true;
-      this.sprite.body.setSize(35,35,10,20)
+      this.sprite.body.setSize(30,35,0,10)
     }
 
     update(game){
@@ -128,7 +159,7 @@ export default class Hero{
       this.range = store.getState().Player.range
       this.speed = store.getState().Player.speed
       this.score = store.getState().Player.score
-
+      // this.sprite.body.setSize(35,35,10,20)
 
       this.updateSocket()
 
@@ -149,7 +180,6 @@ export default class Hero{
       this.game.physics.arcade.collide(this.sprite, this.fire, () => {
           if(this.immuneTime < this.game.time.now){
             this.immuneTime = this.game.time.now + 1000;
-            //animation goes here
           }
           socket.emit('client_remove_paint',{color: this.color, socket: socket.id})
 
@@ -162,6 +192,7 @@ export default class Hero{
 
 
 
+      this.sprite.animations.play('idle')
 
 
       this.x = this.sprite.body.x;
@@ -182,6 +213,7 @@ export default class Hero{
       })
 
       if(this.immuneTime > game.time.now){
+        this.sprite.animations.play('dead')
         this.sprite.body.velocity.setTo(0,0)
       } else {
               store.getState().Tiles.bombs.forEach((bomb)=>{
@@ -192,24 +224,33 @@ export default class Hero{
 
             if (cursors.left.isDown || wasd.left.isDown)
             {
+              this.sprite.animations.play('left')
+
                 this.sprite.body.velocity.x= -this.speed;
             }
             if (cursors.right.isDown || wasd.right.isDown)
             {
+              this.sprite.animations.play('right')
+
                 this.sprite.body.velocity.x = this.speed;
             }
             if (cursors.up.isDown || wasd.up.isDown)
             {
+              this.sprite.animations.play('up')
+
                 this.sprite.body.velocity.y = -this.speed;
             }
             if (cursors.down.isDown || wasd.down.isDown)
             {
+              this.sprite.animations.play('down')
+
                 this.sprite.body.velocity.y= this.speed;
             }
           }
 
       if (this.space.isDown){
           if(!this.onePress){
+            this.sprite.animations.play('attack')
         if(this.bombs.length < this.limit ){
           let blockCoords = Utils.mapCoordsToBlock(this.x+10, this.y+20 )
           let gridCoords = Utils.mapCoordsToGrid(blockCoords.x,blockCoords.y)
@@ -236,7 +277,7 @@ export default class Hero{
 
     }
       if(this.space.isUp) this.onePress= false;
-        this.sprite.animations.play('walk')
+        // this.sprite.animations.play('walk')
     }
     explosion(gridCoords, blockCoords, myBomb, time){
               myBomb.timer = this.game.time.events.add(Phaser.Timer.SECOND * time, () => {

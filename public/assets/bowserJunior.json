@@ -1,0 +1,508 @@
+{"frames": [
+
+{
+	"filename": "bowserJunior_01.png",
+	"frame": {"x":38,"y":99,"w":32,"h":46},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":32,"h":46},
+	"sourceSize": {"w":32,"h":46}
+},
+{
+	"filename": "bowserJunior_02.png",
+	"frame": {"x":59,"y":1,"w":33,"h":45},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":33,"h":45},
+	"sourceSize": {"w":33,"h":45}
+},
+{
+	"filename": "bowserJunior_03.png",
+	"frame": {"x":70,"y":147,"w":34,"h":44},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":34,"h":44},
+	"sourceSize": {"w":34,"h":44}
+},
+{
+	"filename": "bowserJunior_04.png",
+	"frame": {"x":71,"y":193,"w":36,"h":43},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":36,"h":43},
+	"sourceSize": {"w":36,"h":43}
+},
+{
+	"filename": "bowserJunior_05.png",
+	"frame": {"x":70,"y":147,"w":34,"h":44},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":34,"h":44},
+	"sourceSize": {"w":34,"h":44}
+},
+{
+	"filename": "bowserJunior_06.png",
+	"frame": {"x":36,"y":197,"w":33,"h":45},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":33,"h":45},
+	"sourceSize": {"w":33,"h":45}
+},
+{
+	"filename": "bowserJunior_07.png",
+	"frame": {"x":38,"y":99,"w":32,"h":46},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":32,"h":46},
+	"sourceSize": {"w":32,"h":46}
+},
+{
+	"filename": "bowserJunior_08.png",
+	"frame": {"x":59,"y":1,"w":33,"h":45},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":33,"h":45},
+	"sourceSize": {"w":33,"h":45}
+},
+{
+	"filename": "bowserJunior_09.png",
+	"frame": {"x":70,"y":147,"w":34,"h":44},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":34,"h":44},
+	"sourceSize": {"w":34,"h":44}
+},
+{
+	"filename": "bowserJunior_10.png",
+	"frame": {"x":71,"y":193,"w":36,"h":43},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":36,"h":43},
+	"sourceSize": {"w":36,"h":43}
+},
+{
+	"filename": "bowserJunior_11.png",
+	"frame": {"x":106,"y":143,"w":38,"h":42},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":38,"h":42},
+	"sourceSize": {"w":38,"h":42}
+},
+{
+	"filename": "bowserJunior_12.png",
+	"frame": {"x":166,"y":1,"w":38,"h":41},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":38,"h":41},
+	"sourceSize": {"w":38,"h":41}
+},
+{
+	"filename": "bowserJunior_13.png",
+	"frame": {"x":106,"y":143,"w":38,"h":42},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":38,"h":42},
+	"sourceSize": {"w":38,"h":42}
+},
+{
+	"filename": "bowserJunior_14.png",
+	"frame": {"x":71,"y":193,"w":36,"h":43},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":36,"h":43},
+	"sourceSize": {"w":36,"h":43}
+},
+{
+	"filename": "bowserJunior_15.png",
+	"frame": {"x":72,"y":97,"w":34,"h":44},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":34,"h":44},
+	"sourceSize": {"w":34,"h":44}
+},
+{
+	"filename": "bowserJunior_16.png",
+	"frame": {"x":36,"y":197,"w":33,"h":45},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":33,"h":45},
+	"sourceSize": {"w":33,"h":45}
+},
+{
+	"filename": "bowserJunior_17.png",
+	"frame": {"x":146,"y":219,"w":47,"h":29},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":47,"h":29},
+	"sourceSize": {"w":47,"h":29}
+},
+{
+	"filename": "bowserJunior_18.png",
+	"frame": {"x":195,"y":219,"w":47,"h":28},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":47,"h":28},
+	"sourceSize": {"w":47,"h":28}
+},
+{
+	"filename": "bowserJunior_19.png",
+	"frame": {"x":109,"y":187,"w":35,"h":42},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":35,"h":42},
+	"sourceSize": {"w":35,"h":42}
+},
+{
+	"filename": "bowserJunior_20.png",
+	"frame": {"x":166,"y":44,"w":35,"h":41},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":35,"h":41},
+	"sourceSize": {"w":35,"h":41}
+},
+{
+	"filename": "bowserJunior_21.png",
+	"frame": {"x":243,"y":1,"w":35,"h":40},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":35,"h":40},
+	"sourceSize": {"w":35,"h":40}
+},
+{
+	"filename": "bowserJunior_22.png",
+	"frame": {"x":166,"y":44,"w":35,"h":41},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":35,"h":41},
+	"sourceSize": {"w":35,"h":41}
+},
+{
+	"filename": "bowserJunior_23.png",
+	"frame": {"x":109,"y":187,"w":35,"h":42},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":35,"h":42},
+	"sourceSize": {"w":35,"h":42}
+},
+{
+	"filename": "bowserJunior_24.png",
+	"frame": {"x":146,"y":133,"w":35,"h":41},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":35,"h":41},
+	"sourceSize": {"w":35,"h":41}
+},
+{
+	"filename": "bowserJunior_25.png",
+	"frame": {"x":280,"y":1,"w":35,"h":40},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":35,"h":40},
+	"sourceSize": {"w":35,"h":40}
+},
+{
+	"filename": "bowserJunior_26.png",
+	"frame": {"x":146,"y":133,"w":35,"h":41},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":35,"h":41},
+	"sourceSize": {"w":35,"h":41}
+},
+{
+	"filename": "bowserJunior_27.png",
+	"frame": {"x":175,"y":87,"w":35,"h":41},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":35,"h":41},
+	"sourceSize": {"w":35,"h":41}
+},
+{
+	"filename": "bowserJunior_28.png",
+	"frame": {"x":272,"y":43,"w":35,"h":40},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":35,"h":40},
+	"sourceSize": {"w":35,"h":40}
+},
+{
+	"filename": "bowserJunior_29.png",
+	"frame": {"x":203,"y":44,"w":35,"h":41},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":35,"h":41},
+	"sourceSize": {"w":35,"h":41}
+},
+{
+	"filename": "bowserJunior_30.png",
+	"frame": {"x":94,"y":1,"w":35,"h":42},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":35,"h":42},
+	"sourceSize": {"w":35,"h":42}
+},
+{
+	"filename": "bowserJunior_31.png",
+	"frame": {"x":206,"y":1,"w":35,"h":41},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":35,"h":41},
+	"sourceSize": {"w":35,"h":41}
+},
+{
+	"filename": "bowserJunior_32.png",
+	"frame": {"x":272,"y":85,"w":35,"h":40},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":35,"h":40},
+	"sourceSize": {"w":35,"h":40}
+},
+{
+	"filename": "bowserJunior_33.png",
+	"frame": {"x":206,"y":1,"w":35,"h":41},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":35,"h":41},
+	"sourceSize": {"w":35,"h":41}
+},
+{
+	"filename": "bowserJunior_34.png",
+	"frame": {"x":94,"y":1,"w":35,"h":42},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":35,"h":42},
+	"sourceSize": {"w":35,"h":42}
+},
+{
+	"filename": "bowserJunior_35.png",
+	"frame": {"x":218,"y":130,"w":35,"h":40},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":35,"h":40},
+	"sourceSize": {"w":35,"h":40}
+},
+{
+	"filename": "bowserJunior_36.png",
+	"frame": {"x":48,"y":50,"w":44,"h":45},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":44,"h":45},
+	"sourceSize": {"w":44,"h":45}
+},
+{
+	"filename": "bowserJunior_37.png",
+	"frame": {"x":36,"y":148,"w":32,"h":47},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":32,"h":47},
+	"sourceSize": {"w":32,"h":47}
+},
+{
+	"filename": "bowserJunior_38.png",
+	"frame": {"x":1,"y":148,"w":33,"h":47},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":33,"h":47},
+	"sourceSize": {"w":33,"h":47}
+},
+{
+	"filename": "bowserJunior_39.png",
+	"frame": {"x":1,"y":99,"w":35,"h":47},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":35,"h":47},
+	"sourceSize": {"w":35,"h":47}
+},
+{
+	"filename": "bowserJunior_40.png",
+	"frame": {"x":1,"y":197,"w":33,"h":47},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":33,"h":47},
+	"sourceSize": {"w":33,"h":47}
+},
+{
+	"filename": "bowserJunior_41.png",
+	"frame": {"x":1,"y":50,"w":45,"h":47},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":45,"h":47},
+	"sourceSize": {"w":45,"h":47}
+},
+{
+	"filename": "bowserJunior_42.png",
+	"frame": {"x":1,"y":1,"w":56,"h":47},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":56,"h":47},
+	"sourceSize": {"w":56,"h":47}
+},
+{
+	"filename": "bowserJunior_43.png",
+	"frame": {"x":244,"y":214,"w":30,"h":39},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":30,"h":39},
+	"sourceSize": {"w":30,"h":39}
+},
+{
+	"filename": "bowserJunior_44.png",
+	"frame": {"x":308,"y":127,"w":30,"h":40},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":30,"h":40},
+	"sourceSize": {"w":30,"h":40}
+},
+{
+	"filename": "bowserJunior_45.png",
+	"frame": {"x":240,"y":44,"w":30,"h":41},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":30,"h":41},
+	"sourceSize": {"w":30,"h":41}
+},
+{
+	"filename": "bowserJunior_46.png",
+	"frame": {"x":308,"y":169,"w":30,"h":40},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":30,"h":40},
+	"sourceSize": {"w":30,"h":40}
+},
+{
+	"filename": "bowserJunior_47.png",
+	"frame": {"x":276,"y":214,"w":30,"h":39},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":30,"h":39},
+	"sourceSize": {"w":30,"h":39}
+},
+{
+	"filename": "bowserJunior_48.png",
+	"frame": {"x":308,"y":211,"w":29,"h":39},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":29,"h":39},
+	"sourceSize": {"w":29,"h":39}
+},
+{
+	"filename": "bowserJunior_49.png",
+	"frame": {"x":309,"y":43,"w":29,"h":40},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":29,"h":40},
+	"sourceSize": {"w":29,"h":40}
+},
+{
+	"filename": "bowserJunior_50.png",
+	"frame": {"x":145,"y":89,"w":28,"h":42},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":28,"h":42},
+	"sourceSize": {"w":28,"h":42}
+},
+{
+	"filename": "bowserJunior_51.png",
+	"frame": {"x":309,"y":85,"w":29,"h":40},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":29,"h":40},
+	"sourceSize": {"w":29,"h":40}
+},
+{
+	"filename": "bowserJunior_52.png",
+	"frame": {"x":255,"y":127,"w":29,"h":39},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":29,"h":39},
+	"sourceSize": {"w":29,"h":39}
+},
+{
+	"filename": "bowserJunior_53.png",
+	"frame": {"x":131,"y":1,"w":33,"h":42},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":33,"h":42},
+	"sourceSize": {"w":33,"h":42}
+},
+{
+	"filename": "bowserJunior_54.png",
+	"frame": {"x":183,"y":130,"w":33,"h":41},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":33,"h":41},
+	"sourceSize": {"w":33,"h":41}
+},
+{
+	"filename": "bowserJunior_55.png",
+	"frame": {"x":94,"y":45,"w":35,"h":42},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":35,"h":42},
+	"sourceSize": {"w":35,"h":42}
+},
+{
+	"filename": "bowserJunior_56.png",
+	"frame": {"x":146,"y":176,"w":34,"h":41},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":34,"h":41},
+	"sourceSize": {"w":34,"h":41}
+},
+{
+	"filename": "bowserJunior_57.png",
+	"frame": {"x":218,"y":172,"w":34,"h":40},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":34,"h":40},
+	"sourceSize": {"w":34,"h":40}
+},
+{
+	"filename": "bowserJunior_58.png",
+	"frame": {"x":254,"y":172,"w":34,"h":40},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":34,"h":40},
+	"sourceSize": {"w":34,"h":40}
+},
+{
+	"filename": "bowserJunior_59.png",
+	"frame": {"x":182,"y":176,"w":34,"h":41},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":34,"h":41},
+	"sourceSize": {"w":34,"h":41}
+},
+{
+	"filename": "bowserJunior_60.png",
+	"frame": {"x":108,"y":89,"w":35,"h":42},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":35,"h":42},
+	"sourceSize": {"w":35,"h":42}
+},
+{
+	"filename": "bowserJunior_61.png",
+	"frame": {"x":212,"y":87,"w":33,"h":41},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":33,"h":41},
+	"sourceSize": {"w":33,"h":41}
+},
+{
+	"filename": "bowserJunior_62.png",
+	"frame": {"x":131,"y":45,"w":33,"h":42},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":33,"h":42},
+	"sourceSize": {"w":33,"h":42}
+}],
+"meta": {
+	"app": "http://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "bowserJunior.png",
+	"format": "RGBA8888",
+	"size": {"w":339,"h":254},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:806dc65fd186a512cad1a65199ba452a:9b48446a9c95a2f133568f242ddf0bfc:0045b2b6d880cb149f60dc091220c9d1$"
+}
+}

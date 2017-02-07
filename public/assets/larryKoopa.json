@@ -1,0 +1,852 @@
+{"frames": [
+
+{
+	"filename": "larryKoopa_01.png",
+	"frame": {"x":60,"y":1,"w":25,"h":39},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":25,"h":39},
+	"sourceSize": {"w":25,"h":39}
+},
+{
+	"filename": "larryKoopa_02.png",
+	"frame": {"x":79,"y":247,"w":24,"h":40},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":24,"h":40},
+	"sourceSize": {"w":24,"h":40}
+},
+{
+	"filename": "larryKoopa_03.png",
+	"frame": {"x":1,"y":287,"w":24,"h":40},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":24,"h":40},
+	"sourceSize": {"w":24,"h":40}
+},
+{
+	"filename": "larryKoopa_04.png",
+	"frame": {"x":27,"y":288,"w":24,"h":40},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":24,"h":40},
+	"sourceSize": {"w":24,"h":40}
+},
+{
+	"filename": "larryKoopa_05.png",
+	"frame": {"x":87,"y":1,"w":25,"h":39},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":25,"h":39},
+	"sourceSize": {"w":25,"h":39}
+},
+{
+	"filename": "larryKoopa_06.png",
+	"frame": {"x":1,"y":41,"w":25,"h":39},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":25,"h":39},
+	"sourceSize": {"w":25,"h":39}
+},
+{
+	"filename": "larryKoopa_07.png",
+	"frame": {"x":28,"y":41,"w":25,"h":39},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":25,"h":39},
+	"sourceSize": {"w":25,"h":39}
+},
+{
+	"filename": "larryKoopa_08.png",
+	"frame": {"x":55,"y":42,"w":25,"h":39},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":25,"h":39},
+	"sourceSize": {"w":25,"h":39}
+},
+{
+	"filename": "larryKoopa_09.png",
+	"frame": {"x":82,"y":42,"w":24,"h":39},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":24,"h":39},
+	"sourceSize": {"w":24,"h":39}
+},
+{
+	"filename": "larryKoopa_10.png",
+	"frame": {"x":28,"y":246,"w":23,"h":40},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":23,"h":40},
+	"sourceSize": {"w":23,"h":40}
+},
+{
+	"filename": "larryKoopa_11.png",
+	"frame": {"x":53,"y":288,"w":24,"h":40},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":24,"h":40},
+	"sourceSize": {"w":24,"h":40}
+},
+{
+	"filename": "larryKoopa_12.png",
+	"frame": {"x":1,"y":329,"w":24,"h":40},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":24,"h":40},
+	"sourceSize": {"w":24,"h":40}
+},
+{
+	"filename": "larryKoopa_13.png",
+	"frame": {"x":1,"y":82,"w":25,"h":39},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":25,"h":39},
+	"sourceSize": {"w":25,"h":39}
+},
+{
+	"filename": "larryKoopa_14.png",
+	"frame": {"x":28,"y":82,"w":25,"h":39},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":25,"h":39},
+	"sourceSize": {"w":25,"h":39}
+},
+{
+	"filename": "larryKoopa_15.png",
+	"frame": {"x":55,"y":83,"w":26,"h":39},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":26,"h":39},
+	"sourceSize": {"w":26,"h":39}
+},
+{
+	"filename": "larryKoopa_16.png",
+	"frame": {"x":83,"y":83,"w":25,"h":39},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":25,"h":39},
+	"sourceSize": {"w":25,"h":39}
+},
+{
+	"filename": "larryKoopa_17.png",
+	"frame": {"x":1,"y":123,"w":24,"h":39},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":24,"h":39},
+	"sourceSize": {"w":24,"h":39}
+},
+{
+	"filename": "larryKoopa_18.png",
+	"frame": {"x":78,"y":331,"w":24,"h":40},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":24,"h":40},
+	"sourceSize": {"w":24,"h":40}
+},
+{
+	"filename": "larryKoopa_19.png",
+	"frame": {"x":1,"y":371,"w":24,"h":40},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":24,"h":40},
+	"sourceSize": {"w":24,"h":40}
+},
+{
+	"filename": "larryKoopa_20.png",
+	"frame": {"x":104,"y":331,"w":23,"h":40},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":23,"h":40},
+	"sourceSize": {"w":23,"h":40}
+},
+{
+	"filename": "larryKoopa_21.png",
+	"frame": {"x":27,"y":123,"w":24,"h":39},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":24,"h":39},
+	"sourceSize": {"w":24,"h":39}
+},
+{
+	"filename": "larryKoopa_22.png",
+	"frame": {"x":53,"y":124,"w":24,"h":39},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":24,"h":39},
+	"sourceSize": {"w":24,"h":39}
+},
+{
+	"filename": "larryKoopa_23.png",
+	"frame": {"x":74,"y":500,"w":24,"h":41},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":24,"h":41},
+	"sourceSize": {"w":24,"h":41}
+},
+{
+	"filename": "larryKoopa_24.png",
+	"frame": {"x":27,"y":372,"w":24,"h":40},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":24,"h":40},
+	"sourceSize": {"w":24,"h":40}
+},
+{
+	"filename": "larryKoopa_25.png",
+	"frame": {"x":79,"y":124,"w":24,"h":39},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":24,"h":39},
+	"sourceSize": {"w":24,"h":39}
+},
+{
+	"filename": "larryKoopa_26.png",
+	"frame": {"x":1,"y":164,"w":24,"h":39},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":24,"h":39},
+	"sourceSize": {"w":24,"h":39}
+},
+{
+	"filename": "larryKoopa_27.png",
+	"frame": {"x":1,"y":583,"w":24,"h":41},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":24,"h":41},
+	"sourceSize": {"w":24,"h":41}
+},
+{
+	"filename": "larryKoopa_28.png",
+	"frame": {"x":27,"y":584,"w":24,"h":41},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":24,"h":41},
+	"sourceSize": {"w":24,"h":41}
+},
+{
+	"filename": "larryKoopa_29.png",
+	"frame": {"x":53,"y":585,"w":24,"h":41},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":24,"h":41},
+	"sourceSize": {"w":24,"h":41}
+},
+{
+	"filename": "larryKoopa_30.png",
+	"frame": {"x":78,"y":373,"w":24,"h":40},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":24,"h":40},
+	"sourceSize": {"w":24,"h":40}
+},
+{
+	"filename": "larryKoopa_31.png",
+	"frame": {"x":53,"y":165,"w":25,"h":39},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":25,"h":39},
+	"sourceSize": {"w":25,"h":39}
+},
+{
+	"filename": "larryKoopa_32.png",
+	"frame": {"x":80,"y":165,"w":26,"h":39},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":26,"h":39},
+	"sourceSize": {"w":26,"h":39}
+},
+{
+	"filename": "larryKoopa_33.png",
+	"frame": {"x":1,"y":205,"w":25,"h":39},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":25,"h":39},
+	"sourceSize": {"w":25,"h":39}
+},
+{
+	"filename": "larryKoopa_34.png",
+	"frame": {"x":53,"y":206,"w":25,"h":39},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":25,"h":39},
+	"sourceSize": {"w":25,"h":39}
+},
+{
+	"filename": "larryKoopa_35.png",
+	"frame": {"x":1,"y":1,"w":27,"h":38},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":27,"h":38},
+	"sourceSize": {"w":27,"h":38}
+},
+{
+	"filename": "larryKoopa_36.png",
+	"frame": {"x":30,"y":1,"w":28,"h":38},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":28,"h":38},
+	"sourceSize": {"w":28,"h":38}
+},
+{
+	"filename": "larryKoopa_39.png",
+	"frame": {"x":27,"y":715,"w":23,"h":46},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":23,"h":46},
+	"sourceSize": {"w":23,"h":46}
+},
+{
+	"filename": "larryKoopa_40.png",
+	"frame": {"x":52,"y":716,"w":26,"h":46},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":26,"h":46},
+	"sourceSize": {"w":26,"h":46}
+},
+{
+	"filename": "larryKoopa_41.png",
+	"frame": {"x":80,"y":716,"w":21,"h":46},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":21,"h":46},
+	"sourceSize": {"w":21,"h":46}
+},
+{
+	"filename": "larryKoopa_42.png",
+	"frame": {"x":103,"y":716,"w":24,"h":46},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":24,"h":46},
+	"sourceSize": {"w":24,"h":46}
+},
+{
+	"filename": "larryKoopa_43.png",
+	"frame": {"x":1,"y":760,"w":23,"h":46},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":23,"h":46},
+	"sourceSize": {"w":23,"h":46}
+},
+{
+	"filename": "larryKoopa_44.png",
+	"frame": {"x":49,"y":764,"w":25,"h":46},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":25,"h":46},
+	"sourceSize": {"w":25,"h":46}
+},
+{
+	"filename": "larryKoopa_45.png",
+	"frame": {"x":26,"y":763,"w":21,"h":46},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":21,"h":46},
+	"sourceSize": {"w":21,"h":46}
+},
+{
+	"filename": "larryKoopa_46.png",
+	"frame": {"x":76,"y":764,"w":23,"h":46},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":23,"h":46},
+	"sourceSize": {"w":23,"h":46}
+},
+{
+	"filename": "larryKoopa_47.png",
+	"frame": {"x":101,"y":764,"w":22,"h":46},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":22,"h":46},
+	"sourceSize": {"w":22,"h":46}
+},
+{
+	"filename": "larryKoopa_48.png",
+	"frame": {"x":1,"y":908,"w":28,"h":49},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":28,"h":49},
+	"sourceSize": {"w":28,"h":49}
+},
+{
+	"filename": "larryKoopa_49.png",
+	"frame": {"x":31,"y":908,"w":27,"h":49},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":27,"h":49},
+	"sourceSize": {"w":27,"h":49}
+},
+{
+	"filename": "larryKoopa_50.png",
+	"frame": {"x":60,"y":908,"w":29,"h":49},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":29,"h":49},
+	"sourceSize": {"w":29,"h":49}
+},
+{
+	"filename": "larryKoopa_51.png",
+	"frame": {"x":91,"y":908,"w":28,"h":49},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":28,"h":49},
+	"sourceSize": {"w":28,"h":49}
+},
+{
+	"filename": "larryKoopa_52.png",
+	"frame": {"x":1,"y":959,"w":29,"h":49},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":29,"h":49},
+	"sourceSize": {"w":29,"h":49}
+},
+{
+	"filename": "larryKoopa_53.png",
+	"frame": {"x":32,"y":959,"w":29,"h":49},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":29,"h":49},
+	"sourceSize": {"w":29,"h":49}
+},
+{
+	"filename": "larryKoopa_54.png",
+	"frame": {"x":63,"y":959,"w":27,"h":49},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":27,"h":49},
+	"sourceSize": {"w":27,"h":49}
+},
+{
+	"filename": "larryKoopa_55.png",
+	"frame": {"x":92,"y":959,"w":29,"h":49},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":29,"h":49},
+	"sourceSize": {"w":29,"h":49}
+},
+{
+	"filename": "larryKoopa_56.png",
+	"frame": {"x":1,"y":811,"w":26,"h":46},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":26,"h":46},
+	"sourceSize": {"w":26,"h":46}
+},
+{
+	"filename": "larryKoopa_58.png",
+	"frame": {"x":29,"y":812,"w":32,"h":46},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":32,"h":46},
+	"sourceSize": {"w":32,"h":46}
+},
+{
+	"filename": "larryKoopa_59.png",
+	"frame": {"x":63,"y":812,"w":24,"h":46},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":24,"h":46},
+	"sourceSize": {"w":24,"h":46}
+},
+{
+	"filename": "larryKoopa_60.png",
+	"frame": {"x":89,"y":812,"w":26,"h":46},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":26,"h":46},
+	"sourceSize": {"w":26,"h":46}
+},
+{
+	"filename": "larryKoopa_61.png",
+	"frame": {"x":1,"y":859,"w":26,"h":46},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":26,"h":46},
+	"sourceSize": {"w":26,"h":46}
+},
+{
+	"filename": "larryKoopa_62.png",
+	"frame": {"x":29,"y":860,"w":32,"h":46},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":32,"h":46},
+	"sourceSize": {"w":32,"h":46}
+},
+{
+	"filename": "larryKoopa_63.png",
+	"frame": {"x":63,"y":860,"w":26,"h":46},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":26,"h":46},
+	"sourceSize": {"w":26,"h":46}
+},
+{
+	"filename": "larryKoopa_64.png",
+	"frame": {"x":91,"y":860,"w":25,"h":46},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":25,"h":46},
+	"sourceSize": {"w":25,"h":46}
+},
+{
+	"filename": "larryKoopa_65.png",
+	"frame": {"x":73,"y":671,"w":25,"h":43},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":25,"h":43},
+	"sourceSize": {"w":25,"h":43}
+},
+{
+	"filename": "larryKoopa_66.png",
+	"frame": {"x":80,"y":206,"w":25,"h":39},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":25,"h":39},
+	"sourceSize": {"w":25,"h":39}
+},
+{
+	"filename": "larryKoopa_67.png",
+	"frame": {"x":27,"y":414,"w":25,"h":40},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":25,"h":40},
+	"sourceSize": {"w":25,"h":40}
+},
+{
+	"filename": "larryKoopa_68.png",
+	"frame": {"x":79,"y":585,"w":24,"h":41},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":24,"h":41},
+	"sourceSize": {"w":24,"h":41}
+},
+{
+	"filename": "larryKoopa_70.png",
+	"frame": {"x":1,"y":626,"w":24,"h":41},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":24,"h":41},
+	"sourceSize": {"w":24,"h":41}
+},
+{
+	"filename": "larryKoopa_71.png",
+	"frame": {"x":100,"y":671,"w":22,"h":43},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":22,"h":43},
+	"sourceSize": {"w":22,"h":43}
+},
+{
+	"filename": "larryKoopa_72.png",
+	"frame": {"x":1,"y":714,"w":24,"h":44},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":24,"h":44},
+	"sourceSize": {"w":24,"h":44}
+},
+{
+	"filename": "larryKoopa_73.png",
+	"frame": {"x":1,"y":413,"w":24,"h":40},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":24,"h":40},
+	"sourceSize": {"w":24,"h":40}
+},
+{
+	"filename": "larryKoopa_74.png",
+	"frame": {"x":27,"y":164,"w":24,"h":39},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":24,"h":39},
+	"sourceSize": {"w":24,"h":39}
+},
+{
+	"filename": "larryKoopa_75.png",
+	"frame": {"x":1,"y":246,"w":25,"h":39},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":25,"h":39},
+	"sourceSize": {"w":25,"h":39}
+},
+{
+	"filename": "larryKoopa_76.png",
+	"frame": {"x":28,"y":205,"w":23,"h":39},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":23,"h":39},
+	"sourceSize": {"w":23,"h":39}
+},
+{
+	"filename": "larryKoopa_77.png",
+	"frame": {"x":76,"y":415,"w":24,"h":40},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":24,"h":40},
+	"sourceSize": {"w":24,"h":40}
+},
+{
+	"filename": "larryKoopa_78.png",
+	"frame": {"x":102,"y":416,"w":24,"h":40},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":24,"h":40},
+	"sourceSize": {"w":24,"h":40}
+},
+{
+	"filename": "larryKoopa_79.png",
+	"frame": {"x":1,"y":455,"w":24,"h":40},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":24,"h":40},
+	"sourceSize": {"w":24,"h":40}
+},
+{
+	"filename": "larryKoopa_80.png",
+	"frame": {"x":53,"y":247,"w":24,"h":39},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":24,"h":39},
+	"sourceSize": {"w":24,"h":39}
+},
+{
+	"filename": "larryKoopa_81.png",
+	"frame": {"x":53,"y":372,"w":23,"h":40},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":23,"h":40},
+	"sourceSize": {"w":23,"h":40}
+},
+{
+	"filename": "larryKoopa_82.png",
+	"frame": {"x":48,"y":671,"w":23,"h":42},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":23,"h":42},
+	"sourceSize": {"w":23,"h":42}
+},
+{
+	"filename": "larryKoopa_83.png",
+	"frame": {"x":27,"y":627,"w":23,"h":41},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":23,"h":41},
+	"sourceSize": {"w":23,"h":41}
+},
+{
+	"filename": "larryKoopa_84.png",
+	"frame": {"x":52,"y":628,"w":24,"h":41},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":24,"h":41},
+	"sourceSize": {"w":24,"h":41}
+},
+{
+	"filename": "larryKoopa_85.png",
+	"frame": {"x":105,"y":247,"w":20,"h":40},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":20,"h":40},
+	"sourceSize": {"w":20,"h":40}
+},
+{
+	"filename": "larryKoopa_87.png",
+	"frame": {"x":105,"y":585,"w":22,"h":41},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":22,"h":41},
+	"sourceSize": {"w":22,"h":41}
+},
+{
+	"filename": "larryKoopa_88.png",
+	"frame": {"x":78,"y":628,"w":21,"h":41},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":21,"h":41},
+	"sourceSize": {"w":21,"h":41}
+},
+{
+	"filename": "larryKoopa_89.png",
+	"frame": {"x":105,"y":124,"w":20,"h":39},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":20,"h":39},
+	"sourceSize": {"w":20,"h":39}
+},
+{
+	"filename": "larryKoopa_90.png",
+	"frame": {"x":107,"y":206,"w":20,"h":39},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":20,"h":39},
+	"sourceSize": {"w":20,"h":39}
+},
+{
+	"filename": "larryKoopa_91.png",
+	"frame": {"x":101,"y":628,"w":21,"h":41},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":21,"h":41},
+	"sourceSize": {"w":21,"h":41}
+},
+{
+	"filename": "larryKoopa_92.png",
+	"frame": {"x":56,"y":330,"w":20,"h":40},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":20,"h":40},
+	"sourceSize": {"w":20,"h":40}
+},
+{
+	"filename": "larryKoopa_93.png",
+	"frame": {"x":50,"y":457,"w":27,"h":40},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":27,"h":40},
+	"sourceSize": {"w":27,"h":40}
+},
+{
+	"filename": "larryKoopa_94.png",
+	"frame": {"x":23,"y":499,"w":27,"h":40},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":27,"h":40},
+	"sourceSize": {"w":27,"h":40}
+},
+{
+	"filename": "larryKoopa_95.png",
+	"frame": {"x":100,"y":501,"w":27,"h":40},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":27,"h":40},
+	"sourceSize": {"w":27,"h":40}
+},
+{
+	"filename": "larryKoopa_96.png",
+	"frame": {"x":1,"y":541,"w":27,"h":40},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":27,"h":40},
+	"sourceSize": {"w":27,"h":40}
+},
+{
+	"filename": "larryKoopa_97.png",
+	"frame": {"x":30,"y":542,"w":27,"h":40},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":27,"h":40},
+	"sourceSize": {"w":27,"h":40}
+},
+{
+	"filename": "larryKoopa_98.png",
+	"frame": {"x":59,"y":543,"w":27,"h":40},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":27,"h":40},
+	"sourceSize": {"w":27,"h":40}
+},
+{
+	"filename": "larryKoopa_99.png",
+	"frame": {"x":88,"y":543,"w":27,"h":40},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":27,"h":40},
+	"sourceSize": {"w":27,"h":40}
+},
+{
+	"filename": "larryKoopa_100.png",
+	"frame": {"x":79,"y":289,"w":27,"h":40},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":27,"h":40},
+	"sourceSize": {"w":27,"h":40}
+},
+{
+	"filename": "larryKoopa_101.png",
+	"frame": {"x":27,"y":330,"w":27,"h":40},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":27,"h":40},
+	"sourceSize": {"w":27,"h":40}
+},
+{
+	"filename": "larryKoopa_102.png",
+	"frame": {"x":104,"y":373,"w":20,"h":41},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":20,"h":41},
+	"sourceSize": {"w":20,"h":41}
+},
+{
+	"filename": "larryKoopa_103.png",
+	"frame": {"x":54,"y":414,"w":20,"h":41},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":20,"h":41},
+	"sourceSize": {"w":20,"h":41}
+},
+{
+	"filename": "larryKoopa_104.png",
+	"frame": {"x":27,"y":456,"w":21,"h":41},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":21,"h":41},
+	"sourceSize": {"w":21,"h":41}
+},
+{
+	"filename": "larryKoopa_105.png",
+	"frame": {"x":1,"y":669,"w":22,"h":42},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":22,"h":42},
+	"sourceSize": {"w":22,"h":42}
+},
+{
+	"filename": "larryKoopa_106.png",
+	"frame": {"x":79,"y":457,"w":20,"h":41},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":20,"h":41},
+	"sourceSize": {"w":20,"h":41}
+},
+{
+	"filename": "larryKoopa_107.png",
+	"frame": {"x":101,"y":458,"w":20,"h":41},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":20,"h":41},
+	"sourceSize": {"w":20,"h":41}
+},
+{
+	"filename": "larryKoopa_108.png",
+	"frame": {"x":1,"y":497,"w":20,"h":41},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":20,"h":41},
+	"sourceSize": {"w":20,"h":41}
+},
+{
+	"filename": "larryKoopa_109.png",
+	"frame": {"x":25,"y":670,"w":21,"h":42},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":21,"h":42},
+	"sourceSize": {"w":21,"h":42}
+},
+{
+	"filename": "larryKoopa_110.png",
+	"frame": {"x":52,"y":499,"w":20,"h":41},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":20,"h":41},
+	"sourceSize": {"w":20,"h":41}
+}],
+"meta": {
+	"app": "http://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "larryKoopa.png",
+	"format": "RGBA8888",
+	"size": {"w":128,"h":1009},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:cb7d40a67e55b91ef6ee3f627ba7a72e:f88d42d4b83883521d89249769c9627d:5d21b338fcb85a191d734d82822aa7a9$"
+}
+}
