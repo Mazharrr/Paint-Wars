@@ -21,9 +21,10 @@ import {getLobby} from './reducers/Lobby'
 // import game from './states/stateManager'
 import store from './store'
 
-// const onAppEnter = ()=>{
-//   store.dispatch(getLobby())
-// }
+const onAppEnter = (nextState, replaceState)=>{
+  if(store.getState().Player.name=== "")
+  replaceState({nextPathname: nextState.location.pathname }, '/home')
+}
 
 
 
@@ -31,11 +32,11 @@ ReactDOM.render(
 
   <Provider store={store}>
     <Router history={hashHistory}>
-      <Route path="/" component={App} >
+      <Route path="/" component={App}  >
       	<IndexRedirect to="/home" />
        	<Route path="/home" component={Intro}  />
-        <Route path="/lobby" component={Lobby}  />
-       	<Route path="/game" component={Game}  />
+        <Route path="/lobby" component={Lobby}  onEnter={onAppEnter}/>
+       	<Route path="/game" component={Game} onEnter={onAppEnter} />
       </Route>
     </Router>
   </Provider>,

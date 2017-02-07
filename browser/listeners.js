@@ -51,9 +51,7 @@ let me = socket.id
   })
   socket.on('server_make_power', data=>{
     if(me!==data.socket){
-      console.log(data)
       let newPower = powerGroup.create(data.x, data.y, data.power)
-      console.log(newPower)
       newPower.scale.setTo(1.3,1.3)
       newPower.anchor.setTo(0.5,0.5)
       newPower.gridCords= {x: data.gridX, y: data.gridY}

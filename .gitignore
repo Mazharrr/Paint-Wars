@@ -1,7 +1,7 @@
 node_modules
-public/bundle.js
-public/bundle.min.js
-public/bundle.js.map
+/public/bundle.js
+/public/bundle.min.js
+/public/bundle.js.map
 /.DS_Store
 /.DS_Store?
 npm-debug.log

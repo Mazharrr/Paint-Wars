@@ -1,7 +1,15 @@
 import React from 'react';
-import {Link} from 'react-router'
+import {Link, hashHistory} from 'react-router'
 import { connect } from 'react-redux';
-import {makeRoom, joinRoom, leaveRoom} from '../reducers/Lobby'
+import {makeRoom, joinRoom, leaveRoom, startRoom} from '../reducers/Lobby'
+
+import 'pixi';
+import 'p2';
+import 'phaser';
+import {initializeSocket} from '../socket'
+import game from '../states/stateManager'
+
+initializeSocket();
 
 const Lobby = (props)=>{
 
@@ -10,6 +18,16 @@ const Lobby = (props)=>{
       if(room.players.includes(props.Player.name))
       multiple = true
     })
+    let myRoom
+    props.Lobby.lobby.forEach((room)=>{
+      if(room.players.includes(props.Player.name))
+      myRoom = room
+    })
+    if(myRoom && myRoom.start){
+      var myGame = new game()
+      hashHistory.push('/game')
+    }
+
 
 
 
@@ -18,37 +36,48 @@ const Lobby = (props)=>{
       <div className="row">
         <div className="rpgui-content">
           <form className="rpgui-container framed customForm">
-            <button onClick={()=>props.makeRoom(props.Player.name)} disabled={multiple}>Make a room </button>
-            <h1>Room count: {props.Lobby.lobby && props.Lobby.lobby.length}</h1>
+      <button onClick={()=>props.makeRoom(props.Player.name)} disabled={multiple}>Make a room </button>
+      <h1>Room count: {props.Lobby.lobby && props.Lobby.lobby.length}</h1>
 
-            <h3>Rooms</h3>
-            {
-              props.Lobby.lobby && props.Lobby.lobby.map(room => (
-                <div key= { room.id}>
-                  <Link to={`/lobby/${room.id}`}>Room {room.id}</Link>
-                  {
-                    room.players.map((player, index )=>
+    <h3>Rooms</h3>
+      {
+        props.Lobby.lobby && props.Lobby.lobby.map(room => (
+          <div key= { room.id}>
+            <h1>Room {room.id}</h1>
+             {
+               room.players.map((player, index )=>
 
-                    <div key = {index}>
-                      <h3>
-                        Player {index+1} - {player}
-                      </h3>
+                 <div key = {index}>
+                   <h3>
+                      Player {index+1} - {player}
+                   </h3>
 
-                    </div>
-                  )
-                }
-                <button  disabled = {multiple} onClick ={()=>props.joinRoom(room.id, props.Player.name)}>Join Room</button>
-                <button onClick={()=>props.leaveRoom(room.id, props.Player.name)}>Leave Room</button>
-                <hr></hr>
-              </div>
-            ))
-          }
-          </form>
-        </div>
+                 </div>
+               )
+             }
+             {
+               (room.players && room.players.length>=4 && room.players.includes(props.Player.name))
+               ? <button onClick={()=>{
+                 store.dispatch(startRoom(room.id))
+                 var myGame = new game()
+                 hashHistory.push('/game')
+               }}>Start Game</button>
+                : (room.players && room.players.length <4) ?<button  disabled = {multiple} onClick ={()=>props.joinRoom(room.id, props.Player.name)}>Join Room
+                </button>: <div></div>
+             }
+             {(room.players.includes(props.Player.name))
+               ?
+               <button onClick={()=>props.leaveRoom(room.id, props.Player.name)}>Leave Room</button>
+               :<div></div>
+             }
+             <hr></hr>
+          </div>
+        ))
+      }
+    </form>
       </div>
-
     </div>
-
+  </div>
 
 
   )
@@ -62,7 +91,8 @@ Lobby: state.Lobby, Player: state.Player})
 const mapDispatchToProps = (dispatch) => ({
   makeRoom: (playerName) => dispatch(makeRoom(playerName)),
   joinRoom: (roomId, playerName) => dispatch(joinRoom(roomId, playerName)),
-  leaveRoom: (roomId, name) => dispatch(leaveRoom(roomId,name))
+  leaveRoom: (roomId, name) => dispatch(leaveRoom(roomId,name)),
+  startRoom: (roomId) => dispatch(startRoom(roomId))
 })
 
 
