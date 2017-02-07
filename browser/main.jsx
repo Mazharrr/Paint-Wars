@@ -21,9 +21,9 @@ import {getLobby} from './reducers/Lobby'
 // import game from './states/stateManager'
 import store from './store'
 
-const onAppEnter = ()=>{
-  store.dispatch(getLobby())
-}
+// const onAppEnter = ()=>{
+//   store.dispatch(getLobby())
+// }
 
 
 
@@ -31,7 +31,7 @@ ReactDOM.render(
 
   <Provider store={store}>
     <Router history={hashHistory}>
-      <Route path="/" component={App} onEnter={onAppEnter}>
+      <Route path="/" component={App} >
       	<IndexRedirect to="/home" />
        	<Route path="/home" component={Intro}  />
         <Route path="/lobby" component={Lobby}  />

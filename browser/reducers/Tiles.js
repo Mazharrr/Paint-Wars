@@ -118,8 +118,10 @@ const reducer = (state = initialState , action)=>{
 
         break;
     case REMOVE_POWERUP:
+    if(newState.crates[action.payload.x][action.payload.y].powerUp){
         newState.crates[action.payload.x][action.payload.y].powerUp.kill()
         newState.crates[action.payload.x][action.payload.y].powerUp=false;
+      }
 
         break;
     case ADD_BOMB:
