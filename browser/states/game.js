@@ -17,6 +17,7 @@ export let timer, timerEvent, text;
 
 
 
+
 export default class Game{
   create(game){
     socket.emit('game_started',{})
@@ -26,10 +27,10 @@ export default class Game{
 
      // Create a custom timer
         timer = this.game.time.create();
-        
+
         // Create a delayed event 1m and 30s from now
         timerEvent = timer.add(Phaser.Timer.MINUTE * 1 + Phaser.Timer.SECOND * 30, this.endTimer, this);
-        
+
         // Start the timer
         timer.start();
 
@@ -141,7 +142,7 @@ export default class Game{
 
         if (timer.running) {
             this.game.debug.text(this.formatTime(Math.round((timerEvent.delay - timer.ms) / 1000)), 2, 14, "#ff0");
-            
+
             store.dispatch(loadTimer(Math.round((timerEvent.delay - timer.ms) / 1000)))
 
         }
@@ -158,8 +159,8 @@ export default class Game{
         // Convert seconds (s) to a nicely formatted and padded time string
         var minutes = "0" + Math.floor(s / 60);
         var seconds = "0" + (s - minutes * 60);
-        return minutes.substr(-2) + ":" + seconds.substr(-2);   
+        return minutes.substr(-2) + ":" + seconds.substr(-2);
     }
 
-  
+
 }

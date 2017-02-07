@@ -11,6 +11,11 @@ export default class Preload {
         game.load.image('gameTiles', '../assets/tileset-biome.png')
         game.load.image('crate', '../assets/RTS_Crate.png');
 
+        game.load.atlas('bowserJunior', '../assets/bowserJunior.png', '../assets/bowserJunior.json');
+       game.load.atlas('larryKoopa', '../assets/larryKoopa.png', '../assets/larryKoopa.json');
+       game.load.atlas('lemmyKoopa', '../assets/lemmy.png', '../assets/lemmy.json');
+       game.load.atlas('yoshi', '../assets/yoshi.png', '../assets/yoshi.json');
+
 
         game.load.image('fire', '../assets/fire.png')
         game.load.image('blue', '../assets/bluePaint.png');
