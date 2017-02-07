@@ -28,7 +28,7 @@ export default class Game{
         timer = this.game.time.create();
         
         // Create a delayed event 1m and 30s from now
-        timerEvent = timer.add(Phaser.Timer.MINUTE * 1 + Phaser.Timer.SECOND * 30, this.endTimer, this);
+        timerEvent = timer.add(Phaser.Timer.SECOND * 10, this.endTimer, this);
         
         // Start the timer
         timer.start();

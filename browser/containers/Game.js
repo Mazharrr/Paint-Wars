@@ -1,14 +1,81 @@
 import React from 'react';
 import { connect } from 'react-redux';
-// import GameStart from '../startGame';
+import GameStart from '../startGame';
 //import socket
-
+let winner;
 
 const scoreBoard = (props) => {
   let player = props.player;
   let lobby = props.lobby;
 
   let {green, blue, purple, red} = props.scoreboard;
+  	
+  	
+  	
+  	if (lobby.timer === 'Done!') { 
+  		Object.keys(props.scoreboard).forEach( player => {
+  			// console.log(player, player.score);
+  			if(!winner){
+  				// console.log(winner);
+  				winner = props.scoreboard[player];
+  				// console.log(winner);
+  			}	
+
+  			if(winner.score <= props.scoreboard[player].score){
+  				winner = props.scoreboard[player];
+  			}
+  		});
+
+  		console.log(winner)
+  		
+  		
+       
+  		return (
+    <div className="container-fluid">
+
+
+      <div className="row">
+        <div className="col-md-8">
+
+        </div>
+        <div className="col-md-4">
+
+        </div>
+
+      </div>
+      <div className="row">
+        <div className="col-xs-8">
+          
+        </div>
+        <div className="col-xs-4">
+
+        </div>
+      </div>
+      <div className="row">
+        <div className="col-xs-8"></div>
+        <div className="rpgui-content col-xs-4">
+          <div className="rpgui-container framed">
+              {
+                player.name &&
+                <div>
+	                <h1>
+	                  WINNER:
+	                </h1>
+	                <h2>
+	                  {winner.name}
+	                </h2>
+                </div>
+              }
+          </div>
+        </div>
+      </div>
+
+    </div>
+  )
+
+
+  	 }else {
+
   return (
     <div className="container-fluid">
 
@@ -81,7 +148,7 @@ const scoreBoard = (props) => {
     </div>
   )
 
-
+ }
 }
 
 const mapStateToProps = (state) => ({

@@ -4,7 +4,7 @@ import Game1 from '../states/game'
 import store from '../store';
 import {removeCrate, addPaint, loadCrates, removePaint, addFlames, addPowerUp, removePowerUp, addBomb, removeBomb} from '../reducers/Tiles';
 import {addPlayerName, addAvatar, increaseScore, addToPlayerPowerUp, killPlayer} from '../reducers/Player';
-import {addMultiplayerAvatar, incrementMuliplayerScore, resetMultiplayerScore, restartMultiplayerScoreboard} from '../reducers/Scoreboard';
+import {addMultiplayerAvatar, incrementMuliplayerScore, resetMultiplayerScore, restartMultiplayerScoreboard, addNameMultiplayerScore} from '../reducers/Scoreboard';
 import socket from '../socket.js'
 import {powerGroup, crate, fire, paint} from '../states/game'
 
@@ -37,8 +37,10 @@ export default class Hero{
       this.onePress
       this.name = store.dispatch(addPlayerName(dummy.name))
       this.avatar = store.dispatch(addAvatar(dummy.avatar))
+      console.log(this.color,this.name);
+      store.dispatch(addNameMultiplayerScore(this.color, this.name.name))
       store.dispatch(addMultiplayerAvatar(this.color, dummy.avatar))
-      store.dispatch(restartMultiplayerScoreboard);
+      store.dispatch(restartMultiplayerScoreboard());
       this.score = store.getState().Player.score
       this.id = id
       this.addSprite()
