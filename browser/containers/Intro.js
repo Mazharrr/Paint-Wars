@@ -16,23 +16,24 @@ class Intro extends Component {
   }
   render () {
     return (
-      <div>
-        <form>
-          <legend>Name </legend>
-          <input type="text" value={this.state.name} onChange={(e)=>this.setState({name: e.target.value})} />
-          <Link to="/lobby">
-          <button
-            className="button"
-            type="submit"
-            onClick={()=>{this.props.addPlayerName(this.state.name)}}
-            >
-              Play
-            </button>
-          </Link>
-        </form>
-
-
-
+      <div className="container">
+        <div className="row">
+          <div className="rpgui-content container">
+            <form className="rpgui-container framed customForm">
+              <h1>What's your name?</h1>
+              <input type="text" value={this.state.name} onChange={(e)=>this.setState({name: e.target.value})} />
+              <Link to="/lobby">
+                <button
+                  className="button"
+                  type="submit"
+                  onClick={()=>{this.props.addPlayerName(this.state.name)}}
+                  >
+                  Play
+                </button>
+              </Link>
+            </form>
+          </div>
+        </div>
       </div>
     )
   }
