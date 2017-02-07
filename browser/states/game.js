@@ -21,13 +21,13 @@ let bowserJunior = {
   dead: arrayMaker(16,17)
 };
 let lemmyKoopa = {
-  left: arrayMaker(),
-  right: arrayMaker(),
-  up: arrayMaker(),
-  down: arrayMaker(),
-  idle: arrayMaker(),
-  attack: arrayMaker(),
-  dead: arrayMaker()
+  left: arrayMaker(0,13),
+  right: arrayMaker(26, 39),
+  up: arrayMaker(45, 49),
+  down: arrayMaker(40, 44),
+  idle: arrayMaker(14, 25),
+  attack: arrayMaker(50, 55),
+  dead: arrayMaker(56, 60)
 };
 let larryKoopa = {
   left: arrayMaker(62, 81),
@@ -37,6 +37,15 @@ let larryKoopa = {
   idle: arrayMaker(0, 33),
   attack: arrayMaker(36, 61),
   dead: arrayMaker(34,35)
+};
+let yoshi = {
+  left: arrayMaker(41, 45),
+  right: arrayMaker(23, ),
+  up: arrayMaker(36, 40),
+  down: arrayMaker(18, 27),
+  idle: arrayMaker(08, 16 ),
+  attack: arrayMaker(0, 7),
+  dead: arrayMaker(33, 35)
 };
 let characterAnimations = [];
 
