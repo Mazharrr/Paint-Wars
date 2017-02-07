@@ -48,6 +48,7 @@ export default class Hero{
 
     //after redux for score board, new bug at line 63..."cannot read property x of undefined..."
     reset(){
+      // EI: const for objects/arrays/functions, unless the variable for them needs to be reassigned
       let speedDrops = Array((this.speed-100)/25).fill('speedPowerUp')
       // createSpeedPowerUp(speedDrops)
       let rangeDrops = Array(this.range-1).fill('rangePowerUp')
@@ -95,6 +96,7 @@ export default class Hero{
         case 'red':
         this.sprite = this.game.add.sprite(72, 648, 'hero1')
         break;
+        // // EI: take out commented-out code
         // case 'blue':
         // this.sprite = this.game.add.sprite(72, 72, 'hero1')
         // break;

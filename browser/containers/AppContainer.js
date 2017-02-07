@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 import App from '../components/App';
 
+// EI: these don't seem necessary...
 const mapStateToProps = (state, ownProps) => {
   return {};
 };

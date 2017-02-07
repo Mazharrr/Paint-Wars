@@ -22,6 +22,7 @@ export default class Koopa {
     this.sprite.enableBody = true;
     this.sprite.body.fixedRotation= true;
 
+    // EI: const/let?
     var N = 15;
     var seq = Array.apply(null, {length: N}).map(Number.call, Number);
 

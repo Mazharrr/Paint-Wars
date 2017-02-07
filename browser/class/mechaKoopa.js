@@ -6,6 +6,7 @@ function arrayMaker(start, end) {
   return result;
 }
 
+// EI: take this out if not in use
 var explosion = arrayMaker(70, 75).concat(arrayMaker(226, 230));
 
 export default class MechaKoopa {
@@ -59,6 +60,7 @@ export default class MechaKoopa {
     }
   }
 
+  // EI: what's up with this method?
   update(game){
 
 

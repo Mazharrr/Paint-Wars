@@ -41,6 +41,7 @@ enemies[key]=  new Hero(game, key, recievedEnemies[key].color)
 
   })
 
+  // EI: this should be in a separate file
   currentClients.forEach((key)=>{
     if(key === socket.id){
       if(me[key]){

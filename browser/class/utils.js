@@ -37,6 +37,7 @@ export const Utils = {
 
     },
 
+    // EI: take this out --
     // explode: function(x,y,range, group, game){
     //   console.log('test')
     //   let mapSize = 32
@@ -71,10 +72,12 @@ export const Utils = {
 
     adjacentCrates: function(x, y, range, allCrates) {
       let bombSquare = this.mapCoordsToGrid(x, y)
+      // EI: take this out
       // bombSquare = {x : x , y : y}
       // [coordinates that are adjacent to bombsquare]
       let adjacentCrates = [bombSquare];
 
+      // EI dry up the following several for loops? additional helper function?
       for (let i = 1; i <= range; i++) {
 
         if(allCrates[bombSquare.x-i] && allCrates[bombSquare.x-i][bombSquare.y]&& allCrates[bombSquare.x-i][bombSquare.y].obstacle) break;
@@ -107,7 +110,7 @@ export const Utils = {
 
 }
 
-
+// EI: take this out
 // let flame = this.fire.create(blockCoords.x, blockCoords.y, 'fire')
 // flame.scale.setTo(0.5,0.5)
 // flame.anchor.setTo(0.5,0.5)

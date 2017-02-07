@@ -7,7 +7,7 @@ import GameStart from '../startGame';
 const scoreBoard = (props) => {
   let player = props.player;
   let lobby = props.lobby;
- 
+
   let {green, blue, purple, red} = props.scoreboard;
   return (
     <div>
@@ -76,6 +76,9 @@ const scoreBoard = (props) => {
 
 
 
+      </div>
+      <div className="row">
+        <div id="gameContainer" />
       </div>
 
     </div>
