@@ -8,12 +8,13 @@ import {Router, Route, IndexRedirect, hashHistory} from 'react-router'
 import {render} from 'react-dom'
 import {connect, Provider} from 'react-redux'
 import axios from 'axios'
+
 import App from './containers/App'
 import Game from './containers/Game'
 import Lobby from './containers/Lobby'
 import Intro from './containers/Intro'
 
-import {getLobby} from './reducers/Lobby'
+// import {getLobby} from './reducers/Lobby'
 
 // import 'pixi';
 // import 'p2';

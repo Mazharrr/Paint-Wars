@@ -1,4 +1,4 @@
-
+// EI: are you using this at all? or only using mechakoopa?
 export default class Koopa {
   constructor(game){
     this.healthBar = new HealthBar(game, {x: 200, y: 200, width: 120, isFixedToCamera: false, width: 50, height: 15 });

@@ -9,12 +9,14 @@ import {powerGroup, crate, fire, paint} from './states/game'
 
 export default socket =>{
 let me = socket.id
-  socket.on('gameState', data=>{
-
+  socket.on('gameState', data => {
     store.dispatch(getPlayers(data.Players.players))
     store.dispatch(getClient(data.Players.sockets))
-    store.dispatch(loadLobby(data.Lobby.lobby))
+    // EI: adding this check here keeps the lobby component from getting rendered over and over and over and over and over...
+    if (data.Lobby.length === 1) store.dispatch(loadLobby(data.Lobby.lobby))
+
   })
+
   socket.on('server_send_bomb', data =>{
     if(me!=data.socket){
       let newBomb= new MechaKoopa(game, data.x,data.y,data.range)
@@ -22,11 +24,13 @@ let me = socket.id
       store.dispatch(addBomb(data.gridX,data.gridY, newBomb))
     }
   })
+
   socket.on('server_bomb_explode', data=>{
     if(me!==data.socket){
     store.dispatch(removeBomb(data.x, data.y))
   }
   })
+
   socket.on('server_make_fire', data=>{
     if(me!==data.socket){
       let newFlame = fire.create(data.x, data.y, 'fire')
@@ -35,12 +39,14 @@ let me = socket.id
       store.dispatch(addFlames(data.gridX, data.gridY, newFlame))
   }
   })
+
   socket.on('server_remove_crate', data=>{
     if(me!==data.socket){
     store.getState().Tiles.crates[data.x][data.y].crate.kill()
     store.dispatch(removeCrate(data.x, data.y))
   }
   })
+
   socket.on('server_make_paint', data=>{
     if(me!==data.socket){
       let newPaint = paint.create(data.x, data.y, data.color)
@@ -61,11 +67,13 @@ let me = socket.id
       game.world.bringToTop(powerGroup)
   }
   })
+
   socket.on('server_remove_paint', data=>{
     if(me!==data.socket){
     store.dispatch(removePaint(data.color))
   }
   })
+
   socket.on('server_get_power', data=>{
     if(me!==data.socket){
 
