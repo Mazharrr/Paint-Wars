@@ -31,6 +31,12 @@ export default class Preload {
 
         game.load.atlas('koopa', '../assets/koopaRoll.png', '../assets/koopaRoll.json');
         game.load.atlas('spinHero', '../assets/spinHero1.png', '../assets/spinHero1.json');
+        game.load.atlas('lemmyKoopa', '../assets/lemmyKoopa.png', '../assets/lemmyKoopa.json');
+
+        game.load.atlas('bowserJunior', '../assets/bowserJunior.png', '../assets/bowserJunior.json');
+        game.load.atlas('larryKoopa', '../assets/larryKoopa.png', '../assets/larryKoopa.json');
+        game.load.atlas('lemmyKoopa', '../assets/lemmy.png', '../assets/lemmy.json');
+        game.load.atlas('yoshi', '../assets/yoshi.png', '../assets/yoshi.json');
 
 
     }
