@@ -1,46 +1,22 @@
 'use strict';
 import game from './stateManager'
+import Phaser from 'phaser';
 
-export default class Preload {
-    preload(game) {
+export default class extends Phaser.State {
+
+    preload() {
       // console.log(game)
-        game.time.advancedTiming = true;
-        this.onLoadComplete()
-        game.load.image('grass', '../assets/grass.jpg')
-        game.load.tilemap('finalMap', '../assets/finalMap.json', null, Phaser.Tilemap.TILED_JSON)
-        game.load.image('gameTiles', '../assets/tileset-biome.png')
-        game.load.image('crate', '../assets/RTS_Crate.png');
-
-        game.load.atlas('bowserJunior', '../assets/bowserJunior.png', '../assets/bowserJunior.json');
-       game.load.atlas('larryKoopa', '../assets/larryKoopa.png', '../assets/larryKoopa.json');
-       game.load.atlas('lemmyKoopa', '../assets/lemmy.png', '../assets/lemmy.json');
-       game.load.atlas('yoshi', '../assets/yoshi.png', '../assets/yoshi.json');
 
 
-        game.load.image('fire', '../assets/fire.png')
-        game.load.image('blue', '../assets/bluePaint.png');
-        game.load.image('purple', '../assets/purplePaint.png');
-        game.load.image('green', '../assets/greenPaint.png');
-        game.load.image('red', '../assets/redPaint.png');
+
+      this.onLoadComplete()
 
 
-        game.load.image('bombPowerUp', '../assets/quantityPowerUp.png')
-        game.load.image('rangePowerUp', '../assets/rangePowerUp.png')
-        game.load.image('speedPowerUp', '../assets/speedPowerUp.png')
-
-
-        game.load.atlas('mechaKoopa', '../assets/mechaKoopa/mechaKoopaTP.png', '../assets/mechaKoopa/mechaKoopaTP.json')
-
-
-        game.load.atlas('hero1', '../assets/spinHero1.png', '../assets/spinHero1.json')
-
-        game.load.atlas('koopa', '../assets/koopaRoll.png', '../assets/koopaRoll.json');
-        game.load.atlas('spinHero', '../assets/spinHero1.png', '../assets/spinHero1.json');
 
 
     }
 
     onLoadComplete() {
-        this.game.state.start('menu', true, false);
+        this.state.start('menu', true, false);
     }
 }

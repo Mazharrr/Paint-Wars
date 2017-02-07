@@ -1,7 +1,16 @@
 import React from 'react';
 import {Link} from 'react-router'
 import { connect } from 'react-redux';
+import {hashHistory} from 'react-router'
 import {makeRoom, joinRoom, leaveRoom} from '../reducers/Lobby'
+
+import 'pixi';
+import 'p2';
+import 'phaser';
+import {initializeSocket} from '../socket'
+import game from '../states/stateManager'
+
+initializeSocket();
 
 const Lobby = (props)=>{
 
@@ -10,6 +19,7 @@ const Lobby = (props)=>{
       if(room.players.includes(props.Player.name))
       multiple = true
     })
+
 
 
 
@@ -23,7 +33,7 @@ const Lobby = (props)=>{
       {
         props.Lobby.lobby && props.Lobby.lobby.map(room => (
           <div key= { room.id}>
-            <Link to={`/lobby/${room.id}`}>Room {room.id}</Link>
+            <h1>Room {room.id}</h1>
              {
                room.players.map((player, index )=>
 
@@ -35,8 +45,23 @@ const Lobby = (props)=>{
                  </div>
                )
              }
-             <button  disabled = {multiple} onClick ={()=>props.joinRoom(room.id, props.Player.name)}>Join Room</button>
-             <button onClick={()=>props.leaveRoom(room.id, props.Player.name)}>Leave Room</button>
+             {
+               (room.players && room.players.length>=1 && room.players.includes(props.Player.name))
+               ? <button onClick={()=>{
+                 var myGame = new game()
+                 hashHistory.push('/game')
+               }
+
+
+               }>Start Game</button>
+                : <button  disabled = {multiple} onClick ={()=>props.joinRoom(room.id, props.Player.name)}>Join Room
+                </button>
+             }
+             {(room.players.includes(props.Player.name))
+               ?
+               <button onClick={()=>props.leaveRoom(room.id, props.Player.name)}>Leave Room</button>
+               :<div></div>
+             }
              <hr></hr>
           </div>
         ))

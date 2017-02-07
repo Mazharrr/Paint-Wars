@@ -9,11 +9,7 @@ import socket from '../socket.js'
 import {powerGroup, crate, fire, paint} from '../states/game'
 
 
-//dummy data for name and avatar
-let dummy = {
-  name: "James",
-  avatar: "https://pbs.twimg.com/profile_images/490094309757038594/WvFG7LDV_reasonably_small.png"
-}
+
 
 let bowserJunior = {
  left: Utils.arrayMaker(18, 25),
@@ -73,10 +69,7 @@ export default class Hero{
       this.powerGroup = powerGroup
       this.bomb
       this.onePress
-      this.name = store.dispatch(addPlayerName(dummy.name))
-      this.avatar = store.dispatch(addAvatar(dummy.avatar))
-      store.dispatch(addMultiplayerAvatar(this.color, dummy.avatar))
-      store.dispatch(restartMultiplayerScoreboard);
+      store.dispatch(restartMultiplayerScoreboard());
       this.score = store.getState().Player.score
       this.id = id
       this.animation
@@ -124,6 +117,9 @@ export default class Hero{
       switch(this.color){
         case 'blue':
         this.sprite = this.game.add.sprite(72, 72, 'larryKoopa', 2)
+        this.avatar="https://pbs.twimg.com/profile_images/490094309757038594/WvFG7LDV_reasonably_small.png"
+        store.dispatch(addAvatar(this.avatar))
+        store.dispatch(addMultiplayerAvatar(this.color, this.avatar))
         this.sprite.animations.add('left', larryKoopa.left, 12, true)
         this.sprite.animations.add('right', larryKoopa.right, 12, true)
         this.sprite.animations.add('up', larryKoopa.up, 12, true)
@@ -134,6 +130,9 @@ export default class Hero{
         break;
         case 'purple':
         this.sprite = this.game.add.sprite(648, 648, 'lemmyKoopa')
+        this.avatar="https://pbs.twimg.com/profile_images/490094309757038594/WvFG7LDV_reasonably_small.png"
+        store.dispatch(addAvatar(this.avatar))
+        store.dispatch(addMultiplayerAvatar(this.color, this.avatar))
         this.sprite.animations.add('left', lemmyKoopa.left, 12, true)
         this.sprite.animations.add('right', lemmyKoopa.right, 12, true)
         this.sprite.animations.add('up', lemmyKoopa.up, 12, true)
@@ -144,6 +143,9 @@ export default class Hero{
         break;
         case 'green':
         this.sprite = this.game.add.sprite(648, 72, 'yoshi')
+        this.avatar="https://pbs.twimg.com/profile_images/490094309757038594/WvFG7LDV_reasonably_small.png"
+        store.dispatch(addAvatar(this.avatar))
+        store.dispatch(addMultiplayerAvatar(this.color, this.avatar))
         this.sprite.animations.add('left', yoshi.left, 12, true)
         this.sprite.animations.add('right', yoshi.right, 12, true)
         this.sprite.animations.add('up', yoshi.up, 12, true)
@@ -154,6 +156,9 @@ export default class Hero{
         break;
         case 'red':
         this.sprite = this.game.add.sprite(72, 648, 'bowserJunior')
+        this.avatar="https://pbs.twimg.com/profile_images/490094309757038594/WvFG7LDV_reasonably_small.png"
+        store.dispatch(addAvatar(this.avatar))
+        store.dispatch(addMultiplayerAvatar(this.color, this.avatar))
         this.sprite.animations.add('left', bowserJunior.left, 12, true)
         this.sprite.animations.add('right', bowserJunior.right, 12, true)
         this.sprite.animations.add('up', bowserJunior.up, 8, true)
