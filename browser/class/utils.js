@@ -37,37 +37,6 @@ export const Utils = {
 
     },
 
-    // explode: function(x,y,range, group, game){
-    //   console.log('test')
-    //   let mapSize = 32
-    //   let flameArr =[]
-    //   let flame = group.create(x,y, 'fire')
-    //   flame.scale.setTo(0.5,0.5)
-    //   flame.anchor.setTo(0.5,0.5)
-    //   flameArr.push(flame)
-    //   flame= group.create(x+mapSize,y, 'fire')
-    //   flame.scale.setTo(0.5,0.5)
-    //   flame.anchor.setTo(0.5,0.5)
-    //   flameArr.push(flame)
-    //   flame= group.create(x,y+mapSize, 'fire')
-    //   flame.scale.setTo(0.5,0.5)
-    //   flame.anchor.setTo(0.5,0.5)
-    //   flameArr.push(flame)
-    //   flame= group.create(x-mapSize,y, 'fire')
-    //   flame.scale.setTo(0.5,0.5)
-    //   flame.anchor.setTo(0.5,0.5)
-    //   flameArr.push(flame)
-    //   flame= group.create(x,y-mapSize, 'fire')
-    //   flame.scale.setTo(0.5,0.5)
-    //   flame.anchor.setTo(0.5,0.5)
-    //   flameArr.push(flame)
-    //   flameArr.forEach(flame => {
-    //     var timer = game.time.events.add(Phaser.Timer.SECOND * .1, () => {
-    //       flame.kill()
-    //
-    //     });
-    //   })
-    // }
 
     adjacentCrates: function(x, y, range, allCrates) {
       let bombSquare = this.mapCoordsToGrid(x, y)
@@ -103,23 +72,13 @@ export const Utils = {
 
       }
       return adjacentCrates;
-    }
+    },
+    arrayMaker: function(start, end) {
+     var result = []
+     for (var i = start; i <= end; i++) {
+       result.push(i)
+     }
+     return result;
+   }
 
 }
-
-
-// let flame = this.fire.create(blockCoords.x, blockCoords.y, 'fire')
-// flame.scale.setTo(0.5,0.5)
-// flame.anchor.setTo(0.5,0.5)
-//  flame = this.fire.create(blockCoords.x-32, blockCoords.y, 'fire')
-// flame.scale.setTo(0.5,0.5)
-// flame.anchor.setTo(0.5,0.5)
-//  flame = this.fire.create(blockCoords.x, blockCoords.y-32, 'fire')
-// flame.scale.setTo(0.5,0.5)
-// flame.anchor.setTo(0.5,0.5)
-//  flame = this.fire.create(blockCoords.x+32, blockCoords.y, 'fire')
-// flame.scale.setTo(0.5,0.5)
-// flame.anchor.setTo(0.5,0.5)
-//  flame = this.fire.create(blockCoords.x, blockCoords.y+32, 'fire')
-// flame.scale.setTo(0.5,0.5)
-// flame.anchor.setTo(0.5,0.5)
