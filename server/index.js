@@ -7,9 +7,15 @@ const app = express()
 const fs = require('fs')
 const socketio = require('socket.io');
 const server = require('http').createServer(app)
-
-
 const io = socketio(server);
+const listeners =  require('./listeners')
+const {sendGameState} = require('./game/gameState')
+
+// server.on('request', app)
+
+io.on('connection', socket =>{listeners(io,socket)})
+sendGameState(io)
+
 
 
 
@@ -20,6 +26,7 @@ const io = socketio(server);
   .use(bodyParser.json())
     .use(express.static(resolve(__dirname, '..', 'public')))
     .use(express.static(resolve(__dirname, '..', 'node_modules/phaser/build/')))
+    .use('/api', require('./api'))
     .get('/', (_, res) => res.sendFile(resolve(__dirname, '..', 'public', 'index.html')))
   .use((err, req,res,next )=>{
     console.error(err)

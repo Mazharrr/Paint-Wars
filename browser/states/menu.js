@@ -7,6 +7,7 @@ export default class Menu {
 
       this.entryMessage = game.add.text(480/2-100,480/2,"Click to continue", style)
         this.game.input.onDown.add(this.startGame, this);
+        // this.game.input.onDown.add(this.startGame, this);
     }
 
     startGame() {

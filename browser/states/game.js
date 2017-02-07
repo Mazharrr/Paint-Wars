@@ -40,10 +40,10 @@ let larryKoopa = {
 };
 let yoshi = {
   left: arrayMaker(41, 45),
-  right: arrayMaker(23, ),
+  right: arrayMaker(23,),
   up: arrayMaker(36, 40),
   down: arrayMaker(18, 27),
-  idle: arrayMaker(08, 16 ),
+  idle: arrayMaker(8, 16),
   attack: arrayMaker(0, 7),
   dead: arrayMaker(33, 35)
 };

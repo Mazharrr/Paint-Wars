@@ -10,7 +10,7 @@ var phaser = path.join(phaserModule, 'build/custom/phaser-split.js'),
 
 
 module.exports = {
-  entry: './browser/index.js',
+  entry: './browser/main.jsx',
   output: {
     path: __dirname,
     filename: './public/bundle.js'
@@ -32,7 +32,7 @@ module.exports = {
         exclude: /(node_modules|bower_components)/,
         loader: 'babel-loader',
         query: {
-          presets: [ 'es2015']
+          presets: [ 'es2015', 'react']
         }
       },
       {test: /phaser\.js$/, include: path.join(__dirname, 'lib'), loader: 'imports?PIXI=pixi'},
