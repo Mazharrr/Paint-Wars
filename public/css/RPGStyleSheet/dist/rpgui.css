@@ -9,10 +9,6 @@ inside your html file.
 * Customized scrollbars
 */
 /* to get pixelated images (nearest-neighbor filter) on all  browsers */
-body {
-  background-size: 100%;
-  background-repeat: no-repeat;
-}
 
 .rpgui-pixelated {
   -ms-interpolation-mode: nearest-neighbor;
@@ -983,5 +979,12 @@ ul.rpgui-list-imp {
 }
 
 .customForm {
-  margin: 30% 36%;
+  margin: 30%;
+  margin-left: 42vw;
+}
+
+.paintBackground {
+  background-image: url('/assets/homeBackground.jpg');
+  background-size: 100%;
+  background-repeat: no-repeat;
 }

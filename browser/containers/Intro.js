@@ -16,7 +16,7 @@ class Intro extends Component {
   }
   render () {
     return (
-      <div className="container">
+      <div className="container paintBackground">
         <div className="row">
           <div className="rpgui-content container">
             <form className="rpgui-container framed customForm">
