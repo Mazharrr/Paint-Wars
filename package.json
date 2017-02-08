@@ -7,10 +7,10 @@
    "node": "7.x"
   },
   "scripts": {
-    "test": "check-node-version --node '>= 6.7.0' && echo \"Error: no test specified\" && exit 1",
-    "start": "check-node-version --node '>= 6.7.0' && nodemon server/index.js",
-    "build": "check-node-version --node '>= 6.7.0' && webpack",
-    "build-watch": "check-node-version --node '>= 6.7.0' && webpack -w"
+    "test": " echo \"Error: no test specified\" && exit 1",
+    "start": " nodemon server/index.js",
+    "build": " webpack",
+    "build-watch": " webpack -w"
   },
   "author": "",
   "license": "ISC",
