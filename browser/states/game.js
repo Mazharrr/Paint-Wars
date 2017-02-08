@@ -58,17 +58,7 @@ export default class gameState extends Phaser.State{
         this.world.bringToTop(powerGroup)
     }
     })
-    socket.on('server_delete_timer', data=>{
-      console.log( data)
-      console.log(name)
-      console.log(data.name)
-      console.log(myId)
-      console.log(data.LobbyId)
-      if(name!==data.name  && myId===data.LobbyId && socket.id===data.socket){
-        console.log('INSIDER TIMER DELETER')
-        this.game.time.events.remove(store.getState().Tiles.crates[data.x][data.y].bomb.timer)
-      }
-    })
+
 
     socket.emit('game_started',{})
     this.world.setBounds(0,0,720 ,720)
@@ -151,31 +141,38 @@ export default class gameState extends Phaser.State{
     let recievedEnemies = store.getState().Players.players
     let currentClients = store.getState().Players.sockets
 
+    this.game.lobby.players
+    let actualEnemies= {}
+
+    this.game.lobby.players.forEach((key)=>{
+      actualEnemies[key]= recievedEnemies[key]
+    })
+
     Object.keys(enemies).forEach((key)=>{
 
-      if(!recievedEnemies[key]){
+      if(!actualEnemies[key]){
         enemies[key].sprite.kill()
         delete enemies[key]
       }
     })
     // console.log(amountMade)
-    // console.log(recievedEnemies)
-    Object.keys(recievedEnemies).forEach((key)=>{
-      if(key !== name && recievedEnemies[key].id ===myId){
+    // console.log(actualEnemies)
+    Object.keys(actualEnemies).forEach((key)=>{
+      if(key !== name && actualEnemies[key].id ===myId){
 
       let enemyExistBool = enemies[key] ? true: false
       if(enemyExistBool  && amountMade===this.game.lobby.players.length-1){
-        enemies[key].sprite.x = recievedEnemies[key].position.x
-        enemies[key].sprite.y = recievedEnemies[key].position.y
-        enemies[key].sprite.animations.play(recievedEnemies[key].animation)
-        store.dispatch(setMultiplayerScore(recievedEnemies[key].color, recievedEnemies[key].score))
+        enemies[key].sprite.x = actualEnemies[key].position.x
+        enemies[key].sprite.y = actualEnemies[key].position.y
+        enemies[key].sprite.animations.play(actualEnemies[key].animation)
+        store.dispatch(setMultiplayerScore(actualEnemies[key].color, actualEnemies[key].score))
         // console.log(amountMade)
       }
 
       if(!enemyExistBool){
         amountMade++
         console.log('hero made', key)
-    enemies[key]= new Hero(this, key, recievedEnemies[key].color)
+    enemies[key]= new Hero(this, key, actualEnemies[key].color)
     }
     }
     })
