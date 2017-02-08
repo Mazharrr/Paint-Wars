@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "sockets/phaser",
   "main": "index.js",
+  "engines": {
+   "node": "7.x"
+  },
   "scripts": {
     "test": "check-node-version --node '>= 6.7.0' && echo \"Error: no test specified\" && exit 1",
     "start": "check-node-version --node '>= 6.7.0' && nodemon server/index.js",
