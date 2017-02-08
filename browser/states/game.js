@@ -1,9 +1,10 @@
 import Hero from '../class/hero1';
 import store from '../store';
 import socket from '../socket'
-import {loadCrates, addPlayer} from '../reducers/Tiles';
+import {loadCrates, addPlayer, addBomb, addPowerUp} from '../reducers/Tiles';
 import {loadTimer} from '../reducers/Lobby';
 import {setMultiplayerScore} from '../reducers/Scoreboard'
+import MechaKoopa from '../class/mechaKoopa'
 
 import enemyUpdate from '../enemyUpdate'
 
@@ -15,7 +16,10 @@ export let paint
 export let blockedLayer
 export let timer, timerEvent, text;
 let enemies = {}
-let me = {}
+let me= {}
+let name
+
+
 
 
 export default class gameState extends Phaser.State{
@@ -23,6 +27,24 @@ export default class gameState extends Phaser.State{
     super()
   }
   create(){
+    name = store.getState().Player.name
+    socket.on('server_send_bomb', data =>{
+      if(name!=data.socket){
+        let newBomb= new MechaKoopa(this, data.x,data.y, data.range)
+        newBomb.sprite.animations.play('explodeLeft')
+        store.dispatch(addBomb(data.gridX,data.gridY, newBomb))
+      }
+    })
+    socket.on('server_make_power', data=>{
+      if(name!==data.socket){
+        let newPower = powerGroup.create(data.x, data.y, data.power)
+        newPower.scale.setTo(1.3,1.3)
+        newPower.anchor.setTo(0.5,0.5)
+        newPower.gridCords= {x: data.gridX, y: data.gridY}
+        store.dispatch(addPowerUp(data.gridX, data.gridY, newPower))
+        this.world.bringToTop(powerGroup)
+    }
+    })
 
     socket.emit('game_started',{})
     this.world.setBounds(0,0,720 ,720)
@@ -119,10 +141,8 @@ export default class gameState extends Phaser.State{
         delete enemies[key]
       }
     })
-
     Object.keys(recievedEnemies).forEach((key)=>{
-
-      if(key !== socket.id ){
+      if(key !== name ){
 
       let enemyExistBool = enemies[key] ? true: false
       if(enemyExistBool){
@@ -138,20 +158,23 @@ export default class gameState extends Phaser.State{
     }
     })
 
-    currentClients.forEach((key)=>{
 
-      if(key === socket.id){
+    this.game.lobby.players.forEach((key)=>{
+      // console.log(key)
+      if(key === name){
         if(me[key]){
           me[key].update(this)
           this.physics.arcade.collide(me[key].sprite, blockedLayer)
           this.physics.arcade.collide(me[key].sprite, crate)
         }
         if(!me[key]){
-          let clientIndex = currentClients.indexOf(key)
-
+          let clientIndex = this.game.lobby.players.indexOf(key)
+          console.log('outside of switch')
           switch(clientIndex){
             case 0:
+            console.log('ran')
                 me[key]= new Hero(this, key, 'blue')
+
             break
             case 1:
 
@@ -183,7 +206,7 @@ export default class gameState extends Phaser.State{
         }
         else {
             store.dispatch(loadTimer("Done!"))
-            this.debug.text("Done!", 2, 14, "#0f0");
+            // this.debug.text("Done!", 2, 14, "#0f0");
             this.destroy()
         }
     }

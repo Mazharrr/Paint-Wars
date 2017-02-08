@@ -2,6 +2,7 @@
 
 export default class extends Phaser.State {
     preload() {
+      this.load.image('logo', '../assets/paintWarsLogo.png')
 
       this.time.advancedTiming = true;
       this.load.image('grass', '../assets/grass.jpg')

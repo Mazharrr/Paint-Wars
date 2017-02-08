@@ -25,7 +25,9 @@ class Intro extends Component {
                 <button
                   className="button"
                   type="submit"
-                  onClick={()=>{this.props.addPlayerName(this.state.name)
+                  onClick={(e)=>{
+                    e.preventDefault()
+                    this.props.addPlayerName(this.state.name)
                     hashHistory.push('/lobby')}
                   }
                   >

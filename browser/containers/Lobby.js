@@ -24,9 +24,11 @@ const Lobby = (props)=>{
       myRoom = room
     })
     if(myRoom && myRoom.start){
-      var myGame = new game()
+      var myGame = new game(myRoom)
       hashHistory.push('/game')
+
     }
+
 
 
 
@@ -36,7 +38,9 @@ const Lobby = (props)=>{
       <div className="row">
         <div className="rpgui-content">
           <form className="rpgui-container framed customForm">
-      <button onClick={()=>props.makeRoom(props.Player.name)} disabled={multiple}>Make a room </button>
+      <button onClick={(e)=>{
+        e.preventDefault()
+        props.makeRoom(props.Player.name)}} disabled={multiple}>Make a room </button>
       <h1>Room count: {props.Lobby.lobby && props.Lobby.lobby.length}</h1>
 
     <h3>Rooms</h3>
@@ -56,13 +60,16 @@ const Lobby = (props)=>{
                )
              }
              {
-               (room.players && room.players.length>=4 && room.players.includes(props.Player.name))
-               ? <button onClick={()=>{
+               (room.players && room.players.length>=1 && room.players.includes(props.Player.name))
+               ? <button onClick={(e)=>{
+                 e.preventDefault()
                  store.dispatch(startRoom(room.id))
-                 var myGame = new game()
+                 var myGame = new game(myRoom)
                  hashHistory.push('/game')
                }}>Start Game</button>
-                : (room.players && room.players.length <4) ?<button  disabled = {multiple} onClick ={()=>props.joinRoom(room.id, props.Player.name)}>Join Room
+                : (room.players && room.players.length <4) ?<button  disabled = {multiple} onClick ={(e)=>{
+                  e.preventDefault()
+                  props.joinRoom(room.id, props.Player.name)}}>Join Room
                 </button>: <div></div>
              }
              {(room.players.includes(props.Player.name))
