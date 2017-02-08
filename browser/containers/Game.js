@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-//import socket
+import {Link } from 'react-router'
 let winner;
 
 const scoreBoard = (props) => {
@@ -32,18 +32,21 @@ const scoreBoard = (props) => {
   		return (
 		    <div className="container-fluid">
 		      <div className="row">
-		        <div className="col-xs-8"></div>
-		        <div className="rpgui-content col-xs-4">
+		        <div className="col-xs-4"></div>
+		        <div className="rpgui-content col-xs-6">
 		          <div className="rpgui-container framed">
 		              {
 		                player.name &&
-		                <div>
+		                <div className="whiteText">
 			                <h1>
 			                  WINNER:
 			                </h1>
 			                <h2>
 			                  {winner.name}
 			                </h2>
+                      <Link to="/home">
+                        <a>Let's play again!</a>
+                      </Link>
 		                </div>
 		              }
 		          </div>

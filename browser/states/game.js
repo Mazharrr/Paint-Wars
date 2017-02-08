@@ -223,7 +223,7 @@ export default class gameState extends Phaser.State{
 
           // Create a delayed event 1m and 30s from now
 
-          timerEvent = timer.add(Phaser.Timer.MINUTE * 3 + Phaser.Timer.SECOND * 30, this.endTimer, this);
+          timerEvent = timer.add(Phaser.Timer.MINUTE * 2 + Phaser.Timer.SECOND * 30, this.endTimer, this);
 
           // Start the timer
           timer.start();
