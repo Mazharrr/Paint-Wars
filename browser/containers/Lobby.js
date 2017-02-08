@@ -2,6 +2,8 @@ import React from 'react';
 import {Link, hashHistory} from 'react-router'
 import { connect } from 'react-redux';
 import {makeRoom, joinRoom, leaveRoom, startRoom} from '../reducers/Lobby'
+import Header from '../containers/Header';
+
 
 import 'pixi';
 import 'p2';
@@ -14,11 +16,11 @@ initializeSocket();
 const Lobby = (props)=>{
 
     let multiple=  false
+    let myRoom
     props.Lobby.lobby.forEach((room)=>{
       if(room.players.includes(props.Player.name))
       multiple = true
     })
-    let myRoom
     props.Lobby.lobby.forEach((room)=>{
       if(room.players.includes(props.Player.name))
       myRoom = room
@@ -26,7 +28,7 @@ const Lobby = (props)=>{
     if(myRoom && myRoom.start){
       var myGame = new game(myRoom)
       hashHistory.push('/game')
-
+      inGame=true
     }
 
 
@@ -34,7 +36,9 @@ const Lobby = (props)=>{
 
 
   return(
-    <div className="container">
+
+    <div className="container paintBackground">
+      <Header />
       <div className="row">
         <div className="rpgui-content">
           <form className="rpgui-container framed customForm">
@@ -46,7 +50,7 @@ const Lobby = (props)=>{
     <h3>Rooms</h3>
       {
         props.Lobby.lobby && props.Lobby.lobby.map(room => (
-          <div key= { room.id}>
+          !room.start ? <div key= { room.id}>
             <h1>Room {room.id}</h1>
              {
                room.players.map((player, index )=>
@@ -60,14 +64,14 @@ const Lobby = (props)=>{
                )
              }
              {
-               (room.players && room.players.length>=1 && room.players.includes(props.Player.name))
+               (room.players && room.players.length>=2 && room.players.includes(props.Player.name))
                ? <button onClick={(e)=>{
                  e.preventDefault()
                  store.dispatch(startRoom(room.id))
                  var myGame = new game(myRoom)
                  hashHistory.push('/game')
                }}>Start Game</button>
-                : (room.players && room.players.length <4) ?<button  disabled = {multiple} onClick ={(e)=>{
+                : (room.players && room.players.length <4) ?<button  disabled = {multiple ||room.start} onClick ={(e)=>{
                   e.preventDefault()
                   props.joinRoom(room.id, props.Player.name)}}>Join Room
                 </button>: <div></div>
@@ -78,7 +82,7 @@ const Lobby = (props)=>{
                :<div></div>
              }
              <hr></hr>
-          </div>
+          </div>: <div key ={room.id}></div>
         ))
       }
     </form>

@@ -5,6 +5,7 @@ import {loadCrates, addPlayer, addBomb, addPowerUp} from '../reducers/Tiles';
 import {loadTimer} from '../reducers/Lobby';
 import {setMultiplayerScore} from '../reducers/Scoreboard'
 import MechaKoopa from '../class/mechaKoopa'
+import {setId} from '../reducers/Player'
 
 import enemyUpdate from '../enemyUpdate'
 
@@ -18,7 +19,9 @@ export let timer, timerEvent, text;
 let enemies = {}
 let me= {}
 let name
-
+let amountMade=0
+let bool = false
+let myId
 
 
 
@@ -28,15 +31,19 @@ export default class gameState extends Phaser.State{
   }
   create(){
     name = store.getState().Player.name
+    // console.log(this.game.lobby)
+    myId = this.game.lobby.id
+    // console.log(this.game.lobby.players.length)
+    store.dispatch(setId(myId))
     socket.on('server_send_bomb', data =>{
-      if(name!=data.socket){
+      if(name!==data.socket && myId===data.LobbyId){
         let newBomb= new MechaKoopa(this, data.x,data.y, data.range)
         newBomb.sprite.animations.play('explodeLeft')
         store.dispatch(addBomb(data.gridX,data.gridY, newBomb))
       }
     })
     socket.on('server_make_power', data=>{
-      if(name!==data.socket){
+      if(name!==data.socket  && myId===data.LobbyId){
         let newPower = powerGroup.create(data.x, data.y, data.power)
         newPower.scale.setTo(1.3,1.3)
         newPower.anchor.setTo(0.5,0.5)
@@ -51,14 +58,7 @@ export default class gameState extends Phaser.State{
     this.map = this.add.tilemap('finalMap');
     this.map.addTilesetImage('tileset-biome', 'gameTiles');
 
-     // Create a custom timer
-        timer = this.time.create();
 
-        // Create a delayed event 1m and 30s from now
-        timerEvent = timer.add(Phaser.Timer.MINUTE * 1 + Phaser.Timer.SECOND * 30, this.endTimer, this);
-
-        // Start the timer
-        timer.start();
 
     blockedLayer = this.map.createLayer('10 obstacles')
     this.backgroundLayer = this.map.createLayer('0 floor')
@@ -141,18 +141,22 @@ export default class gameState extends Phaser.State{
         delete enemies[key]
       }
     })
+    // console.log(amountMade)
+    // console.log(recievedEnemies)
     Object.keys(recievedEnemies).forEach((key)=>{
-      if(key !== name ){
+      if(key !== name && recievedEnemies[key].id ===myId){
 
       let enemyExistBool = enemies[key] ? true: false
-      if(enemyExistBool){
+      if(enemyExistBool  && amountMade===this.game.lobby.players.length-1){
         enemies[key].sprite.x = recievedEnemies[key].position.x
         enemies[key].sprite.y = recievedEnemies[key].position.y
-        enemies[key].sprite.animations.play('walk')
+        enemies[key].sprite.animations.play(recievedEnemies[key].animation)
         store.dispatch(setMultiplayerScore(recievedEnemies[key].color, recievedEnemies[key].score))
+        // console.log(amountMade)
       }
 
       if(!enemyExistBool){
+        amountMade++
     enemies[key]= new Hero(this, key, recievedEnemies[key].color)
     }
     }
@@ -162,19 +166,19 @@ export default class gameState extends Phaser.State{
     this.game.lobby.players.forEach((key)=>{
       // console.log(key)
       if(key === name){
-        if(me[key]){
+        if(me[key]  && amountMade>=this.game.lobby.players.length-1){
           me[key].update(this)
           this.physics.arcade.collide(me[key].sprite, blockedLayer)
           this.physics.arcade.collide(me[key].sprite, crate)
         }
         if(!me[key]){
           let clientIndex = this.game.lobby.players.indexOf(key)
-          console.log('outside of switch')
+
+
           switch(clientIndex){
             case 0:
-            console.log('ran')
-                me[key]= new Hero(this, key, 'blue')
 
+                me[key]= new Hero(this, key, 'blue')
             break
             case 1:
 
@@ -197,17 +201,33 @@ export default class gameState extends Phaser.State{
   }
 
      render() {
+       if(!bool & amountMade >= this.game.lobby.players.length-1)
+       {
+         //Create a custom timer
+       timer = this.time.create();
+       bool=true
 
-        if (timer.running) {
+
+          // Create a delayed event 1m and 30s from now
+
+          timerEvent = timer.add(Phaser.Timer.MINUTE * 3 + Phaser.Timer.SECOND * 30, this.endTimer, this);
+
+          // Start the timer
+          timer.start();
+        }
+        if (timer && timer.running) {
             // this.debug.text(this.formatTime(Math.round((timerEvent.delay - timer.ms) / 1000)), 2, 14, "#ff0");
 
             store.dispatch(loadTimer(Math.round((timerEvent.delay - timer.ms) / 1000)))
 
         }
         else {
-            store.dispatch(loadTimer("Done!"))
+          if(amountMade >= this.game.lobby.players.length-1)
+            {store.dispatch(loadTimer("Done!"))
             // this.debug.text("Done!", 2, 14, "#0f0");
-            this.destroy()
+
+            // this.game.destroy()
+          }
         }
     }
     endTimer() {

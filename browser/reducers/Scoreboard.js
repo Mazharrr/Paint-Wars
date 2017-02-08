@@ -1,17 +1,21 @@
 const initialState = {
   green: {
+    name:'',
     avatar: "http://www.fillmurray.com/100/100",
     score: 0
   },
   blue: {
+    name:'',
     avatar: "http://www.fillmurray.com/101/101",
     score: 0
   },
   purple: {
+    name:'',
     avatar: "http://www.fillmurray.com/102/102",
     score: 0
   },
   red: {
+    name:'',
     avatar: "http://www.fillmurray.com/103/103",
     score: 0
   }
@@ -19,6 +23,7 @@ const initialState = {
 
 //ACTION TYPE CONSTANTS
 
+const ADD_MULTIPLAYER_NAME = "ADD_MULTIPLAYER_NAME";
 const ADD_PLAYER_AVATAR = "ADD_PLAYER_AVATAR";
 const INCREMENT_PLAYER_SCORE = "INCREMENT_PLAYER_SCORE";
 const SET_PLAYER_SCORE = "SET_PLAYER_SCORE";
@@ -48,6 +53,12 @@ export const resetMultiplayerScore = (color) => ({
   color
 })
 
+export const addNameMultiplayerScore = (color, name) => ({
+  type: ADD_MULTIPLAYER_NAME,
+  color,
+  name
+})
+
 export const restartMultiplayerScoreboard = () => ({
   type: RESTART_GAME
 })
@@ -73,13 +84,18 @@ const reducer = (state = initialState, action) => {
       newState = initialState;
       break;
     case SET_PLAYER_SCORE:
-      newState[color].score = action.score
+      newState[color].score = action.score;
+      break;
+    case ADD_MULTIPLAYER_NAME:
+
+      newState[color].name = action.name;
       break;
     default:
       return state;
   }
+  //console.log(newState)
   return newState;
 
-}
+};
 
 export default reducer;

@@ -33,7 +33,7 @@ export const getLobby = ()=>{
 
 export const makeRoom = (name)=>{
   return function(dispatch, getState){
-      console.log('made room')
+      // console.log('made room')
     axios.post('/api/lobby', {name: name})
     // .then(res=>res.data)
     // .then(lobby => {dispatch(loadLobby(lobby))})

@@ -4,7 +4,7 @@ import Game1 from '../states/game'
 import store from '../store';
 import {removeCrate, addPaint, loadCrates, removePaint, addFlames, addPowerUp, removePowerUp, addBomb, removeBomb} from '../reducers/Tiles';
 import {addPlayerName, addAvatar, increaseScore, addToPlayerPowerUp, killPlayer} from '../reducers/Player';
-import {addMultiplayerAvatar, incrementMuliplayerScore, resetMultiplayerScore, restartMultiplayerScoreboard} from '../reducers/Scoreboard';
+import {addMultiplayerAvatar, incrementMuliplayerScore, resetMultiplayerScore, restartMultiplayerScoreboard, addNameMultiplayerScore} from '../reducers/Scoreboard';
 import socket from '../socket.js'
 import {powerGroup, crate, fire, paint} from '../states/game'
 
@@ -70,10 +70,12 @@ export default class Hero{
       this.bomb
       this.onePress
       this.name = name
+      store.dispatch(addNameMultiplayerScore(this.color, this.name))
       store.dispatch(restartMultiplayerScoreboard());
       this.score = store.getState().Player.score
       this.animation
       this.addSprite()
+      this.updateSocket()
 
     }
 
@@ -102,7 +104,7 @@ export default class Hero{
         let randTile = availableTiles[randNum]
         let powerXY = Utils.indexToXY(randTile.x, randTile.y)
         socket.emit('client_make_power', {
-            x: powerXY.x, y: powerXY.y, gridX: randTile.x, gridY: randTile.y, power: powerUp, socket: this.name, mySocket: socket.id
+            x: powerXY.x, y: powerXY.y, gridX: randTile.x, gridY: randTile.y, power: powerUp, socket: this.name, mySocket: socket.id, LobbyId: this.game.game.lobby.id
           })
         let power = this.powerGroup.create(powerXY.x, powerXY.y, powerUp)
         power.gridCords= {x: randTile.x, y: randTile.y}
@@ -117,7 +119,7 @@ export default class Hero{
       switch(this.color){
         case 'blue':
         this.sprite = this.game.add.sprite(72, 72, 'larryKoopa', 2)
-        this.avatar="https://pbs.twimg.com/profile_images/490094309757038594/WvFG7LDV_reasonably_small.png"
+        this.avatar="http://vignette1.wikia.nocookie.net/ssb/images/0/03/LarryTrophy3DS.png/revision/latest?cb=20140929194701&format=webp"
         store.dispatch(addAvatar(this.avatar))
         store.dispatch(addMultiplayerAvatar(this.color, this.avatar))
         this.sprite.animations.add('left', larryKoopa.left, 12, true)
@@ -130,7 +132,7 @@ export default class Hero{
         break;
         case 'purple':
         this.sprite = this.game.add.sprite(648, 648, 'lemmyKoopa')
-        this.avatar="https://pbs.twimg.com/profile_images/490094309757038594/WvFG7LDV_reasonably_small.png"
+        this.avatar="http://vignette3.wikia.nocookie.net/ssb/images/4/4a/LemmyTrophy3DS.png/revision/latest?cb=20140929194817&format=webp"
         store.dispatch(addAvatar(this.avatar))
         store.dispatch(addMultiplayerAvatar(this.color, this.avatar))
         this.sprite.animations.add('left', lemmyKoopa.left, 12, true)
@@ -143,7 +145,7 @@ export default class Hero{
         break;
         case 'green':
         this.sprite = this.game.add.sprite(648, 72, 'yoshi')
-        this.avatar="https://pbs.twimg.com/profile_images/490094309757038594/WvFG7LDV_reasonably_small.png"
+        this.avatar="http://vignette4.wikia.nocookie.net/ssb/images/5/56/Yoshi_%2B_Egg_1.png/revision/latest?cb=20140929214641&format=webp"
         store.dispatch(addAvatar(this.avatar))
         store.dispatch(addMultiplayerAvatar(this.color, this.avatar))
         this.sprite.animations.add('left', yoshi.left, 12, true)
@@ -156,7 +158,7 @@ export default class Hero{
         break;
         case 'red':
         this.sprite = this.game.add.sprite(72, 648, 'bowserJunior')
-        this.avatar="https://pbs.twimg.com/profile_images/490094309757038594/WvFG7LDV_reasonably_small.png"
+        this.avatar="http://vignette4.wikia.nocookie.net/ssb/images/e/e1/BowserJrEXTrophy3DS.png/revision/latest?cb=20140929203914&format=webp"
         store.dispatch(addAvatar(this.avatar))
         store.dispatch(addMultiplayerAvatar(this.color, this.avatar))
         this.sprite.animations.add('left', bowserJunior.left, 12, true)
@@ -208,7 +210,7 @@ export default class Hero{
           if(this.immuneTime < this.game.time.now){
             this.immuneTime = this.game.time.now + 1000;
           }
-          socket.emit('client_remove_paint',{color: this.color, socket: this.name, mySocket: socket.id})
+          socket.emit('client_remove_paint',{color: this.color, socket: this.name, mySocket: socket.id, LobbyId: this.game.game.lobby.id})
 
           store.dispatch(removePaint(this.color))
           this.reset();
@@ -227,7 +229,7 @@ export default class Hero{
       this.sprite.body.velocity.setTo(0,0)
       this.powerGroup.children.forEach((power)=>{
         this.game.physics.arcade.overlap(this.sprite, power,()=>{
-          socket.emit('client_get_power', {x: power.gridCords.x, y: power.gridCords.y, range: this.range, socket: this.name, mySocket: socket.id})
+          socket.emit('client_get_power', {x: power.gridCords.x, y: power.gridCords.y, range: this.range, socket: this.name, mySocket: socket.id, LobbyId: this.game.game.lobby.id})
 
           store.dispatch(removePowerUp(power.gridCords.x , power.gridCords.y))
           store.dispatch(addToPlayerPowerUp(power.key))
@@ -318,7 +320,7 @@ export default class Hero{
 
                 if(!store.getState().Tiles.crates[gridCoords.x][gridCoords.y].bomb)
                 {
-                socket.emit('client_place_bomb', {x: blockCoords.x, y: blockCoords.y, range: this.range, socket: this.name, gridX: gridCoords.x, gridY: gridCoords.y, mySocket: socket.id})
+                socket.emit('client_place_bomb', {x: blockCoords.x, y: blockCoords.y, range: this.range, socket: this.name, gridX: gridCoords.x, gridY: gridCoords.y, mySocket: socket.id, LobbyId: this.game.game.lobby.id})
                 this.bomb = new MechaKoopa(this.game, blockCoords.x, blockCoords.y, this.range);
                 if(this.animation !='attack')
                 this.sprite.animations.play('attack')
@@ -345,7 +347,7 @@ export default class Hero{
     }
     explosion(gridCoords, blockCoords, myBomb, time){
               myBomb.timer = this.game.time.events.add(Phaser.Timer.SECOND * time, () => {
-                socket.emit('client_bomb_explode', {x: gridCoords.x, y: gridCoords.y, socket: this.name, mySocket: socket.id})
+                socket.emit('client_bomb_explode', {x: gridCoords.x, y: gridCoords.y, socket: this.name, mySocket: socket.id, LobbyId: this.game.game.lobby.id})
               store.dispatch(removeBomb(gridCoords.x, gridCoords.y))
               this.bombs.pop();
               let allCrates = store.getState().Tiles.crates;
@@ -357,7 +359,7 @@ export default class Hero{
                   if (allCrates[crate.x] && allCrates[crate.x][crate.y].crate === false) {
                     let flameXY = Utils.indexToXY(crate.x, crate.y)
                     socket.emit('client_make_fire', {
-                      x: flameXY.x, y: flameXY.y, gridX: crate.x, gridY: crate.y, socket: this.name, mySocket: socket.id
+                      x: flameXY.x, y: flameXY.y, gridX: crate.x, gridY: crate.y, socket: this.name, mySocket: socket.id, LobbyId: this.game.game.lobby.id
                     })
                     let flame = this.fire.create(flameXY.x, flameXY.y, 'fire');
 
@@ -374,7 +376,7 @@ export default class Hero{
                 let paintGrid = Utils.indexToXY(crate.x, crate.y);
                   if(allCrates[crate.x][crate.y].paint.key!==this.color){
                   socket.emit('client_make_paint', {
-                      x: paintGrid.x, y: paintGrid.y, gridX: crate.x, gridY: crate.y, color: this.color, socket: this.name, mySocket: socket.id
+                      x: paintGrid.x, y: paintGrid.y, gridX: crate.x, gridY: crate.y, color: this.color, socket: this.name, mySocket: socket.id, LobbyId: this.game.game.lobby.id
                     })
 
                     let myPaint = this.paint.create(paintGrid.x, paintGrid.y, this.color)
@@ -386,7 +388,7 @@ export default class Hero{
                     store.dispatch(incrementMuliplayerScore(this.color));
                   }
                   if (allCrates[crate.x] && allCrates[crate.x][crate.y]&& allCrates[crate.x][crate.y].crate !== false) {
-                    socket.emit('client_remove_crate',{x: crate.x, y: crate.y, socket: this.name, mySocket: socket.id})
+                    socket.emit('client_remove_crate',{x: crate.x, y: crate.y, socket: this.name, mySocket: socket.id, LobbyId: this.game.game.lobby.id})
                     allCrates[crate.x][crate.y].crate.kill()
                     store.dispatch(removeCrate(crate.x, crate.y))
                     let powerUpChance = Math.floor(Math.random()*2)+1
@@ -398,7 +400,7 @@ export default class Hero{
                       let randomPowerUp = randomPowerUpArray[Math.floor(Math.random()*randomPowerUpArray.length)];
 
                       socket.emit('client_make_power', {
-                          x: powerXY.x, y: powerXY.y, gridX: crate.x, gridY: crate.y, power: randomPowerUp, socket: this.name, mySocket: socket.id
+                          x: powerXY.x, y: powerXY.y, gridX: crate.x, gridY: crate.y, power: randomPowerUp, socket: this.name, mySocket: socket.id, LobbyId: this.game.game.lobby.id
                         })
                       let power = this.powerGroup.create(powerXY.x, powerXY.y, randomPowerUp)
                       power.gridCords= {x: crate.x, y: crate.y}
@@ -419,7 +421,7 @@ export default class Hero{
 
 
   updateSocket(){
-        socket.emit('client_data_transfer', {position: this.sprite.position, color: this.color, score: this.score, name: this.name})
+        socket.emit('client_data_transfer', {position: this.sprite.position, color: this.color, score: this.score, name: this.name, animation: this.animation, id: this.game.game.lobby.id})
   }
 
 }

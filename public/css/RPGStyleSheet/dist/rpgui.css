@@ -843,7 +843,7 @@ ul.rpgui-list-imp {
 /* Handle */
 .rpgui-content ::-webkit-scrollbar-thumb,
 .rpgui-content::-webkit-scrollbar-thumb {
-  background-image: url("img/scrollbar-thumb.png");
+  background-imagex: url("img/scrollbar-thumb.png");
   background-size: 100% 100%;
   background-repeat: no-repeat; }
 
@@ -985,11 +985,17 @@ ul.rpgui-list-imp {
 
 .paintBackground {
   background-image: url('/assets/homeBackground.jpg');
-  background-size: 100%;
+  background-size: 140%;
   background-repeat: no-repeat;
 }
+
 
 body{
   background-size: 100%;
   background-repeat: no-repeat;
+}
+
+.whiteText {
+  color: white;
+  font-size: 30px;
 }

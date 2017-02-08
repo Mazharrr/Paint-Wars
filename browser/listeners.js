@@ -9,11 +9,10 @@ import {powerGroup, crate, fire, paint} from './states/game'
 
 export default socket =>{
 let me = socket.id
+// console.log(store.getState().Player.id)
   socket.on('gameState', data=>{
-
     store.dispatch(getPlayers(data.Players.players))
     store.dispatch(getClient(data.Players.sockets))
-    // store.dispatch(loadLobby(data.Lobby.lobby))
   })
   socket.on('lobbyState', data=>{
     // console.log(data)
@@ -21,12 +20,18 @@ let me = socket.id
   })
 
   socket.on('server_bomb_explode', data=>{
-    if(me!==data.mySocket){
+    // console.log(me)
+    // console.log(data.mySocket)
+    // console.log(store.getState().Player)
+    // console.log(store.getState().Player.id)
+    // console.log(data.LobbyId)
+    if(me!==data.mySocket && store.getState().Player.id ===data.LobbyId){
+      // console.log('ran bomb explode')
     store.dispatch(removeBomb(data.x, data.y))
   }
   })
   socket.on('server_make_fire', data=>{
-    if(me!==data.mySocket){
+    if(me!==data.mySocket&& store.getState().Player.id ===data.LobbyId){
       let newFlame = fire.create(data.x, data.y, 'fire')
       newFlame.scale.setTo(1.2,1.2)
       newFlame.anchor.setTo(0.5,0.5)
@@ -34,7 +39,7 @@ let me = socket.id
   }
   })
   socket.on('server_remove_crate', data=>{
-    if(me!==data.mySocket){
+    if(me!==data.mySocket&& store.getState().Player.id ===data.LobbyId){
       if(store.getState().Tiles.crates[data.x][data.y].crate){
     store.getState().Tiles.crates[data.x][data.y].crate.kill()
     store.dispatch(removeCrate(data.x, data.y))
@@ -42,7 +47,7 @@ let me = socket.id
   }
   })
   socket.on('server_make_paint', data=>{
-    if(me!==data.mySocket){
+    if(me!==data.mySocket&& store.getState().Player.id ===data.LobbyId){
       let newPaint = paint.create(data.x, data.y, data.color)
       newPaint.scale.setTo(0.15,0.15)
       newPaint.anchor.setTo(0.5,0.5)
@@ -50,12 +55,12 @@ let me = socket.id
   }
   })
   socket.on('server_remove_paint', data=>{
-    if(me!==data.mySocket){
+    if(me!==data.mySocket&& store.getState().Player.id ===data.LobbyId){
     store.dispatch(removePaint(data.color))
   }
   })
   socket.on('server_get_power', data=>{
-    if(me!==data.mySocket){
+    if(me!==data.mySocket&& store.getState().Player.id ===data.LobbyId){
 
     store.dispatch(removePowerUp(data.x, data.y))
   }
