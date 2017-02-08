@@ -78,7 +78,7 @@ export default class Hero{
       this.updateSocket()
 
       socket.on('server_delete_timer', data=>{
-        if(store.getState().Player.name!==data.name  && this.game.lobby.id===data.LobbyId && socket.id===data.socket){
+        if(store.getState().Player.name!==data.name  && this.game.game.lobby.id===data.LobbyId && socket.id===data.socket){
           console.log('INSIDER TIMER DELETER')
           this.game.time.events.remove(store.getState().Tiles.crates[data.x][data.y].bomb.timer)
           this.bombs.pop()
