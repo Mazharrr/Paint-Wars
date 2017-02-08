@@ -77,6 +77,15 @@ export default class Hero{
       this.addSprite()
       this.updateSocket()
 
+      socket.on('server_delete_timer', data=>{
+        if(store.getState().Player.name!==data.name  && this.game.lobby.id===data.LobbyId && socket.id===data.socket){
+          console.log('INSIDER TIMER DELETER')
+          this.game.time.events.remove(store.getState().Tiles.crates[data.x][data.y].bomb.timer)
+          this.bombs.pop()
+        }
+      })
+
+
     }
 
 
@@ -325,7 +334,7 @@ export default class Hero{
                 if(!store.getState().Tiles.crates[gridCoords.x][gridCoords.y].bomb)
                 {
                 socket.emit('client_place_bomb', {x: blockCoords.x, y: blockCoords.y, range: this.range, socket: this.name, gridX: gridCoords.x, gridY: gridCoords.y, mySocket: socket.id, LobbyId: this.game.game.lobby.id})
-                this.bomb = new MechaKoopa(this.game, blockCoords.x, blockCoords.y, this.range);
+                this.bomb = new MechaKoopa(this.game, blockCoords.x, blockCoords.y, this.range, socket.id);
                 if(this.animation !='attack')
                 this.sprite.animations.play('attack')
                 this.animation='attack'
@@ -362,6 +371,7 @@ export default class Hero{
               cratesToKill.forEach(crate => {
                   if (allCrates[crate.x] && allCrates[crate.x][crate.y].crate === false) {
                     let flameXY = Utils.indexToXY(crate.x, crate.y)
+
                     socket.emit('client_make_fire', {
                       x: flameXY.x, y: flameXY.y, gridX: crate.x, gridY: crate.y, socket: this.name, mySocket: socket.id, LobbyId: this.game.game.lobby.id
                     })
@@ -372,6 +382,9 @@ export default class Hero{
                     store.dispatch(addFlames(crate.x, crate.y, flame))
                     if(allCrates[crate.x][crate.y].bomb && allCrates[crate.x][crate.y].bomb !== myBomb){
                       this.game.time.events.remove(allCrates[crate.x][crate.y].bomb.timer)
+                      socket.emit('client_delete_timer',{
+                        x: crate.x, y: crate.y, socket: allCrates[crate.x][crate.y].bomb.socket, name: this.name , LobbyId: this.game.game.lobby.id
+                      })
                       this.explosion({x: crate.x, y: crate.y}, {x: crate.x*48+24, y: crate.y*48+24}, allCrates[crate.x][crate.y].bomb, 0)
                     }
 

@@ -37,7 +37,7 @@ export default class gameState extends Phaser.State{
     store.dispatch(setId(myId))
     socket.on('server_send_bomb', data =>{
       if(name!==data.socket && myId===data.LobbyId){
-        let newBomb= new MechaKoopa(this, data.x,data.y, data.range)
+        let newBomb= new MechaKoopa(this, data.x,data.y, data.range, data.mySocket)
         newBomb.sprite.animations.play('explodeLeft')
         store.dispatch(addBomb(data.gridX,data.gridY, newBomb))
       }
@@ -46,6 +46,10 @@ export default class gameState extends Phaser.State{
       // console.log('myName', name, 'socketName' ,data.socket)
       // console.log('myId', myId, 'lobbyId', data.LobbyId)
       if(name!==data.socket  && myId===data.LobbyId){
+        if(store.getState().Tiles.crates[data.gridX][data.gridY].powerUp)
+        {store.getState().Tiles.crates[data.gridX][data.gridY].powerUp.kill()
+        store.getState().Tiles.crates[data.gridX][data.gridY].powerUp= false}
+
         let newPower = powerGroup.create(data.x, data.y, data.power)
         newPower.scale.setTo(1.3,1.3)
         newPower.anchor.setTo(0.5,0.5)
@@ -53,6 +57,17 @@ export default class gameState extends Phaser.State{
         store.dispatch(addPowerUp(data.gridX, data.gridY, newPower))
         this.world.bringToTop(powerGroup)
     }
+    })
+    socket.on('server_delete_timer', data=>{
+      console.log( data)
+      console.log(name)
+      console.log(data.name)
+      console.log(myId)
+      console.log(data.LobbyId)
+      if(name!==data.name  && myId===data.LobbyId && socket.id===data.socket){
+        console.log('INSIDER TIMER DELETER')
+        this.game.time.events.remove(store.getState().Tiles.crates[data.x][data.y].bomb.timer)
+      }
     })
 
     socket.emit('game_started',{})
@@ -144,7 +159,7 @@ export default class gameState extends Phaser.State{
       }
     })
     // console.log(amountMade)
-    console.log(recievedEnemies)
+    // console.log(recievedEnemies)
     Object.keys(recievedEnemies).forEach((key)=>{
       if(key !== name && recievedEnemies[key].id ===myId){
 

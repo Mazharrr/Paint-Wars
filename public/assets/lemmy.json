@@ -2,7 +2,7 @@
 
 {
 	"filename": "lemmy_01.png",
-	"frame": {"x":182,"y":1,"w":29,"h":47},
+	"frame": {"x":171,"y":219,"w":29,"h":47},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":29,"h":47},
@@ -10,7 +10,7 @@
 },
 {
 	"filename": "lemmy_02.png",
-	"frame": {"x":213,"y":1,"w":29,"h":47},
+	"frame": {"x":200,"y":219,"w":29,"h":47},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":29,"h":47},
@@ -18,7 +18,7 @@
 },
 {
 	"filename": "lemmy_03.png",
-	"frame": {"x":244,"y":1,"w":29,"h":47},
+	"frame": {"x":0,"y":266,"w":29,"h":47},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":29,"h":47},
@@ -26,7 +26,7 @@
 },
 {
 	"filename": "lemmy_04.png",
-	"frame": {"x":1192,"y":1,"w":29,"h":43},
+	"frame": {"x":51,"y":85,"w":29,"h":43},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":29,"h":43},
@@ -34,7 +34,7 @@
 },
 {
 	"filename": "lemmy_05.png",
-	"frame": {"x":1529,"y":1,"w":29,"h":42},
+	"frame": {"x":186,"y":0,"w":29,"h":42},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":29,"h":42},
@@ -42,7 +42,7 @@
 },
 {
 	"filename": "lemmy_06.png",
-	"frame": {"x":760,"y":1,"w":28,"h":44},
+	"frame": {"x":133,"y":173,"w":28,"h":44},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":28,"h":44},
@@ -50,7 +50,7 @@
 },
 {
 	"filename": "lemmy_07.png",
-	"frame": {"x":878,"y":1,"w":25,"h":44},
+	"frame": {"x":173,"y":129,"w":25,"h":44},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":25,"h":44},
@@ -58,7 +58,7 @@
 },
 {
 	"filename": "lemmy_08.png",
-	"frame": {"x":399,"y":1,"w":27,"h":46},
+	"frame": {"x":186,"y":173,"w":27,"h":46},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":27,"h":46},
@@ -66,7 +66,7 @@
 },
 {
 	"filename": "lemmy_09.png",
-	"frame": {"x":820,"y":1,"w":27,"h":44},
+	"frame": {"x":146,"y":129,"w":27,"h":44},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":27,"h":44},
@@ -74,7 +74,7 @@
 },
 {
 	"filename": "lemmy_10.png",
-	"frame": {"x":1013,"y":1,"w":24,"h":44},
+	"frame": {"x":49,"y":173,"w":24,"h":44},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":24,"h":44},
@@ -82,7 +82,7 @@
 },
 {
 	"filename": "lemmy_11.png",
-	"frame": {"x":1369,"y":1,"w":25,"h":43},
+	"frame": {"x":182,"y":42,"w":25,"h":43},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":25,"h":43},
@@ -90,7 +90,7 @@
 },
 {
 	"filename": "lemmy_12.png",
-	"frame": {"x":1477,"y":1,"w":24,"h":43},
+	"frame": {"x":0,"y":85,"w":24,"h":43},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":24,"h":43},
@@ -98,7 +98,7 @@
 },
 {
 	"filename": "lemmy_13.png",
-	"frame": {"x":1039,"y":1,"w":24,"h":44},
+	"frame": {"x":223,"y":129,"w":24,"h":44},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":24,"h":44},
@@ -106,7 +106,7 @@
 },
 {
 	"filename": "lemmy_14.png",
-	"frame": {"x":428,"y":1,"w":27,"h":46},
+	"frame": {"x":53,"y":219,"w":27,"h":46},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":27,"h":46},
@@ -114,7 +114,7 @@
 },
 {
 	"filename": "lemmy_15.png",
-	"frame": {"x":1254,"y":1,"w":27,"h":43},
+	"frame": {"x":24,"y":85,"w":27,"h":43},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":27,"h":43},
@@ -122,7 +122,7 @@
 },
 {
 	"filename": "lemmy_16.png",
-	"frame": {"x":1065,"y":1,"w":24,"h":44},
+	"frame": {"x":25,"y":173,"w":24,"h":44},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":24,"h":44},
@@ -130,7 +130,7 @@
 },
 {
 	"filename": "lemmy_17.png",
-	"frame": {"x":515,"y":1,"w":26,"h":46},
+	"frame": {"x":80,"y":219,"w":26,"h":46},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":26,"h":46},
@@ -138,7 +138,7 @@
 },
 {
 	"filename": "lemmy_18.png",
-	"frame": {"x":905,"y":1,"w":25,"h":44},
+	"frame": {"x":0,"y":173,"w":25,"h":44},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":25,"h":44},
@@ -146,7 +146,7 @@
 },
 {
 	"filename": "lemmy_19.png",
-	"frame": {"x":932,"y":1,"w":25,"h":44},
+	"frame": {"x":198,"y":129,"w":25,"h":44},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":25,"h":44},
@@ -154,7 +154,7 @@
 },
 {
 	"filename": "lemmy_20.png",
-	"frame": {"x":1283,"y":1,"w":27,"h":43},
+	"frame": {"x":49,"y":42,"w":27,"h":43},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":27,"h":43},
@@ -162,7 +162,7 @@
 },
 {
 	"filename": "lemmy_21.png",
-	"frame": {"x":1312,"y":1,"w":27,"h":43},
+	"frame": {"x":126,"y":42,"w":27,"h":43},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":27,"h":43},
@@ -170,7 +170,7 @@
 },
 {
 	"filename": "lemmy_22.png",
-	"frame": {"x":1396,"y":1,"w":25,"h":43},
+	"frame": {"x":76,"y":42,"w":25,"h":43},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":25,"h":43},
@@ -178,7 +178,7 @@
 },
 {
 	"filename": "lemmy_23.png",
-	"frame": {"x":1423,"y":1,"w":25,"h":43},
+	"frame": {"x":101,"y":42,"w":25,"h":43},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":25,"h":43},
@@ -186,7 +186,7 @@
 },
 {
 	"filename": "lemmy_24.png",
-	"frame": {"x":1341,"y":1,"w":26,"h":43},
+	"frame": {"x":207,"y":42,"w":26,"h":43},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":26,"h":43},
@@ -194,7 +194,7 @@
 },
 {
 	"filename": "lemmy_25.png",
-	"frame": {"x":959,"y":1,"w":25,"h":44},
+	"frame": {"x":161,"y":173,"w":25,"h":44},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":25,"h":44},
@@ -202,7 +202,7 @@
 },
 {
 	"filename": "lemmy_26.png",
-	"frame": {"x":543,"y":1,"w":26,"h":46},
+	"frame": {"x":27,"y":219,"w":26,"h":46},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":26,"h":46},
@@ -210,7 +210,7 @@
 },
 {
 	"filename": "lemmy_27.png",
-	"frame": {"x":457,"y":1,"w":27,"h":46},
+	"frame": {"x":0,"y":219,"w":27,"h":46},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":27,"h":46},
@@ -218,7 +218,7 @@
 },
 {
 	"filename": "lemmy_28.png",
-	"frame": {"x":1091,"y":1,"w":24,"h":44},
+	"frame": {"x":109,"y":173,"w":24,"h":44},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":24,"h":44},
@@ -226,7 +226,7 @@
 },
 {
 	"filename": "lemmy_29.png",
-	"frame": {"x":1503,"y":1,"w":24,"h":43},
+	"frame": {"x":0,"y":42,"w":24,"h":43},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":24,"h":43},
@@ -234,7 +234,7 @@
 },
 {
 	"filename": "lemmy_30.png",
-	"frame": {"x":1450,"y":1,"w":25,"h":43},
+	"frame": {"x":24,"y":42,"w":25,"h":43},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":25,"h":43},
@@ -242,7 +242,7 @@
 },
 {
 	"filename": "lemmy_31.png",
-	"frame": {"x":1117,"y":1,"w":24,"h":44},
+	"frame": {"x":122,"y":129,"w":24,"h":44},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":24,"h":44},
@@ -250,7 +250,7 @@
 },
 {
 	"filename": "lemmy_32.png",
-	"frame": {"x":849,"y":1,"w":27,"h":44},
+	"frame": {"x":59,"y":129,"w":27,"h":44},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":27,"h":44},
@@ -258,7 +258,7 @@
 },
 {
 	"filename": "lemmy_33.png",
-	"frame": {"x":486,"y":1,"w":27,"h":46},
+	"frame": {"x":213,"y":173,"w":27,"h":46},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":27,"h":46},
@@ -266,7 +266,7 @@
 },
 {
 	"filename": "lemmy_34.png",
-	"frame": {"x":986,"y":1,"w":25,"h":44},
+	"frame": {"x":80,"y":85,"w":25,"h":44},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":25,"h":44},
@@ -274,7 +274,7 @@
 },
 {
 	"filename": "lemmy_35.png",
-	"frame": {"x":790,"y":1,"w":28,"h":44},
+	"frame": {"x":105,"y":85,"w":28,"h":44},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":28,"h":44},
@@ -282,7 +282,7 @@
 },
 {
 	"filename": "lemmy_36.png",
-	"frame": {"x":1560,"y":1,"w":29,"h":42},
+	"frame": {"x":135,"y":0,"w":29,"h":42},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":29,"h":42},
@@ -290,7 +290,7 @@
 },
 {
 	"filename": "lemmy_37.png",
-	"frame": {"x":1223,"y":1,"w":29,"h":43},
+	"frame": {"x":153,"y":42,"w":29,"h":43},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":29,"h":43},
@@ -298,7 +298,7 @@
 },
 {
 	"filename": "lemmy_38.png",
-	"frame": {"x":275,"y":1,"w":29,"h":47},
+	"frame": {"x":122,"y":266,"w":29,"h":47},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":29,"h":47},
@@ -306,7 +306,7 @@
 },
 {
 	"filename": "lemmy_39.png",
-	"frame": {"x":306,"y":1,"w":29,"h":47},
+	"frame": {"x":64,"y":266,"w":29,"h":47},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":29,"h":47},
@@ -314,7 +314,7 @@
 },
 {
 	"filename": "lemmy_40.png",
-	"frame": {"x":337,"y":1,"w":29,"h":47},
+	"frame": {"x":142,"y":219,"w":29,"h":47},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":29,"h":47},
@@ -322,7 +322,7 @@
 },
 {
 	"filename": "lemmy_41.png",
-	"frame": {"x":1760,"y":1,"w":23,"h":39},
+	"frame": {"x":24,"y":0,"w":23,"h":39},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":23,"h":39},
@@ -330,7 +330,7 @@
 },
 {
 	"filename": "lemmy_42.png",
-	"frame": {"x":1615,"y":1,"w":21,"h":42},
+	"frame": {"x":94,"y":0,"w":21,"h":42},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":21,"h":42},
@@ -338,7 +338,7 @@
 },
 {
 	"filename": "lemmy_43.png",
-	"frame": {"x":1168,"y":1,"w":22,"h":44},
+	"frame": {"x":204,"y":85,"w":22,"h":44},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":22,"h":44},
@@ -346,7 +346,7 @@
 },
 {
 	"filename": "lemmy_44.png",
-	"frame": {"x":1591,"y":1,"w":22,"h":42},
+	"frame": {"x":164,"y":0,"w":22,"h":42},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":22,"h":42},
@@ -354,7 +354,7 @@
 },
 {
 	"filename": "lemmy_45.png",
-	"frame": {"x":1734,"y":1,"w":24,"h":39},
+	"frame": {"x":0,"y":0,"w":24,"h":39},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":24,"h":39},
@@ -362,7 +362,7 @@
 },
 {
 	"filename": "lemmy_46.png",
-	"frame": {"x":1683,"y":1,"w":24,"h":41},
+	"frame": {"x":70,"y":0,"w":24,"h":41},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":24,"h":41},
@@ -370,7 +370,7 @@
 },
 {
 	"filename": "lemmy_47.png",
-	"frame": {"x":1661,"y":1,"w":20,"h":42},
+	"frame": {"x":115,"y":0,"w":20,"h":42},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":20,"h":42},
@@ -378,7 +378,7 @@
 },
 {
 	"filename": "lemmy_48.png",
-	"frame": {"x":1143,"y":1,"w":23,"h":44},
+	"frame": {"x":36,"y":129,"w":23,"h":44},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":23,"h":44},
@@ -386,7 +386,7 @@
 },
 {
 	"filename": "lemmy_49.png",
-	"frame": {"x":1638,"y":1,"w":21,"h":42},
+	"frame": {"x":215,"y":0,"w":21,"h":42},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":21,"h":42},
@@ -394,7 +394,7 @@
 },
 {
 	"filename": "lemmy_50.png",
-	"frame": {"x":1709,"y":1,"w":23,"h":41},
+	"frame": {"x":47,"y":0,"w":23,"h":41},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":23,"h":41},
@@ -402,7 +402,7 @@
 },
 {
 	"filename": "lemmy_51.png",
-	"frame": {"x":368,"y":1,"w":29,"h":47},
+	"frame": {"x":93,"y":266,"w":29,"h":47},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":29,"h":47},
@@ -410,7 +410,7 @@
 },
 {
 	"filename": "lemmy_52.png",
-	"frame": {"x":108,"y":1,"w":35,"h":47},
+	"frame": {"x":151,"y":266,"w":35,"h":47},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":35,"h":47},
@@ -418,7 +418,7 @@
 },
 {
 	"filename": "lemmy_53.png",
-	"frame": {"x":31,"y":1,"w":37,"h":47},
+	"frame": {"x":186,"y":266,"w":37,"h":47},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":37,"h":47},
@@ -426,7 +426,7 @@
 },
 {
 	"filename": "lemmy_54.png",
-	"frame": {"x":1,"y":1,"w":28,"h":48},
+	"frame": {"x":223,"y":266,"w":28,"h":48},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":28,"h":48},
@@ -434,7 +434,7 @@
 },
 {
 	"filename": "lemmy_55.png",
-	"frame": {"x":145,"y":1,"w":35,"h":47},
+	"frame": {"x":29,"y":266,"w":35,"h":47},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":35,"h":47},
@@ -442,7 +442,7 @@
 },
 {
 	"filename": "lemmy_56.png",
-	"frame": {"x":70,"y":1,"w":36,"h":47},
+	"frame": {"x":106,"y":219,"w":36,"h":47},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":36,"h":47},
@@ -450,7 +450,7 @@
 },
 {
 	"filename": "lemmy_57.png",
-	"frame": {"x":571,"y":1,"w":36,"h":44},
+	"frame": {"x":86,"y":129,"w":36,"h":44},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":36,"h":44},
@@ -458,7 +458,7 @@
 },
 {
 	"filename": "lemmy_58.png",
-	"frame": {"x":609,"y":1,"w":36,"h":44},
+	"frame": {"x":0,"y":129,"w":36,"h":44},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":36,"h":44},
@@ -466,7 +466,7 @@
 },
 {
 	"filename": "lemmy_59.png",
-	"frame": {"x":723,"y":1,"w":35,"h":44},
+	"frame": {"x":169,"y":85,"w":35,"h":44},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":35,"h":44},
@@ -474,7 +474,7 @@
 },
 {
 	"filename": "lemmy_60.png",
-	"frame": {"x":647,"y":1,"w":36,"h":44},
+	"frame": {"x":133,"y":85,"w":36,"h":44},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":36,"h":44},
@@ -482,7 +482,7 @@
 },
 {
 	"filename": "lemmy_61.png",
-	"frame": {"x":685,"y":1,"w":36,"h":44},
+	"frame": {"x":73,"y":173,"w":36,"h":44},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":36,"h":44},
@@ -493,8 +493,8 @@
 	"version": "1.0",
 	"image": "lemmy.png",
 	"format": "RGBA8888",
-	"size": {"w":1784,"h":50},
+	"size": {"w":251,"h":314},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:af4f37706154595fb886693f89ea2a35:ffa18c549186e0dad2d8444ae0582616:c9fc41414485499c39013dbfe1c06153$"
+	"smartupdate": "$TexturePacker:SmartUpdate:e3d51748b8bf49a227024d4173dbdcc5:ffa18c549186e0dad2d8444ae0582616:c9fc41414485499c39013dbfe1c06153$"
 }
 }

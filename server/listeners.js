@@ -38,6 +38,9 @@ const listeners =  function( io, socket){
   socket.on('client_get_power', (data)=>{
     io.emit('server_get_power', data)
   })
+  socket.on('client_delete_timer', (data)=>{
+    io.emit('server_delete_timer', data)
+  })
 
 }
 module.exports = listeners;

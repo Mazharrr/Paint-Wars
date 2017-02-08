@@ -973,7 +973,7 @@ ul.rpgui-list-imp {
   background-size: 100% 100%; }
 
 #gameLogo {
-  margin: 0 43vh;
+  margin: 0 20vh;
   height: 60vh;
   width: 55vw;
 }
@@ -983,14 +983,8 @@ ul.rpgui-list-imp {
   margin-left: 42vw;
 }
 
-.paintBackground {
-  background-image: url('/assets/homeBackground.jpg');
-  background-size: 140%;
-  background-repeat: no-repeat;
-}
-
-
 body{
+  background-image: url("/assets/homeBackground.jpg");
   background-size: 100%;
   background-repeat: no-repeat;
 }
