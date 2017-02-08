@@ -11,3 +11,7 @@ npm install
 
 
 npm start
+
+
+
+https://paint-wars.herokuapp.com/#/home
