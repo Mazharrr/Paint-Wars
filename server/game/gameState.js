@@ -5,7 +5,7 @@ const sendGameState = io =>{
     // console.log('my server store', store.getState())
     // console.log(store.getState())
     io.emit('gameState' , store.getState())
-  }, 1000/60);
+  }, 1000/20);
 
 
   setInterval(()=>{
