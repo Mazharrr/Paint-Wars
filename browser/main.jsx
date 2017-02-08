@@ -36,7 +36,7 @@ ReactDOM.render(
       	<IndexRedirect to="/home" />
        	<Route path="/home" component={Intro}  />
         <Route path="/lobby" component={Lobby}  onEnter={onAppEnter}/>
-       	<Route path="/game" component={Game} onEnter={onAppEnter} />
+        <Route path="/game" component={Game} onEnter={onAppEnter} />
       </Route>
     </Router>
   </Provider>,

@@ -69,9 +69,9 @@ export default class Hero{
       this.powerGroup = powerGroup
       this.bomb
       this.onePress
-      this.name = store.dispatch(addPlayerName(dummy.name))
-      this.avatar = store.dispatch(addAvatar(dummy.avatar))
-      store.dispatch(addNameMultiplayerScore(this.color, this.name.name))
+      //this.name = store.dispatch(addPlayerName(dummy.name))
+      //this.avatar = store.dispatch(addAvatar(dummy.avatar))
+      store.dispatch(addNameMultiplayerScore(this.color, this.name))
       store.dispatch(restartMultiplayerScoreboard());
       this.score = store.getState().Player.score
       this.id = id

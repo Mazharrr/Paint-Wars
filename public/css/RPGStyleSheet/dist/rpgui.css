@@ -985,6 +985,11 @@ ul.rpgui-list-imp {
 
 .paintBackground {
   background-image: url('/assets/homeBackground.jpg');
-  background-size: 100%;
+  background-size: 140%;
   background-repeat: no-repeat;
+}
+
+.whiteText {
+  color: white;
+  font-size: 30px;
 }

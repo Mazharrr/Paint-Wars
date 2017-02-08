@@ -2,6 +2,8 @@ import React from 'react';
 import {Link, hashHistory} from 'react-router'
 import { connect } from 'react-redux';
 import {makeRoom, joinRoom, leaveRoom, startRoom} from '../reducers/Lobby'
+import Header from '../containers/Header';
+
 
 import 'pixi';
 import 'p2';
@@ -32,13 +34,13 @@ const Lobby = (props)=>{
 
 
   return(
-    <div className="container">
-      <div className="row">
-        <div className="rpgui-content">
-          <form className="rpgui-container framed customForm">
-      <button onClick={()=>props.makeRoom(props.Player.name)} disabled={multiple}>Make a room </button>
-      <h1>Room count: {props.Lobby.lobby && props.Lobby.lobby.length}</h1>
-
+  <div className="container paintBackground">  
+    <Header />
+    <div className="row">
+      <div className="rpgui-content">
+        <form className="rpgui-container framed customForm">
+    <button onClick={()=>props.makeRoom(props.Player.name)} disabled={multiple}>Make a room </button>
+    <h1>Room count: {props.Lobby.lobby && props.Lobby.lobby.length}</h1>
     <h3>Rooms</h3>
       {
         props.Lobby.lobby && props.Lobby.lobby.map(room => (
