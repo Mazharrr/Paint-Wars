@@ -16,35 +16,41 @@ initializeSocket();
 const Lobby = (props)=>{
 
     let multiple=  false
+    let myRoom
     props.Lobby.lobby.forEach((room)=>{
       if(room.players.includes(props.Player.name))
       multiple = true
     })
-    let myRoom
     props.Lobby.lobby.forEach((room)=>{
       if(room.players.includes(props.Player.name))
       myRoom = room
     })
     if(myRoom && myRoom.start){
-      var myGame = new game()
+      var myGame = new game(myRoom)
       hashHistory.push('/game')
+      inGame=true
     }
 
 
 
 
+
   return(
-  <div className="container paintBackground">  
-    <Header />
-    <div className="row">
-      <div className="rpgui-content">
-        <form className="rpgui-container framed customForm">
-    <button onClick={()=>props.makeRoom(props.Player.name)} disabled={multiple}>Make a room </button>
-    <h1>Room count: {props.Lobby.lobby && props.Lobby.lobby.length}</h1>
+
+    <div className="container paintBackground">
+      <Header />
+      <div className="row">
+        <div className="rpgui-content">
+          <form className="rpgui-container framed customForm">
+      <button onClick={(e)=>{
+        e.preventDefault()
+        props.makeRoom(props.Player.name)}} disabled={multiple}>Make a room </button>
+      <h1>Room count: {props.Lobby.lobby && props.Lobby.lobby.length}</h1>
+
     <h3>Rooms</h3>
       {
         props.Lobby.lobby && props.Lobby.lobby.map(room => (
-          <div key= { room.id}>
+          !room.start ? <div key= { room.id}>
             <h1>Room {room.id}</h1>
              {
                room.players.map((player, index )=>
@@ -58,13 +64,16 @@ const Lobby = (props)=>{
                )
              }
              {
-               (room.players && room.players.length>=4 && room.players.includes(props.Player.name))
-               ? <button onClick={()=>{
+               (room.players && room.players.length>=2 && room.players.includes(props.Player.name))
+               ? <button onClick={(e)=>{
+                 e.preventDefault()
                  store.dispatch(startRoom(room.id))
-                 var myGame = new game()
+                 var myGame = new game(myRoom)
                  hashHistory.push('/game')
                }}>Start Game</button>
-                : (room.players && room.players.length <4) ?<button  disabled = {multiple} onClick ={()=>props.joinRoom(room.id, props.Player.name)}>Join Room
+                : (room.players && room.players.length <4) ?<button  disabled = {multiple ||room.start} onClick ={(e)=>{
+                  e.preventDefault()
+                  props.joinRoom(room.id, props.Player.name)}}>Join Room
                 </button>: <div></div>
              }
              {(room.players.includes(props.Player.name))
@@ -73,7 +82,7 @@ const Lobby = (props)=>{
                :<div></div>
              }
              <hr></hr>
-          </div>
+          </div>: <div key ={room.id}></div>
         ))
       }
     </form>

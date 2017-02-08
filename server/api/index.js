@@ -11,9 +11,9 @@ module.exports = router;
 
 router.use((req,res,next)=>{
   store.dispatch(setLobby(Lobby))
-  console.log(Lobby)
   next()
 })
+
 
 router.get('/lobby', (req,res,next)=>{
   res.json(Lobby)
@@ -29,15 +29,17 @@ router.post('/lobby' ,(req,res,next)=>{
   {Lobby.push({id: roomId, players: [req.body.name], start: false})
   roomId++;
   }
+  console.log(Lobby)
   res.json(Lobby)
 })
 router.post('/lobby/:roomId',(req,res,next)=>{
   console.log(req.body)
-  if(req.body === {start: true}){
+  let currentRoom = Lobby.filter((room)=>room.id=== +req.params.roomId)
+  if(req.body.start){
     currentRoom[0].start = true
+    console.log('got here')
   }
   else{
-    let currentRoom = Lobby.filter((room)=>room.id=== +req.params.roomId)
     currentRoom[0].players.push(req.body.name)
   }
   res.json(Lobby)
@@ -53,18 +55,20 @@ Lobby.forEach((val, index)=>{
   currentRoom = index
 })
 
-console.log(currentRoom)
 let currentPlayer =Lobby[currentRoom].players.indexOf(req.params.playerName)
-console.log(currentPlayer)
-console.log(Lobby)
+
 Lobby[currentRoom].players.splice(currentPlayer,1)
-console.log(Lobby)
+
 
 if(Lobby[currentRoom].players.length === 0) {
   Lobby.splice(currentRoom, 1)
 
 }
 
+})
+
+router.use((req,res,next)=>{
+  store.dispatch(setLobby(Lobby))
 })
 // router.delete('lobby/:roomId/:playerId', (req,res,next)=>{
 // lobby[req.params.id] =  lobby[req.params.id]

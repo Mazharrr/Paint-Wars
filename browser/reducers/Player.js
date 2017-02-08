@@ -4,7 +4,8 @@ const initialState = {
   score: 0,
   speed: 100,
   limit: 1,
-  range: 1
+  range: 1,
+  id: 999999
 }
 
 //ACTION TYPE CONSTANTS
@@ -14,8 +15,14 @@ const ADD_AVATAR = "ADD_AVATAR";
 const INCREASE_SCORE = "INCREASE_SCORE";
 const ADD_POWER_UP = "ADD_POWER_UP";
 const KILL_PLAYER = "KILL_PLAYER";
+const SET_LOBBY_ID= "SET_LOBBY_ID"
 
 //ACTION CREATORS
+
+export const setId= id=>({
+  type: SET_LOBBY_ID,
+  id
+})
 
 export const addPlayerName = (name) => ({
   type: ADD_PLAYER_NAME,
@@ -71,6 +78,10 @@ const reducer = (state = initialState, action) => {
       newState.speed = initialState.speed;
       newState.limit = initialState.limit;
       newState.range = initialState.range;
+      break;
+      case SET_LOBBY_ID:
+      // console.log('hit lobby set', action.id)
+      newState.id=action.id
       break;
     default:
       return state;

@@ -33,6 +33,7 @@ export const getLobby = ()=>{
 
 export const makeRoom = (name)=>{
   return function(dispatch, getState){
+      // console.log('made room')
     axios.post('/api/lobby', {name: name})
     // .then(res=>res.data)
     // .then(lobby => {dispatch(loadLobby(lobby))})
@@ -55,6 +56,7 @@ export const leaveRoom = (roomId, name)=>{
 
 export const startRoom = (roomId)=>{
   return function(dispatch, getState){
+
       axios.post(`/api/lobby/${roomId}`, {start: true})
   }
 }

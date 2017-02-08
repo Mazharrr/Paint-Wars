@@ -7,8 +7,9 @@ import Phaser from 'phaser';
 var w = 720, h = 720;
 
 class game extends Phaser.Game{
-  constructor(){
+  constructor(lobby){
     super(w,h,Phaser.CANVAS,'gameContainer', null)
+    this.lobby= lobby
     this.config.disableVisibilityChange = true;
     this.state.add('boot', Boot);
     this.state.add('preload', Preload, false);

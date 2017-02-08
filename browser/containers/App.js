@@ -5,7 +5,7 @@ import ReactDom from 'react-dom'
 
 export default function (props) {
   return (
-    <div id="main" className="container-fluid">
+    <div id="main" className="container-fluid ">
       	<div className="row">
           <div className="col-xs-12">
               {

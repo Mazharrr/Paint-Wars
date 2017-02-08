@@ -22,6 +22,8 @@ import {getLobby} from './reducers/Lobby'
 import store from './store'
 
 const onAppEnter = (nextState, replaceState)=>{
+  // console.log(store.getState().Player.name=== "")
+  // console.log('my name when checked', store.getState().Player.name)
   if(store.getState().Player.name=== "")
   replaceState({nextPathname: nextState.location.pathname }, '/home')
 }

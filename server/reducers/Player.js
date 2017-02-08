@@ -7,9 +7,8 @@ const DELETE_PLAYER = 'DELETE_PLAYER'
 const ADD_CLIENT = 'ADD_CLIENT'
 const REMOVE_CLIENT = 'REMOVE_CLIENT'
 
-const getClientData = (socketId, data)=>({
+const getClientData = (data)=>({
   type: GET_CLIENT_DATA,
-  socketId,
   data
 })
 
@@ -33,7 +32,7 @@ const playerReducer = (state = initialState, action)=>{
   switch(action.type){
     case GET_CLIENT_DATA:
     console.log(action.data)
-    newState.players[action.socketId] = action.data
+    newState.players[action.data.name] = action.data
     break;
     case DELETE_PLAYER:
     delete newState.players[action.socketId]
@@ -48,7 +47,7 @@ const playerReducer = (state = initialState, action)=>{
     default:
     return state
   }
-  console.log(newState)
+  // console.log(newState)
   return newState
 }
 

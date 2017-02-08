@@ -9,27 +9,27 @@ const scoreBoard = (props) => {
   let lobby = props.lobby;
 
   let {green, blue, purple, red} = props.scoreboard;
-  	
-  	
-  	
-  	if (lobby.timer === 'Done!') { 
+
+
+
+  	if (lobby.timer === 'Done!') {
   		Object.keys(props.scoreboard).forEach( player => {
   			// console.log(player, player.score);
   			if(!winner){
   				// console.log(winner);
   				winner = props.scoreboard[player];
   				// console.log(winner);
-  			}	
+  			}
 
   			if(winner.score <= props.scoreboard[player].score){
   				winner = props.scoreboard[player];
   			}
   		});
 
-  		console.log(winner)
-  		
-  		
-       
+  		// console.log(winner)
+
+
+
   		return (
 		    <div className="container-fluid">
 		      <div className="row">
@@ -89,8 +89,8 @@ const scoreBoard = (props) => {
 			            <img src="http://vignette4.wikia.nocookie.net/ssb/images/e/e1/BowserJrEXTrophy3DS.png/revision/latest?cb=20140929203914&format=webp"></img> : {red.score}
 		              </th>
 		            </tr>
-		          </table>	
-        		</div> 
+		          </table>
+        		</div>
         	</div>
         </div>
 
@@ -107,9 +107,9 @@ const scoreBoard = (props) => {
         </div>
         <div className="col-xs-6">
         	<div id="gameContainer"></div>
-          
+
         </div>
-        
+
         <div className="col-xs-3">
           <div className="rpgui-content col-xs-2">
             <div className="rpgui-container framed">

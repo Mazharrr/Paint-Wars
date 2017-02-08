@@ -15,7 +15,7 @@ const initialState = {
     score: 0
   },
   red: {
-    name:'', 
+    name:'',
     avatar: "http://www.fillmurray.com/103/103",
     score: 0
   }
@@ -89,11 +89,11 @@ const reducer = (state = initialState, action) => {
     case ADD_MULTIPLAYER_NAME:
 
       newState[color].name = action.name;
-      break;  
+      break;
     default:
       return state;
   }
-  console.log(newState)
+  //console.log(newState)
   return newState;
 
 };
