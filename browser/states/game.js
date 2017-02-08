@@ -144,7 +144,7 @@ export default class gameState extends Phaser.State{
       }
     })
     // console.log(amountMade)
-    // console.log(recievedEnemies)
+    console.log(recievedEnemies)
     Object.keys(recievedEnemies).forEach((key)=>{
       if(key !== name && recievedEnemies[key].id ===myId){
 
