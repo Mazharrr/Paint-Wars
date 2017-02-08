@@ -408,7 +408,7 @@ export default class Hero{
                     socket.emit('client_remove_crate',{x: crate.x, y: crate.y, socket: this.name, mySocket: socket.id, LobbyId: this.game.game.lobby.id})
                     allCrates[crate.x][crate.y].crate.kill()
                     store.dispatch(removeCrate(crate.x, crate.y))
-                    let powerUpChance = Math.floor(Math.random()*4)+1
+                    let powerUpChance = Math.floor(Math.random()*2.5)+1
                     let powerXY = Utils.indexToXY(crate.x, crate.y)
                     if(powerUpChance ===1){
 
