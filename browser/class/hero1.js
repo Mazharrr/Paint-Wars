@@ -9,11 +9,45 @@ import socket from '../socket.js'
 import {powerGroup, crate, fire, paint} from '../states/game'
 
 
-//dummy data for name and avatar
-let dummy = {
-  name: "James",
-  avatar: "https://pbs.twimg.com/profile_images/490094309757038594/WvFG7LDV_reasonably_small.png"
-}
+
+
+let bowserJunior = {
+ left: Utils.arrayMaker(18, 25),
+ right: Utils.arrayMaker(26, 33),
+ up: Utils.arrayMaker(47, 51),
+ down: Utils.arrayMaker(42, 46),
+ idle: Utils.arrayMaker(0,15),
+ attack: Utils.arrayMaker(34, 41),
+ dead: Utils.arrayMaker(16,17)
+};
+let lemmyKoopa = {
+ left: Utils.arrayMaker(0,13),
+ right: Utils.arrayMaker(26, 39), //fix
+ up: Utils.arrayMaker(45, 49),
+ down: Utils.arrayMaker(40, 44), //fix
+ idle: Utils.arrayMaker(14, 25),
+ attack: Utils.arrayMaker(50, 55),
+ dead: Utils.arrayMaker(56, 60)
+};
+let larryKoopa = {
+ left: Utils.arrayMaker(60, 79),
+ right: Utils.arrayMaker(89, 95),
+ up: Utils.arrayMaker(99, 107),
+ down: Utils.arrayMaker(80,86),
+ idle: Utils.arrayMaker(0, 33),
+ attack: Utils.arrayMaker(45, 52),
+ dead: Utils.arrayMaker(34,35)
+};
+let yoshi = {
+ left: Utils.arrayMaker(41, 45),
+ right: Utils.arrayMaker(23,26),
+ up: Utils.arrayMaker(36, 40),
+ down: Utils.arrayMaker(18, 27), //fix
+ idle: Utils.arrayMaker(8, 16), //fix
+ attack: Utils.arrayMaker(0, 7),
+ dead: Utils.arrayMaker(33, 35)
+};
+let characterAnimations = [];
 
 
 export default class Hero{
@@ -37,12 +71,11 @@ export default class Hero{
       this.onePress
       this.name = store.dispatch(addPlayerName(dummy.name))
       this.avatar = store.dispatch(addAvatar(dummy.avatar))
-      console.log(this.color,this.name);
       store.dispatch(addNameMultiplayerScore(this.color, this.name.name))
-      store.dispatch(addMultiplayerAvatar(this.color, dummy.avatar))
       store.dispatch(restartMultiplayerScoreboard());
       this.score = store.getState().Player.score
       this.id = id
+      this.animation
       this.addSprite()
 
     }
@@ -86,43 +119,69 @@ export default class Hero{
     addSprite(){
       switch(this.color){
         case 'blue':
-        this.sprite = this.game.add.sprite(72, 72, 'hero1')
+        this.sprite = this.game.add.sprite(72, 72, 'larryKoopa', 2)
+        this.avatar="http://vignette1.wikia.nocookie.net/ssb/images/0/03/LarryTrophy3DS.png/revision/latest?cb=20140929194701&format=webp"
+        store.dispatch(addAvatar(this.avatar))
+        store.dispatch(addMultiplayerAvatar(this.color, this.avatar))
+        this.sprite.animations.add('left', larryKoopa.left, 12, true)
+        this.sprite.animations.add('right', larryKoopa.right, 12, true)
+        this.sprite.animations.add('up', larryKoopa.up, 12, true)
+        this.sprite.animations.add('down', larryKoopa.down, 12, true)
+        this.sprite.animations.add('idle', larryKoopa.idle, 12, true)
+        this.sprite.animations.add('attack', larryKoopa.attack, 30, true)
+        this.sprite.animations.add('dead', larryKoopa.dead, 12, true)
         break;
         case 'purple':
-        this.sprite = this.game.add.sprite(648, 648, 'hero1')
+        this.sprite = this.game.add.sprite(648, 648, 'lemmyKoopa')
+        this.avatar="http://vignette3.wikia.nocookie.net/ssb/images/4/4a/LemmyTrophy3DS.png/revision/latest?cb=20140929194817&format=webp"
+        store.dispatch(addAvatar(this.avatar))
+        store.dispatch(addMultiplayerAvatar(this.color, this.avatar))
+        this.sprite.animations.add('left', lemmyKoopa.left, 12, true)
+        this.sprite.animations.add('right', lemmyKoopa.right, 12, true)
+        this.sprite.animations.add('up', lemmyKoopa.up, 12, true)
+        this.sprite.animations.add('down', lemmyKoopa.down, 12, true)
+        this.sprite.animations.add('idle', lemmyKoopa.idle, 8, true)
+        this.sprite.animations.add('attack', lemmyKoopa.attack, 12, true)
+        this.sprite.animations.add('dead', lemmyKoopa.dead, 12, true)
         break;
         case 'green':
-        this.sprite = this.game.add.sprite(648, 72, 'hero1')
+        this.sprite = this.game.add.sprite(648, 72, 'yoshi')
+        this.avatar="http://vignette4.wikia.nocookie.net/ssb/images/5/56/Yoshi_%2B_Egg_1.png/revision/latest?cb=20140929214641&format=webp"
+        store.dispatch(addAvatar(this.avatar))
+        store.dispatch(addMultiplayerAvatar(this.color, this.avatar))
+        this.sprite.animations.add('left', yoshi.left, 12, true)
+        this.sprite.animations.add('right', yoshi.right, 12, true)
+        this.sprite.animations.add('up', yoshi.up, 12, true)
+        this.sprite.animations.add('down', yoshi.down, 12, true)
+        this.sprite.animations.add('idle', yoshi.idle, 12, true)
+        this.sprite.animations.add('attack', yoshi.attack, 12, true)
+        this.sprite.animations.add('dead', yoshi.dead, 12, true)
         break;
         case 'red':
-        this.sprite = this.game.add.sprite(72, 648, 'hero1')
+        this.sprite = this.game.add.sprite(72, 648, 'bowserJunior')
+        this.avatar="http://vignette4.wikia.nocookie.net/ssb/images/e/e1/BowserJrEXTrophy3DS.png/revision/latest?cb=20140929203914&format=webp"
+        store.dispatch(addAvatar(this.avatar))
+        store.dispatch(addMultiplayerAvatar(this.color, this.avatar))
+        this.sprite.animations.add('left', bowserJunior.left, 12, true)
+        this.sprite.animations.add('right', bowserJunior.right, 12, true)
+        this.sprite.animations.add('up', bowserJunior.up, 8, true)
+        this.sprite.animations.add('down', bowserJunior.down, 8, true)
+        this.sprite.animations.add('idle', bowserJunior.idle, 12, true)
+        this.sprite.animations.add('attack', bowserJunior.attack, 5, true)
+        this.sprite.animations.add('dead', bowserJunior.dead, 8, true)
         break;
-        // case 'blue':
-        // this.sprite = this.game.add.sprite(72, 72, 'hero1')
-        // break;
-        // case 'purple':
-        // this.sprite = this.game.add.sprite(72, 72, 'hero1')
-        // break;
-        // case 'green':
-        // this.sprite = this.game.add.sprite(72, 72, 'hero1')
-        // break;
-        // case 'red':
-        // this.sprite = this.game.add.sprite(72, 72, 'hero1')
-        // break;
         default:
         break
       }
-      this.sprite.scale.setTo(0.7,0.7)
+      this.sprite.anchor.setTo(0.5,0.5)
       this.game.physics.arcade.enable(this.sprite)
       this.sprite.enableBody = true;
       this.sprite.physicsBodyType = Phaser.Physics.ARCADE;
       this.sprite.body.collideWorldBounds = true;
       this.game.camera.follow(this.sprite)
-      this.sprite.animations.add('walk',[55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,84,85,85,86,87], 15)
-      this.sprite.animations.add('spin',[165,166,167,168,169,170,171,172], 10)
-      this.sprite.animations.play('walk')
+      this.sprite.animations.play('idle')
       this.sprite.body.fixedRotation= true;
-      this.sprite.body.setSize(35,35,10,20)
+      this.sprite.body.setSize(30,35,0,10)
     }
 
     update(game){
@@ -130,7 +189,7 @@ export default class Hero{
       this.range = store.getState().Player.range
       this.speed = store.getState().Player.speed
       this.score = store.getState().Player.score
-
+      // this.sprite.body.setSize(35,35,10,20)
 
       this.updateSocket()
 
@@ -151,7 +210,6 @@ export default class Hero{
       this.game.physics.arcade.collide(this.sprite, this.fire, () => {
           if(this.immuneTime < this.game.time.now){
             this.immuneTime = this.game.time.now + 1000;
-            //animation goes here
           }
           socket.emit('client_remove_paint',{color: this.color, socket: socket.id})
 
@@ -164,6 +222,7 @@ export default class Hero{
 
 
 
+      // this.sprite.animations.play('idle')
 
 
       this.x = this.sprite.body.x;
@@ -184,30 +243,73 @@ export default class Hero{
       })
 
       if(this.immuneTime > game.time.now){
+        if(this.animation !='dead')
+        this.sprite.animations.play('dead')
+        this.animation ='dead'
         this.sprite.body.velocity.setTo(0,0)
       } else {
               store.getState().Tiles.bombs.forEach((bomb)=>{
 
                 game.physics.arcade.collide(this.sprite, bomb.sprite)
               })
-
-
-            if (cursors.left.isDown || wasd.left.isDown)
-            {
-                this.sprite.body.velocity.x= -this.speed;
+          this.leftDown
+          if (cursors.left.isDown || wasd.left.isDown)
+          {
+            if(!this.leftDown){
+            this.sprite.animations.play('left')
+            this.animation='left'
             }
+            this.leftDown=true
+              this.sprite.body.velocity.x= -this.speed;
+          }
+          if(cursors.left.isUp && wasd.left.isUp){
+            this.leftDown = false
+
+          }
+          this.rightDown
             if (cursors.right.isDown || wasd.right.isDown)
             {
+              if(!this.rightDown){
+              this.sprite.animations.play('right')
+              this.animation='right'
+            }
+            this.rightDown = true
+
                 this.sprite.body.velocity.x = this.speed;
             }
+            if(cursors.right.isUp && wasd.right.isUp){
+              this.rightDown = false
+            }
+          this.upDown
             if (cursors.up.isDown || wasd.up.isDown)
             {
+              if(!this.upDown){
+              this.sprite.animations.play('up')
+              this.animation='up'
+            }
+            this.upDown = true
                 this.sprite.body.velocity.y = -this.speed;
             }
+            if(cursors.up.isUp && wasd.up.isUp){
+              this.upDown = false
+            }
+            this.downDown
             if (cursors.down.isDown || wasd.down.isDown)
             {
+              if(!this.downDown){
+              this.sprite.animations.play('down')
+              this.animation='down'
+            }
                 this.sprite.body.velocity.y= this.speed;
             }
+            if(cursors.down.isUp && wasd.down.isUp){
+              this.downDown = false
+            }
+
+          if(cursors.down.isUp && cursors.up.isUp && cursors.left.isUp && cursors.right.isUp && wasd.down.isUp && wasd.up.isUp && wasd.left.isUp && wasd.right.isUp){
+            if(this.animation !='idle' && this.animation !='attack' )
+            this.sprite.animations.play('idle')
+            this.animation='idle'
           }
 
       if (this.space.isDown){
@@ -221,6 +323,9 @@ export default class Hero{
                 {
                 socket.emit('client_place_bomb', {x: blockCoords.x, y: blockCoords.y, range: this.range, socket: socket.id, gridX: gridCoords.x, gridY: gridCoords.y})
                 this.bomb = new MechaKoopa(game, blockCoords.x, blockCoords.y, this.range);
+                if(this.animation !='attack')
+                this.sprite.animations.play('attack')
+                this.animation='attack'
                 this.bomb.sprite.animations.play('explodeLeft');
                 this.bombs.push(this.bomb);
                 store.dispatch(addBomb(gridCoords.x, gridCoords.y, this.bomb))
@@ -238,7 +343,8 @@ export default class Hero{
 
     }
       if(this.space.isUp) this.onePress= false;
-        this.sprite.animations.play('walk')
+        // this.sprite.animations.play('walk')
+      }
     }
     explosion(gridCoords, blockCoords, myBomb, time){
               myBomb.timer = this.game.time.events.add(Phaser.Timer.SECOND * time, () => {

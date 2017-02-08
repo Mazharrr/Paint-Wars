@@ -1,0 +1,556 @@
+{"frames": [
+
+{
+	"filename": "Yoshi_01.png",
+	"frame": {"x":86,"y":1,"w":18,"h":38},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":18,"h":38},
+	"sourceSize": {"w":18,"h":38}
+},
+{
+	"filename": "Yoshi_02.png",
+	"frame": {"x":106,"y":1,"w":18,"h":38},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":18,"h":38},
+	"sourceSize": {"w":18,"h":38}
+},
+{
+	"filename": "Yoshi_03.png",
+	"frame": {"x":109,"y":81,"w":18,"h":38},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":18,"h":38},
+	"sourceSize": {"w":18,"h":38}
+},
+{
+	"filename": "Yoshi_04.png",
+	"frame": {"x":111,"y":41,"w":18,"h":38},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":18,"h":38},
+	"sourceSize": {"w":18,"h":38}
+},
+{
+	"filename": "Yoshi_05.png",
+	"frame": {"x":126,"y":1,"w":18,"h":38},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":18,"h":38},
+	"sourceSize": {"w":18,"h":38}
+},
+{
+	"filename": "Yoshi_06.png",
+	"frame": {"x":129,"y":81,"w":18,"h":38},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":18,"h":38},
+	"sourceSize": {"w":18,"h":38}
+},
+{
+	"filename": "Yoshi_07.png",
+	"frame": {"x":131,"y":41,"w":18,"h":38},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":18,"h":38},
+	"sourceSize": {"w":18,"h":38}
+},
+{
+	"filename": "Yoshi_08.png",
+	"frame": {"x":146,"y":1,"w":18,"h":38},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":18,"h":38},
+	"sourceSize": {"w":18,"h":38}
+},
+{
+	"filename": "Yoshi_09.png",
+	"frame": {"x":471,"y":69,"w":24,"h":31},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":24,"h":31},
+	"sourceSize": {"w":24,"h":31}
+},
+{
+	"filename": "Yoshi_10.png",
+	"frame": {"x":479,"y":35,"w":24,"h":31},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":24,"h":31},
+	"sourceSize": {"w":24,"h":31}
+},
+{
+	"filename": "Yoshi_11.png",
+	"frame": {"x":480,"y":1,"w":24,"h":31},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":24,"h":31},
+	"sourceSize": {"w":24,"h":31}
+},
+{
+	"filename": "Yoshi_12.png",
+	"frame": {"x":497,"y":68,"w":24,"h":31},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":24,"h":31},
+	"sourceSize": {"w":24,"h":31}
+},
+{
+	"filename": "Yoshi_13.png",
+	"frame": {"x":505,"y":34,"w":24,"h":31},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":24,"h":31},
+	"sourceSize": {"w":24,"h":31}
+},
+{
+	"filename": "Yoshi_14.png",
+	"frame": {"x":506,"y":1,"w":24,"h":31},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":24,"h":31},
+	"sourceSize": {"w":24,"h":31}
+},
+{
+	"filename": "Yoshi_15.png",
+	"frame": {"x":523,"y":67,"w":24,"h":31},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":24,"h":31},
+	"sourceSize": {"w":24,"h":31}
+},
+{
+	"filename": "Yoshi_16.png",
+	"frame": {"x":531,"y":34,"w":24,"h":31},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":24,"h":31},
+	"sourceSize": {"w":24,"h":31}
+},
+{
+	"filename": "Yoshi_17.png",
+	"frame": {"x":549,"y":67,"w":24,"h":31},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":24,"h":31},
+	"sourceSize": {"w":24,"h":31}
+},
+{
+	"filename": "Yoshi_18.png",
+	"frame": {"x":431,"y":103,"w":40,"h":19},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":40,"h":19},
+	"sourceSize": {"w":40,"h":19}
+},
+{
+	"filename": "Yoshi_19.png",
+	"frame": {"x":372,"y":77,"w":18,"h":35},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":18,"h":35},
+	"sourceSize": {"w":18,"h":35}
+},
+{
+	"filename": "Yoshi_20.png",
+	"frame": {"x":341,"y":1,"w":17,"h":36},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":17,"h":36},
+	"sourceSize": {"w":17,"h":36}
+},
+{
+	"filename": "Yoshi_21.png",
+	"frame": {"x":86,"y":1,"w":18,"h":38},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":18,"h":38},
+	"sourceSize": {"w":18,"h":38}
+},
+{
+	"filename": "Yoshi_22.png",
+	"frame": {"x":353,"y":77,"w":17,"h":36},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":17,"h":36},
+	"sourceSize": {"w":17,"h":36}
+},
+{
+	"filename": "Yoshi_23.png",
+	"frame": {"x":374,"y":39,"w":18,"h":35},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":18,"h":35},
+	"sourceSize": {"w":18,"h":35}
+},
+{
+	"filename": "Yoshi_24.png",
+	"frame": {"x":276,"y":78,"w":24,"h":36},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":24,"h":36},
+	"sourceSize": {"w":24,"h":36}
+},
+{
+	"filename": "Yoshi_25.png",
+	"frame": {"x":166,"y":1,"w":23,"h":37},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":23,"h":37},
+	"sourceSize": {"w":23,"h":37}
+},
+{
+	"filename": "Yoshi_26.png",
+	"frame": {"x":57,"y":81,"w":24,"h":38},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":24,"h":38},
+	"sourceSize": {"w":24,"h":38}
+},
+{
+	"filename": "Yoshi_27.png",
+	"frame": {"x":169,"y":80,"w":23,"h":37},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":23,"h":37},
+	"sourceSize": {"w":23,"h":37}
+},
+{
+	"filename": "Yoshi_28.png",
+	"frame": {"x":280,"y":39,"w":24,"h":36},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":24,"h":36},
+	"sourceSize": {"w":24,"h":36}
+},
+{
+	"filename": "Yoshi_29.png",
+	"frame": {"x":306,"y":39,"w":23,"h":36},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":23,"h":36},
+	"sourceSize": {"w":23,"h":36}
+},
+{
+	"filename": "Yoshi_30.png",
+	"frame": {"x":181,"y":40,"w":23,"h":37},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":23,"h":37},
+	"sourceSize": {"w":23,"h":37}
+},
+{
+	"filename": "Yoshi_31.png",
+	"frame": {"x":59,"y":41,"w":24,"h":38},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":24,"h":38},
+	"sourceSize": {"w":24,"h":38}
+},
+{
+	"filename": "Yoshi_32.png",
+	"frame": {"x":191,"y":1,"w":23,"h":37},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":23,"h":37},
+	"sourceSize": {"w":23,"h":37}
+},
+{
+	"filename": "Yoshi_33.png",
+	"frame": {"x":316,"y":1,"w":23,"h":36},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":23,"h":36},
+	"sourceSize": {"w":23,"h":36}
+},
+{
+	"filename": "Yoshi_34.png",
+	"frame": {"x":531,"y":100,"w":32,"h":25},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":32,"h":25},
+	"sourceSize": {"w":32,"h":25}
+},
+{
+	"filename": "Yoshi_35.png",
+	"frame": {"x":497,"y":101,"w":32,"h":24},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":32,"h":24},
+	"sourceSize": {"w":32,"h":24}
+},
+{
+	"filename": "Yoshi_36.png",
+	"frame": {"x":532,"y":1,"w":32,"h":24},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":32,"h":24},
+	"sourceSize": {"w":32,"h":24}
+},
+{
+	"filename": "Yoshi_37.png",
+	"frame": {"x":356,"y":39,"w":16,"h":36},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":36},
+	"sourceSize": {"w":16,"h":36}
+},
+{
+	"filename": "Yoshi_38.png",
+	"frame": {"x":231,"y":40,"w":17,"h":37},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":17,"h":37},
+	"sourceSize": {"w":17,"h":37}
+},
+{
+	"filename": "Yoshi_39.png",
+	"frame": {"x":149,"y":81,"w":18,"h":38},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":18,"h":38},
+	"sourceSize": {"w":18,"h":38}
+},
+{
+	"filename": "Yoshi_40.png",
+	"frame": {"x":241,"y":1,"w":17,"h":37},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":17,"h":37},
+	"sourceSize": {"w":17,"h":37}
+},
+{
+	"filename": "Yoshi_41.png",
+	"frame": {"x":360,"y":1,"w":16,"h":36},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":36},
+	"sourceSize": {"w":16,"h":36}
+},
+{
+	"filename": "Yoshi_42.png",
+	"frame": {"x":290,"y":1,"w":24,"h":36},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":24,"h":36},
+	"sourceSize": {"w":24,"h":36}
+},
+{
+	"filename": "Yoshi_43.png",
+	"frame": {"x":194,"y":79,"w":23,"h":37},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":23,"h":37},
+	"sourceSize": {"w":23,"h":37}
+},
+{
+	"filename": "Yoshi_44.png",
+	"frame": {"x":60,"y":1,"w":24,"h":38},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":24,"h":38},
+	"sourceSize": {"w":24,"h":38}
+},
+{
+	"filename": "Yoshi_45.png",
+	"frame": {"x":206,"y":40,"w":23,"h":37},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":23,"h":37},
+	"sourceSize": {"w":23,"h":37}
+},
+{
+	"filename": "Yoshi_46.png",
+	"frame": {"x":302,"y":77,"w":24,"h":36},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":24,"h":36},
+	"sourceSize": {"w":24,"h":36}
+},
+{
+	"filename": "Yoshi_47.png",
+	"frame": {"x":328,"y":77,"w":23,"h":36},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":23,"h":36},
+	"sourceSize": {"w":23,"h":36}
+},
+{
+	"filename": "Yoshi_48.png",
+	"frame": {"x":216,"y":1,"w":23,"h":37},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":23,"h":37},
+	"sourceSize": {"w":23,"h":37}
+},
+{
+	"filename": "Yoshi_49.png",
+	"frame": {"x":83,"y":81,"w":24,"h":38},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":24,"h":38},
+	"sourceSize": {"w":24,"h":38}
+},
+{
+	"filename": "Yoshi_50.png",
+	"frame": {"x":219,"y":79,"w":23,"h":37},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":23,"h":37},
+	"sourceSize": {"w":23,"h":37}
+},
+{
+	"filename": "Yoshi_51.png",
+	"frame": {"x":331,"y":39,"w":23,"h":36},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":23,"h":36},
+	"sourceSize": {"w":23,"h":36}
+},
+{
+	"filename": "Yoshi_52.png",
+	"frame": {"x":27,"y":86,"w":28,"h":38},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":28,"h":38},
+	"sourceSize": {"w":28,"h":38}
+},
+{
+	"filename": "Yoshi_53.png",
+	"frame": {"x":1,"y":1,"w":28,"h":41},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":28,"h":41},
+	"sourceSize": {"w":28,"h":41}
+},
+{
+	"filename": "Yoshi_54.png",
+	"frame": {"x":1,"y":44,"w":28,"h":40},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":28,"h":40},
+	"sourceSize": {"w":28,"h":40}
+},
+{
+	"filename": "Yoshi_55.png",
+	"frame": {"x":250,"y":40,"w":28,"h":36},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":28,"h":36},
+	"sourceSize": {"w":28,"h":36}
+},
+{
+	"filename": "Yoshi_56.png",
+	"frame": {"x":260,"y":1,"w":28,"h":36},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":28,"h":36},
+	"sourceSize": {"w":28,"h":36}
+},
+{
+	"filename": "Yoshi_57.png",
+	"frame": {"x":392,"y":76,"w":37,"h":34},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":37,"h":34},
+	"sourceSize": {"w":37,"h":34}
+},
+{
+	"filename": "Yoshi_58.png",
+	"frame": {"x":378,"y":1,"w":49,"h":34},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":49,"h":34},
+	"sourceSize": {"w":49,"h":34}
+},
+{
+	"filename": "Yoshi_59.png",
+	"frame": {"x":429,"y":1,"w":49,"h":32},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":49,"h":32},
+	"sourceSize": {"w":49,"h":32}
+},
+{
+	"filename": "Yoshi_60.png",
+	"frame": {"x":430,"y":35,"w":47,"h":32},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":47,"h":32},
+	"sourceSize": {"w":47,"h":32}
+},
+{
+	"filename": "Yoshi_61.png",
+	"frame": {"x":431,"y":69,"w":38,"h":32},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":38,"h":32},
+	"sourceSize": {"w":38,"h":32}
+},
+{
+	"filename": "Yoshi_62.png",
+	"frame": {"x":394,"y":37,"w":34,"h":33},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":34,"h":33},
+	"sourceSize": {"w":34,"h":33}
+},
+{
+	"filename": "Yoshi_63.png",
+	"frame": {"x":244,"y":79,"w":30,"h":36},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":30,"h":36},
+	"sourceSize": {"w":30,"h":36}
+},
+{
+	"filename": "Yoshi_64.png",
+	"frame": {"x":151,"y":41,"w":28,"h":37},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":28,"h":37},
+	"sourceSize": {"w":28,"h":37}
+},
+{
+	"filename": "Yoshi_65.png",
+	"frame": {"x":31,"y":1,"w":27,"h":38},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":27,"h":38},
+	"sourceSize": {"w":27,"h":38}
+},
+{
+	"filename": "Yoshi_66.png",
+	"frame": {"x":31,"y":41,"w":26,"h":38},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":26,"h":38},
+	"sourceSize": {"w":26,"h":38}
+},
+{
+	"filename": "Yoshi_67.png",
+	"frame": {"x":1,"y":86,"w":24,"h":39},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":24,"h":39},
+	"sourceSize": {"w":24,"h":39}
+},
+{
+	"filename": "Yoshi_68.png",
+	"frame": {"x":85,"y":41,"w":24,"h":38},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":24,"h":38},
+	"sourceSize": {"w":24,"h":38}
+}],
+"meta": {
+	"app": "http://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "yoshi.png",
+	"format": "RGBA8888",
+	"size": {"w":574,"h":126},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:662d86a7683e3242783786295edb6fe3:a9e2bb1d95b0e8b7de5f6d6205ece357:0a001036bf35cfe55d730dcd51f7202c$"
+}
+}

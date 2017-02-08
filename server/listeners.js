@@ -1,5 +1,5 @@
 const store = require ('./store')
-const {getClientData, deletePlayer, addClient} = require('./reducers/player')
+const {getClientData, deletePlayer, addClient, removeClient} = require('./reducers/player')
 const listeners =  function( io, socket){
   console.log('socket id:', socket.id)
   socket.on('game_started', data =>{
@@ -8,6 +8,7 @@ const listeners =  function( io, socket){
 
   socket.on('disconnect', ()=>{
     console.log(socket.id + ' left the game');
+    store.dispatch(removeClient(socket.id))
     store.dispatch(deletePlayer(socket.id));
   })
   socket.on('client_data_transfer', (data)=>{

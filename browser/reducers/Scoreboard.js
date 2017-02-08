@@ -42,7 +42,7 @@ export const incrementMuliplayerScore = (color) => ({
   type: INCREMENT_PLAYER_SCORE,
   color
 })
-export const setMuliplayerScore = (color, score) => ({
+export const setMultiplayerScore = (color, score) => ({
   type: SET_PLAYER_SCORE,
   color,
   score

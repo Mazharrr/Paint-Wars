@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import { Link } from 'react-router'
+import { Link, hashHistory } from 'react-router'
 import {addPlayerName} from '../reducers/player'
 
 //import socket
@@ -16,21 +16,21 @@ class Intro extends Component {
   }
   render () {
     return (
-      <div className="container">
+      <div className="container paintBackground">
         <div className="row">
           <div className="rpgui-content container">
             <form className="rpgui-container framed customForm">
               <h1>What's your name?</h1>
               <input type="text" value={this.state.name} onChange={(e)=>this.setState({name: e.target.value})} />
-              <Link to="/lobby">
                 <button
                   className="button"
                   type="submit"
-                  onClick={()=>{this.props.addPlayerName(this.state.name)}}
+                  onClick={()=>{this.props.addPlayerName(this.state.name)
+                    hashHistory.push('/lobby')}
+                  }
                   >
                   Play
                 </button>
-              </Link>
             </form>
           </div>
         </div>

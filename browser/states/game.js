@@ -1,9 +1,9 @@
-import game from './stateManager';
 import Hero from '../class/hero1';
 import store from '../store';
 import socket from '../socket'
 import {loadCrates, addPlayer} from '../reducers/Tiles';
 import {loadTimer} from '../reducers/Lobby';
+import {setMultiplayerScore} from '../reducers/Scoreboard'
 
 import enemyUpdate from '../enemyUpdate'
 
@@ -14,22 +14,28 @@ export let fire
 export let paint
 export let blockedLayer
 export let timer, timerEvent, text;
+let enemies = {}
+let me = {}
 
 
+export default class gameState extends Phaser.State{
+  constructor(){
+    super()
+  }
+  create(){
 
-export default class Game{
-  create(game){
     socket.emit('game_started',{})
-    game.world.setBounds(0,0,720 ,720)
-    this.map = this.game.add.tilemap('finalMap');
+    this.world.setBounds(0,0,720 ,720)
+    this.map = this.add.tilemap('finalMap');
     this.map.addTilesetImage('tileset-biome', 'gameTiles');
 
      // Create a custom timer
-        timer = this.game.time.create();
-        
+        timer = this.time.create();
+
         // Create a delayed event 1m and 30s from now
-        timerEvent = timer.add(Phaser.Timer.SECOND * 10, this.endTimer, this);
-        
+
+        timerEvent = timer.add(Phaser.Timer.MINUTE * 1 + Phaser.Timer.SECOND * 30, this.endTimer, this);
+
         // Start the timer
         timer.start();
 
@@ -46,33 +52,30 @@ export default class Game{
     this.backgroundLayer9 = this.map.createLayer('9 pillars')
     this.map.setCollisionBetween(1, 100000, true, '10 obstacles');
 
-    game.physics.enable(blockedLayer, Phaser.Physics.ARCADE);
+    this.physics.enable(blockedLayer, Phaser.Physics.ARCADE);
     this.backgroundLayer.resizeWorld();
 
-    powerGroup = game.add.group();
+    powerGroup = this.add.group();
     powerGroup.enableBody = true;
     powerGroup.physicsBodyType = Phaser.Physics.ARCADE;
 
-    crate = game.add.group();
+    crate = this.add.group();
     crate.enableBody = true;
     crate.physicsBodyType = Phaser.Physics.ARCADE;
 
 
-    fire = game.add.group();
+    fire = this.add.group();
     fire.enableBody = true;
     fire.physicsBodyType = Phaser.Physics.ARCADE;
 
-    paint = game.add.group()
+    paint = this.add.group()
     paint.enableBody = true;
     paint.physicsBodyType = Phaser.Physics.ARCADE;
-
-
-
 
     let crateTable = []
     let width = 15;
     let height = 15;
-
+    // this.sprite = this.add.sprite(72, 72, 'larryKoopa', 2)
     for(let h = 0; h< height; h++){
       let crateRow = []
     	for (let w = 0; w < width; w++){
@@ -92,7 +95,7 @@ export default class Game{
                 tile.crate.scale.setTo(0.095,0.095)
     		   			tile.crate.body.immovable= true
               }
-        };
+        }
           crateRow.push(tile)
 
     	}
@@ -102,64 +105,98 @@ export default class Game{
     }
     store.dispatch(loadCrates(crateTable));
 
-    game.physics.startSystem(Phaser.Physics.ARCADE);
-    // this.mechaKoopa = new MechaKoopa(game);
-
-    // this.hero = new Hero(game, socket.id, 'blue');
-    // player = this.hero;
-    // store.dispatch(addPlayer())
-
-
-
-
-
-  	// let koopasTotal = 1;
-  	// let koopasAlive = 1;
-    //
-    // for (var i = 0; i < koopasTotal; i++)
-    // {
-    //     koopasArr.push(new Koopa(game));
-    // }
-    //
+    this.physics.startSystem(Phaser.Physics.ARCADE);
 
   }
   update(){
+    //from our enemyUpdate
+    let recievedEnemies = store.getState().Players.players
+    let currentClients = store.getState().Players.sockets
 
+    Object.keys(enemies).forEach((key)=>{
 
-    // game.physics.arcade.collide(this.hero.sprite, this.blockedLayer);
-    // game.physics.arcade.collide(this.hero.sprite, this.crate);
+      if(!recievedEnemies[key]){
+        enemies[key].sprite.kill()
+        delete enemies[key]
+      }
+    })
 
+    Object.keys(recievedEnemies).forEach((key)=>{
 
+      if(key !== socket.id ){
 
-       enemyUpdate()
+      let enemyExistBool = enemies[key] ? true: false
+      if(enemyExistBool){
+        enemies[key].sprite.x = recievedEnemies[key].position.x
+        enemies[key].sprite.y = recievedEnemies[key].position.y
+        enemies[key].sprite.animations.play('walk')
+        store.dispatch(setMultiplayerScore(recievedEnemies[key].color, recievedEnemies[key].score))
+      }
 
+      if(!enemyExistBool){
+    enemies[key]= new Hero(this, key, recievedEnemies[key].color)
+    }
+    }
+    })
 
+    currentClients.forEach((key)=>{
+
+      if(key === socket.id){
+        if(me[key]){
+          me[key].update(this)
+          this.physics.arcade.collide(me[key].sprite, blockedLayer)
+          this.physics.arcade.collide(me[key].sprite, crate)
+        }
+        if(!me[key]){
+          let clientIndex = currentClients.indexOf(key)
+
+          switch(clientIndex){
+            case 0:
+                me[key]= new Hero(this, key, 'blue')
+            break
+            case 1:
+
+                me[key]= new Hero(this, key, 'purple')
+            break
+            case 2:
+
+              me[key]= new Hero(this, key, 'green')
+              break
+
+              case 3:
+              me[key]= new Hero(this, key, 'red')
+
+              break
+            default: break
+          }
+        }
+      }
+      })
   }
 
      render() {
-        // If our timer is running, show the time in a nicely formatted way, else show 'Done!'
 
         if (timer.running) {
-            this.game.debug.text(this.formatTime(Math.round((timerEvent.delay - timer.ms) / 1000)), 2, 14, "#ff0");
-            
+            // this.debug.text(this.formatTime(Math.round((timerEvent.delay - timer.ms) / 1000)), 2, 14, "#ff0");
+
             store.dispatch(loadTimer(Math.round((timerEvent.delay - timer.ms) / 1000)))
 
         }
         else {
             store.dispatch(loadTimer("Done!"))
-            this.game.debug.text("Done!", 2, 14, "#0f0");
+            this.debug.text("Done!", 2, 14, "#0f0");
+            this.destroy()
         }
     }
     endTimer() {
-        // Stop the timer when the delayed event triggers
         timer.stop();
     }
     formatTime(s) {
         // Convert seconds (s) to a nicely formatted and padded time string
         var minutes = "0" + Math.floor(s / 60);
         var seconds = "0" + (s - minutes * 60);
-        return minutes.substr(-2) + ":" + seconds.substr(-2);   
+        return minutes.substr(-2) + ":" + seconds.substr(-2);
     }
 
-  
+
 }
