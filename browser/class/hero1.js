@@ -88,6 +88,9 @@ export default class Hero{
       // createRangePowerUp(rangeDrops)
       let limitDrops = Array(this.limit-1).fill('bombPowerUp')
      // createLimitPowerUp(limitDrops)
+     console.log('speed', speedDrops)
+     console.log('range', rangeDrops)
+     console.log('limit', limitDrops)
       let totalDrops = speedDrops.concat(rangeDrops).concat(limitDrops);
       let availableTiles =[]
       store.getState().Tiles.crates.forEach((row, indexX) => {
@@ -209,13 +212,14 @@ export default class Hero{
       this.game.physics.arcade.collide(this.sprite, this.fire, () => {
           if(this.immuneTime < this.game.time.now){
             this.immuneTime = this.game.time.now + 1000;
-          }
-          socket.emit('client_remove_paint',{color: this.color, socket: this.name, mySocket: socket.id, LobbyId: this.game.game.lobby.id})
+            socket.emit('client_remove_paint',{color: this.color, socket: this.name, mySocket: socket.id, LobbyId: this.game.game.lobby.id})
 
-          store.dispatch(removePaint(this.color))
-          this.reset();
+            store.dispatch(removePaint(this.color))
+            this.reset();
             store.dispatch(killPlayer());
             store.dispatch(resetMultiplayerScore(this.color));
+
+          }
       })
 
 

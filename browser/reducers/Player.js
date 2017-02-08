@@ -51,15 +51,16 @@ export const killPlayer = () => ({
 
 export const addPlayerName = (name)=>{
   return function(dispatch,getState){
-    axios.post('/api/name', {name: name})
+    return axios.post('/api/name', {name: name})
     .then((res)=>res.data)
     .then((res)=>dispatch(addPlayerN(res)))
-  }
+
+}
 }
 
 
 
-//REDUCER
+//REDUCER}
 
 const reducer = (state = initialState, action) => {
 

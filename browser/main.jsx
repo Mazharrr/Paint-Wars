@@ -23,16 +23,20 @@ import {addPlayerN} from './reducers/Player'
 import store from './store'
 
 const onAppEnter = (nextState, replaceState)=>{
-  axios.get('api/name')
+  axios.get('/api/name')
   .then(res=>res.data)
   .then(name=>{
+    console.log(name)
     store.dispatch(addPlayerN(name.name))
     return name.name
   })
   .then((name)=>{
     console.log(name)
-    if(name ==="" || name=== undefined)
-    replaceState({nextPathname: nextState.location.pathname }, '/home')
+    if(name === "" || name === undefined){
+      console.log('this ran')
+      hashHistory.push('/home')
+    }
+
   })
 }
 

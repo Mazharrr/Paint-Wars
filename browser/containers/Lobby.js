@@ -8,10 +8,8 @@ import Header from '../containers/Header';
 import 'pixi';
 import 'p2';
 import 'phaser';
-import {initializeSocket} from '../socket'
 import game from '../states/stateManager'
 
-initializeSocket();
 
 const Lobby = (props)=>{
 

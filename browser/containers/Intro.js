@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import { Link, hashHistory } from 'react-router'
-import {addPlayerName} from '../reducers/Player'
+import {addPlayerName} from '../reducers/player'
 import Header from '../containers/Header';
 
 //import socket
@@ -29,8 +29,9 @@ class Intro extends Component {
                   type="submit"
                   onClick={(e)=>{
                     e.preventDefault()
-                    this.props.addPlayerName(this.state.name)
-                    hashHistory.push('/lobby')}
+                    console.log(this.props.addPlayerName)
+                    return this.props.addPlayerName(this.state.name)
+                    .then(()=>hashHistory.push('/lobby'))}
                   }
                   >
                   Play

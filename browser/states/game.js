@@ -21,6 +21,8 @@ let amountMade=0
 let bool = false
 let myId
 
+import {initializeSocket} from '../socket'
+initializeSocket();
 
 
 export default class gameState extends Phaser.State{
@@ -29,7 +31,7 @@ export default class gameState extends Phaser.State{
   }
   create(){
     name = store.getState().Player.name
-    // console.log(this.game.lobby)
+    console.log(this.game.lobby)
     myId = this.game.lobby.id
     // console.log(this.game.lobby.players.length)
     store.dispatch(setId(myId))
@@ -41,6 +43,8 @@ export default class gameState extends Phaser.State{
       }
     })
     socket.on('server_make_power', data=>{
+      console.log('myName', name, 'socketName' ,data.socket)
+      console.log('myId', myId, 'lobbyId', data.LobbyId)
       if(name!==data.socket  && myId===data.LobbyId){
         let newPower = powerGroup.create(data.x, data.y, data.power)
         newPower.scale.setTo(1.3,1.3)
@@ -155,6 +159,7 @@ export default class gameState extends Phaser.State{
 
       if(!enemyExistBool){
         amountMade++
+        console.log('hero made', key)
     enemies[key]= new Hero(this, key, recievedEnemies[key].color)
     }
     }
@@ -175,18 +180,18 @@ export default class gameState extends Phaser.State{
 
           switch(clientIndex){
             case 0:
-
+              console.log('im created')
                 me[key]= new Hero(this, key, 'blue')
             break
             case 1:
-
+            console.log('im created')
                 me[key]= new Hero(this, key, 'purple')
             break
             case 2:
-
+            console.log('im created')
               me[key]= new Hero(this, key, 'green')
               break
-
+              console.log('im created')
               case 3:
               me[key]= new Hero(this, key, 'red')
 
