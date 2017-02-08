@@ -1,5 +1,5 @@
 import {Utils} from './utils'
-import MechaKoopa from './mechakoopa'
+import MechaKoopa from './mechaKoopa'
 import Game1 from '../states/game'
 import store from '../store';
 import {removeCrate, addPaint, loadCrates, removePaint, addFlames, addPowerUp, removePowerUp, addBomb, removeBomb} from '../reducers/Tiles';

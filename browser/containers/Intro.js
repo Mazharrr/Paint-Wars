@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import { Link, hashHistory } from 'react-router'
-import {addPlayerName} from '../reducers/player'
+import {addPlayerName} from '../reducers/Player'
 import Header from '../containers/Header';
 
 //import socket
