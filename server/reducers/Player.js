@@ -32,7 +32,7 @@ const playerReducer = (state = initialState, action)=>{
   let newState= Object.assign({},state)
   switch(action.type){
     case GET_CLIENT_DATA:
-    console.log(action.data)
+    // console.log(action.data)
     newState.players[action.socketId] = action.data
     break;
     case DELETE_PLAYER:
@@ -48,7 +48,7 @@ const playerReducer = (state = initialState, action)=>{
     default:
     return state
   }
-  console.log(newState)
+  // console.log(newState)
   return newState
 }
 

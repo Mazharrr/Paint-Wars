@@ -33,8 +33,9 @@ router.post('/lobby' ,(req,res,next)=>{
 })
 router.post('/lobby/:roomId',(req,res,next)=>{
   console.log(req.body)
-  if(req.body === {start: true}){
+  if(req.body.start){
     currentRoom[0].start = true
+    console.log('got here')
   }
   else{
     let currentRoom = Lobby.filter((room)=>room.id=== +req.params.roomId)
