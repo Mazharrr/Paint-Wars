@@ -1,3 +1,5 @@
+import axios from 'axios'
+
 const initialState = {
   name: "",
   avatar: "",
@@ -24,7 +26,7 @@ export const setId= id=>({
   id
 })
 
-export const addPlayerName = (name) => ({
+export const addPlayerN = (name) => ({
   type: ADD_PLAYER_NAME,
   name
 })
@@ -46,6 +48,16 @@ export const addToPlayerPowerUp = (powerUp) => ({
 export const killPlayer = () => ({
   type: KILL_PLAYER
 })
+
+export const addPlayerName = (name)=>{
+  return function(dispatch,getState){
+    axios.post('/api/name', {name: name})
+    .then((res)=>res.data)
+    .then((res)=>dispatch(addPlayerN(res)))
+  }
+}
+
+
 
 //REDUCER
 

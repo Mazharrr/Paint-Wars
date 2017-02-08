@@ -3,11 +3,14 @@
   "version": "1.0.0",
   "description": "sockets/phaser",
   "main": "index.js",
+  "engines": {
+    "node": "7.x"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon server/index.js",
-    "build": "webpack",
-    "build-watch": "webpack -w"
+    "test": " echo \"Error: no test specified\" && exit 1",
+    "start": " nodemon server/index.js",
+    "build": " webpack",
+    "build-watch": " webpack -w"
   },
   "author": "",
   "license": "ISC",
@@ -21,6 +24,7 @@
     "babel-preset-stage-2": "^6.22.0",
     "bluebird": "^3.4.7",
     "body-parser": "^1.16.0",
+    "cookie-session": "^2.0.0-alpha.2",
     "expose-loader": "^0.7.1",
     "express": "^4.14.0",
     "fs": "0.0.1-security",

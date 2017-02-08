@@ -7,8 +7,6 @@ import {setMultiplayerScore} from '../reducers/Scoreboard'
 import MechaKoopa from '../class/mechaKoopa'
 import {setId} from '../reducers/Player'
 
-import enemyUpdate from '../enemyUpdate'
-
 export let player
 export let powerGroup
 export let crate

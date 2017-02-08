@@ -24,6 +24,10 @@ sendGameState(io)
   .use(require('volleyball'))
   .use(bodyParser.urlencoded({ extended: true }))
   .use(bodyParser.json())
+  .use(require('cookie-session') ({
+    name: 'session',
+    keys: [process.env.SESSION_SECRET || 'an insecure secret key']
+  }))
     .use(express.static(resolve(__dirname, '..', 'public')))
     .use(express.static(resolve(__dirname, '..', 'node_modules/phaser/build/')))
     .use('/api', require('./api'))
