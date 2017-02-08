@@ -11,7 +11,7 @@
     "start": "check-node-version --node '>= 6.7.0' && nodemon server/index.js",
     "build": "check-node-version --node '>= 6.7.0' && webpack",
     "build-watch": "check-node-version --node '>= 6.7.0' && webpack -w",
-    "heroku-postbuild": "check-node-version --node '>= 6.7.0' && webpack -p --config ./webpack.prod.config.js --progress"
+    "heroku-postbuild": " webpack -p --config ./webpack.prod.config.js --progress"
   },
   "author": "",
   "license": "ISC",
