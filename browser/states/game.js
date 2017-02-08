@@ -43,8 +43,8 @@ export default class gameState extends Phaser.State{
       }
     })
     socket.on('server_make_power', data=>{
-      console.log('myName', name, 'socketName' ,data.socket)
-      console.log('myId', myId, 'lobbyId', data.LobbyId)
+      // console.log('myName', name, 'socketName' ,data.socket)
+      // console.log('myId', myId, 'lobbyId', data.LobbyId)
       if(name!==data.socket  && myId===data.LobbyId){
         let newPower = powerGroup.create(data.x, data.y, data.power)
         newPower.scale.setTo(1.3,1.3)

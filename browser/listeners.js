@@ -60,8 +60,8 @@ let me = socket.id
   }
   })
   socket.on('server_get_power', data=>{
+    console.log('getting power', data)
     if(me!==data.mySocket&& store.getState().Player.id ===data.LobbyId){
-
     store.dispatch(removePowerUp(data.x, data.y))
   }
   })

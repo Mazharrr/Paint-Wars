@@ -139,7 +139,7 @@ const reducer = (state = initialState , action)=>{
     default:
       return state;
     }
-    // console.log(newState)
+    console.log(newState)
   return newState;
 }
 
