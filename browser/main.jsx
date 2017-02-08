@@ -14,6 +14,7 @@ import Lobby from './containers/Lobby'
 import Intro from './containers/Intro'
 
 import {getLobby} from './reducers/Lobby'
+import {addPlayerN} from './reducers/Player'
 
 // import 'pixi';
 // import 'p2';
@@ -22,10 +23,17 @@ import {getLobby} from './reducers/Lobby'
 import store from './store'
 
 const onAppEnter = (nextState, replaceState)=>{
-  // console.log(store.getState().Player.name=== "")
-  // console.log('my name when checked', store.getState().Player.name)
-  if(store.getState().Player.name=== "")
-  replaceState({nextPathname: nextState.location.pathname }, '/home')
+  axios.get('api/name')
+  .then(res=>res.data)
+  .then(name=>{
+    store.dispatch(addPlayerN(name.name))
+    return name.name
+  })
+  .then((name)=>{
+    console.log(name)
+    if(name ==="" || name=== undefined)
+    replaceState({nextPathname: nextState.location.pathname }, '/home')
+  })
 }
 
 

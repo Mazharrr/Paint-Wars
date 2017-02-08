@@ -9,7 +9,15 @@ let roomId = 1
 
 module.exports = router;
 
-router.use((req,res,next)=>{
+router.post('/name',(req,res,next)=>{
+  req.session = req.body
+  res.json(req.session)
+})
+router.get('/name',(req,res,next)=>{
+  res.json(req.session)
+})
+
+router.use('/lobby',(req,res,next)=>{
   store.dispatch(setLobby(Lobby))
   next()
 })
