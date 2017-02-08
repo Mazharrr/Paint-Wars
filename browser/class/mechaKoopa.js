@@ -26,20 +26,15 @@ export default class MechaKoopa {
   addSprite(){
     this.sprite = this.game.add.sprite(this.x, this.y, 'mechaKoopa', 2)
     this.sprite.anchor.set(.4,.4);
-    // this.sprite.scale.setTo(0.5,0.5);
     this.game.physics.arcade.enable(this.sprite);
     this.sprite.body.immovable = true;
     this.sprite.body.moves = false;
     this.sprite.physicsBodyType= Phaser.Physics.ARCADE;
     this.sprite.body.collideWorldBounds = true;
     this.sprite.enableBody = true;
-    // this.sprite.animations.add('walkLeft', arrayMaker(13,24), 15, true)
-    // this.sprite.animations.add('walkRight', arrayMaker(155,191), 15, true)
+
      this.sprite.animations.add('explodeLeft', arrayMaker(39,49).concat(arrayMaker(56, 62)).concat(arrayMaker(39,49).concat(arrayMaker(56, 62))).concat(arrayMaker(39,49).concat(arrayMaker(56, 62))), 15)
      this.sprite.body.setSize(48,48)
-    // this.sprite.animations.add('explodeRight', arrayMaker(195,206).concat(arrayMaker(214, 222)).concat(explosion), 15, false)
-    // this.sprite.animations.add('pauseLeft', arrayMaker(18,26), 3)
-    // this.sprite.animations.add('pauseRight', arrayMaker(166,175), 3)
 
 
 
