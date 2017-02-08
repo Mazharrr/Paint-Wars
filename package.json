@@ -10,8 +10,7 @@
     "test": "check-node-version --node '>= 6.7.0' && echo \"Error: no test specified\" && exit 1",
     "start": "check-node-version --node '>= 6.7.0' && nodemon server/index.js",
     "build": "check-node-version --node '>= 6.7.0' && webpack",
-    "build-watch": "check-node-version --node '>= 6.7.0' && webpack -w",
-    "heroku-postbuild": " webpack -p --config ./webpack.prod.config.js --progress"
+    "build-watch": "check-node-version --node '>= 6.7.0' && webpack -w"
   },
   "author": "",
   "license": "ISC",
