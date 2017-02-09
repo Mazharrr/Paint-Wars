@@ -51,6 +51,7 @@ const listeners =  function( io, socket){
     store.dispatch(deletePlayer(socket.id));
   })
   socket.on('client_data_transfer', (data)=>{
+    // console.log(data)
     store.dispatch(getClientData( data))
 
     io.emit('gameState', store.getState())

@@ -163,9 +163,12 @@ export default class gameState extends Phaser.State{
       let enemyExistBool = enemies[key] ? true: false
       if(enemyExistBool  && amountMade===this.game.lobby.players.length-1){
         // console.log(actualEnemies[key].score)
+        enemies[key].sprite.animation = actualEnemies[key].animation
+        enemies[key].score = actualEnemies[key].score
         enemies[key].sprite.x = actualEnemies[key].position.x
         enemies[key].sprite.y = actualEnemies[key].position.y
         enemies[key].sprite.animations.play(actualEnemies[key].animation)
+        // console.log(actualEnemies[key].score, actualEnemies[key].position.x)
         store.dispatch(setMultiplayerScore(actualEnemies[key].color, actualEnemies[key].score))
         // console.log(amountMade)
       }

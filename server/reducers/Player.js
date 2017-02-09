@@ -31,7 +31,6 @@ const playerReducer = (state = initialState, action)=>{
   let newState= Object.assign({},state)
   switch(action.type){
     case GET_CLIENT_DATA:
-    // console.log(action.data)
     newState.players[action.data.name] = action.data
     break;
     case DELETE_PLAYER:
