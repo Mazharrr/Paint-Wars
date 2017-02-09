@@ -35,7 +35,7 @@ let me = socket.id
       let newFlame = fire.create(data.x, data.y, 'fire')
       newFlame.animations.add('explode')
       newFlame.animations.play('explode', 10, false)
-      newFlame.scale.setTo(1.2,1.2)
+      newFlame.scale.setTo(.3,.3)
       newFlame.anchor.setTo(0.5,0.5)
       store.dispatch(addFlames(data.gridX, data.gridY, newFlame))
   }

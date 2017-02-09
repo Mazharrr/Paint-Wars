@@ -94,7 +94,6 @@ export default class gameState extends Phaser.State{
 
 
     fire = this.add.group();
-    //fire.createMultiple(100,'fire', null, false)
     fire.enableBody = true;
     fire.physicsBodyType = Phaser.Physics.ARCADE;
 
@@ -161,7 +160,7 @@ export default class gameState extends Phaser.State{
       let enemyExistBool = enemies[key] ? true: false
       if(enemyExistBool  && amountMade===this.game.lobby.players.length-1){
         if(coordCheckTimer < this.time.now){
-          coordCheckTimer = this.time.now+100
+          coordCheckTimer = this.time.now+1
           enemies[key].sprite.x = actualEnemies[key].position.x
           enemies[key].sprite.y = actualEnemies[key].position.y
         }
