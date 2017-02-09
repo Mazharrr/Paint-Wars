@@ -1,0 +1,132 @@
+{"frames": [
+
+{
+	"filename": "Cratex_20.png",
+	"frame": {"x":65,"y":82,"w":60,"h":43},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":60,"h":43},
+	"sourceSize": {"w":60,"h":43}
+},
+{
+	"filename": "Cratex_21.png",
+	"frame": {"x":464,"y":1,"w":61,"h":42},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":61,"h":42},
+	"sourceSize": {"w":61,"h":42}
+},
+{
+	"filename": "Cratex_22.png",
+	"frame": {"x":1,"y":82,"w":62,"h":44},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":62,"h":44},
+	"sourceSize": {"w":62,"h":44}
+},
+{
+	"filename": "Cratex_23.png",
+	"frame": {"x":127,"y":80,"w":64,"h":47},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":64,"h":47},
+	"sourceSize": {"w":64,"h":47}
+},
+{
+	"filename": "Cratex_24.png",
+	"frame": {"x":193,"y":77,"w":66,"h":49},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":66,"h":49},
+	"sourceSize": {"w":66,"h":49}
+},
+{
+	"filename": "Cratex_25.png",
+	"frame": {"x":459,"y":67,"w":67,"h":52},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":67,"h":52},
+	"sourceSize": {"w":67,"h":52}
+},
+{
+	"filename": "Cratex_26.png",
+	"frame": {"x":261,"y":74,"w":69,"h":53},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":69,"h":53},
+	"sourceSize": {"w":69,"h":53}
+},
+{
+	"filename": "Cratex_28.png",
+	"frame": {"x":332,"y":68,"w":68,"h":58},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":68,"h":58},
+	"sourceSize": {"w":68,"h":58}
+},
+{
+	"filename": "Cratex_29.png",
+	"frame": {"x":385,"y":1,"w":77,"h":64},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":77,"h":64},
+	"sourceSize": {"w":77,"h":64}
+},
+{
+	"filename": "Cratex_30.png",
+	"frame": {"x":306,"y":1,"w":77,"h":65},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":77,"h":65},
+	"sourceSize": {"w":77,"h":65}
+},
+{
+	"filename": "Cratex_32.png",
+	"frame": {"x":227,"y":1,"w":77,"h":71},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":77,"h":71},
+	"sourceSize": {"w":77,"h":71}
+},
+{
+	"filename": "Cratex_33.png",
+	"frame": {"x":151,"y":1,"w":74,"h":74},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":74,"h":74},
+	"sourceSize": {"w":74,"h":74}
+},
+{
+	"filename": "Cratex_35.png",
+	"frame": {"x":76,"y":1,"w":73,"h":77},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":73,"h":77},
+	"sourceSize": {"w":73,"h":77}
+},
+{
+	"filename": "Cratex_37.png",
+	"frame": {"x":1,"y":1,"w":73,"h":79},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":73,"h":79},
+	"sourceSize": {"w":73,"h":79}
+},
+{
+	"filename": "Cratex_49.png",
+	"frame": {"x":402,"y":67,"w":55,"h":55},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":55,"h":55},
+	"sourceSize": {"w":55,"h":55}
+}],
+"meta": {
+	"app": "http://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "crateExplosion.png",
+	"format": "RGBA8888",
+	"size": {"w":527,"h":128},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:6ea95e675130eee3a650d6cd2f4f4f4f:f11241e10be001a8f7c98124ef5245fa:1a6c7390b506891102d6e3706bcbf8f8$"
+}
+}

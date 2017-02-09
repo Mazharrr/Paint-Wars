@@ -379,6 +379,8 @@ export default class Hero{
                       x: flameXY.x, y: flameXY.y, gridX: crate.x, gridY: crate.y, socket: this.name, mySocket: socket.id, LobbyId: this.game.game.lobby.id
                     })
                     let flame = this.fire.create(flameXY.x, flameXY.y, 'fire');
+                    flame.animations.add('explode')
+                    flame.animations.play('explode', 10, false)
 
                     flame.scale.setTo(1.2,1.2)
                     flame.anchor.setTo(0.5,0.5)
@@ -409,7 +411,10 @@ export default class Hero{
                   }
                   if (allCrates[crate.x] && allCrates[crate.x][crate.y]&& allCrates[crate.x][crate.y].crate !== false) {
                     socket.emit('client_remove_crate',{x: crate.x, y: crate.y, socket: this.name, mySocket: socket.id, LobbyId: this.game.game.lobby.id})
+                    // allCrates[crate.x][crate.y].crate.animations.add('crateExplosion_ANI')
+                    // allCrates[crate.x][crate.y].crate.animations.play('crateExplosion_ANI', 10, false)
                     allCrates[crate.x][crate.y].crate.kill()
+
                     store.dispatch(removeCrate(crate.x, crate.y))
                     let powerUpChance = Math.floor(Math.random()*2.5)+1
                     let powerXY = Utils.indexToXY(crate.x, crate.y)
