@@ -111,7 +111,7 @@ const reducer = (state = initialState , action)=>{
         setTimeout(function(){
           if(newState.crates[action.payload.x][action.payload.y].flame) newState.crates[action.payload.x][action.payload.y].flame.kill();
           newState.crates[action.payload.x][action.payload.y].flame = false;
-        }, 200)
+        }, 500)
       break;
     case ADD_POWERUP:
         newState.crates[action.powerXY.x][action.powerXY.y].powerUp = action.powerUp

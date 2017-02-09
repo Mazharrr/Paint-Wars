@@ -33,6 +33,8 @@ let me = socket.id
   socket.on('server_make_fire', data=>{
     if(me!==data.mySocket&& store.getState().Player.id ===data.LobbyId){
       let newFlame = fire.create(data.x, data.y, 'fire')
+      flame.animations.add('explode')
+      flame.animations.play('explode', 10, false)
       newFlame.scale.setTo(1.2,1.2)
       newFlame.anchor.setTo(0.5,0.5)
       store.dispatch(addFlames(data.gridX, data.gridY, newFlame))

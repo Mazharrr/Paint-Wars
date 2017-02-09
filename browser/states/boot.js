@@ -12,7 +12,7 @@ export default class extends Phaser.State {
 
 
 
-      this.load.image('fire', '../assets/fire.png')
+      // this.load.image('fire', '../assets/fire.png')
       this.load.image('blue', '../assets/bluePaint.png');
       this.load.image('purple', '../assets/purplePaint.png');
       this.load.image('green', '../assets/greenPaint.png');
@@ -23,6 +23,9 @@ export default class extends Phaser.State {
       this.load.image('rangePowerUp', '../assets/rangePowerUp.png')
       this.load.image('speedPowerUp', '../assets/speedPowerUp.png')
       this.load.atlas('mechaKoopa', '../assets/mechaKoopa/mechaKoopaTP.png', '../assets/mechaKoopa/mechaKoopaTP.json')
+      this.load.atlas('fire', '../assets/explosion.png', '../assets/explosion.json')
+      this.load.atlas('crateExplosion', '../assets/crateExplosion.png', '../assets/crateExplosion.json')
+
 
 
       this.load.atlas('hero1', '../assets/spinHero1.png', '../assets/spinHero1.json')
