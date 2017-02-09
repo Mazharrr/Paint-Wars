@@ -20,6 +20,7 @@ let name
 let amountMade=0
 let bool = false
 let myId
+let coordCheckTimer= 0
 
 import {initializeSocket} from '../socket'
 initializeSocket();
@@ -139,11 +140,9 @@ export default class gameState extends Phaser.State{
 
   }
   update(){
-    //from our enemyUpdate
     let recievedEnemies = store.getState().Players.players
     let currentClients = store.getState().Players.sockets
     let actualEnemies= {}
-    // console.log(recievedEnemies)
     if(recievedEnemies){
     this.game.lobby.players.forEach((key)=>{
       actualEnemies[key]= recievedEnemies[key]
@@ -156,22 +155,26 @@ export default class gameState extends Phaser.State{
         delete enemies[key]
       }
     })
-    // console.log(amountMade)
-    // console.log(actualEnemies)
+
     Object.keys(actualEnemies).forEach((key)=>{
       if(key !== name && actualEnemies[key] && actualEnemies[key].id ===myId){
-
       let enemyExistBool = enemies[key] ? true: false
       if(enemyExistBool  && amountMade===this.game.lobby.players.length-1){
-        // console.log(actualEnemies[key].score)
-        enemies[key].sprite.animation = actualEnemies[key].animation
-        enemies[key].score = actualEnemies[key].score
-        enemies[key].sprite.x = actualEnemies[key].position.x
-        enemies[key].sprite.y = actualEnemies[key].position.y
+        if(coordCheckTimer < this.time.now){
+          coordCheckTimer = this.time.now+100
+          enemies[key].sprite.x = actualEnemies[key].position.x
+          enemies[key].sprite.y = actualEnemies[key].position.y
+        }
+
+        enemies[key].sprite.body.velocity.setTo(0,0)
+        actualEnemies[key].leftDown ? enemies[key].sprite.body.velocity.x =-actualEnemies[key].speed: null
+        actualEnemies[key].rightDown ?enemies[key].sprite.body.velocity.x =+actualEnemies[key].speed: null
+        actualEnemies[key].upDown ?enemies[key].sprite.body.velocity.y =-actualEnemies[key].speed: null
+        actualEnemies[key].downDown ?enemies[key].sprite.body.velocity.y =+actualEnemies[key].speed: null
         enemies[key].sprite.animations.play(actualEnemies[key].animation)
-        // console.log(actualEnemies[key].score, actualEnemies[key].position.x)
         store.dispatch(setMultiplayerScore(actualEnemies[key].color, actualEnemies[key].score))
-        // console.log(amountMade)
+        this.physics.arcade.collide(enemies[key].sprite, blockedLayer)
+        this.physics.arcade.collide(enemies[key].sprite, crate)
       }
 
       if(!enemyExistBool){
