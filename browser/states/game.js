@@ -60,7 +60,7 @@ export default class gameState extends Phaser.State{
     })
 
 
-    socket.emit('game_started',{})
+    socket.emit('game_started',{lobby: myId})
     this.world.setBounds(0,0,720 ,720)
     this.map = this.add.tilemap('finalMap');
     this.map.addTilesetImage('tileset-biome', 'gameTiles');
@@ -103,38 +103,36 @@ export default class gameState extends Phaser.State{
     let crateTable = []
     let width = 15;
     let height = 15;
-    // this.sprite = this.add.sprite(72, 72, 'larryKoopa', 2)
-    for(let h = 0; h< height; h++){
-      let crateRow = []
-    	for (let w = 0; w < width; w++){
-    		//console.log(h,w)
-        let tile = {obstacle: true, crate: false, paint: false, powerUp: false}
-    		if(h!==0 && w!==0 && h!==height-1 && w!==width-1 && (h%2==1 || w%2==1) ){
-          tile = {crate: false, paint: false, obstacle: false, powerUp: false}
-          if(!(h===1 && w===1) && !(h===height-2 && w===width-2 ) && !(h===1 && w== width-2)
-          && !(h===height-2 && w===1) && !(h===2 && w===1) && !(h===1 && w===2) && !(h==height-2
-            && w=== width-3) && !(h===height-3 && w=== width-2) && !(h===height-2 &&w===2) && !(h===height-3 && w==1)
-            && ! (w===width-3 && h===1) && !(w===width-2 && h===2)){
+    socket.on('load_crates', data=>{
+      if(!store.getState().Tiles.crates.length)
+        {
+          for(let h = 0; h< height; h++){
+            let crateRow = []
+            for (let w = 0; w < width; w++){
+              let tile = {obstacle: true, crate: false, paint: false, powerUp: false}
+              if(h!==0 && w!==0 && h!==height-1 && w!==width-1 && (h%2==1 || w%2==1) ){
+                tile = {crate: false, paint: false, obstacle: false, powerUp: false}
+                       if(data.table[h][w]){
+                      tile = {crate: crate.create(h*48, w*48, 'crate'), paint: false, obstacle: false, powerUp: false};
 
-                 let randNum = Math.floor(Math.random()*w)
-                 let randNum1 = Math.floor(Math.random()*h)
-                if( randNum % 2 !== 0 || randNum1 % 2 !== 0){
-                tile = {crate: crate.create(h*48, w*48, 'crate'), paint: false, obstacle: false, powerUp: false};
-
-                // e.frame = 'crate'
-                tile.crate.scale.setTo(0.095,0.095)
-    		   			tile.crate.body.immovable= true
-                }
+                      tile.crate.scale.setTo(0.095,0.095)
+                      tile.crate.body.immovable= true
+                      }
               }
-        }
-          crateRow.push(tile)
+                crateRow.push(tile)
 
-    	}
+            }
 
-      crateTable.push(crateRow)
+            crateTable.push(crateRow)
 
-    }
+          }
+
+      }
+
+    })
+
     store.dispatch(loadCrates(crateTable));
+    console.log(store.getState().Tiles.crates)
 
     this.physics.startSystem(Phaser.Physics.ARCADE);
 
@@ -165,9 +163,12 @@ export default class gameState extends Phaser.State{
       let enemyExistBool = enemies[key] ? true: false
       if(enemyExistBool  && amountMade===this.game.lobby.players.length-1){
         // console.log(actualEnemies[key].score)
+        enemies[key].sprite.animation = actualEnemies[key].animation
+        enemies[key].score = actualEnemies[key].score
         enemies[key].sprite.x = actualEnemies[key].position.x
         enemies[key].sprite.y = actualEnemies[key].position.y
         enemies[key].sprite.animations.play(actualEnemies[key].animation)
+        // console.log(actualEnemies[key].score, actualEnemies[key].position.x)
         store.dispatch(setMultiplayerScore(actualEnemies[key].color, actualEnemies[key].score))
         // console.log(amountMade)
       }

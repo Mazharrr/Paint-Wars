@@ -75,7 +75,7 @@ export default class Hero{
       this.score = store.getState().Player.score
       this.animation
       this.addSprite()
-      this.updateSocket()
+      this.intervalRan= true
 
       socket.on('server_delete_timer', data=>{
         if(store.getState().Player.name!==data.name  && this.game.game.lobby.id===data.LobbyId && socket.id===data.socket){
@@ -84,9 +84,12 @@ export default class Hero{
           this.bombs.pop()
         }
       })
-      // setInterval(()=>{
-      //   this.updateSocket()
-      // }, 1000)
+      setInterval(()=>{
+        if(this.animation || this.intervalRan){
+                socket.emit('client_data_transfer', {position: this.sprite.position, color: this.color, score: this.score, name: this.name, animation: this.animation, id: this.game.game.lobby.id})
+              }
+          this.intervalRan = false
+      }, 1000/60)
 
 
     }
@@ -199,7 +202,7 @@ export default class Hero{
     }
 
     update(game){
-      this.updateSocket()
+      // this.updateSocket()
       this.limit = store.getState().Player.limit
       this.range = store.getState().Player.range
       this.speed = store.getState().Player.speed
@@ -444,10 +447,5 @@ export default class Hero{
             this.bomb.blownUp = true;
 
     }
-
-
-  updateSocket(){
-        socket.emit('client_data_transfer', {position: this.sprite.position, color: this.color, score: this.score, name: this.name, animation: this.animation, id: this.game.game.lobby.id})
-  }
 
 }
