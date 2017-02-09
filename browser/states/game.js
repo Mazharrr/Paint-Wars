@@ -93,6 +93,7 @@ export default class gameState extends Phaser.State{
 
 
     fire = this.add.group();
+    //fire.createMultiple(100,'fire', null, false)
     fire.enableBody = true;
     fire.physicsBodyType = Phaser.Physics.ARCADE;
 
