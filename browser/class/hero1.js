@@ -215,6 +215,7 @@ export default class Hero{
       this.game.world.bringToTop(this.fire)
       if(this.bomb) this.game.world.bringToTop(this.bomb.sprite)
       this.game.world.bringToTop(this.sprite)
+      this.game.world.bringToTop(crate)
       let cursors = this.game.input.keyboard.createCursorKeys();
       let wasd = {
         up: this.game.input.keyboard.addKey(Phaser.Keyboard.W),
@@ -416,11 +417,16 @@ export default class Hero{
                   }
                   if (allCrates[crate.x] && allCrates[crate.x][crate.y]&& allCrates[crate.x][crate.y].crate !== false) {
                     socket.emit('client_remove_crate',{x: crate.x, y: crate.y, socket: this.name, mySocket: socket.id, LobbyId: this.game.game.lobby.id})
-                    // allCrates[crate.x][crate.y].crate.animations.add('crateExplosion_ANI')
-                    // allCrates[crate.x][crate.y].crate.animations.play('crateExplosion_ANI', 10, false)
-                    allCrates[crate.x][crate.y].crate.kill()
 
+                    allCrates[crate.x][crate.y].crate.loadTexture('crateExplosion',0)
+                    allCrates[crate.x][crate.y].crate.animations.add('crateExplosion_ANI')
+                    allCrates[crate.x][crate.y].crate.animations.play('crateExplosion_ANI', 30, false)
+                    allCrates[crate.x][crate.y].crate.scale.setTo(1,1)
+                    this.game.time.events.add(Phaser.Timer.SECOND * 0.5, () => {
+                        allCrates[crate.x][crate.y].crate.kill()
                     store.dispatch(removeCrate(crate.x, crate.y))
+                    })
+
                     let powerUpChance = Math.floor(Math.random()*2.5)+1
                     let powerXY = Utils.indexToXY(crate.x, crate.y)
                     if(powerUpChance ===1){
