@@ -23,6 +23,7 @@ const Lobby = (props)=>{
       if(room.players.includes(props.Player.name))
       myRoom = room
     })
+    let inGame
     if(myRoom && myRoom.start){
       var myGame = new game(myRoom)
       hashHistory.push('/game')
@@ -62,7 +63,7 @@ const Lobby = (props)=>{
                )
              }
              {
-               (room.players && room.players.length>=1 && room.players.includes(props.Player.name))
+               (room.players && room.players.length>=2 && room.players.includes(props.Player.name))
                ? <button onClick={(e)=>{
                  e.preventDefault()
                  store.dispatch(startRoom(room.id))
