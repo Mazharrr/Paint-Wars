@@ -117,7 +117,6 @@ export default class gameState extends Phaser.State{
 
                       tile.crate.scale.setTo(0.095,0.095)
                       tile.crate.body.immovable= true
-                      // console.log('made')
                       }
               }
                 crateRow.push(tile)
