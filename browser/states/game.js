@@ -110,19 +110,25 @@ export default class gameState extends Phaser.State{
             let crateRow = []
             for (let w = 0; w < width; w++){
               let tile = {obstacle: true, crate: false, paint: false, powerUp: false}
-             if(data.table[h][w]){
-              tile = {crate: crate.create(h*48, w*48, 'crate'), paint: false, obstacle: false, powerUp: false};
+              if(h!==0 && w!==0 && h!==height-1 && w!==width-1 && (h%2==1 || w%2==1) ){
+                tile = {crate: false, paint: false, obstacle: false, powerUp: false}
+                       if(data.table[h][w]){
+                      tile = {crate: crate.create(h*48, w*48, 'crate'), paint: false, obstacle: false, powerUp: false};
 
-              tile.crate.scale.setTo(0.095,0.095)
-              tile.crate.body.immovable= true
+                      tile.crate.scale.setTo(0.095,0.095)
+                      tile.crate.body.immovable= true
+                      }
               }
-            crateRow.push(tile)
+                crateRow.push(tile)
 
             }
+
             crateTable.push(crateRow)
 
           }
+
       }
+
     })
 
     store.dispatch(loadCrates(crateTable));
