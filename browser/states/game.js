@@ -116,12 +116,15 @@ export default class gameState extends Phaser.State{
             && w=== width-3) && !(h===height-3 && w=== width-2) && !(h===height-2 &&w===2) && !(h===height-3 && w==1)
             && ! (w===width-3 && h===1) && !(w===width-2 && h===2)){
 
-
+                 let randNum = Math.floor(Math.random()*w)
+                 let randNum1 = Math.floor(Math.random()*h)
+                if( randNum % 2 !== 0 || randNum1 % 2 !== 0){
                 tile = {crate: crate.create(h*48, w*48, 'crate'), paint: false, obstacle: false, powerUp: false};
 
                 // e.frame = 'crate'
                 tile.crate.scale.setTo(0.095,0.095)
     		   			tile.crate.body.immovable= true
+                }
               }
         }
           crateRow.push(tile)
