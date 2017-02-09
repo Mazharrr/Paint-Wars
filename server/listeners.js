@@ -13,6 +13,8 @@ const listeners =  function( io, socket){
   })
   socket.on('client_data_transfer', (data)=>{
     store.dispatch(getClientData( data))
+
+    io.emit('gameState', store.getState())
   })
   socket.on('client_place_bomb', (data)=>{
     io.emit('server_send_bomb', data)

@@ -84,6 +84,9 @@ export default class Hero{
           this.bombs.pop()
         }
       })
+      // setInterval(()=>{
+      //   this.updateSocket()
+      // }, 1000)
 
 
     }
@@ -196,13 +199,13 @@ export default class Hero{
     }
 
     update(game){
+      this.updateSocket()
       this.limit = store.getState().Player.limit
       this.range = store.getState().Player.range
       this.speed = store.getState().Player.speed
       this.score = store.getState().Player.score
       // this.sprite.body.setSize(35,35,10,20)
 
-      this.updateSocket()
 
       this.game.world.bringToTop(this.powerGroup)
       this.game.world.bringToTop(this.fire)
@@ -434,6 +437,7 @@ export default class Hero{
 
             });
             this.bomb.blownUp = true;
+
     }
 
 

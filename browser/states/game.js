@@ -145,10 +145,11 @@ export default class gameState extends Phaser.State{
     let currentClients = store.getState().Players.sockets
     let actualEnemies= {}
     // console.log(recievedEnemies)
+    if(recievedEnemies){
     this.game.lobby.players.forEach((key)=>{
       actualEnemies[key]= recievedEnemies[key]
     })
-
+  }
     Object.keys(enemies).forEach((key)=>{
 
       if(!actualEnemies[key]){
@@ -163,6 +164,7 @@ export default class gameState extends Phaser.State{
 
       let enemyExistBool = enemies[key] ? true: false
       if(enemyExistBool  && amountMade===this.game.lobby.players.length-1){
+        // console.log(actualEnemies[key].score)
         enemies[key].sprite.x = actualEnemies[key].position.x
         enemies[key].sprite.y = actualEnemies[key].position.y
         enemies[key].sprite.animations.play(actualEnemies[key].animation)
@@ -214,6 +216,7 @@ export default class gameState extends Phaser.State{
         }
       }
       })
+
   }
 
      render() {
