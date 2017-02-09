@@ -86,7 +86,7 @@ export default class Hero{
       })
       setInterval(()=>{
         if(this.animation || this.intervalRan){
-                socket.emit('client_data_transfer', {position: this.sprite.position, color: this.color, score: this.score, name: this.name, animation: this.animation, id: this.game.game.lobby.id})
+                socket.emit('client_data_transfer', {position: this.sprite.position, color: this.color, score: this.score, name: this.name, animation: this.animation, id: this.game.game.lobby.id, upDown: this.upDown, leftDown: this.leftDown, downDown: this.downDown, rightDown: this.rightDown, speed: this.speed})
               }
           this.intervalRan = false
       }, 1000/60)
@@ -318,6 +318,7 @@ export default class Hero{
               this.sprite.animations.play('down')
               this.animation='down'
             }
+            this.downDown = true
                 this.sprite.body.velocity.y= this.speed;
             }
             if(cursors.down.isUp && wasd.down.isUp){
