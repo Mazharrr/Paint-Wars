@@ -12,12 +12,12 @@ const initialState = {
 
 //ACTION TYPE CONSTANTS
 
-const ADD_PLAYER_NAME = "ADD_PLAYER_NAME";
-const ADD_AVATAR = "ADD_AVATAR";
-const INCREASE_SCORE = "INCREASE_SCORE";
-const ADD_POWER_UP = "ADD_POWER_UP";
-const KILL_PLAYER = "KILL_PLAYER";
-const SET_LOBBY_ID= "SET_LOBBY_ID"
+export const ADD_PLAYER_NAME = "ADD_PLAYER_NAME";
+export const ADD_AVATAR = "ADD_AVATAR";
+export const INCREASE_SCORE = "INCREASE_SCORE";
+export const ADD_POWER_UP = "ADD_POWER_UP";
+export const KILL_PLAYER = "KILL_PLAYER";
+export const SET_LOBBY_ID= "SET_LOBBY_ID"
 
 //ACTION CREATORS
 
@@ -49,7 +49,7 @@ export const killPlayer = () => ({
   type: KILL_PLAYER
 })
 
-export const addPlayerName = (name)=>{
+export const addPlayerName = (name) =>{
   return function(dispatch,getState){
     return axios.post('/api/name', {name: name})
     .then((res)=>res.data)
