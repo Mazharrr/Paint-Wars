@@ -70,12 +70,14 @@ export default class Hero{
       this.bomb
       this.onePress
       this.name = name
+      console.log(this.name)
       store.dispatch(addNameMultiplayerScore(this.color, this.name))
       store.dispatch(restartMultiplayerScoreboard());
       this.score = store.getState().Player.score
       this.animation
       this.addSprite()
-      this.updateSocket()
+      // this.updateSocket()
+      this.intervalRan = true
 
       socket.on('server_delete_timer', data=>{
         if(store.getState().Player.name!==data.name  && this.game.game.lobby.id===data.LobbyId && socket.id===data.socket){
@@ -90,7 +92,7 @@ export default class Hero{
                 socket.emit('client_data_transfer', {position: this.sprite.position, color: this.color, score: this.score, name: this.name, animation: this.animation, id: this.game.game.lobby.id, upDown: this.upDown, leftDown: this.leftDown, downDown: this.downDown, rightDown: this.rightDown, speed: this.speed})
               }
           this.intervalRan = false
-      }, 1000/60)
+      }, 1000/30)
 
 
     }
@@ -203,7 +205,7 @@ export default class Hero{
     }
 
     update(game){
-      this.updateSocket()
+      // this.updateSocket()
       this.limit = store.getState().Player.limit
       this.range = store.getState().Player.range
       this.speed = store.getState().Player.speed
@@ -229,8 +231,8 @@ export default class Hero{
       this.game.physics.arcade.collide(this.sprite, this.fire, () => {
           if(this.immuneTime < this.game.time.now){
             this.immuneTime = this.game.time.now + 1000;
-            socket.emit('client_remove_paint',{color: this.color, socket: this.name, mySocket: socket.id, LobbyId: this.game.game.lobby.id})
-
+            console.log('colliding with fire')
+            // socket.emit('client_remove_paint',{color: this.color, socket: this.name, mySocket: socket.id, LobbyId: this.game.game.lobby.id})
             store.dispatch(removePaint(this.color))
             this.reset();
             store.dispatch(killPlayer());
@@ -382,13 +384,28 @@ export default class Hero{
                     let flameXY = Utils.indexToXY(crate.x, crate.y)
 
                     socket.emit('client_make_fire', {
-                      x: flameXY.x, y: flameXY.y, gridX: crate.x, gridY: crate.y, socket: this.name, mySocket: socket.id, LobbyId: this.game.game.lobby.id
+                      x: flameXY.x, y: flameXY.y, gridX: crate.x, gridY: crate.y, socket: this.name, mySocket: socket.id, LobbyId: this.game.game.lobby.id, color: this.color
                     })
-                    let flame = this.fire.create(flameXY.x, flameXY.y, 'fire');
+                    let flame
+                    switch(this.color){
+                      case 'blue': 
+                       flame = this.fire.create(flameXY.x, flameXY.y, 'blueFire');
+                      break;
+                      case 'green':
+                       flame = this.fire.create(flameXY.x, flameXY.y, 'greenFire');
+                      break;
+                      case 'purple':
+                       flame = this.fire.create(flameXY.x, flameXY.y, 'purpleFire');
+                      break;
+                      case 'red':
+                       flame = this.fire.create(flameXY.x, flameXY.y, 'redFire');
+                      break;
+                      default: break;
+                    }
                     flame.animations.add('explode')
-                    flame.animations.play('explode', 10, false)
-
-                    flame.scale.setTo(.3,.3)
+                    flame.animations.play('explode', 52, false)
+                    flame.body.setSize(24,24,0,0)
+                    flame.scale.setTo(0.5,0.5)
                     flame.anchor.setTo(0.5,0.5)
                     store.dispatch(addFlames(crate.x, crate.y, flame))
                     if(allCrates[crate.x][crate.y].bomb && allCrates[crate.x][crate.y].bomb !== myBomb){
@@ -423,8 +440,10 @@ export default class Hero{
                     allCrates[crate.x][crate.y].crate.animations.play('crateExplosion_ANI', 30, false)
                     allCrates[crate.x][crate.y].crate.scale.setTo(1,1)
                     this.game.time.events.add(Phaser.Timer.SECOND * 0.5, () => {
+                      if(allCrates[crate.x][crate.y].crate){
                         allCrates[crate.x][crate.y].crate.kill()
                     store.dispatch(removeCrate(crate.x, crate.y))
+                      }
                     })
 
                     let powerUpChance = Math.floor(Math.random()*2.5)+1
