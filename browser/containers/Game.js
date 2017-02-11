@@ -7,9 +7,10 @@ const scoreBoard = (props) => {
   let player = props.player;
   let lobby = props.lobby;
 
-  let {green, blue, purple, red} = props.scoreboard;
+  let { green, blue, purple, red } = props.scoreboard;
+  let finalScores = [green, blue, purple, red].sort((playerA, playerB) => {return playerB.score - playerA.score})
 
-
+  console.log(finalScores);
 
   	if (lobby.timer === 'Done!') {
   		Object.keys(props.scoreboard).forEach( player => {
