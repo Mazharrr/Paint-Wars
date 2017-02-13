@@ -87,6 +87,7 @@ const reducer = (state = initialState , action)=>{
       for(let i  = 0; i < newState.crates.length; i++){
         for(let j  = 0; j < newState.crates[i].length; j++){
           if(newState.crates[i][j].paint && newState.crates[i][j].paint.key === action.color){
+            console.log('remove paint called')
             newState.crates[i][j].paint.kill();
             newState.crates[i][j].paint = false;
           }
@@ -102,6 +103,7 @@ const reducer = (state = initialState , action)=>{
     case ADD_PAINT:
       if(!(action.paint.key === newState.crates[action.payload.x][action.payload.y].paint.key )){
         if(newState.crates[action.payload.x][action.payload.y].paint) newState.crates[action.payload.x][action.payload.y].paint.kill()
+          console.log('adding paint')
           newState.crates[action.payload.x][action.payload.y]= Object.assign({}, newState.crates[action.payload.x][action.payload.y] , {paint: action.paint});
       }
       break;

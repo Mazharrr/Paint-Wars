@@ -7,7 +7,7 @@ const store = require('../store')
 let Lobby = []
 let roomId = 1
 
-module.exports = router;
+module.exports = io=>{
 
 router.post('/name',(req,res,next)=>{
   req.session = req.body
@@ -19,11 +19,15 @@ router.get('/name',(req,res,next)=>{
 
 router.use('/lobby',(req,res,next)=>{
   store.dispatch(setLobby(Lobby))
+  io.emit('lobbyState' , store.getState())
+
   next()
 })
 
 
 router.get('/lobby', (req,res,next)=>{
+  io.emit('lobbyState' , store.getState())
+
   res.json(Lobby)
 })
 router.post('/lobby' ,(req,res,next)=>{
@@ -39,6 +43,7 @@ router.post('/lobby' ,(req,res,next)=>{
   }
   console.log(Lobby)
   res.json(Lobby)
+  io.emit('lobbyState' , store.getState())
 })
 router.post('/lobby/:roomId',(req,res,next)=>{
   console.log(req.body)
@@ -50,10 +55,13 @@ router.post('/lobby/:roomId',(req,res,next)=>{
   else{
     currentRoom[0].players.push(req.body.name)
   }
+    io.emit('lobbyState' , store.getState())
   res.json(Lobby)
 })
 router.get('/lobby/:roomId', (req,res,next)=>{
   let currentRoom = Lobby.filter((room)=>room.id===req.params.roomId)
+  io.emit('lobbyState' , store.getState())
+
   res.json(currentRoom[0])
 })
 router.delete('/lobby/:roomId/:playerName', (req,res,next)=>{
@@ -72,12 +80,17 @@ if(Lobby[currentRoom].players.length === 0) {
   Lobby.splice(currentRoom, 1)
 
 }
-
+  io.emit('lobbyState' , store.getState())
 })
 
 router.use((req,res,next)=>{
   store.dispatch(setLobby(Lobby))
+  // console.log('use ran')
+  // io.emit('lobbyState' , store.getState())
+
 })
 // router.delete('lobby/:roomId/:playerId', (req,res,next)=>{
 // lobby[req.params.id] =  lobby[req.params.id]
 // })
+return router
+}
