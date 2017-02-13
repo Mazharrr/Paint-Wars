@@ -367,7 +367,9 @@ export default class Hero{
     }
       if(this.space.isUp) this.onePress= false;
         // this.sprite.animations.play('walk')
+        this.sprite.body.velocity.setTo(0,0)
       }
+
     }
     explosion(gridCoords, blockCoords, myBomb, time){
               myBomb.timer = this.game.time.events.add(Phaser.Timer.SECOND * time, () => {
@@ -388,7 +390,7 @@ export default class Hero{
                     })
                     let flame
                     switch(this.color){
-                      case 'blue': 
+                      case 'blue':
                        flame = this.fire.create(flameXY.x, flameXY.y, 'blueFire');
                       break;
                       case 'green':
