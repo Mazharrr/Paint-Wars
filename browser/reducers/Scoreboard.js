@@ -1,4 +1,4 @@
-const initialState = {
+export const initialState = {
   green: {
     name:'',
     avatar: "http://www.fillmurray.com/100/100",
@@ -23,12 +23,12 @@ const initialState = {
 
 //ACTION TYPE CONSTANTS
 
-const ADD_MULTIPLAYER_NAME = "ADD_MULTIPLAYER_NAME";
-const ADD_PLAYER_AVATAR = "ADD_PLAYER_AVATAR";
-const INCREMENT_PLAYER_SCORE = "INCREMENT_PLAYER_SCORE";
-const SET_PLAYER_SCORE = "SET_PLAYER_SCORE";
-const RESET_PLAYER_SCORE = "RESET_PLAYER_SCORE";
-const RESTART_GAME = "RESTART_GAME";
+export const ADD_MULTIPLAYER_NAME = "ADD_MULTIPLAYER_NAME";
+export const ADD_PLAYER_AVATAR = "ADD_PLAYER_AVATAR";
+export const INCREMENT_PLAYER_SCORE = "INCREMENT_PLAYER_SCORE";
+export const SET_PLAYER_SCORE = "SET_PLAYER_SCORE";
+export const RESET_PLAYER_SCORE = "RESET_PLAYER_SCORE";
+export const RESTART_GAME = "RESTART_GAME";
 
 //ACTION CREATORS
 
@@ -66,7 +66,6 @@ export const restartMultiplayerScoreboard = () => ({
 
 
 //REDUCERS
-
 const reducer = (state = initialState, action) => {
   let newState = Object.assign({}, state)
   let color = action.color

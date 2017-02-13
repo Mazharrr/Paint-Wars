@@ -973,9 +973,13 @@ ul.rpgui-list-imp {
   background-size: 100% 100%; }
 
 #gameLogo {
-  margin: 0 20vh;
-  height: 60vh;
-  width: 55vw;
+  /*margin: 0 0vh;
+  height: 55vh;
+  width: 55vw;*/
+  /*position: absolute;*/
+  width: 100%;
+  height: 100%;
+  margin-top: 3%;
 }
 
 .customForm {
@@ -984,6 +988,7 @@ ul.rpgui-list-imp {
 }
 
 body{
+  text-align: center;
   background-image: url("/assets/homeBackground.jpg");
   background-size: 100%;
   background-repeat: no-repeat;

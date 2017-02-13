@@ -34,7 +34,7 @@ let me = socket.id
     if(me!==data.mySocket&& store.getState().Player.id ===data.LobbyId){
       let newFlame
       switch(data.color){
-          case 'blue': 
+          case 'blue':
             newFlame = fire.create(data.x, data.y, 'blueFire');
           break;
           case 'green':

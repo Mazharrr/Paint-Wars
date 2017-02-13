@@ -21,7 +21,7 @@ class Intro extends Component {
         <img src="/assets/paintWarsLogo.png" id="gameLogo"></img>
         <div className="row">
           <div className="rpgui-content container">
-            <form className="rpgui-container framed customForm">
+            <form className="rpgui-container framed customForm" id="login">
               <h1>What's your name?</h1>
               <input type="text" value={this.state.name} onChange={(e)=>this.setState({name: e.target.value})} />
                 <button
