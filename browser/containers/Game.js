@@ -7,50 +7,57 @@ const scoreBoard = (props) => {
   let player = props.player;
   let lobby = props.lobby;
 
-  let {green, blue, purple, red} = props.scoreboard;
-
-
+  let { green, blue, purple, red } = props.scoreboard;
 
   	if (lobby.timer === 'Done!') {
-  		Object.keys(props.scoreboard).forEach( player => {
-  			// console.log(player, player.score);
-  			if(!winner){
-  				// console.log(winner);
-  				winner = props.scoreboard[player];
-  				// console.log(winner);
-  			}
-
-  			if(winner.score <= props.scoreboard[player].score){
-  				winner = props.scoreboard[player];
-  			}
-  		});
-
+      let finalScores = [green, blue, purple, red].sort((playerA, playerB) => {return playerB.score - playerA.score})
+      // this was the previous logic for just showing the winner of the game
+      // Object.keys(props.scoreboard).forEach( player => {
+  		// 	// console.log(player, player.score);
+  		// 	if(!winner){
+  		// 		// console.log(winner);
+  		// 		winner = props.scoreboard[player];
+  		// 		// console.log(winner);
+  		// 	}
+      //
+  		// 	if(winner.score <= props.scoreboard[player].score){
+  		// 		winner = props.scoreboard[player];
+  		// 	}
+  		// });
   		// console.log(winner)
+
+
 
 
 
   		return (
 		    <div className="container-fluid">
 		      <div className="row">
-		        <div className="col-xs-4"></div>
-		        <div className="rpgui-content col-xs-6">
-		          <div className="rpgui-container framed">
-		              {
-		                player.name &&
-		                <div className="whiteText">
-			                <h1>
-			                  WINNER:
-			                </h1>
-			                <h2>
-			                  {winner.name}
-			                </h2>
-                      <Link to="/home">
-                        <a>Let's play again!</a>
-                      </Link>
-		                </div>
-		              }
+		        <div className="col-xs-2"></div>
+		        <div className="rpgui-content col-xs-8">
+              <div className="rpgui-container framed">
+                <div className="row">
+                  {
+                    finalScores.map((player, i) => {
+                      if (player.name) {
+                        return (
+                          <div key={i} className="col-xs-3">
+                            {
+                              i === 0 ? <h1>Winner!</h1> : <h1>Loser!</h1>
+                            }
+                            <h2>{player.name}</h2>
+                            <img className="winnerAvatar" src={player.avatar}></img>
+                            <h2>Score:</h2>
+                            <h2>{player.score}</h2>
+                          </div>
+                        )
+                      }
+                    })
+                  }
+		            </div>
 		          </div>
 		        </div>
+            <div className="col-xs-2"></div>
 		      </div>
 		    </div>
 		)
@@ -72,23 +79,23 @@ const scoreBoard = (props) => {
         		<div className="rpgui-container framed whiteText">
     			  <table>
 		            <tr>
-		              <th>
-		                <img src="http://vignette4.wikia.nocookie.net/ssb/images/5/56/Yoshi_%2B_Egg_1.png/revision/latest?cb=20140929214641&format=webp"></img> :  {green.score}
+		              <th className="whiteText">
+		                <img className="scoreBoardAvatar" src="http://vignette4.wikia.nocookie.net/ssb/images/5/56/Yoshi_%2B_Egg_1.png/revision/latest?cb=20140929214641&format=webp"></img> :  {green.score}
 		              </th>
 		            </tr>
 		            <tr>
-	            	  <th>
-		                <img src="http://vignette1.wikia.nocookie.net/ssb/images/0/03/LarryTrophy3DS.png/revision/latest?cb=20140929194701&format=webp"></img> : {blue.score}
+	            	  <th className="whiteText">
+		                <img className="scoreBoardAvatar" src="http://vignette1.wikia.nocookie.net/ssb/images/0/03/LarryTrophy3DS.png/revision/latest?cb=20140929194701&format=webp"></img> : {blue.score}
 		              </th>
 		            </tr>
 		            <tr>
-		              <th>
-		                <img src="http://vignette3.wikia.nocookie.net/ssb/images/4/4a/LemmyTrophy3DS.png/revision/latest?cb=20140929194817&format=webp"></img> : {purple.score}
+		              <th className="whiteText">
+		                <img className="scoreBoardAvatar" src="http://vignette3.wikia.nocookie.net/ssb/images/4/4a/LemmyTrophy3DS.png/revision/latest?cb=20140929194817&format=webp"></img> : {purple.score}
 		              </th>
 		            </tr>
 		            <tr>
-			          <th>
-			            <img src="http://vignette4.wikia.nocookie.net/ssb/images/e/e1/BowserJrEXTrophy3DS.png/revision/latest?cb=20140929203914&format=webp"></img> : {red.score}
+			          <th className="whiteText">
+			            <img className="scoreBoardAvatar" src="http://vignette4.wikia.nocookie.net/ssb/images/e/e1/BowserJrEXTrophy3DS.png/revision/latest?cb=20140929203914&format=webp"></img> : {red.score}
 		              </th>
 		            </tr>
 		          </table>
