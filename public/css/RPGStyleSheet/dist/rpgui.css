@@ -973,13 +973,16 @@ ul.rpgui-list-imp {
   background-size: 100% 100%; }
 
 .customForm {
-  margin: 30%;
-  margin-left: 42vw;
+  visibility: hidden;
+position: fixed;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
 }
 
 body{
-  background-image: url("/assets/homeBackground.png");
   text-align: center;
+  background-image: url("/assets/homepage.png");
   background-size: 100%;
   background-repeat: no-repeat;
 }
