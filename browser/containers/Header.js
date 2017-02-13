@@ -7,8 +7,6 @@ const Header = function (props) {
   return (
     <header >
 
-      <img src="/assets/paintWarsLogo.png" id="gameLogo"></img>
-
     </header>
   );
 }
