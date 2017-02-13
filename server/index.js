@@ -10,6 +10,7 @@ const server = require('http').createServer(app)
 const io = socketio(server);
 const listeners =  require('./listeners')
 const {sendGameState} = require('./game/gameState')
+const api = require('./api')
 
 // server.on('request', app)
 
@@ -30,7 +31,7 @@ sendGameState(io)
   }))
     .use(express.static(resolve(__dirname, '..', 'public')))
     .use(express.static(resolve(__dirname, '..', 'node_modules/phaser/build/')))
-    .use('/api', require('./api'))
+    .use('/api', api(io))
     .get('/', (_, res) => res.sendFile(resolve(__dirname, '..', 'public', 'index.html')))
   .use((err, req,res,next )=>{
     console.error(err)

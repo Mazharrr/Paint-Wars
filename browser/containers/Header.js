@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 const Header = function (props) {
 
   return (
-    <header>
+    <header >
 
       <img src="/assets/paintWarsLogo.png" id="gameLogo"></img>
 

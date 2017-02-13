@@ -23,7 +23,10 @@ import {addPlayerN} from './reducers/Player'
 import store from './store'
 
 const onAppEnter = (nextState, replaceState)=>{
-  axios.get('/api/name')
+  axios.get('/api/lobby')
+  .then(()=>{
+    return axios.get('/api/name')
+  })
   .then(res=>res.data)
   .then(name=>{
     console.log(name)
@@ -33,11 +36,11 @@ const onAppEnter = (nextState, replaceState)=>{
   .then((name)=>{
     console.log(name)
     if(name === "" || name === undefined){
-      console.log('this ran')
       hashHistory.push('/home')
     }
 
   })
+
 }
 
 
