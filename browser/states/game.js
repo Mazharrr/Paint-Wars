@@ -97,6 +97,7 @@ export default class gameState extends Phaser.State{
     fire.enableBody = true;
     fire.physicsBodyType = Phaser.Physics.ARCADE;
 
+
     paint = this.add.group()
     paint.enableBody = true;
     paint.physicsBodyType = Phaser.Physics.ARCADE;
@@ -159,21 +160,10 @@ export default class gameState extends Phaser.State{
       if(key !== name && actualEnemies[key] && actualEnemies[key].id ===myId){
       let enemyExistBool = enemies[key] ? true: false
       if(enemyExistBool  && amountMade===this.game.lobby.players.length-1){
-        if(coordCheckTimer < this.time.now){
-          coordCheckTimer = this.time.now+1
           enemies[key].sprite.x = actualEnemies[key].position.x
           enemies[key].sprite.y = actualEnemies[key].position.y
-        }
-
-        enemies[key].sprite.body.velocity.setTo(0,0)
-        actualEnemies[key].leftDown ? enemies[key].sprite.body.velocity.x =-actualEnemies[key].speed: null
-        actualEnemies[key].rightDown ?enemies[key].sprite.body.velocity.x =+actualEnemies[key].speed: null
-        actualEnemies[key].upDown ?enemies[key].sprite.body.velocity.y =-actualEnemies[key].speed: null
-        actualEnemies[key].downDown ?enemies[key].sprite.body.velocity.y =+actualEnemies[key].speed: null
         enemies[key].sprite.animations.play(actualEnemies[key].animation)
         store.dispatch(setMultiplayerScore(actualEnemies[key].color, actualEnemies[key].score))
-        this.physics.arcade.collide(enemies[key].sprite, blockedLayer)
-        this.physics.arcade.collide(enemies[key].sprite, crate)
       }
 
       if(!enemyExistBool){
