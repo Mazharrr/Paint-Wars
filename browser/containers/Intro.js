@@ -17,8 +17,7 @@ class Intro extends Component {
   }
   render () {
     return (
-      <div className="container paintBackground">
-        <img src="/assets/paintWarsLogo.png" id="gameLogo"></img>
+      <div className="container">
         <div className="row">
           <div className="rpgui-content container">
             <form className="rpgui-container framed customForm">

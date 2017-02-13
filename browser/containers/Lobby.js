@@ -36,7 +36,7 @@ const Lobby = (props)=>{
 
   return(
 
-    <div className="container paintBackground">
+    <div className="container">
       <Header />
       <div className="row">
         <div className="rpgui-content">

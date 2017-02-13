@@ -972,19 +972,13 @@ ul.rpgui-list-imp {
   background-image: url("img/slider-thumb-golden.png");
   background-size: 100% 100%; }
 
-#gameLogo {
-  margin: 0 20vh;
-  height: 60vh;
-  width: 55vw;
-}
-
 .customForm {
   margin: 30%;
   margin-left: 42vw;
 }
 
 body{
-  background-image: url("/assets/homeBackground.jpg");
+  background-image: url("/assets/homeBackground.png");
   background-size: 100%;
   background-repeat: no-repeat;
 }
