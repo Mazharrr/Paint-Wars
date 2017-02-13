@@ -29,7 +29,7 @@ export const INCREMENT_PLAYER_SCORE = "INCREMENT_PLAYER_SCORE";
 export const SET_PLAYER_SCORE = "SET_PLAYER_SCORE";
 export const RESET_PLAYER_SCORE = "RESET_PLAYER_SCORE";
 export const RESTART_GAME = "RESTART_GAME";
-
+export const DECREMENT_PLAYER_SCORE = "DECREMENT_PLAYER_SCORE";
 //ACTION CREATORS
 
 export const addMultiplayerAvatar = (color, imageURL) => ({
@@ -40,6 +40,11 @@ export const addMultiplayerAvatar = (color, imageURL) => ({
 
 export const incrementMuliplayerScore = (color) => ({
   type: INCREMENT_PLAYER_SCORE,
+  color
+})
+
+export const decrementMuliplayerScore = (color) => ({
+  type: DECREMENT_PLAYER_SCORE,
   color
 })
 export const setMultiplayerScore = (color, score) => ({
@@ -57,7 +62,7 @@ export const addNameMultiplayerScore = (color, name) => ({
   type: ADD_MULTIPLAYER_NAME,
   color,
   name
-})
+});
 
 export const restartMultiplayerScoreboard = () => ({
   type: RESTART_GAME
@@ -76,6 +81,9 @@ const reducer = (state = initialState, action) => {
     case INCREMENT_PLAYER_SCORE:
       newState[color].score++;
       break;
+    case DECREMENT_PLAYER_SCORE:
+      newState[color].score--;
+      break; 
     case RESET_PLAYER_SCORE:
       newState[color].score = 0;
       break;
