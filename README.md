@@ -1,17 +1,21 @@
+Hello everyone,
 
-Our goal for our MVP was to have a character that could be controlled, an AI that would behave in a certain way to attack this character, and the ability for the character to kill the AI and vise-versa
+PaintWars is a fast-paced but accessible game that hobbyists and newcomers can casually enjoy in their spare time. As a modern spinoff of the classic arcade game Bomberman, we've added new mechanics to make PaintWars distinct and one to call our own.
 
-There are two AI that we added so far. One of them functions as planned, whereas the other doesn't work yet. There are also some animations that we need to work on even on our MVP
+This project was a great opportunity for us to leverage our understanding and implementation of React and Redux while also exploring some libraries we hadn’t used before.
 
+To move: W,A,S,D Keys or Arrow Keys
+To drop a paintbomb: Space Button
 
-To run:
+To run game:
+  - npm install
+  - npm run build-watch
+  - then in another terminal tab: npm start
 
+Or, feel free to play the game on heroku:
+https://paint-wars.herokuapp.com
 
-npm install
+Enjoy!
 
-
-npm start
-
-
-
-https://paint-wars.herokuapp.com/#/home
+Best,
+Andres, James, and Mazhar
