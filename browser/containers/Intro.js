@@ -19,7 +19,7 @@ class Intro extends Component {
     return (
       <div className="container">
         <div className="row">
-          <div className="rpgui-content container">
+          <div className="rpgui-content">
             <form className="rpgui-container framed customForm" id="login">
               <h1>What's your name?</h1>
               <input type="text" value={this.state.name} onChange={(e)=>this.setState({name: e.target.value})} />
