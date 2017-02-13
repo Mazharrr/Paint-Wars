@@ -1,5 +1,6 @@
 import axios from 'axios'
 import {hashHistory} from 'react-router';
+// import socket from '../socket'
 
 
 const initialState = {
@@ -62,6 +63,7 @@ export const startRoom = (roomId)=>{
 }
 
 const reducer =  (state = initialState, action) => {
+  // socket.emit('client_update_lobby',{})
   let newState = Object.assign({}, state)
   switch (action.type) {
     case LOAD_LOBBY:
