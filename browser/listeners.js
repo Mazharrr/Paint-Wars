@@ -1,6 +1,6 @@
 import store from './store'
 import MechaKoopa from './class/mechaKoopa'
-import {getPlayers, getClient} from './reducers/Players'
+import {getPlayers, getClient, decreaseScore} from './reducers/Players'
 import {loadLobby} from './reducers/Lobby'
 import {removeBomb, addBomb, addFlames, removeCrate, addPaint, addPowerUp, removePaint, removePowerUp} from './reducers/Tiles'
 import game from './states/stateManager'
@@ -50,14 +50,14 @@ let me = socket.id
         }
       newFlame.animations.add('explode')
       newFlame.animations.play('explode', 50, false)
-      newFlame.body.setSize(24,24,0,0)
+      newFlame.body.setSize(48,48,0,0)
       newFlame.scale.setTo(0.5,0.5)
       newFlame.anchor.setTo(0.5,0.5)
       store.dispatch(addFlames(data.gridX, data.gridY, newFlame))
   }
   })
   socket.on('server_remove_crate', data=>{
-    if(me!==data.mySocket&& store.getState().Player.id ===data.LobbyId){
+    if(me!==data.mySocket && store.getState().Player.id === data.LobbyId){
       if(store.getState().Tiles.crates[data.x][data.y].crate){
     store.getState().Tiles.crates[data.x][data.y].crate.kill()
     store.dispatch(removeCrate(data.x, data.y))
@@ -65,12 +65,17 @@ let me = socket.id
   }
   })
   socket.on('server_make_paint', data=>{
-    if(me!==data.mySocket&& store.getState().Player.id ===data.LobbyId){
+    if(me!==data.mySocket && store.getState().Player.id === data.LobbyId){
       let newPaint = paint.create(data.x, data.y, data.color)
       newPaint.scale.setTo(0.15,0.15)
       newPaint.anchor.setTo(0.5,0.5)
+      console.log("EMITTING PAINT",store.getState().Tiles.crates[data.gridX][data.gridY])
+      console.log("players in lobby", data.Lobby.players)
+      if(store.getState().Tiles.crates[data.gridX][data.gridY].paint && store.getState().Tiles.crates[data.gridX][data.gridY].paint.key === data.Lobby.players ){
+        store.dispatch(decreaseScore())
+      }
       store.dispatch(addPaint(data.gridX, data.gridY, newPaint))
-  }
+    }
   })
   socket.on('server_remove_paint', data=>{
     if(me!==data.mySocket&& store.getState().Player.id ===data.LobbyId){

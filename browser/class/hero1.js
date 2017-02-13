@@ -404,7 +404,7 @@ export default class Hero{
                     }
                     flame.animations.add('explode')
                     flame.animations.play('explode', 52, false)
-                    flame.body.setSize(24,24,0,0)
+                    flame.body.setSize(48,48,0,0)
                     flame.scale.setTo(0.5,0.5)
                     flame.anchor.setTo(0.5,0.5)
                     store.dispatch(addFlames(crate.x, crate.y, flame))
@@ -421,7 +421,7 @@ export default class Hero{
                 let paintGrid = Utils.indexToXY(crate.x, crate.y);
                   if(allCrates[crate.x][crate.y].paint.key!==this.color){
                   socket.emit('client_make_paint', {
-                      x: paintGrid.x, y: paintGrid.y, gridX: crate.x, gridY: crate.y, color: this.color, socket: this.name, mySocket: socket.id, LobbyId: this.game.game.lobby.id
+                      x: paintGrid.x, y: paintGrid.y, gridX: crate.x, gridY: crate.y, color: this.color, socket: this.name, mySocket: socket.id, LobbyId: this.game.game.lobby.id, Lobby: this.game.game.lobby
                     })
 
                     let myPaint = this.paint.create(paintGrid.x, paintGrid.y, this.color)
