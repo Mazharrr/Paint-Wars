@@ -15,6 +15,7 @@ const initialState = {
 export const ADD_PLAYER_NAME = "ADD_PLAYER_NAME";
 export const ADD_AVATAR = "ADD_AVATAR";
 export const INCREASE_SCORE = "INCREASE_SCORE";
+export const DECREASE_SCORE = "DECREASE_SCORE"
 export const ADD_POWER_UP = "ADD_POWER_UP";
 export const KILL_PLAYER = "KILL_PLAYER";
 export const SET_LOBBY_ID= "SET_LOBBY_ID"
@@ -38,6 +39,10 @@ export const addAvatar = (imageURL) => ({
 
 export const increaseScore = () => ({
   type: INCREASE_SCORE
+})
+
+export const decreaseScore = () => ({
+  type: DECREASE_SCORE
 })
 
 export const addToPlayerPowerUp = (powerUp) => ({
@@ -75,6 +80,9 @@ const reducer = (state = initialState, action) => {
     case INCREASE_SCORE:
       newState.score++;
       break;
+    case DECREASE_SCORE:
+      newState.score--;
+      break;  
     case ADD_POWER_UP:
       if (action.powerUp === 'bombPowerUp') {
         newState.limit++

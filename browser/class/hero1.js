@@ -76,7 +76,7 @@ export default class Hero{
       this.score = store.getState().Player.score
       this.animation
       this.addSprite()
-      // this.updateSocket()
+      this.updateSocket()
       this.intervalRan = true
 
       socket.on('server_delete_timer', data=>{
@@ -87,12 +87,12 @@ export default class Hero{
         }
       })
 
-      setInterval(()=>{
-        if(this.animation || this.intervalRan){
-                socket.emit('client_data_transfer', {position: this.sprite.position, color: this.color, score: this.score, name: this.name, animation: this.animation, id: this.game.game.lobby.id, upDown: this.upDown, leftDown: this.leftDown, downDown: this.downDown, rightDown: this.rightDown, speed: this.speed})
-              }
-          this.intervalRan = false
-      }, 1000/30)
+      // setInterval(()=>{
+      //   if(this.animation || this.intervalRan){
+      //           socket.emit('client_data_transfer', {position: this.sprite.position, color: this.color, score: this.score, name: this.name, animation: this.animation, id: this.game.game.lobby.id, upDown: this.upDown, leftDown: this.leftDown, downDown: this.downDown, rightDown: this.rightDown, speed: this.speed})
+      //         }
+      //     this.intervalRan = false
+      // }, 1000/30)
 
 
     }
@@ -205,7 +205,7 @@ export default class Hero{
     }
 
     update(game){
-      // this.updateSocket()
+      this.updateSocket()
       this.limit = store.getState().Player.limit
       this.range = store.getState().Player.range
       this.speed = store.getState().Player.speed
@@ -232,7 +232,7 @@ export default class Hero{
           if(this.immuneTime < this.game.time.now){
             this.immuneTime = this.game.time.now + 1000;
             console.log('colliding with fire')
-            // socket.emit('client_remove_paint',{color: this.color, socket: this.name, mySocket: socket.id, LobbyId: this.game.game.lobby.id})
+            socket.emit('client_remove_paint',{color: this.color, socket: this.name, mySocket: socket.id, LobbyId: this.game.game.lobby.id})
             store.dispatch(removePaint(this.color))
             this.reset();
             store.dispatch(killPlayer());
@@ -404,7 +404,7 @@ export default class Hero{
                     }
                     flame.animations.add('explode')
                     flame.animations.play('explode', 52, false)
-                    flame.body.setSize(24,24,0,0)
+                    flame.body.setSize(48,48,0,0)
                     flame.scale.setTo(0.5,0.5)
                     flame.anchor.setTo(0.5,0.5)
                     store.dispatch(addFlames(crate.x, crate.y, flame))
@@ -421,7 +421,7 @@ export default class Hero{
                 let paintGrid = Utils.indexToXY(crate.x, crate.y);
                   if(allCrates[crate.x][crate.y].paint.key!==this.color){
                   socket.emit('client_make_paint', {
-                      x: paintGrid.x, y: paintGrid.y, gridX: crate.x, gridY: crate.y, color: this.color, socket: this.name, mySocket: socket.id, LobbyId: this.game.game.lobby.id
+                      x: paintGrid.x, y: paintGrid.y, gridX: crate.x, gridY: crate.y, color: this.color, socket: this.name, mySocket: socket.id, LobbyId: this.game.game.lobby.id, Lobby: this.game.game.lobby
                     })
 
                     let myPaint = this.paint.create(paintGrid.x, paintGrid.y, this.color)
