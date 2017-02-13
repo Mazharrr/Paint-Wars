@@ -367,7 +367,7 @@ export default class Hero{
     }
       if(this.space.isUp) this.onePress= false;
         // this.sprite.animations.play('walk')
-        this.sprite.body.velocity.setTo(0,0)
+        // this.sprite.body.velocity.setTo(0,0)
       }
 
     }
