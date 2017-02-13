@@ -1,0 +1,12 @@
+.scoreBoardAvatar {
+  width: 100px;
+  height: 100px;
+}
+
+.winnerAvatar {
+  width: 100%;
+}
+
+.col-xs-8 {
+  width: 100px;
+}
