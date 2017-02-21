@@ -1,6 +1,6 @@
 Hello everyone,
 
-![Uploading Screen Shot 2017-02-20 at 8.49.51 PM.png…]()
+<img width="1274" alt="screen shot 2017-02-20 at 8 49 51 pm" src="https://cloud.githubusercontent.com/assets/10522165/23147628/7457393a-f7ae-11e6-810b-6d78e2b62872.png">
 
 PaintWars is a fast-paced yet accessible game that hobbyists and newcomers can casually enjoy in their spare time. As a modern spinoff of the classic arcade game Bomberman, we've added new mechanics to make PaintWars distinct and one to call our own.
 
