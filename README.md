@@ -1,5 +1,7 @@
 Hello everyone,
 
+![Uploading Screen Shot 2017-02-20 at 8.49.51 PM.png…]()
+
 PaintWars is a fast-paced yet accessible game that hobbyists and newcomers can casually enjoy in their spare time. As a modern spinoff of the classic arcade game Bomberman, we've added new mechanics to make PaintWars distinct and one to call our own.
 
 This project was a great opportunity for us to leverage our understanding and implementation of React and Redux while also exploring some libraries we hadn’t used before.
