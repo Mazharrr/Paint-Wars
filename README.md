@@ -6,8 +6,8 @@ PaintWars is a fast-paced yet accessible game that hobbyists and newcomers can c
 
 This project was a great opportunity for us to leverage our understanding and implementation of React and Redux while also exploring some libraries we hadn’t used before.
 
-To move: W,A,S,D Keys or Arrow Keys
-To drop a paintbomb: Space Button
+To move: W,A,S,D Keys or Arrow Keys.
+To drop a paintbomb: Space Button.
 
 To run game:
   - npm install
@@ -16,6 +16,8 @@ To run game:
 
 Or, feel free to play the game on heroku:
 https://paint-wars.herokuapp.com
+
+<img width="1269" alt="screen shot 2017-04-15 at 3 47 09 pm" src="https://cloud.githubusercontent.com/assets/10522165/25066451/b1f7b462-21f3-11e7-8643-1903c3e65597.png">
 
 Enjoy!
 
