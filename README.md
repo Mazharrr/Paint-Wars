@@ -1,4 +1,4 @@
-Hello everyone,
+# PaintWars
 
 <img width="1274" alt="screen shot 2017-02-20 at 8 49 51 pm" src="https://cloud.githubusercontent.com/assets/10522165/23147628/7457393a-f7ae-11e6-810b-6d78e2b62872.png">
 
