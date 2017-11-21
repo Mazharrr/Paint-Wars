@@ -5,15 +5,7 @@ import Phaser from 'phaser';
 export default class extends Phaser.State {
 
     preload() {
-      // console.log(game)
-
-
-
       this.onLoadComplete()
-
-
-
-
     }
 
     onLoadComplete() {

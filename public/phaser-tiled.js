@@ -5084,8 +5084,6 @@ Tilemap.prototype.dump = function () {
     }
 
     args[0] = txt;
-    console.log.apply(console, args);
-
 };
 
 /**

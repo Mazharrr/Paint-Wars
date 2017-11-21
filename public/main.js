@@ -11,7 +11,6 @@ class Games extends Phaser.Game {
             transparent: false,
             enableDebug: true
         });
-        console.log('hi')
         this.state.add('boot', Boot);
         this.state.add('preload', Preload);
         this.state.add('menu', Menu);

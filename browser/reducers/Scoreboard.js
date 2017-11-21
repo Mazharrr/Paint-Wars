@@ -1,27 +1,25 @@
 export const initialState = {
   green: {
-    name:'',
+    name: "",
     avatar: "http://www.fillmurray.com/100/100",
     score: 0
   },
   blue: {
-    name:'',
+    name: "",
     avatar: "http://www.fillmurray.com/101/101",
     score: 0
   },
   purple: {
-    name:'',
+    name: "",
     avatar: "http://www.fillmurray.com/102/102",
     score: 0
   },
   red: {
-    name:'',
+    name: "",
     avatar: "http://www.fillmurray.com/103/103",
     score: 0
   }
-}
-
-//ACTION TYPE CONSTANTS
+};
 
 export const ADD_MULTIPLAYER_NAME = "ADD_MULTIPLAYER_NAME";
 export const ADD_PLAYER_AVATAR = "ADD_PLAYER_AVATAR";
@@ -30,33 +28,32 @@ export const SET_PLAYER_SCORE = "SET_PLAYER_SCORE";
 export const RESET_PLAYER_SCORE = "RESET_PLAYER_SCORE";
 export const RESTART_GAME = "RESTART_GAME";
 export const DECREMENT_PLAYER_SCORE = "DECREMENT_PLAYER_SCORE";
-//ACTION CREATORS
 
 export const addMultiplayerAvatar = (color, imageURL) => ({
   type: ADD_PLAYER_AVATAR,
   color,
   imageURL
-})
+});
 
-export const incrementMuliplayerScore = (color) => ({
+export const incrementMuliplayerScore = color => ({
   type: INCREMENT_PLAYER_SCORE,
   color
-})
+});
 
-export const decrementMuliplayerScore = (color) => ({
+export const decrementMuliplayerScore = color => ({
   type: DECREMENT_PLAYER_SCORE,
   color
-})
+});
 export const setMultiplayerScore = (color, score) => ({
   type: SET_PLAYER_SCORE,
   color,
   score
-})
+});
 
-export const resetMultiplayerScore = (color) => ({
+export const resetMultiplayerScore = color => ({
   type: RESET_PLAYER_SCORE,
   color
-})
+});
 
 export const addNameMultiplayerScore = (color, name) => ({
   type: ADD_MULTIPLAYER_NAME,
@@ -66,14 +63,11 @@ export const addNameMultiplayerScore = (color, name) => ({
 
 export const restartMultiplayerScoreboard = () => ({
   type: RESTART_GAME
-})
+});
 
-
-
-//REDUCERS
 const reducer = (state = initialState, action) => {
-  let newState = Object.assign({}, state)
-  let color = action.color
+  let newState = Object.assign({}, state);
+  let color = action.color;
   switch (action.type) {
     case ADD_PLAYER_AVATAR:
       newState[color].avatar = action.imageURL;
@@ -83,7 +77,7 @@ const reducer = (state = initialState, action) => {
       break;
     case DECREMENT_PLAYER_SCORE:
       newState[color].score--;
-      break; 
+      break;
     case RESET_PLAYER_SCORE:
       newState[color].score = 0;
       break;
@@ -94,15 +88,12 @@ const reducer = (state = initialState, action) => {
       newState[color].score = action.score;
       break;
     case ADD_MULTIPLAYER_NAME:
-
       newState[color].name = action.name;
       break;
     default:
       return state;
   }
-  //console.log(newState)
   return newState;
-
 };
 
 export default reducer;
