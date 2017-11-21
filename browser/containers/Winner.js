@@ -1,7 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
 import GameStart from "../startGame";
-//import socket
 
 const scoreBoard = props => {
   let player = props.player;
@@ -39,7 +38,7 @@ const scoreBoard = props => {
       <div className="row">
         <div className="col-xs-8" />
         <div className="rpgui-content col-xs-4">
-          <div className="rpgui-container framed">
+          <div className="rpgui-container framed viewport-center">
             {player.name &&
               <h1>
                 {player.name}

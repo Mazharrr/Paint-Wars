@@ -1,8 +1,4 @@
-// import React from 'react'
 import ReactDOM from 'react-dom'
-// import {Provider} from 'react-redux'
-// import App from './components/App'
-
 import React from 'react'
 import {Router, Route, IndexRedirect, hashHistory} from 'react-router'
 import {render} from 'react-dom'

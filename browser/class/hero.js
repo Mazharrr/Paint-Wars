@@ -41,9 +41,9 @@ let bowserJunior = {
 };
 let lemmyKoopa = {
   left: Utils.arrayMaker(0, 13),
-  right: Utils.arrayMaker(26, 39), //fix
+  right: Utils.arrayMaker(26, 39),
   up: Utils.arrayMaker(45, 49),
-  down: Utils.arrayMaker(40, 44), //fix
+  down: Utils.arrayMaker(40, 44),
   idle: Utils.arrayMaker(14, 25),
   attack: Utils.arrayMaker(50, 55),
   dead: Utils.arrayMaker(56, 60)
@@ -538,7 +538,6 @@ export default class Hero {
           let powerUpChance = Math.floor(Math.random() * 2.5) + 1;
           let powerXY = Utils.indexToXY(crate.x, crate.y);
           if (powerUpChance === 1) {
-            //pick one of the 3 available powers up
             const randomPowerUpArray = [
               "bombPowerUp",
               "speedPowerUp",

@@ -10,8 +10,6 @@ const initialState = {
   id: 999999
 };
 
-//ACTION TYPE CONSTANTS
-
 export const ADD_PLAYER_NAME = "ADD_PLAYER_NAME";
 export const ADD_AVATAR = "ADD_AVATAR";
 export const INCREASE_SCORE = "INCREASE_SCORE";
@@ -19,8 +17,6 @@ export const DECREASE_SCORE = "DECREASE_SCORE";
 export const ADD_POWER_UP = "ADD_POWER_UP";
 export const KILL_PLAYER = "KILL_PLAYER";
 export const SET_LOBBY_ID = "SET_LOBBY_ID";
-
-//ACTION CREATORS
 
 export const setId = id => ({
   type: SET_LOBBY_ID,

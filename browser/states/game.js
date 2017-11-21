@@ -228,7 +228,7 @@ export default class gameState extends Phaser.State {
     if (!bool & (amountMade >= this.game.lobby.players.length - 1)) {
       timer = this.time.create();
       bool = true;
-      timerEvent = timer.add(Phaser.Timer.SECOND * 30, this.endTimer, this);
+      timerEvent = timer.add(Phaser.Timer.SECOND * 120, this.endTimer, this);
       timer.start();
     }
     if (timer && timer.running) {

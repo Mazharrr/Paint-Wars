@@ -8,3 +8,23 @@
 .col-xs-8 {
   width: 100px;
 }
+.viewport-center {
+  top: 40vh;
+  left: 0;
+  width: 100vw;
+}
+.score-board {
+  text-align: center;
+  width: 35vw;
+  left: 0;
+  top: 50%;
+  transform: scale(0.7) translate(-18%, -70%);
+}
+.power-ups {
+  width: 20vw;
+  top: 50%;
+  transform: translate(0,-50%);
+}
+#game-container {
+  transform: translate(0,10%);
+}

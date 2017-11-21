@@ -1,7 +1,11 @@
-
-
-/* imports.css */
-
+
+
+
+
+/* imports.css */
+
+
+
 /*
 Import the font stylesheet.
 If not supported you can add backup via:
@@ -9,10 +13,14 @@ If not supported you can add backup via:
 inside your html file.
 */
 
-@import url("https://fonts.googleapis.com/css?family=Press+Start+2P");
-
-/* button.css */
-
+@import url("https://fonts.googleapis.com/css?family=Press+Start+2P");
+
+
+
+/* button.css */
+
+
+
 /**
 * Styling for buttons
 */
@@ -24,7 +32,7 @@ inside your html file.
 	background-color: Transparent;
     background-repeat:no-repeat;
     border: none;
-    overflow: hidden;
+    /* overflow: hidden; */
     outline:none;
 
 	/* background */
@@ -68,7 +76,7 @@ inside your html file.
 	background-color: Transparent;
     background-repeat:no-repeat;
     border: none;
-    overflow: hidden;
+    /* overflow: hidden; */
     outline:none;
 
 	/* background */
@@ -147,10 +155,14 @@ inside your html file.
 
     background-image: url('img/button-golden-right-hover.png');
 }
-*/
-
-/* checkbox.css */
-
+*/
+
+
+
+/* checkbox.css */
+
+
+
 /**
 * style for checkboxes
 */
@@ -198,10 +210,14 @@ inside your html file.
 {
     background: url('img/checkbox-golden-on.png') no-repeat;
     background-size: auto 100%;
-}
-
-/* containers_and_frames.css */
-
+}
+
+
+
+/* containers_and_frames.css */
+
+
+
 /**
 * customized divs (containers) and framed objects (background and frame image).
 */
@@ -307,10 +323,14 @@ inside your html file.
 	background-origin: padding-box;
 	background-position: center;
 }
-
-
-/* content.css */
-
+
+
+
+
+/* content.css */
+
+
+
 /**
 * global content styling
 */
@@ -325,7 +345,7 @@ inside your html file.
     left: 0px;
     top: 0px;
     position: fixed;
-    overflow: hidden;
+    /* overflow: hidden; */
 }
 
 /* general rules to apply on anything inside the content */
@@ -357,10 +377,14 @@ inside your html file.
 
 	/* default font */
 	font-family: 'Press Start 2P', cursive;
-}
-
-/* cursor.css */
-
+}
+
+
+
+/* cursor.css */
+
+
+
 /**
 * different cursor graphics
 */
@@ -422,10 +446,14 @@ label
 }
 
 
-
-
-/* dropdown.css */
-
+
+
+
+
+/* dropdown.css */
+
+
+
 /**
 * Customized dropdown with rpgui design.
 */
@@ -512,10 +540,14 @@ ul.rpgui-dropdown-imp
 .rpgui-dropdown-imp:hover
 {
 	color: yellow;
-}
-
-/* hr.css */
-
+}
+
+
+
+/* hr.css */
+
+
+
 /**
 * hr styling
 */
@@ -536,10 +568,14 @@ ul.rpgui-dropdown-imp
     background: url("img/hr-golden.png") no-repeat top left;
     background-size: 100% 100%;
 }
-
-
-/* icon.css */
-
+
+
+
+
+/* icon.css */
+
+
+
 /**
 * Icon styles.
 */
@@ -612,10 +648,14 @@ ul.rpgui-dropdown-imp
 .rpgui-icon.empty-slot {
     background-image: url('img/icons/empty-slot.png');
 }
-
-
-/* input.css */
-
+
+
+
+
+/* input.css */
+
+
+
 /**
 * input styling
 */
@@ -669,10 +709,14 @@ ul.rpgui-dropdown-imp
 .rpgui-content input::-moz-selection,
 .rpgui-content textarea::-moz-selection {
     background: rgba(0,0,0,0.5);
-}
-
-/* list.css */
-
+}
+
+
+
+/* list.css */
+
+
+
 
 /* dropdown box implemented with list (see rpgui-dropdown.js for details) */
 /* note! this class rule affect both the dropdown header and the list elements! */
@@ -755,10 +799,14 @@ ul.rpgui-list-imp
 .rpgui-list-imp .rpgui-selected
 {
     background: rgba(0, 0, 0, 0.3);
-}
-
-/* misc.css */
-
+}
+
+
+
+/* misc.css */
+
+
+
 /**
 * Customized scrollbars
 */
@@ -782,10 +830,14 @@ ul.rpgui-list-imp
     -ms-user-select: none;
     user-select: none;
 }
-
-
-/* paragraphs_and_headers.css */
-
+
+
+
+
+/* paragraphs_and_headers.css */
+
+
+
 /**
 * Paragraphs and headers while inside an rpgui container.
 */
@@ -920,10 +972,14 @@ ul.rpgui-list-imp
 	line-height: 22px;
 }
 
-
-
-/* progress_bar.css */
-
+
+
+
+
+/* progress_bar.css */
+
+
+
 /*
 * progress bar styling
 */
@@ -1003,10 +1059,14 @@ ul.rpgui-list-imp
 {
     background-image: url('img/progress-red.png');
 }
-
-
-/* radio.css */
-
+
+
+
+
+/* radio.css */
+
+
+
 /**
 * style for radioes
 */
@@ -1054,10 +1114,14 @@ ul.rpgui-list-imp
 {
     background: url('img/radio-golden-on.png') no-repeat !important;
     background-size: auto 100% !important;
-}
-
-/* scrollbars.css */
-
+}
+
+
+
+/* scrollbars.css */
+
+
+
 /**
 * Rules for misc and general things.
 */
@@ -1087,10 +1151,14 @@ ul.rpgui-list-imp
 	background-size: 100% 100%;
 	background-repeat: no-repeat;
 }
-
-
-/* slider.css */
-
+
+
+
+
+/* slider.css */
+
+
+
 /**
 * Rules for the slider.
 */

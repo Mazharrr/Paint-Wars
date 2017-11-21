@@ -1,5 +1,3 @@
-//import game from '../states/stateManager'
-
 const initialState = {
   crates: [],
   bombs: []

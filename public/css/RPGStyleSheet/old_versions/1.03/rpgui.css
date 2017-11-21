@@ -55,7 +55,7 @@ inside your html file.
   background-color: Transparent;
   background-repeat: no-repeat;
   border: none;
-  overflow: hidden;
+  /* overflow: hidden; */
   outline: none;
   /* background */
   background: url("img/button.png") no-repeat no-repeat;
@@ -94,7 +94,7 @@ inside your html file.
   background-color: Transparent;
   background-repeat: no-repeat;
   border: none;
-  overflow: hidden;
+  /* overflow: hidden; */
   outline: none;
   /* background */
   background: url("img/button-golden.png") no-repeat no-repeat;
@@ -209,7 +209,7 @@ inside your html file.
   left: 0px;
   top: 0px;
   position: fixed;
-  overflow: hidden;
+  /* overflow: hidden; */
   font-size: 0.8em; }
 
 /* general rules to apply on anything inside the content */
