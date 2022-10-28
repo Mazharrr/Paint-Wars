@@ -41,7 +41,7 @@
     "redux-logger": "^2.7.4",
     "redux-thunk": "^2.2.0",
     "sequelize": "^3.30.1",
-    "socket.io": "^1.7.2",
+    "socket.io": "^4.5.3",
     "underscore": "^1.8.3",
     "volleyball": "^1.4.1",
     "webpack": "^1.14.0"
